@@ -10,6 +10,7 @@ author:
   twitter: lawrennd
   gscholar: r3SJcvoAAAAJ
   orchid: 
+time: "null"
 week: 0
 session: 3
 reveal: 03-multi-output-gps.slides.html
@@ -172,8 +173,8 @@ $$</span><br /> where <span class="math inline">$\kernelScalar$</span> has <span
 </ul>
 <h2 id="sum-of-separable-covariance-functions">Sum of Separable Covariance Functions</h2>
 <ul>
-<li><p>In the same spirit a more general class of kernels is given by <br /><span class="math display">$$\kernelMatrix(\inputVector,\inputVector^\prime)=\sum_{{j}=1}^\latentDim\kernelScalar_{j}(\inputVector,\inputVector^\prime)\coregionalizationMatrix_{j}.$$</span><br /></p></li>
-<li><p>This can also be written as <br /><span class="math display">$$\kernelMatrix(\inputMatrix, \inputMatrix) = \sum_{{j}=1}^\latentDim\coregionalizationMatrix_{j}\otimes \kernelScalar_{j}(\inputMatrix, \inputMatrix),$$</span><br /></p></li>
+<li><p>In the same spirit a more general class of kernels is given by <br /><span class="math display">$$\kernelMatrix(\inputVector,\inputVector^\prime)=\sum_{j=1}^\latentDim\kernelScalar_{j}(\inputVector,\inputVector^\prime)\coregionalizationMatrix_{j}.$$</span><br /></p></li>
+<li><p>This can also be written as <br /><span class="math display">$$\kernelMatrix(\inputMatrix, \inputMatrix) = \sum_{j=1}^\latentDim\coregionalizationMatrix_{j}\otimes \kernelScalar_{j}(\inputMatrix, \inputMatrix),$$</span><br /></p></li>
 <li><p>This is like several Kalman filter-type models added together, but each one with a different set of latent functions.</p></li>
 <li><p>We call this class of kernels sum of separable kernels (SoS kernels).</p></li>
 </ul>
@@ -187,7 +188,7 @@ $$</span><br /> where <span class="math inline">$\kernelScalar$</span> has <span
 <h2 id="weighted-sum-of-latent-functions">Weighted sum of Latent Functions</h2>
 <ul>
 <li><p>In the linear model of coregionalization (LMC) outputs are expressed as linear combinations of independent random functions.</p></li>
-<li><p>In the LMC, each component <span class="math inline">$\mappingFunction_\dataIndex$</span> is expressed as a linear sum <br /><span class="math display">$$\mappingFunction_\dataIndex(\inputVector) = \sum_{{j}=1}^\latentDim{w}_{\dataIndex,{j}}{u}_{{j}}(\inputVector).$$</span><br /> where the latent functions are independent and have covariance functions <span class="math inline">$\kernelScalar_{{j}}(\inputVector,\inputVector^\prime)$</span>.</p></li>
+<li><p>In the LMC, each component <span class="math inline">$\mappingFunction_\dataIndex$</span> is expressed as a linear sum <br /><span class="math display">$$\mappingFunction_\dataIndex(\inputVector) = \sum_{j=1}^\latentDim{w}_{\dataIndex,{j}}{u}_{j}(\inputVector).$$</span><br /> where the latent functions are independent and have covariance functions <span class="math inline">$\kernelScalar_{j}(\inputVector,\inputVector^\prime)$</span>.</p></li>
 <li><p>The processes <span class="math inline">$\{\mappingFunction_j(\inputVector)\}_{j=1}^\latentDim$</span> are independent for <span class="math inline">$\latentDim \neq {j}^\prime$</span>.</p></li>
 </ul>
 <h2 id="kalman-filter-special-case">Kalman Filter Special Case</h2>
@@ -273,7 +274,7 @@ $$</span><br /></p>
 </ul>
 <h2 id="semiparametric-latent-factor-model">Semiparametric Latent Factor Model</h2>
 <ul>
-<li><p>Coregionalization matrices are rank 1 <span class="citation" data-cites="Teh:semiparametric05">Teh, Seeger, and Jordan (n.d.)</span>. rewrite equation as <br /><span class="math display">$$\kernelMatrix(\inputMatrix, \inputMatrix) = \sum_{{j}=1}^\latentDim\mappingVector_{:, {j}}\mappingVector^{\top}_{:, {j}} \otimes \kernelScalar_{j}(\inputMatrix, \inputMatrix).$$</span><br /></p></li>
+<li><p>Coregionalization matrices are rank 1 <span class="citation" data-cites="Teh:semiparametric05">Teh, Seeger, and Jordan (n.d.)</span>. rewrite equation as <br /><span class="math display">$$\kernelMatrix(\inputMatrix, \inputMatrix) = \sum_{j=1}^\latentDim\mappingVector_{:, {j}}\mappingVector^{\top}_{:, {j}} \otimes \kernelScalar_{j}(\inputMatrix, \inputMatrix).$$</span><br /></p></li>
 <li><p>Like the Kalman filter, but each latent function has a <em>different</em> covariance.</p></li>
 <li><p>Authors suggest using an exponentiated quadratic characteristic length-scale for each input dimension.</p></li>
 </ul>
