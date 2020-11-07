@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (http://matplotlib.org/) -->
+<svg height="360pt" version="1.1" viewBox="0 0 360 360" width="360pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360 
+L 360 360 
+L 360 0 
+L 0 0 
+z
+" style="fill:none;"/>
+  </g>
+  <g id="axes_1">
+   <g clip-path="url(#pd5bfd27b0a)">
+    <image height="272" id="imaged858a6f74d" transform="scale(1 -1)translate(0 -272)" width="272" x="48.6" xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAARAAAAEQCAYAAAB4CisVAAAABHNCSVQICAgIfAhkiAAABRpJREFUeJzt3bFNbFkQRdECtUEEmORAFIiIEVEQA5hEgAXfmXHGGIktqP9o1vJbD2FsXeeoLmbmY+AHu7y8/PRvrq6u0reur6/T725vbz/9m/v7+/Stu7u7T//m5uYmfevz/3mAfwgIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkJ3+9h8A/yqr2pm2rN1c1c60ZW1Z1c60Ze3Ly0v6lhcIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkBnT8S2Ofm5ycxQ3s3tusgzjHh8f07e8QIBMQIBMQIBMQIBMQIBMQIBMQIBMQIBMQIBMQIBMQIBMQIBMQIDMGpf/da7nJjdXtTO75ybLsvbh4SF9ywsEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyIzpfonNUdzM8c9Nbo7iZnbPTZZh3NPTU/qWFwiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQWeP+QGVZu7mqnTn+ucnNVe3M7rnJsqx9fX1N3/ICATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBATJr3L9o817t5qp25vj3ajdXtTO792rLsvbt7S19ywsEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyAQEyIzpvsjRz01ujuJmjn9ucnMUN7N7brIM497f39O3vECATECATECATECATECATECATECATECATECATECATECATECATECAzBr3P8713OTmqnbm+OcmN1e1M7vnJuuytvACATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBAbKzHdNtjuJmjn9ucnMUN3P8c5Obo7iZ3XOTm7xAgExAgExAgExAgExAgExAgExAgExAgExAgExAgExAgExAgExAgOxHrHHLsnZzVTtz/HOTm6vameOfm9xc1c78jGVt4QUCZAICZAICZAICZAICZAICZAICZAICZAICZAICZAICZAICZAICZKtr3M17tZur2pnj36vdXNXOHP9erVXt1/ACATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBATIBAbI8pjv6ucnNUdzM8c9Nbo7iZo5/btIo7mt4gQCZgACZgACZgACZgACZgACZgACZgACZgACZgACZgACZgACZgADZ6VzPTW6uameOf25yc1U749zkb+EFAmQCAmQCAmQCAmQCAmQCAmQCAmQCAmQCAmQCAmQCAmQCAmSncz03uTmKmzn+ucnNUdyMc5O/hRcIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkAkIkJ3O9dzk5qp25vjnJjdXtTOWtb+FFwiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQCQiQnc71Xu3mqnbm+PdqrWr5Dl4gQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQHY613OTm6O4meOfmzSK4zt4gQCZgACZgACZgACZgACZgACZgACZgACZgACZgACZgACZgACZgADZxfPz80f54dHPTW6uamecm+R38gIBMgEBMgEBMgEBMgEBMgEBMgEBMgEBMgEBMgEBMgEBMgEBsouPj480pjv6ucnNUdyMc5P8Tl4gQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQCYgQPYHSPhcuiDC2V8AAAAASUVORK5CYII=" y="-43"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd5bfd27b0a">
+   <rect height="271.8" width="271.8" x="48.6" y="43.2"/>
+  </clipPath>
+ </defs>
+</svg>
