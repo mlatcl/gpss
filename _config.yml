@@ -18,15 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Machine Learning and the Physical World
+title: Gaussian Process Summer School
 author:
   name: Neil D. Lawrence
   email:
   twitter: lawrennd
 description: >- # this means to ignore newlines until "baseurl:"
-  This is the website of the Machine Learning and the Physical World module
+  This website contains lectures Neil has given at GP Summer Schools.
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/mlphysical" # the subpath of your site, e.g. /blog
+baseurl: "/gpss" # the subpath of your site, e.g. /blog
 twitter_username:
 github_username: mlatcl
 colab: https://colab.research.google.com
@@ -58,7 +58,7 @@ collections:
 
 ghub:
   edit: true
-  repository: mlphysical
+  repository: gpss
 
 future: true
 
