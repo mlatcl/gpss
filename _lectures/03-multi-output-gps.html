@@ -10,7 +10,6 @@ author:
   twitter: lawrennd
   gscholar: r3SJcvoAAAAJ
   orchid: 
-time: "null"
 week: 0
 session: 3
 reveal: 03-multi-output-gps.slides.html
@@ -34,7 +33,7 @@ categories:
 <h2 id="simple-kalman-filter">Simple Kalman Filter</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gp/includes/simple-kalman-filter.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gp/includes/simple-kalman-filter.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <ul>
-<li><p>We have state vector <span class="math inline">$\inputMatrix = \left[\inputVector_1  \dots \inputVector_\latentDim\right] \in \mathbb{R}^{{T}\times \latentDim}$</span> and if each state evolves independently we have <br /><span class="math display">$$      
+<li><p>We have state vector <span class="math inline">$\inputMatrix = \left[\inputVector_1  \dots \inputVector_\latentDim\right] \in \mathbb{R}^{\top \times \latentDim}$</span> and if each state evolves independently we have <br /><span class="math display">$$      
 \begin{align*}
   p(\inputMatrix) &amp;= \prod_{i=1}^\latentDim p(\inputVector_{:, i}) \\
  p(\inputVector_{:, i}) &amp;= \gaussianDist{\inputVector_{:, i}}{\zerosVector}{\kernelMatrix}.
