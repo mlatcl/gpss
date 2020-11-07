@@ -3,7 +3,9 @@ layout: home
 title: Gaussian Process Summer Schoool Lectures
 ---
 
-This is a repository for various lectures for the [Gaussian Process Summer School](http://gpss.cc).
+This is a repository for various lectures for the [Gaussian Process Summer School](http://gpss.cc). 
+
+These lectures are currently in *DRAFT* form as they are rewritten with parallel notebooks.
 
 ## Lectures
 
