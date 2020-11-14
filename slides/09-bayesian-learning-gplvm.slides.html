@@ -292,6 +292,41 @@ A short video description of the Manifold Relevance Determination method as publ
 </aside>
 <!--frame end-->
 </section>
+<section id="getting-started-and-downloading-data" class="slide level2">
+<h2>Getting Started and Downloading Data</h2>
+</section>
+<section id="bayesian-gplvm" class="slide level2">
+<h2>Bayesian GPLVM</h2>
+
+</section>
+<section id="preoptimized-model" class="slide level2">
+<h2>Preoptimized Model</h2>
+</section>
+<section id="multiview-learning-manifold-relevance-determination" class="slide level2">
+<h2>Multiview Learning: Manifold Relevance Determination</h2>
+
+</section>
+<section id="interactive-demo-for-use-outside-the-notepad" class="slide level2">
+<h2>Interactive Demo: For Use Outside the Notepad</h2>
+</section>
+<section id="observations" class="slide level2">
+<h2>Observations</h2>
+<ul>
+<li>We tend to obtain more “strange” outputs when sampling from latent space areas away from the training inputs.</li>
+<li>When sampling from the two dominant latent dimensions (the ones corresponding to large scales) we differentiate between all digits. Also note that projecting the latent space into the two dominant dimensions better separates the classes.</li>
+<li>When sampling from less dominant latent dimensions the outputs vary in a more subtle way.</li>
+</ul>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
+<ul>
+<li>Can you see a difference in the ARD parameters to the non Bayesian GPLVM?</li>
+<li>How does the Bayesian GPLVM allow the ARD parameters of the RBF kernel magnify the two first dimensions?</li>
+<li>Is Bayesian GPLVM better in differentiating between different kinds of digits?</li>
+<li>Why does the starting noise variance have to be lower then the variance of the observed values?</li>
+<li>How come we use the lowest variance when using a linear kernel, but the highest lengtscale when using an RBF kernel?</li>
+</ul>
+</section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>

@@ -222,6 +222,95 @@ $$</span><br /> which can be computed analytically for some covariance functions
 </div>
 </div>
 <!--frame end-->
+<h2 id="getting-started-and-downloading-data">Getting Started and Downloading Data</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> GPy</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> string</span></code></pre></div>
+<p>The following code is for plotting and to prepare the bigger models for later useage. If you are interested, you can have a look, but this is not essential.</p>
+<p>For this lab, we’ll use a data set containing all handwritten digits from <span class="math inline">0⋯9</span> handwritten, provided by <span class="citation" data-cites="deCampos-character09">de Campos, Babu, and Varma (2009)</span>. We will only use some of the digits for the demonstrations in this lab class, but you can edit the code below to select different subsets of the digit data as you wish.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>which <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>] <span class="co"># which digits to work on</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>data <span class="op">=</span> pods.datasets.decampos_digits(which_digits<span class="op">=</span>which)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb6-4"><a href="#cb6-4"></a>labels <span class="op">=</span> data[<span class="st">&#39;str_lbls&#39;</span>]</span></code></pre></div>
+<p>You can try to plot some of the digits using <code>plt.matshow</code> (the digit images have size <code>16x16</code>).</p>
+<h2 id="bayesian-gplvm">Bayesian GPLVM</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>In GP-LVM we use a point estimate of the distribution of the input <span class="math inline">$\latentMatrix$</span>. This estimate is derived through maximum likelihood or through a maximum a posteriori (MAP) approach. Ideally, we would like to also estimate a distribution over the input <span class="math inline">$\latentMatrix$</span>. In the Bayesian GPLVM we approximate the true distribution <span class="math inline">$p(\latentMatrix|\dataMatrix)$</span> by a variational approximation <span class="math inline">$q(\latentMatrix)$</span> and integrate <span class="math inline">$\latentMatrix$</span> out <span class="citation" data-cites="Titsias:bayesGPLVM10">(Titsias and Lawrence 2010)</span>.</p>
+<p>Approximating the posterior in this way allows us to optimize a lower bound on the marginal likelihood. Handling the uncertainty in a principled way allows the model to make an assessment of whether a particular latent dimension is required, or the variation is better explained by noise. This allows the algorithm to switch off latent dimensions. The switching off can take some time though, so below in Section 6 we provide a pre-learnt module, but to complete section 6 you’ll need to be working in the IPython console instead of the notebook.</p>
+<p>For the moment we’ll run a short experiment applying the Bayesian GP-LVM with an exponentiated quadratic covariance function.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Model optimization</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>input_dim <span class="op">=</span> <span class="dv">5</span> <span class="co"># How many latent dimensions to use</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>kern <span class="op">=</span> GPy.kern.RBF(input_dim,ARD<span class="op">=</span><span class="va">True</span>) <span class="co"># ARD kernel</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>m <span class="op">=</span> GPy.models.BayesianGPLVM(Yn, input_dim<span class="op">=</span>input_dim, kernel<span class="op">=</span>kern, num_inducing<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># initialize noise as 1% of variance in data</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#m.likelihood.variance = m.Y.var()/100.</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>m.optimize(messages<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Because we are now also considering the uncertainty in the model, this optimization can take some time. However, you are free to interrupt the optimization at any point selecting <code>Kernel-&gt;Interupt</code> from the notepad menu. This will leave you with the model, <code>m</code> in the current state and you can plot and look into the model parameters.</p>
+<h2 id="preoptimized-model">Preoptimized Model</h2>
+<p>A good way of working with latent variable models is to interact with the latent dimensions, generating data. This is a little bit tricky in the notebook, so below in section 6 we provide code for setting up an interactive demo in the standard IPython shell. If you are working on your own machine you can try this now. Otherwise continue with section 5.</p>
+<h2 id="multiview-learning-manifold-relevance-determination">Multiview Learning: Manifold Relevance Determination</h2>
+<p>In Manifold Relevance Determination we try to find one latent space, common for <span class="math inline"><em>K</em></span> observed output sets (modalities) <span class="math inline">$\{\dataMatrix_{k}\}_{k=1}^{K}$</span>. Each modality is associated with a separate set of ARD parameters so that it switches off different parts of the whole latent space and, therefore, <span class="math inline">$\latentMatrix$</span> is softly segmented into parts that are private to some, or shared for all modalities. Can you explain what happens in the following example?</p>
+<p>Again, you can stop the optimizer at any point and explore the result obtained with the so far training:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>m <span class="op">=</span> GPy.examples.dimensionality_reduction.mrd_simulation(optimize <span class="op">=</span> <span class="va">False</span>, plot<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>m.optimize(messages <span class="op">=</span> <span class="va">True</span>, max_iters<span class="op">=</span><span class="fl">3e3</span>, optimizer <span class="op">=</span> <span class="st">&#39;bfgs&#39;</span>)</span></code></pre></div>
+<h2 id="interactive-demo-for-use-outside-the-notepad">Interactive Demo: For Use Outside the Notepad</h2>
+<p>The module below loads a pre-optimized Bayesian GPLVM model (like the one you just trained) and allows you to interact with the latent space. Three interactive figures pop up: the latent space, the ARD scales and a sample in the output space (corresponding to the current selected latent point of the other figure). You can sample with the mouse from the latent space and obtain samples in the output space. You can select different latent dimensions to vary by clicking on the corresponding scales with the left and right mouse buttons. This will also cause the latent space to be projected on the selected latent dimensions in the other figure.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> urllib2, os, sys</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>model_path <span class="op">=</span>  <span class="st">&#39;digit_bgplvm_demo.pickle&#39;</span> <span class="co"># local name for model file</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>status <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>re <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="cf">if</span> <span class="bu">len</span>(sys.argv) <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    re <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="cf">if</span> re <span class="kw">or</span> <span class="kw">not</span> os.path.exists(model_path): <span class="co"># only download the model new, if it was not already</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>    url <span class="op">=</span> <span class="st">&#39;http://staffwww.dcs.sheffield.ac.uk/people/M.Zwiessele/gpss/lab3/digit_bgplvm_demo.pickle&#39;</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="cf">with</span> <span class="bu">open</span>(model_path, <span class="st">&#39;wb&#39;</span>) <span class="im">as</span> f:</span>
+<span id="cb10-11"><a href="#cb10-11"></a>        u <span class="op">=</span> urllib2.urlopen(url)</span>
+<span id="cb10-12"><a href="#cb10-12"></a>        meta <span class="op">=</span> u.info()</span>
+<span id="cb10-13"><a href="#cb10-13"></a>        file_size <span class="op">=</span> <span class="bu">int</span>(meta.getheaders(<span class="st">&quot;Content-Length&quot;</span>)[<span class="dv">0</span>])</span>
+<span id="cb10-14"><a href="#cb10-14"></a>        <span class="bu">print</span> <span class="st">&quot;Downloading: </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> (model_path)</span>
+<span id="cb10-15"><a href="#cb10-15"></a></span>
+<span id="cb10-16"><a href="#cb10-16"></a>        file_size_dl <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a>        block_sz <span class="op">=</span> <span class="dv">8192</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>        <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb10-19"><a href="#cb10-19"></a>            buff <span class="op">=</span> u.read(block_sz)</span>
+<span id="cb10-20"><a href="#cb10-20"></a>            <span class="cf">if</span> <span class="kw">not</span> buff:</span>
+<span id="cb10-21"><a href="#cb10-21"></a>                <span class="cf">break</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a>            file_size_dl <span class="op">+=</span> <span class="bu">len</span>(buff)</span>
+<span id="cb10-23"><a href="#cb10-23"></a>            f.write(buff)</span>
+<span id="cb10-24"><a href="#cb10-24"></a>            sys.stdout.write(<span class="st">&quot; &quot;</span><span class="op">*</span>(<span class="bu">len</span>(status)) <span class="op">+</span> <span class="st">&quot;</span><span class="ch">\r</span><span class="st">&quot;</span>)</span>
+<span id="cb10-25"><a href="#cb10-25"></a>            status <span class="op">=</span> <span class="vs">r&quot;</span><span class="sc">{:7.3f}</span><span class="vs">/</span><span class="sc">{:.3f}</span><span class="vs">MB [</span><span class="sc">{: &gt;7.2%}</span><span class="vs">]&quot;</span>.<span class="bu">format</span>(file_size_dl<span class="op">/</span>(<span class="fl">1.</span><span class="op">*</span><span class="fl">1e6</span>), file_size<span class="op">/</span>(<span class="fl">1.</span><span class="op">*</span><span class="fl">1e6</span>), <span class="bu">float</span>(file_size_dl)<span class="op">/</span>file_size)</span>
+<span id="cb10-26"><a href="#cb10-26"></a>            sys.stdout.write(status)</span>
+<span id="cb10-27"><a href="#cb10-27"></a>            sys.stdout.flush()</span>
+<span id="cb10-28"><a href="#cb10-28"></a>        sys.stdout.write(<span class="st">&quot; &quot;</span><span class="op">*</span>(<span class="bu">len</span>(status)) <span class="op">+</span> <span class="st">&quot;</span><span class="ch">\r</span><span class="st">&quot;</span>)</span>
+<span id="cb10-29"><a href="#cb10-29"></a>        <span class="bu">print</span> status</span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="cf">else</span>:</span>
+<span id="cb10-31"><a href="#cb10-31"></a>    <span class="bu">print</span>(<span class="st">&quot;Already cached, to reload run with &#39;reload&#39; as the only argument&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> cPickle <span class="im">as</span> pickle</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;./digit_bgplvm_demo.pickle&#39;</span>, <span class="st">&#39;rb&#39;</span>) <span class="im">as</span> f:</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    m <span class="op">=</span> pickle.load(f)</span></code></pre></div>
+<p>Prepare for plotting of this model. If you run on a webserver the interactive plotting will not work. Thus, you can skip to the next codeblock and run it on your own machine, later.</p>
+<h3 id="observations">Observations</h3>
+<p>Confirm the following observations by interacting with the demo:</p>
+<ul>
+<li>We tend to obtain more “strange” outputs when sampling from latent space areas away from the training inputs.</li>
+<li>When sampling from the two dominant latent dimensions (the ones corresponding to large scales) we differentiate between all digits. Also note that projecting the latent space into the two dominant dimensions better separates the classes.</li>
+<li>When sampling from less dominant latent dimensions the outputs vary in a more subtle way.</li>
+</ul>
+<p>You can also run the dimensionality reduction example</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>GPy.examples.dimensionality_reduction.bgplvm_simulation()</span></code></pre></div>
+<h3 id="questions">Questions</h3>
+<ul>
+<li>Can you see a difference in the ARD parameters to the non Bayesian GPLVM?</li>
+<li>How does the Bayesian GPLVM allow the ARD parameters of the RBF kernel magnify the two first dimensions?</li>
+<li>Is Bayesian GPLVM better in differentiating between different kinds of digits?</li>
+<li>Why does the starting noise variance have to be lower then the variance of the observed values?</li>
+<li>How come we use the lowest variance when using a linear kernel, but the highest lengtscale when using an RBF kernel?</li>
+</ul>
 <h2 id="thanks">Thanks!</h2>
 <p>For more information on these subjects and more you might want to check the following resources.</p>
 <ul>
@@ -237,6 +326,9 @@ $$</span><br /> which can be computed analytically for some covariance functions
 </div>
 <div id="ref-Damianou:variational15">
 <p>Damianou, Andreas, Michalis K. Titsias, and Neil D. Lawrence. 2016. “Variational Inference for Latent Variables and Uncertain Inputs in Gaussian Processes.” <em>Journal of Machine Learning Research</em> 17.</p>
+</div>
+<div id="ref-deCampos-character09">
+<p>de Campos, Teófilo E., Bodla Rakesh Babu, and Manik Varma. 2009. “Character Recognition in Natural Images.” In <em>Proceedings of the Fourth International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP, (Visigrapp 2009)</em>, 273–80. INSTICC; SciTePress. <a href="https://doi.org/10.5220/0001770102730280">https://doi.org/10.5220/0001770102730280</a>.</p>
 </div>
 <div id="ref-Ek:ambiguity08">
 <p>Ek, Carl Henrik, Jon Rihan, Philip H. S. Torr, Gregory Rogez, and Neil D. Lawrence. 2008. “Ambiguity Modeling in Latent Spaces.” In <em>Machine Learning for Multimodal Interaction (Mlmi 2008)</em>, edited by Andrei Popescu-Belis and Rainer Stiefelhagen, 62–73. LNCS. Springer-Verlag.</p>
@@ -261,6 +353,9 @@ $$</span><br /> which can be computed analytically for some covariance functions
 </div>
 <div id="ref-Shon:learning05">
 <p>Shon, Aaron P., Keith Grochow, Aaron Hertzmann, and Rajesh P. N. Rao. n.d. “Learning Shared Latent Structure for Image Synthesis and Robotic Imitation.” In.</p>
+</div>
+<div id="ref-Titsias:bayesGPLVM10">
+<p>Titsias, Michalis K., and Neil D. Lawrence. 2010. “Bayesian Gaussian Process Latent Variable Model.” In, 9:844–51.</p>
 </div>
 <div id="ref-Tucker:battery58">
 <p>Tucker, Ledyard R. 1958. “An Inter-Battery Method of Factor Analysis.” <em>Psychometrika</em> 23 (2): 111–36.</p>
