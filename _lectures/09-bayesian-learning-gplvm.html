@@ -9,12 +9,12 @@ author:
   institute: University of Cambridge
   twitter: lawrennd
   gscholar: r3SJcvoAAAAJ
-  orchid: 
+  orcid: 0000-0001-9258-1030
 time: "null"
 week: 0
-session: 8
-reveal: 08-bayesian-learning-gplvm.slides.html
-ipynb: 08-bayesian-learning-gplvm.ipynb
+session: 9
+reveal: 09-bayesian-learning-gplvm.slides.html
+ipynb: 09-bayesian-learning-gplvm.ipynb
 layout: lecture
 categories:
 - notes
@@ -100,21 +100,21 @@ $$</span><br /> which can be computed analytically for some covariance functions
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <ul>
 <li>Single space to model correlations between two different data sources, e.g., images &amp; text, image &amp; pose.</li>
-<li>Shared latent spaces: {}</li>
+<li>Shared latent spaces: <span class="citation" data-cites="Shon:learning05">Shon et al. (n.d.)</span>;<span class="citation" data-cites="Navaratnam:joint07">Navaratnam, Fitzgibbon, and Cipolla (2007)</span>;<span class="citation" data-cites="Ek:pose07">Ek, Torr, and Lawrence (2008)</span></li>
 <li>Effective when the `views’ are correlated.</li>
 <li>But not all information is shared between both `views’.</li>
 <li>PCA applied to concatenated data vs CCA applied to data.</li>
 </ul>
 <h1 id="shared-private-factorization">Shared-Private Factorization</h1>
 <ul>
-<li>In real scenarios, the `views’ are neither fully independent, nor fully correlated.</li>
-<li>Shared models
+<li><p>In real scenarios, the `views’ are neither fully independent, nor fully correlated.</p></li>
+<li><p>Shared models</p>
 <ul>
 <li>either allow information relevant to a single view to be mixed in the shared signal,</li>
 <li>or are unable to model such private information.</li>
 </ul></li>
-<li>Solution: Model shared and private information <span class="citation" data-cites="Klami:group11">Virtanen, Klami, and Kaski (n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek et al. (2008)</span>,<span class="citation" data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span class="citation" data-cites="Klami:local07">Klami and Kaski (n.d.)</span>,<span class="citation" data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span></li>
-<li>Probabilistic CCA is case when dimensionality of <span class="math inline"><strong>Z</strong></span> matches <span class="math inline">$\dataMatrix^{(i)}$</span> (cf Inter Battery Factor Analysis {}).</li>
+<li><p>Solution: Model shared and private information <span class="citation" data-cites="Klami:group11">Virtanen, Klami, and Kaski (n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek et al. (2008)</span>,<span class="citation" data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span class="citation" data-cites="Klami:local07">Klami and Kaski (n.d.)</span>,<span class="citation" data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span></p></li>
+<li><p>Probabilistic CCA is case when dimensionality of <span class="math inline"><strong>Z</strong></span> matches <span class="math inline">$\dataMatrix^{(i)}$</span> (cf Inter Battery Factor Analysis <span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span>).</p></li>
 </ul>
 <!--frame failure start-->
 <h1 id="manifold-relevance-determination-1">Manifold Relevance Determination</h1>
@@ -241,6 +241,9 @@ $$</span><br /> which can be computed analytically for some covariance functions
 <div id="ref-Ek:ambiguity08">
 <p>Ek, Carl Henrik, Jon Rihan, Philip H. S. Torr, Gregory Rogez, and Neil D. Lawrence. 2008. “Ambiguity Modeling in Latent Spaces.” In <em>Machine Learning for Multimodal Interaction (Mlmi 2008)</em>, edited by Andrei Popescu-Belis and Rainer Stiefelhagen, 62–73. LNCS. Springer-Verlag.</p>
 </div>
+<div id="ref-Ek:pose07">
+<p>Ek, Carl Henrik, Philip H. S. Torr, and Neil D. Lawrence. 2008. “Gaussian Process Latent Variable Models for Human Pose Estimation.” In <em>Machine Learning for Multimodal Interaction (Mlmi 2007)</em>, edited by Andrei Popescu-Belis, Steve Renals, and Hervé Bourlard, 4892:132–43. LNCS. Brno, Czech Republic: Springer-Verlag. <a href="https://doi.org/10.1007/978-3-540-78155-4_12">https://doi.org/10.1007/978-3-540-78155-4_12</a>.</p>
+</div>
 <div id="ref-Klami:probabilistic08">
 <p>Klami, Aarto, and Sami Kaski. 2008. “Probabilistic Approach to Detecting Dependencies Between Data Sets.” <em>Neurocomputing</em> 72: 39–46.</p>
 </div>
@@ -250,8 +253,14 @@ $$</span><br /> which can be computed analytically for some covariance functions
 <div id="ref-Leen:gplvmcca06">
 <p>Leen, Gayle, and Colin Fyfe. 2006. “A Gaussian Process Latent Variable Model Formulation of Canonical Correlation Analysis.” In. Bruges (Belgium).</p>
 </div>
+<div id="ref-Navaratnam:joint07">
+<p>Navaratnam, Ram, Andrew Fitzgibbon, and Roberto Cipolla. 2007. “The Joint Manifold Model for Semi-Supervised Multi-Valued Regression.” In <em>IEEE International Conference on Computer Vision (Iccv)</em>. IEEE Computer Society Press.</p>
+</div>
 <div id="ref-Salimbeni:doubly2017">
 <p>Salimbeni, Hugh, and Marc Deisenroth. 2017. “Doubly Stochastic Variational Inference for Deep Gaussian Processes.” In <em>Advances in Neural Information Processing Systems 30</em>, edited by I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, 4591–4602. Curran Associates, Inc. <a href="http://papers.nips.cc/paper/7045-doubly-stochastic-variational-inference-for-deep-gaussian-processes.pdf">http://papers.nips.cc/paper/7045-doubly-stochastic-variational-inference-for-deep-gaussian-processes.pdf</a>.</p>
+</div>
+<div id="ref-Shon:learning05">
+<p>Shon, Aaron P., Keith Grochow, Aaron Hertzmann, and Rajesh P. N. Rao. n.d. “Learning Shared Latent Structure for Image Synthesis and Robotic Imitation.” In.</p>
 </div>
 <div id="ref-Tucker:battery58">
 <p>Tucker, Ledyard R. 1958. “An Inter-Battery Method of Factor Analysis.” <em>Psychometrika</em> 23 (2): 111–36.</p>

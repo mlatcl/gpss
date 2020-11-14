@@ -159,7 +159,7 @@
 <h2>Modeling Multiple ‘Views’</h2>
 <ul>
 <li>Single space to model correlations between two different data sources, e.g., images &amp; text, image &amp; pose.</li>
-<li>Shared latent spaces: {}</li>
+<li>Shared latent spaces: <span class="citation" data-cites="Shon:learning05">Shon et al. (n.d.)</span>;<span class="citation" data-cites="Navaratnam:joint07">Navaratnam et al. (2007)</span>;<span class="citation" data-cites="Ek:pose07">Ek, Torr, et al. (2008)</span></li>
 <li>Effective when the `views’ are correlated.</li>
 <li>But not all information is shared between both `views’.</li>
 <li>PCA applied to concatenated data vs CCA applied to data.</li>
@@ -169,14 +169,14 @@
 <section id="shared-private-factorization" class="slide level2">
 <h2>Shared-Private Factorization</h2>
 <ul>
-<li>In real scenarios, the `views’ are neither fully independent, nor fully correlated.</li>
-<li>Shared models
+<li><p>In real scenarios, the `views’ are neither fully independent, nor fully correlated.</p></li>
+<li><p>Shared models</p>
 <ul>
 <li>either allow information relevant to a single view to be mixed in the shared signal,</li>
 <li>or are unable to model such private information.</li>
 </ul></li>
-<li>Solution: Model shared and private information <span class="citation" data-cites="Klami:group11">Virtanen et al. (n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek et al. (2008)</span>,<span class="citation" data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span class="citation" data-cites="Klami:local07">Klami and Kaski (n.d.)</span>,<span class="citation" data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span></li>
-<li>Probabilistic CCA is case when dimensionality of <span class="math inline">\(\mathbf{Z}\)</span> matches <span class="math inline">\(\mathbf{Y}^{(i)}\)</span> (cf Inter Battery Factor Analysis {}).</li>
+<li><p>Solution: Model shared and private information <span class="citation" data-cites="Klami:group11">Virtanen et al. (n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek, Rihan, et al. (2008)</span>,<span class="citation" data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span class="citation" data-cites="Klami:local07">Klami and Kaski (n.d.)</span>,<span class="citation" data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span></p></li>
+<li><p>Probabilistic CCA is case when dimensionality of <span class="math inline">\(\mathbf{Z}\)</span> matches <span class="math inline">\(\mathbf{Y}^{(i)}\)</span> (cf Inter Battery Factor Analysis <span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span>).</p></li>
 </ul>
 <!--frame failure start-->
 <!-- SECTION Manifold Relevance Determination -->
@@ -313,6 +313,9 @@ A short video description of the Manifold Relevance Determination method as publ
 <div id="ref-Ek:ambiguity08">
 <p>Ek, C.H., Rihan, J., Torr, P.H.S., Rogez, G., Lawrence, N.D., 2008. Ambiguity modeling in latent spaces, in: Popescu-Belis, A., Stiefelhagen, R. (Eds.), Machine Learning for Multimodal Interaction (Mlmi 2008), LNCS. Springer-Verlag, pp. 62–73.</p>
 </div>
+<div id="ref-Ek:pose07">
+<p>Ek, C.H., Torr, P.H.S., Lawrence, N.D., 2008. Gaussian process latent variable models for human pose estimation, in: Popescu-Belis, A., Renals, S., Bourlard, H. (Eds.), Machine Learning for Multimodal Interaction (Mlmi 2007), LNCS. Springer-Verlag, Brno, Czech Republic, pp. 132–143. <a href="https://doi.org/10.1007/978-3-540-78155-4_12">https://doi.org/10.1007/978-3-540-78155-4_12</a></p>
+</div>
 <div id="ref-Klami:local07">
 <p>Klami, A., Kaski, S., n.d. Local dependent components analysis, in:.</p>
 </div>
@@ -322,8 +325,14 @@ A short video description of the Manifold Relevance Determination method as publ
 <div id="ref-Leen:gplvmcca06">
 <p>Leen, G., Fyfe, C., 2006. A Gaussian process latent variable model formulation of canonical correlation analysis, in:. Bruges (Belgium).</p>
 </div>
+<div id="ref-Navaratnam:joint07">
+<p>Navaratnam, R., Fitzgibbon, A., Cipolla, R., 2007. The joint manifold model for semi-supervised multi-valued regression, in: IEEE International Conference on Computer Vision (Iccv). IEEE Computer Society Press.</p>
+</div>
 <div id="ref-Salimbeni:doubly2017">
 <p>Salimbeni, H., Deisenroth, M., 2017. Doubly stochastic variational inference for deep Gaussian processes, in: Guyon, I., Luxburg, U.V., Bengio, S., Wallach, H., Fergus, R., Vishwanathan, S., Garnett, R. (Eds.), Advances in Neural Information Processing Systems 30. Curran Associates, Inc., pp. 4591–4602.</p>
+</div>
+<div id="ref-Shon:learning05">
+<p>Shon, A.P., Grochow, K., Hertzmann, A., Rao, R.P.N., n.d. Learning shared latent structure for image synthesis and robotic imitation, in:.</p>
 </div>
 <div id="ref-Tucker:battery58">
 <p>Tucker, L.R., 1958. An inter-battery method of factor analysis. Psychometrika 23, 111–136.</p>

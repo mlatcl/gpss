@@ -9,12 +9,12 @@ author:
   institute: University of Cambridge
   twitter: lawrennd
   gscholar: r3SJcvoAAAAJ
-  orchid: 
+  orcid: 0000-0001-9258-1030
 time: "null"
 week: 0
-session: 3
-reveal: 03-multi-output-gps.slides.html
-ipynb: 03-multi-output-gps.ipynb
+session: 5
+reveal: 05-multi-output-gps.slides.html
+ipynb: 05-multi-output-gps.ipynb
 layout: lecture
 categories:
 - notes
@@ -58,10 +58,30 @@ $$</span><br /> where the stacking is placing each column of <span class="math i
 $$</span><br /></li>
 </ul>
 <h2 id="kronecker-product">Kronecker Product</h2>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_illustrate.svg" width style=" ">
+<div class="figure">
+<div id="kronecker-illustrate-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/kern/kronecker_illustrate.svg" width="80%" style=" ">
 </object>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_IK.svg" width style=" ">
+</div>
+<div id="kronecker-illustrate-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-illustrate&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="kronecker-illustrate-caption" class="caption-frame">
+<p>Figure: Illustration of the Kronecker product.</p>
+</div>
+</div>
+<div class="figure">
+<div id="kronecker-ik-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/kern/kronecker_IK.svg" width="80%" style=" ">
 </object>
+</div>
+<div id="kronecker-ik-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ik&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="kronecker-ik-caption" class="caption-frame">
+<p>Figure: Kronecker product between two matrices.</p>
+</div>
+</div>
 <h2 id="stacking-and-kronecker-products-1">Stacking and Kronecker Products</h2>
 <ul>
 <li>Represent with a ‘stacked’ system: <br /><span class="math display">$$p
@@ -76,7 +96,6 @@ $$</span><br /> where the stacking is placing each column of <span class="math i
     $$</span><br /></li>
 </ul>
 <h2 id="column-stacking">Column Stacking</h2>
-<p>gpKalmanFilterKroneckerPlot2</p>
 <p>For this stacking the marginal distribution over <em>time</em> is given by the block diagonals.</p>
 <div class="figure">
 <div id="kronecker-ik-highlighted-figure" class="figure-frame">
@@ -87,48 +106,43 @@ $$</span><br /> where the stacking is placing each column of <span class="math i
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="kronecker-ik-highlighted-caption" class="caption-frame">
-<p>Figure:</p>
+<p>Figure: The marginal distribution for the first three variables (highlighted) is givne by <span class="math inline">$\kernelMatrix$</span> when the form of stacking is <span class="math inline">$\eye \otimes \kernelMatrix$</span>. This is the ‘column stacking’ case.</p>
 </div>
 </div>
-<h2 id="section"></h2>
-<p>{Two Ways of Stacking</p>
+<h2 id="two-ways-of-stacking">Two Ways of Stacking</h2>
 <p>Can also stack each row of <span class="math inline">$\inputMatrix$</span> to form column vector: <br /><span class="math display">$$\inputVector= \begin{bmatrix}
       \inputVector_{1, :}\\
       \inputVector_{2, :}\\
       \vdots\\
       \inputVector_{T, :}
     \end{bmatrix}$$</span><br /> <br /><span class="math display">$$p(\inputVector) = \gaussianDist{\inputVector}{\zerosVector}{\kernelMatrix\otimes \eye}$$</span><br /></p>
-<h2 id="section-1"></h2>
-<p>{Row Stacking</p>
-<p>gpKalmanFilterKroneckerPlot3</p>
-<p><br />
-For this stacking the marginal distribution over the latent <em>dimensions</em> is given by the block diagonals.</p>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted001.svg" width style=" ">
-</object>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted002.svg" width style=" ">
-</object>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted003.svg" width style=" ">
-</object>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted004.svg" width style=" ">
-</object>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted005.svg" width style=" ">
-</object>
+<h2 id="row-stacking">Row Stacking</h2>
+<p>For this stacking the marginal distribution over the latent <em>dimensions</em> is given by the block diagonals.</p>
 <div class="figure">
 <div id="kronecker-ki-highlighted-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted005.svg" width="60%" style=" ">
+<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI_highlighted002.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="kronecker-ki-highlighted-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ki-highlighted&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="kronecker-ki-highlighted-caption" class="caption-frame">
-<p>Figure:</p>
+<p>Figure: The marginal distribution for the first three variables (highlighted) is independent when the form of stacking is <span class="math inline">$\kernelMatrix \otimes \eye$</span>. This is the ‘row stacking’ case.</p>
 </div>
 </div>
 <h2 id="mapping-from-latent-process-to-observed">Mapping from Latent Process to Observed</h2>
-<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI.svg" width style=" ">
+<div class="figure">
+<div id="kronecker-ki-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/kern/kronecker_KI.svg" width="60%" style=" ">
 </object>
-<p>gpKalmanFilterKroneckerPlot4</p>
+</div>
+<div id="kronecker-ki-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ki&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="kronecker-ki-caption" class="caption-frame">
+<p>Figure: Mapping from latent process to observed</p>
+</div>
+</div>
 <h2 id="observed-process">Observed Process</h2>
 <p>The observations are related to the latent points by a linear mapping matrix, <br /><span class="math display">$$
 \dataVector_{i, :} = \mappingMatrix\inputVector_{i, :} + \noiseVector_{i, :}
@@ -224,7 +238,7 @@ $$</span><br /></p>
 $$</span><br /> <br /><span class="math display">$$
 \coregionalizationMatrix= \begin{bmatrix} 1 &amp; 5\\ 5&amp;25\end{bmatrix}
 $$</span><br /></p>
-<p><img src="../../../multigp/tex/diagrams/icmCovarianceImage" alt="image" /><img src="../../../multigp/tex/diagrams/icmCovarianceSample1" alt="image" /><img src="../../../multigp/tex/diagrams/icmCovarianceSample2" alt="image" /><img src="../../../multigp/tex/diagrams/icmCovarianceSample3" alt="image" /><img src="../../../multigp/tex/diagrams/icmCovarianceSample4" alt="image" /></p>
+<!--![image](../../../multigp/tex/diagrams/icmCovarianceImage)![image](../../../multigp/tex/diagrams/icmCovarianceSample1)![image](../../../multigp/tex/diagrams/icmCovarianceSample2)![image](../../../multigp/tex/diagrams/icmCovarianceSample3)![image](../../../multigp/tex/diagrams/icmCovarianceSample4)-->
 <h2 id="intrinsic-coregionalization-model-covariance">Intrinsic Coregionalization Model Covariance</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/icm-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/icm-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <center>
@@ -260,11 +274,11 @@ $$</span><br /></p>
 <p><br /><span class="math display">$$
 \coregionalizationMatrix= \begin{bmatrix} 1 &amp; 0.5\\ 0.5&amp; 1.5\end{bmatrix}
 $$</span><br /></p>
-<p><img src="../../../multigp/tex/diagrams/icm2CovarianceImage" alt="image" /><img src="../../../multigp/tex/diagrams/icm2CovarianceSample1" alt="image" /><img src="../../../multigp/tex/diagrams/icm2CovarianceSample2" alt="image" /><img src="../../../multigp/tex/diagrams/icm2CovarianceSample3" alt="image" /><img src="../../../multigp/tex/diagrams/icm2CovarianceSample4" alt="image" /></p>
+<!--![image](../../../multigp/tex/diagrams/icm2CovarianceImage)![image](../../../multigp/tex/diagrams/icm2CovarianceSample1)![image](../../../multigp/tex/diagrams/icm2CovarianceSample2)![image](../../../multigp/tex/diagrams/icm2CovarianceSample3)![image](../../../multigp/tex/diagrams/icm2CovarianceSample4)-->
 <h2 id="lmc-samples">LMC Samples</h2>
 <p><br /><span class="math display">$$\kernelMatrix(\inputMatrix, \inputMatrix) = \coregionalizationMatrix_1 \otimes \kernelScalar_1(\inputMatrix, \inputMatrix) + \coregionalizationMatrix_2 \otimes \kernelScalar_2(\inputMatrix, \inputMatrix)$$</span><br /></p>
 <p><br /><span class="math display">$$\coregionalizationMatrix_1 = \begin{bmatrix} 1.4 &amp; 0.5\\ 0.5&amp; 1.2\end{bmatrix}$$</span><br /> <br /><span class="math display">ℓ<sub>1</sub> = 1</span><br /> <br /><span class="math display">$$\coregionalizationMatrix_2 = \begin{bmatrix} 1 &amp; 0.5\\ 0.5&amp; 1.3\end{bmatrix}$$</span><br /> <br /><span class="math display">ℓ<sub>2</sub> = 0.2</span><br /></p>
-<p><img src="../../../multigp/tex/diagrams/lmc2CovarianceImage" alt="image" /><img src="../../../multigp/tex/diagrams/lmc2CovarianceSample1" alt="image" /><img src="../../../multigp/tex/diagrams/lmc2CovarianceSample2" alt="image" /><img src="../../../multigp/tex/diagrams/lmc2CovarianceSample3" alt="image" /><img src="../../../multigp/tex/diagrams/lmc2CovarianceSample4" alt="image" /></p>
+<!--![image](../../../multigp/tex/diagrams/lmc2CovarianceImage)![image](../../../multigp/tex/diagrams/lmc2CovarianceSample1)![image](../../../multigp/tex/diagrams/lmc2CovarianceSample2)![image](../../../multigp/tex/diagrams/lmc2CovarianceSample3)![image](../../../multigp/tex/diagrams/lmc2CovarianceSample4)-->
 <h2 id="lmc-in-machine-learning-and-statistics">LMC in Machine Learning and Statistics</h2>
 <ul>
 <li><p>Used in machine learning for GPs for multivariate regression and in statistics for computer emulation of expensive multivariate computer codes.</p></li>
@@ -296,7 +310,7 @@ $$</span><br /></p>
 $$</span><br /> <br /><span class="math display">$$
 \mappingVector_2 = \begin{bmatrix} 1 \\ 0.5\end{bmatrix}
 $$</span><br /></p>
-<p><img src="../../../multigp/tex/diagrams/slfmCovarianceImage" alt="image" /><img src="../../../multigp/tex/diagrams/slfmCovarianceSample1" alt="image" /><img src="../../../multigp/tex/diagrams/slfmCovarianceSample2" alt="image" /><img src="../../../multigp/tex/diagrams/slfmCovarianceSample3" alt="image" /><img src="../../../multigp/tex/diagrams/slfmCovarianceSample4" alt="image" /></p>
+<!--![image](../../../multigp/tex/diagrams/slfmCovarianceImage)![image](../../../multigp/tex/diagrams/slfmCovarianceSample1)![image](../../../multigp/tex/diagrams/slfmCovarianceSample2)![image](../../../multigp/tex/diagrams/slfmCovarianceSample3)![image](../../../multigp/tex/diagrams/slfmCovarianceSample4)-->
 <h2 id="gaussian-processes-for-multi-task-multi-output-and-multi-class">Gaussian processes for Multi-task, Multi-output and Multi-class</h2>
 <ul>
 <li><p><span class="citation" data-cites="Bonilla:multi07">Bonilla, Chai, and Williams (n.d.)</span> suggest ICM for multitask learning.</p></li>
