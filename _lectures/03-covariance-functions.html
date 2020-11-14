@@ -420,8 +420,9 @@ $$</span><br /> Given a set of parameters, <br /><span class="math display">$$
 $$</span><br /> we can construct the corresponding covariance function, which has the form, <br /><span class="math display">$$
 \kernelScalar\left(\inputVals,\inputVals^{\prime}\right)=\alpha\basisVector(\inputVals)^\top \basisVector(\inputVals^\prime).
 $$</span><br /></p>
-<h2 id="boechners-theoerem">Boechners Theoerem</h2>
+<h2 id="bochners-theoerem">Bochners Theoerem</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/boechners-theorem.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/boechners-theorem.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p><br /><span class="math display"><em>Q</em>(<em>t</em>) = ∫<sub>ℝ</sub><em>e</em><sup> − <em>i</em><em>t</em><em>x</em></sup>d<em>μ</em>(<em>x</em>).</span><br /></p>
 <p>Imagine we are given data and we wish to generalize from it. Without making further assumptions, we have no more information than the given data set. We can think of this ssomewhat like a weighted sum of Dirac delta functions. The Dirac delta function is defined to be a function with an integral of one, which is zero at all places apart from zero, where it is infinite. Given observations at particular times (or locations) <span class="math inline">$\inputVector_i$</span> we can think of our observations as being a function, <br /><span class="math display">$$
 \mappingFunction(\inputVector) = \sum_{i=1}^\numData y_i \delta(\inputVector-\inputVector_i),
 $$</span><br /> This function is highly discontinuous, imagine if we wished to smooth it by filtering in Fourier space. The Fourier transform of a function is given by, <br /><span class="math display">$$
@@ -429,7 +430,7 @@ F(\boldsymbol{\omega}) = \int_{-\infty}^\infty \mappingFunction(\inputVector) \e
 $$</span><br /> and since our function is a series of delta functions the the transform is easy to compute, <br /><span class="math display">$$
 F(\boldsymbol{\omega}) = \sum_{i=1}^\numData y_i\exp\left(-i 2\pi \boldsymbol{\omega}^\top \inputVector_i\right)
 $$</span><br /> which has a real part given by a weighted sum of cosines and a complex part given by a weighted sum of sines.</p>
-<p>One theorem that gives insight into covariances is Boechner’s theorem. Boechner’s theorem states that any positive filter in Fourier space gives rise to a valid covariance function. Further, it gives a relationship between the filter and the form of the covariance function. The form of the covariance is given by the <a href="http://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a> of the filter, with the argument of the transform being replaced by the distance between the points.</p>
+<p>One theorem that gives insight into covariances is Bochner’s theorem. Bochner’s theorem states that any positive filter in Fourier space gives rise to a valid covariance function. Further, it gives a relationship between the filter and the form of the covariance function. The form of the covariance is given by the <a href="http://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a> of the filter, with the argument of the transform being replaced by the distance between the points.</p>
 <p>Fourier space is a transformed space of the original function to a new basis. The transformation occurs through a convolution with a sine and cosine basis. Given a function of time <span class="math inline">$\mappingFunction(t)$</span> the Fourier transform moves it to a weighted linear sum of a sine and cosine basis, <br /><span class="math display">$$
 F(\omega) = \int_{-\infty}^\infty \mappingFunction(t) \left[\cos(2\pi \omega t) - i \sin(2\pi \omega t) \right]\text{d} t
 $$</span><br /> where is the imaginary basis, <span class="math inline">$i=\sqrt{-1}$</span>. Through Euler’s formula, <br /><span class="math display">exp (<em>i</em><em>x</em>) = cos <em>x</em> + <em>i</em>sin <em>x</em></span><br /> we can re-express this form as <br /><span class="math display">$$
@@ -439,9 +440,9 @@ $$</span><br /> which is a standard form for the Fourier transform. Fourier’s 
 $$</span><br /> Although we’ve introduced the transform in the context of time Fourier’s interest was an analytical theory of heat and the transform can be applied to a multidimensional spatial function, <span class="math inline">$\mappingFunction(\inputVector)$</span>.</p>
 <iframe frameborder="0" scrolling="no" style="border:0px" src="http://books.google.co.uk/books?id=TDQJAAAAIAAJ&amp;pg=PA525&amp;output=embed" width="700" height="500">
 </iframe>
-<h2 id="matern-32-covariance">Matern 3/2 Covariance</h2>
+<h2 id="matérn-32-covariance">Matérn 3/2 Covariance</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/matern32-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/matern32-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
-<p>The Mat'ern 3/2 <span class="citation" data-cites="Stein:interpolation99">(Stein 1999)</span> covariance is which is once differentiable, it arises from applying a Student-<span class="math inline"><em>t</em></span> based filter in Fourier space with three degrees of freedom.</p>
+<p>The Matérn 3/2 <span class="citation" data-cites="Stein:interpolation99">(Stein 1999)</span> covariance is which is once differentiable, it arises from applying a Student-<span class="math inline"><em>t</em></span> based filter in Fourier space with three degrees of freedom.</p>
 <p>The covariance takes the following form, <br /><span class="math display">$$
 \kernelScalar(\inputVector, \inputVector^\prime) = \alpha \left(1+\frac{\sqrt{3}\ltwoNorm{\inputVector-\inputVector^\prime}}{\lengthScale}\right)\exp\left(-\frac{\sqrt{3}\ltwoNorm{\inputVector-\inputVector^\prime}}{\lengthScale}\right)
 $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length scale</em> or <em>time scale</em> of the process and <span class="math inline"><em>α</em></span> represents the overall process variance.</p>
@@ -468,12 +469,12 @@ $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length sca
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="matern32-covariance-plot-caption" class="caption-frame">
-<p>Figure: The exponentiated quadratic covariance function.</p>
+<p>Figure: The Matérn 3/2 covariance function.</p>
 </div>
 </div>
-<h2 id="matern-52-covariance">Mat'ern 5/2 Covariance</h2>
+<h2 id="matérn-52-covariance">Matérn 5/2 Covariance</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/matern52-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/matern52-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
-<p>The Mat'ern 5/2 <span class="citation" data-cites="Stein:interpolation99">(Stein 1999)</span> covariance is which is once differentiable, it arises from applying a Student-<span class="math inline"><em>t</em></span> based filter in Fourier space with five degrees of freedom.</p>
+<p>The Matérn 5/2 <span class="citation" data-cites="Stein:interpolation99">(Stein 1999)</span> covariance is which is once differentiable, it arises from applying a Student-<span class="math inline"><em>t</em></span> based filter in Fourier space with five degrees of freedom.</p>
 <p>The covariance takes the following form, <br /><span class="math display">$$
 \kernelScalar(\inputVector, \inputVector^\prime) = \alpha \left(1+\frac{\sqrt{5}\ltwoNorm{\inputVector-\inputVector^\prime}}{\lengthScale} + \frac{5\ltwoNorm{\inputVector-\inputVector^\prime}^2}{3\lengthScale^2}\right)\exp\left(-\frac{\sqrt{5}\ltwoNorm{\inputVector-\inputVector^\prime}}{\lengthScale}\right)
 $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length scale</em> or <em>time scale</em> of the process and <span class="math inline"><em>α</em></span> represents the overall process variance.</p>
@@ -500,7 +501,7 @@ $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length sca
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="matern52-covariance-plot-caption" class="caption-frame">
-<p>Figure: The exponentiated quadratic covariance function.</p>
+<p>Figure: The Matérn 5/2 covariance function.</p>
 </div>
 </div>
 <h2 id="rational-quadratic-covariance">Rational Quadratic Covariance</h2>
@@ -532,7 +533,7 @@ $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length sca
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="ratquad-covariance-plot-caption" class="caption-frame">
-<p>Figure: The exponentiated quadratic covariance function.</p>
+<p>Figure: The rational quadratic covariance function.</p>
 </div>
 </div>
 <h2 id="polynomial-covariance">Polynomial Covariance</h2>
@@ -599,6 +600,32 @@ $$</span><br /> where <span class="math inline">ℓ</span> is the <em>length sca
 <p>Note that other covariance functions we’ve introduced can also be interpreted in this way. For example, the exponentiated quadratic covariance function can be Fourier transformed to see what the implied filter in Fourier space is. The Fourier transform of the exponentiated quadratic is an exponentiated quadratic, so the standard EQ-covariance implies a EQ filter in Fourier space.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="im">from</span> mlai <span class="im">import</span> sinc_cov</span></code></pre></div>
+<center>
+<br /><span class="math display">$$\kernelScalar(\inputVector, \inputVector^\prime) = \alpha \text{sinc}\left(\pi w r\right)$$</span><br />
+</center>
+<div class="figure">
+<div id="sinc-covariance-plot-figure" class="figure-frame">
+<table>
+<tr>
+<td width="45%">
+<object class data="../slides/diagrams/kern/sinc_covariance.svg" width="100%" style=" ">
+</object>
+</td>
+<td width="45%">
+<div class="centered" style="">
+<img class="negate" src="../slides/diagrams/kern/sinc_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="sinc-covariance-plot-magnify" class="magnify" onclick="magnifyFigure(&#39;sinc-covariance-plot&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="sinc-covariance-plot-caption" class="caption-frame">
+<p>Figure: Sinc covariance function.</p>
+</div>
+</div>
 <h2 id="mlp-covariance">MLP Covariance</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/mlp-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/mlp-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a></span>

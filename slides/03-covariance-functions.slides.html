@@ -873,8 +873,12 @@ A covariance function based on a non-linear basis given by <span class="math inl
 k\left(\mathbf{ x},\mathbf{ x}^{\prime}\right)=\alpha\boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime).
 \]</span></p>
 </section>
-<section id="boechners-theoerem" class="slide level2">
-<h2>Boechners Theoerem</h2>
+<section id="bochners-theoerem" class="slide level2">
+<h2>Bochners Theoerem</h2>
+<p>Given a positive finite Borel measure <span class="math inline">\(\mu\)</span> on the real line <span class="math inline">\(\mathbb{R}\)</span>, the Fourier transform <span class="math inline">\(Q\)</span> of <span class="math inline">\(\mu\)</span> is the continuous function <span class="math display">\[
+  Q(t) = \int_{\mathbb{R}} e^{-itx} \text{d} \mu(x).
+  \]</span> <span class="math inline">\(Q\)</span> is continuous since for a fixed <span class="math inline">\(x\)</span>, the function <span class="math inline">\(e^{-itx}\)</span> is continuous and periodic. The function <span class="math inline">\(Q\)</span> is a positive definite function, i.e. the kernel <span class="math inline">\(k(x, x^\prime)= Q(x^\prime - x)\)</span> is positive definite.</p>
+<p>Bochner’s theorem <span class="citation" data-cites="Bochner:book59">(Bochner, 1959)</span> says the converse is true, i.e. every positive definite function <span class="math inline">\(Q\)</span> is the Fourier transform of a positive finite Borel measure. A proof can be sketched as follows <span class="citation" data-cites="Stein:interpolation99">(Stein, 1999)</span></p>
 <p><span class="math display">\[
 f(\mathbf{ x}) = \sum_{i=1}^ny_i \delta(\mathbf{ x}-\mathbf{ x}_i),
 \]</span></p>
@@ -897,8 +901,8 @@ f(t) = \int_{-\infty}^\infty F(\omega) \exp(2\pi\omega)\text{d} \omega.
 \]</span></p>
 <p><a href="https://play.google.com/books/reader?id=TDQJAAAAIAAJ&amp;pg=PA525"><img data-src="../slides/diagrams/books/TDQJAAAAIAAJ-PA525.png" /></a></p>
 </section>
-<section id="matern-32-covariance" class="slide level2">
-<h2>Matern 3/2 Covariance</h2>
+<section id="matérn-32-covariance" class="slide level2">
+<h2>Matérn 3/2 Covariance</h2>
 <center>
 <span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
@@ -920,11 +924,11 @@ f(t) = \int_{-\infty}^\infty F(\omega) \exp(2\pi\omega)\text{d} \omega.
 </div>
 </div>
 <aside class="notes">
-The exponentiated quadratic covariance function.
+The Matérn 3/2 covariance function.
 </aside>
 </section>
-<section id="matern-52-covariance" class="slide level2">
-<h2>Mat'ern 5/2 Covariance</h2>
+<section id="matérn-52-covariance" class="slide level2">
+<h2>Matérn 5/2 Covariance</h2>
 <center>
 <span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell} + \frac{5\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{3\ell^2}\right)\exp\left(-\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
@@ -946,7 +950,7 @@ The exponentiated quadratic covariance function.
 </div>
 </div>
 <aside class="notes">
-The exponentiated quadratic covariance function.
+The Matérn 5/2 covariance function.
 </aside>
 </section>
 <section id="rational-quadratic-covariance" class="slide level2">
@@ -972,7 +976,7 @@ The exponentiated quadratic covariance function.
 </div>
 </div>
 <aside class="notes">
-The exponentiated quadratic covariance function.
+The rational quadratic covariance function.
 </aside>
 </section>
 <section id="polynomial-covariance" class="slide level2">
@@ -1029,7 +1033,29 @@ Periodic covariance function.
 </section>
 <section id="sinc-covariance" class="slide level2">
 <h2>Sinc Covariance</h2>
-
+<center>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \text{sinc}\left(\pi w r\right)\]</span>
+</center>
+<div class="figure">
+<div id="sinc-covariance-plot-figure" class="figure-frame">
+<table>
+<tr>
+<td width="45%">
+<object class data="../slides/diagrams/kern/sinc_covariance.svg" width="100%" style=" ">
+</object>
+</td>
+<td width="45%">
+<div class="centered" style="">
+<img class="negate" src="../slides/diagrams/kern/sinc_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<aside class="notes">
+Sinc covariance function.
+</aside>
 </section>
 <section id="mlp-covariance" class="slide level2">
 <h2>MLP Covariance</h2>
@@ -1148,8 +1174,16 @@ An product covariance function formed by combining a linear and an exponentiated
 <p><a href="http://inverseprobability.com/2014/07/01/open-data-science">Open Data Science</a></p></li>
 </ul>
 </section>
-<section id="references" class="slide level2 scrollable">
-<h2 class="scrollable">References</h2>
+<section id="references" class="slide level2 unnumbered scrollable">
+<h2 class="unnumbered scrollable">References</h2>
+<div id="refs" class="references hanging-indent" role="doc-bibliography">
+<div id="ref-Bochner:book59">
+<p>Bochner, S., 1959. Lectures on Fourier integrals. Princeton University Press.</p>
+</div>
+<div id="ref-Stein:interpolation99">
+<p>Stein, M.L., 1999. Interpolation of spatial data: Some theory for Kriging. springer.</p>
+</div>
+</div>
 </section>
     </div>
   </div>
