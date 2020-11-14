@@ -776,7 +776,13 @@ James Hensman
 <div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">from</span> scipy <span class="im">import</span> io</span></code></pre></div>
 <p>First let’s retrieve some data. We will use the ORL faces data set, our objective will be to classify whether or not the subject in an image is wearing glasess.</p>
 <p>Here’s a simple way to visualise the data. Each pixel in the image will become an input to the GP.</p>
-<p>data = pods.datasets.olivetti_glasses() X = data[‘X’] y = data[‘Y’] Xtest = data[‘Xtest’] ytest = data[‘Ytest’] print(data[‘info’], data[‘details’], data[‘citation’])</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> pods</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>data <span class="op">=</span> pods.datasets.olivetti_glasses()</span>
+<span id="cb25-2"><a href="#cb25-2"></a>X <span class="op">=</span> data[<span class="st">&#39;X&#39;</span>]</span>
+<span id="cb25-3"><a href="#cb25-3"></a>y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb25-4"><a href="#cb25-4"></a>Xtest <span class="op">=</span> data[<span class="st">&#39;Xtest&#39;</span>]</span>
+<span id="cb25-5"><a href="#cb25-5"></a>ytest <span class="op">=</span> data[<span class="st">&#39;Ytest&#39;</span>]</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(data[<span class="st">&#39;info&#39;</span>], data[<span class="st">&#39;details&#39;</span>], data[<span class="st">&#39;citation&#39;</span>])</span></code></pre></div>
 <div class="figure">
 <div id="olivetti-glasses-image-figure" class="figure-frame">
 <div class="centered" style="">
@@ -791,15 +797,31 @@ James Hensman
 </div>
 </div>
 <p>Next we choose some inducing inputs. Here we’ve chosen inducing inputs by applying k-means clustering to the training data. Think about whether this is a good scheme for choosing the inputs? Can you devise a better one?</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>X.shape</span>
-<span id="cb24-2"><a href="#cb24-2"></a>y.shape</span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="bu">print</span>(X)</span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">from</span> scipy <span class="im">import</span> cluster</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>M <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>X <span class="op">=</span> (X <span class="op">-</span> X.mean(<span class="dv">0</span>)[<span class="va">None</span>,:])<span class="op">/</span>X.std(<span class="dv">0</span>)[<span class="va">None</span>,:]</span>
-<span id="cb26-3"><a href="#cb26-3"></a>Z <span class="op">=</span> np.random.permutation(X)[:M]</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>X.shape</span>
+<span id="cb26-2"><a href="#cb26-2"></a>y.shape</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(X)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">from</span> scipy <span class="im">import</span> cluster</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>M <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>X <span class="op">=</span> (X <span class="op">-</span> X.mean(<span class="dv">0</span>)[<span class="va">None</span>,:])<span class="op">/</span>X.std(<span class="dv">0</span>)[<span class="va">None</span>,:]</span>
+<span id="cb28-3"><a href="#cb28-3"></a>Z <span class="op">=</span> np.random.permutation(X)[:M]</span></code></pre></div>
 <p>Finally, we’re ready to build the classifier object.</p>
-<p>kern = GPy.kern.RBF(X.shape[1],lengthscale=20) + GPy.kern.White(X.shape[1],0.001) m = GPy.models.SparseGPClassification(X, y, kernel=kern, Z=Z) m.optimize() print(m)</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>kern <span class="op">=</span> GPy.kern.RBF(X.shape[<span class="dv">1</span>],lengthscale<span class="op">=</span><span class="dv">20</span>) <span class="op">+</span> GPy.kern.White(X.shape[<span class="dv">1</span>],<span class="fl">0.001</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>m <span class="op">=</span> GPy.models.SparseGPClassification(X, y, kernel<span class="op">=</span>kern, Z<span class="op">=</span>Z)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>m.optimize()</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">print</span>(m)</span></code></pre></div>
+<div class="figure">
+<div id="olivetti-inducing-variable-gradients-figure" class="figure-frame">
+<div class="centered" style="">
+<img class="" src="'../slides/diagrams/datasets/olivetti-inducing-variable-gradients.png" width="60%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+</div>
+</div>
+<div id="olivetti-inducing-variable-gradients-magnify" class="magnify" onclick="magnifyFigure(&#39;olivetti-inducing-variable-gradients&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="olivetti-inducing-variable-gradients-caption" class="caption-frame">
+<p>Figure: The gradients of the inducing variable.</p>
+</div>
+</div>
 <h2 id="thanks">Thanks!</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/approximate-gps.mdtmp.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/approximate-gps.mdtmp.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <p>For more information on these subjects and more you might want to check the following resources.</p>
