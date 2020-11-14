@@ -125,9 +125,8 @@ p(\mathbf{ z}_{i, :} | \mathbf{ y}_{i, :}) \propto p(\mathbf{ y}_{i,
 <p>python mu_x, C_x = posterior(Y, W, sigma2)} where <code>mu_x</code> and <code>C_x</code> are the posterior mean and posterior covariance for the given <span class="math inline">\(\mathbf{Y}\)</span>.</p>
 <p>Don’t forget to subtract the mean of the data <code>Y</code> inside your function before computing the posterior: remember we assumed at the beginning of our analysis that the data had been centred (i.e. the mean was removed).}{20}</p>
 </section>
-<section>
-<section id="numerically-stable-and-efficient-version" class="title-slide slide level1">
-<h1>Numerically Stable and Efficient Version</h1>
+<section id="numerically-stable-and-efficient-version" class="slide level2">
+<h2>Numerically Stable and Efficient Version</h2>
 <p>Just as we saw for  and  computation of a matrix such as <span class="math inline">\(\mathbf{Y}^\top\mathbf{Y}\)</span> (or its centred version) can be a bad idea in terms of loss of numerical accuracy. Fortunately, we can find the eigenvalues and eigenvectors of the matrix <span class="math inline">\(\mathbf{Y}^\top\mathbf{Y}\)</span> without direct computation of the matrix. This can be done with the <a href="http://en.wikipedia.org/wiki/Singular_value_decomposition"><em>singular value decomposition</em></a>. The singular value decompsition takes a matrix, <span class="math inline">\(\mathbf{Z}\)</span> and represents it in the form, <span class="math display">\[
 \mathbf{Z} = \mathbf{U}\boldsymbol{\Lambda}\mathbf{V}^\top
 \]</span> where <span class="math inline">\(\mathbf{U}\)</span> is a matrix of orthogonal vectors in the columns, meaning <span class="math inline">\(\mathbf{U}^\top\mathbf{U} = \mathbf{I}\)</span>. It has the same number of rows and columns as <span class="math inline">\(\mathbf{Z}\)</span>. The matrices <span class="math inline">\(\mathbf{\Lambda}\)</span> and <span class="math inline">\(\mathbf{V}\)</span> are both square with dimensionality given by the number of columns of <span class="math inline">\(\mathbf{Z}\)</span>. The matrix <span class="math inline">\(\mathbf{\Lambda}\)</span> is <em>diagonal</em> and <span class="math inline">\(\mathbf{V}\)</span> is an orthogonal matrix so <span class="math inline">\(\mathbf{V}^\top\mathbf{V} = \mathbf{V}\mathbf{V}^\top = \mathbf{I}\)</span>. The eigenvalues of the matrix <span class="math inline">\(\mathbf{Y}^\top\mathbf{Y}\)</span> are then given by the singular values of the matrix <span class="math inline">\(\mathbf{Y}^\top\)</span> squared and the eigenvectors are given by <span class="math inline">\(\mathbf{U}\)</span>.</p>
@@ -273,7 +272,7 @@ Character control in the latent space described the the GP-LVM <span class="cita
 <p>Levine, S., Wang, J.M., Haraux, A., Popović, Z., Koltun, V., 2012. Continuous character control with low-dimensional embeddings. ACM Transactions on Graphics (SIGGRAPH 2012) 31.</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
