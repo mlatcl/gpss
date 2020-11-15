@@ -175,7 +175,7 @@ $$</span><br /> then we see that without a model we can’t generalise: we only 
 <p>Now we plot the results using the helper function in <code>teaching_plots</code>.</p>
 <div class="figure">
 <div id="olympic-marathon-gp-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/gp/olympic-marathon-gp.svg" width style=" ">
+<object class="svgplot " data="../slides/diagrams/gp/olympic-marathon-gp.svg" width="80%" style=" ">
 </object>
 </div>
 <div id="olympic-marathon-gp-magnify" class="magnify" onclick="magnifyFigure(&#39;olympic-marathon-gp&#39;)">
@@ -201,7 +201,7 @@ $$</span><br /> then we see that without a model we can’t generalise: we only 
 <span id="cb21-3"><a href="#cb21-3"></a>laplace <span class="op">=</span> GPy.inference.latent_function_inference.Laplace()</span>
 <span id="cb21-4"><a href="#cb21-4"></a></span>
 <span id="cb21-5"><a href="#cb21-5"></a>kern <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">5</span>) <span class="op">+</span> GPy.kern.Bias(<span class="dv">1</span>)</span>
-<span id="cb21-6"><a href="#cb21-6"></a>model <span class="op">=</span> GPy.core.GP(X, Y, kernel<span class="op">=</span>kern, inference_method<span class="op">=</span>laplace, likelihood<span class="op">=</span>t_distribution)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>model <span class="op">=</span> GPy.core.GP(x, y, kernel<span class="op">=</span>kern, inference_method<span class="op">=</span>laplace, likelihood<span class="op">=</span>t_distribution)</span>
 <span id="cb21-7"><a href="#cb21-7"></a>model.constrain_positive(<span class="st">&#39;t_noise&#39;</span>)</span>
 <span id="cb21-8"><a href="#cb21-8"></a></span>
 <span id="cb21-9"><a href="#cb21-9"></a>model.optimize()</span>
