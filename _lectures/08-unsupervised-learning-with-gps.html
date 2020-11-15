@@ -30,6 +30,43 @@ categories:
 <!--
 
 -->
+<h2 id="setup">Setup</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gpss/includes/gpss-notebook-setup.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gpss/includes/gpss-notebook-setup.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>First we download some libraries and files to support the notebook.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> urllib.request</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>urllib.request.urlretrieve(<span class="st">&#39;https://raw.githubusercontent.com/lawrennd/talks/gh-pages/mlai.py&#39;</span>,<span class="st">&#39;mlai.py&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>urllib.request.urlretrieve(<span class="st">&#39;https://raw.githubusercontent.com/lawrennd/talks/gh-pages/teaching_plots.py&#39;</span>,<span class="st">&#39;teaching_plots.py&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>urllib.request.urlretrieve(<span class="st">&#39;https://raw.githubusercontent.com/lawrennd/talks/gh-pages/gp_tutorial.py&#39;</span>,<span class="st">&#39;gp_tutorial.py&#39;</span>)</span></code></pre></div>
+<h2 id="pods">pods</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_data-science/includes/pods-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_data-science/includes/pods-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>In Sheffield we created a suite of software tools for ‘Open Data Science’. Open data science is an approach to sharing code, models and data that should make it easier for companies, health professionals and scientists to gain access to data science techniques.</p>
+<p>You can also check this blog post on <a href="http://inverseprobability.com/2014/07/01/open-data-science">Open Data Science</a>.</p>
+<p>The software can be installed using</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>pip install <span class="op">--</span>upgrade git<span class="op">+</span>https:<span class="op">//</span>github.com<span class="op">/</span>sods<span class="op">/</span>ods</span></code></pre></div>
+<p>from the command prompt where you can access your python installation.</p>
+<p>The code is also available on github: <a href="https://github.com/sods/ods" class="uri">https://github.com/sods/ods</a></p>
+<p>Once <code>pods</code> is installed, it can be imported in the usual manner.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pods</span></code></pre></div>
+<h2 id="gpy-a-gaussian-process-framework-in-python">GPy: A Gaussian Process Framework in Python</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gp/includes/gpy-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gp/includes/gpy-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>Gaussian processes are a flexible tool for non-parametric analysis with uncertainty. The GPy software was started in Sheffield to provide a easy to use interface to GPs. One which allowed the user to focus on the modelling rather than the mathematics.</p>
+<div class="figure">
+<div id="gpy-software-figure" class="figure-frame">
+<div class="centered" style="">
+<img class="" src="../slides/diagrams/gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+</div>
+</div>
+<div id="gpy-software-magnify" class="magnify" onclick="magnifyFigure(&#39;gpy-software&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="gpy-software-caption" class="caption-frame">
+<p>Figure: GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the Github repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></p>
+</div>
+</div>
+<p>GPy is a BSD licensed software code base for implementing Gaussian process models in python. This allows GPs to be combined with a wide variety of software libraries.</p>
+<p>The software itself is available on <a href="https://github.com/SheffieldML/GPy">GitHub</a> and the team welcomes contributions.</p>
+<p>The aim for GPy is to be a probabilistic-style programming language, i.e. you specify the model rather than the algorithm. As well as a large range of covariance functions the software allows for non-Gaussian likelihoods, multivariate outputs, dimensionality reduction and approximations for larger data sets.</p>
+<p>The documentation for GPy can be found <a href="https://gpy.readthedocs.io/en/latest/">here</a>.</p>
 <h1 id="probabilistic-pca">Probabilistic PCA</h1>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/probabilistic-pca.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/probabilistic-pca.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <p>In 1997 <a href="http://research.microsoft.com/pubs/67218/bishop-ppca-jrss.pdf">Tipping and Bishop</a> <span class="citation" data-cites="Tipping:pca97">(Tipping and Bishop 1999)</span> and <a href="https://www.cs.nyu.edu/~roweis/papers/empca.pdf">Roweis</a> <span class="citation" data-cites="Roweis:SPCA97">(Roweis, n.d.)</span> independently revisited Hotelling’s model and considered the case where the noise variance was finite, but <em>shared</em> across all output dimensons. Their model can be thought of as a factor analysis where <br /><span class="math display">$$
@@ -47,21 +84,21 @@ $$</span><br /> which can be written <span class="math inline">$\mathbf{S} = \fr
 $$</span><br /> where <span class="math inline">$\noiseStd^2$</span> is the noise variance. Note that if <span class="math inline">$\noiseStd^2$</span> is larger than any particular eigenvalue, then that eigenvalue (along with its corresponding eigenvector) is <em>discarded</em> from the solution.</p>
 <h2 id="python-implementation-of-probabilistic-pca">Python Implementation of Probabilistic PCA</h2>
 <p>We will now implement this algorithm in python.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># probabilistic PCA algorithm</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> ppca(Y, q):</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="co"># remove mean</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="co"># Comute covariance</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>    S <span class="op">=</span> np.dot(Y_cent.T, Y_cent)<span class="op">/</span>Y.shape[<span class="dv">0</span>]</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    lambd, U <span class="op">=</span> np.linalg.eig(S)</span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="co"># Choose number of eigenvectors</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    sigma2 <span class="op">=</span> np.<span class="bu">sum</span>(lambd[q:])<span class="op">/</span>(Y.shape[<span class="dv">1</span>]<span class="op">-</span>q)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    l <span class="op">=</span> np.sqrt(lambd[:q]<span class="op">-</span>sigma2)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    W <span class="op">=</span> U[:, :q]<span class="op">*</span>l[<span class="va">None</span>, :]</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">return</span> W, sigma2</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># probabilistic PCA algorithm</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">def</span> ppca(Y, q):</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="co"># remove mean</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>    Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="co"># Comute covariance</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    S <span class="op">=</span> np.dot(Y_cent.T, Y_cent)<span class="op">/</span>Y.shape[<span class="dv">0</span>]</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    lambd, U <span class="op">=</span> np.linalg.eig(S)</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="co"># Choose number of eigenvectors</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    sigma2 <span class="op">=</span> np.<span class="bu">sum</span>(lambd[q:])<span class="op">/</span>(Y.shape[<span class="dv">1</span>]<span class="op">-</span>q)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    l <span class="op">=</span> np.sqrt(lambd[:q]<span class="op">-</span>sigma2)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    W <span class="op">=</span> U[:, :q]<span class="op">*</span>l[<span class="va">None</span>, :]</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="cf">return</span> W, sigma2</span></code></pre></div>
 <p>In practice we may not wish to compute the eigenvectors of the covariance matrix directly. This is because it requires us to estimate the covariance, which involves a sum of squares term, before estimating the eigenvectors. We can estimate the eigenvectors directly either through <a href="http://en.wikipedia.org/wiki/QR_decomposition">QR decomposition</a> or <a href="http://en.wikipedia.org/wiki/Singular_value_decomposition">singular value decomposition</a>. We saw a similar issue arise when , where we also wished to avoid computation of <span class="math inline">$\latentMatrix^\top\latentMatrix$</span> (or in the case of  <span class="math inline"><strong>Φ</strong><sup>⊤</sup><strong>Φ</strong></span>).</p>
 <h1 id="posterior-for-principal-component-analysis">Posterior for Principal Component Analysis</h1>
 <p>Under the latent variable model justification for principal component analysis, we are normally interested in inferring something about the latent variables given the data. This is the distribution, <br /><span class="math display">$$
@@ -94,18 +131,18 @@ $$</span><br /> Compare this to the posterior for the Bayesian linear regression
 <p>Use the values for <span class="math inline">$\mappingMatrix$</span> and <span class="math inline">$\noiseStd^2$</span> you have computed, along with the data set <span class="math inline">$\dataMatrix$</span> to compute the posterior density over <span class="math inline">$\latentMatrix$</span>. Write a function of the form</p>
 <p>python mu_x, C_x = posterior(Y, W, sigma2)} where <code>mu_x</code> and <code>C_x</code> are the posterior mean and posterior covariance for the given <span class="math inline">$\dataMatrix$</span>.</p>
 <p>Don’t forget to subtract the mean of the data <code>Y</code> inside your function before computing the posterior: remember we assumed at the beginning of our analysis that the data had been centred (i.e. the mean was removed).}{20}</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Question 4 Answer Code</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Write code for you answer to this question in this box</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Do not delete these comments, otherwise you will get zero for this answer.</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Make sure your code has run and the answer is correct *before* submitting your notebook for marking.</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">def</span> posterior(Y, W, sigma2):</span>
-<span id="cb3-8"><a href="#cb3-8"></a>    Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="co"># Compute posterior over X</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    C_x <span class="op">=</span> </span>
-<span id="cb3-11"><a href="#cb3-11"></a>    mu_x <span class="op">=</span> </span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="cf">return</span> mu_x, C_x</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Question 4 Answer Code</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># Write code for you answer to this question in this box</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Do not delete these comments, otherwise you will get zero for this answer.</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Make sure your code has run and the answer is correct *before* submitting your notebook for marking.</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="kw">def</span> posterior(Y, W, sigma2):</span>
+<span id="cb9-8"><a href="#cb9-8"></a>    Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="co"># Compute posterior over X</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    C_x <span class="op">=</span> </span>
+<span id="cb9-11"><a href="#cb9-11"></a>    mu_x <span class="op">=</span> </span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="cf">return</span> mu_x, C_x</span></code></pre></div>
 <h2 id="numerically-stable-and-efficient-version">Numerically Stable and Efficient Version</h2>
 <p>Just as we saw for  and  computation of a matrix such as <span class="math inline">$\dataMatrix^\top\dataMatrix$</span> (or its centred version) can be a bad idea in terms of loss of numerical accuracy. Fortunately, we can find the eigenvalues and eigenvectors of the matrix <span class="math inline">$\dataMatrix^\top\dataMatrix$</span> without direct computation of the matrix. This can be done with the <a href="http://en.wikipedia.org/wiki/Singular_value_decomposition"><em>singular value decomposition</em></a>. The singular value decompsition takes a matrix, <span class="math inline"><strong>Z</strong></span> and represents it in the form, <br /><span class="math display"><strong>Z</strong> = <strong>U</strong><strong>Λ</strong><strong>V</strong><sup>⊤</sup></span><br /> where <span class="math inline"><strong>U</strong></span> is a matrix of orthogonal vectors in the columns, meaning <span class="math inline">$\mathbf{U}^\top\mathbf{U} = \eye$</span>. It has the same number of rows and columns as <span class="math inline"><strong>Z</strong></span>. The matrices <span class="math inline"><strong>Λ</strong></span> and <span class="math inline"><strong>V</strong></span> are both square with dimensionality given by the number of columns of <span class="math inline"><strong>Z</strong></span>. The matrix <span class="math inline"><strong>Λ</strong></span> is <em>diagonal</em> and <span class="math inline"><strong>V</strong></span> is an orthogonal matrix so <span class="math inline">$\mathbf{V}^\top\mathbf{V} = \mathbf{V}\mathbf{V}^\top = \eye$</span>. The eigenvalues of the matrix <span class="math inline">$\dataMatrix^\top\dataMatrix$</span> are then given by the singular values of the matrix <span class="math inline">$\dataMatrix^\top$</span> squared and the eigenvectors are given by <span class="math inline"><strong>U</strong></span>.</p>
 <h2 id="solution-for-mappingmatrix">Solution for <span class="math inline">$\mappingMatrix$</span></h2>
@@ -126,35 +163,35 @@ $$</span><br /> and allows us to write <br /><span class="math display">$$
 $$</span><br /> <br /><span class="math display">$$
 \meanVector_x = \mathbf{D}\mathbf{U}^\top \dataVector_{i, :}
 $$</span><br /> where <span class="math inline"><strong>D</strong></span> is a diagonal matrix with diagonal elements given by <span class="math inline">$d_{i} = \frac{\ell_i}{\noiseStd^2 + \ell_i^2}$</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># probabilistic PCA algorithm using SVD</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">def</span> ppca(Y, q, center<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="co">&quot;&quot;&quot;Probabilistic PCA through singular value decomposition&quot;&quot;&quot;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="co"># remove mean</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="cf">if</span> center:</span>
-<span id="cb5-6"><a href="#cb5-6"></a>        Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-8"><a href="#cb5-8"></a>        Y_cent <span class="op">=</span> Y</span>
-<span id="cb5-9"><a href="#cb5-9"></a>        </span>
-<span id="cb5-10"><a href="#cb5-10"></a>    <span class="co"># Comute singluar values, discard &#39;R&#39; as we will assume orthogonal</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>    U, sqlambd, _ <span class="op">=</span> sp.linalg.svd(Y_cent.T,full_matrices<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    lambd <span class="op">=</span> (sqlambd<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>Y.shape[<span class="dv">0</span>]</span>
-<span id="cb5-13"><a href="#cb5-13"></a>    <span class="co"># Compute residual and extract eigenvectors</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>    sigma2 <span class="op">=</span> np.<span class="bu">sum</span>(lambd[q:])<span class="op">/</span>(Y.shape[<span class="dv">1</span>]<span class="op">-</span>q)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>    ell <span class="op">=</span> np.sqrt(lambd[:q]<span class="op">-</span>sigma2)</span>
-<span id="cb5-16"><a href="#cb5-16"></a>    <span class="cf">return</span> U[:, :q], ell, sigma2</span>
-<span id="cb5-17"><a href="#cb5-17"></a></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="kw">def</span> posterior(Y, U, ell, sigma2, center<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb5-19"><a href="#cb5-19"></a>    <span class="co">&quot;&quot;&quot;Posterior computation for the latent variables given the eigendecomposition.&quot;&quot;&quot;</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>    <span class="cf">if</span> center:</span>
-<span id="cb5-21"><a href="#cb5-21"></a>        Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
-<span id="cb5-22"><a href="#cb5-22"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-23"><a href="#cb5-23"></a>        Y_cent <span class="op">=</span> Y</span>
-<span id="cb5-24"><a href="#cb5-24"></a>    C_x <span class="op">=</span> np.diag(sigma2<span class="op">/</span>(sigma2<span class="op">+</span>ell<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb5-25"><a href="#cb5-25"></a>    d <span class="op">=</span> ell<span class="op">/</span>(sigma2<span class="op">+</span>ell<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb5-26"><a href="#cb5-26"></a>    mu_x <span class="op">=</span> np.dot(Y_cent, U)<span class="op">*</span>d[<span class="va">None</span>, :]</span>
-<span id="cb5-27"><a href="#cb5-27"></a>    <span class="cf">return</span> mu_x, C_x</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># probabilistic PCA algorithm using SVD</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">def</span> ppca(Y, q, center<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="co">&quot;&quot;&quot;Probabilistic PCA through singular value decomposition&quot;&quot;&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="co"># remove mean</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="cf">if</span> center:</span>
+<span id="cb11-6"><a href="#cb11-6"></a>        Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-8"><a href="#cb11-8"></a>        Y_cent <span class="op">=</span> Y</span>
+<span id="cb11-9"><a href="#cb11-9"></a>        </span>
+<span id="cb11-10"><a href="#cb11-10"></a>    <span class="co"># Comute singluar values, discard &#39;R&#39; as we will assume orthogonal</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>    U, sqlambd, _ <span class="op">=</span> sp.linalg.svd(Y_cent.T,full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-12"><a href="#cb11-12"></a>    lambd <span class="op">=</span> (sqlambd<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>Y.shape[<span class="dv">0</span>]</span>
+<span id="cb11-13"><a href="#cb11-13"></a>    <span class="co"># Compute residual and extract eigenvectors</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>    sigma2 <span class="op">=</span> np.<span class="bu">sum</span>(lambd[q:])<span class="op">/</span>(Y.shape[<span class="dv">1</span>]<span class="op">-</span>q)</span>
+<span id="cb11-15"><a href="#cb11-15"></a>    ell <span class="op">=</span> np.sqrt(lambd[:q]<span class="op">-</span>sigma2)</span>
+<span id="cb11-16"><a href="#cb11-16"></a>    <span class="cf">return</span> U[:, :q], ell, sigma2</span>
+<span id="cb11-17"><a href="#cb11-17"></a></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="kw">def</span> posterior(Y, U, ell, sigma2, center<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb11-19"><a href="#cb11-19"></a>    <span class="co">&quot;&quot;&quot;Posterior computation for the latent variables given the eigendecomposition.&quot;&quot;&quot;</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>    <span class="cf">if</span> center:</span>
+<span id="cb11-21"><a href="#cb11-21"></a>        Y_cent <span class="op">=</span> Y <span class="op">-</span> Y.mean(<span class="dv">0</span>)</span>
+<span id="cb11-22"><a href="#cb11-22"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-23"><a href="#cb11-23"></a>        Y_cent <span class="op">=</span> Y</span>
+<span id="cb11-24"><a href="#cb11-24"></a>    C_x <span class="op">=</span> np.diag(sigma2<span class="op">/</span>(sigma2<span class="op">+</span>ell<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb11-25"><a href="#cb11-25"></a>    d <span class="op">=</span> ell<span class="op">/</span>(sigma2<span class="op">+</span>ell<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb11-26"><a href="#cb11-26"></a>    mu_x <span class="op">=</span> np.dot(Y_cent, U)<span class="op">*</span>d[<span class="va">None</span>, :]</span>
+<span id="cb11-27"><a href="#cb11-27"></a>    <span class="cf">return</span> mu_x, C_x</span></code></pre></div>
 <h2 id="difficulty-for-probabilistic-approaches">Difficulty for Probabilistic Approaches</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/non-linear-difficulty.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/non-linear-difficulty.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
 <p>The challenge for composition of probabilistic models is that you need to propagate a probability densities through non linear mappings. This allows you to create broader classes of probability density. Unfortunately it renders the resulting densities <em>intractable</em>.</p>
@@ -196,15 +233,15 @@ $$</span><br /> where <span class="math inline"><strong>D</strong></span> is a d
 </div>
 <h2 id="getting-started-and-downloading-data">Getting Started and Downloading Data</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> GPy</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> string</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> GPy</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> string</span></code></pre></div>
 <p>The following code is for plotting and to prepare the bigger models for later useage. If you are interested, you can have a look, but this is not essential.</p>
 <p>For this lab, we’ll use a data set containing all handwritten digits from <span class="math inline">0⋯9</span> handwritten, provided by <span class="citation" data-cites="deCampos-character09">de Campos, Babu, and Varma (2009)</span>. We will only use some of the digits for the demonstrations in this lab class, but you can edit the code below to select different subsets of the digit data as you wish.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>which <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>] <span class="co"># which digits to work on</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>data <span class="op">=</span> pods.datasets.decampos_digits(which_digits<span class="op">=</span>which)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
-<span id="cb7-4"><a href="#cb7-4"></a>labels <span class="op">=</span> data[<span class="st">&#39;str_lbls&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>which <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>] <span class="co"># which digits to work on</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>data <span class="op">=</span> pods.datasets.decampos_digits(which_digits<span class="op">=</span>which)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb13-4"><a href="#cb13-4"></a>labels <span class="op">=</span> data[<span class="st">&#39;str_lbls&#39;</span>]</span></code></pre></div>
 <p>You can try to plot some of the digits using <code>plt.matshow</code> (the digit images have size <code>16x16</code>).</p>
 <h2 id="principal-component-analysis">Principal Component Analysis</h2>
 <p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
@@ -214,18 +251,18 @@ $$</span><br /> where <span class="math inline"><strong>D</strong></span> is a d
 <li>What is the right shape <span class="math inline">$\numData \times \dataDim$</span> to use?</li>
 </ul>
 <p>We will call the reshaped observed outputs <span class="math inline">$\dataMatrix$</span> in the following.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>Yn <span class="op">=</span> Y<span class="co">#Y-Y.mean()</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>Yn <span class="op">=</span> Y<span class="co">#Y-Y.mean()</span></span></code></pre></div>
 <p>Now let’s run PCA on the reshaped dataset <span class="math inline">$\dataMatrix$</span>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> GPy.util <span class="im">import</span> pca</span>
-<span id="cb9-2"><a href="#cb9-2"></a>p <span class="op">=</span> pca.pca(Y) <span class="co"># create PCA class with digits dataset</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">from</span> GPy.util <span class="im">import</span> pca</span>
+<span id="cb15-2"><a href="#cb15-2"></a>p <span class="op">=</span> pca.pca(Y) <span class="co"># create PCA class with digits dataset</span></span></code></pre></div>
 <p>The resulting plot will show the lower dimensional representation of the digits in 2 dimensions.</p>
 <h2 id="gaussian-process-latent-variable-model">Gaussian Process Latent Variable Model</h2>
 <p>The Gaussian Process Latent Variable Model (GP-LVM) <span class="citation" data-cites="Lawrence:pnpca05">(Lawrence 2005)</span> embeds PCA into a Gaussian process framework, where the latent inputs <span class="math inline">$\latentMatrix$</span> are learnt as hyperparameters and the mapping variables <span class="math inline"><strong>W</strong></span> are integrated out. The advantage of this interpretation is it allows PCA to be generalized in a non linear way by replacing the resulting <em>linear</em> covariance witha non linear covariance. But first, let’s see how GPLVM is equivalent to PCA using an automatic relevance determination (ARD, see e.g. <span class="citation" data-cites="Bishop:book06">Bishop (2006)</span>) linear kernel:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>input_dim <span class="op">=</span> <span class="dv">4</span> <span class="co"># How many latent dimensions to use</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>kernel <span class="op">=</span> GPy.kern.Linear(input_dim, ARD<span class="op">=</span><span class="va">True</span>) <span class="co"># ARD kernel</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>m <span class="op">=</span> GPy.models.GPLVM(Yn, input_dim<span class="op">=</span>input_dim, kernel<span class="op">=</span>kernel)</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a>m.optimize(messages<span class="op">=</span><span class="dv">1</span>, max_iters<span class="op">=</span><span class="dv">1000</span>) <span class="co"># optimize for 1000 iterations</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>input_dim <span class="op">=</span> <span class="dv">4</span> <span class="co"># How many latent dimensions to use</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>kernel <span class="op">=</span> GPy.kern.Linear(input_dim, ARD<span class="op">=</span><span class="va">True</span>) <span class="co"># ARD kernel</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>m <span class="op">=</span> GPy.models.GPLVM(Yn, input_dim<span class="op">=</span>input_dim, kernel<span class="op">=</span>kernel)</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a>m.optimize(messages<span class="op">=</span><span class="dv">1</span>, max_iters<span class="op">=</span><span class="dv">1000</span>) <span class="co"># optimize for 1000 iterations</span></span></code></pre></div>
 <p>As you can see the solution with a linear kernel is the same as the PCA solution with the exception of rotational changes and axis flips.</p>
 <p>For the sake of time, the solution you see was only running for 1000 iterations, thus it might not be converged fully yet. The GP-LVM proceeds by iterative optimization of the <em>inputs</em> to the covariance. As we saw in the lecture earlier, for the linear covariance, these latent points can be optimized with an eigenvalue problem, but generally, for non-linear covariance functions, we are obliged to use gradient based optimization.</p>
 <h2 id="example-latent-doodle-space">Example: Latent Doodle Space</h2>
@@ -267,6 +304,114 @@ $$</span><br /> where <span class="math inline"><strong>D</strong></span> is a d
 <p>Figure: Character control in the latent space described the the GP-LVM <span class="citation" data-cites="Levine:control12">Levine et al. (2012)</span></p>
 </div>
 </div>
+<h2 id="data-for-blastocyst-development-in-mice-single-cell-taqman-arrays">Data for Blastocyst Development in Mice: Single Cell TaqMan Arrays</h2>
+<p>By Max Zwiessele, Oliver Stegle and Neil D. Lawrence</p>
+<p>Now we use the GP-LVM to analyze some single cell data from <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span>. Tey performed qPCR TaqMan array on single cells from the developing blastocyst in mouse. The data is taken from the early stages of development when the Blastocyst is forming. At the 32 cell stage the data is already separated into the trophectoderm (TE) which goes onto form the placenta and the inner cellular mass (ICM). The ICM further differentiates into the epiblast (EPI)—which gives rise to the endoderm, mesoderm and ectoderm—and the primitive endoderm (PE) which develops into the amniotic sack. <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> selected 48 genes for expression measurement. They labelled the resulting cells and their labels are included as an aide to visualization.</p>
+<p>They first visualized their data using principal component analysis. In the first two principal components this fails to separate the domains. This is perhaps because the principal components are dominated by the variation in the 64 cell systems. This in turn may be because there are more cells from the data set in that regime, and may be because the natural variation is greater. We first recreate their visualization using principal component analysis.</p>
+<p>In this notebook we will perform PCA on the original data, showing that the different regimes do not separate.</p>
+<p>Next we load in the data. We’ve provided a convenience function for loading in the data with GPy. It is loaded in as a <code>pandas</code> DataFrame. This allows us to summarize it with the <code>describe</code> attribute.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> pods</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>data <span class="op">=</span> pods.datasets.singlecell()</span>
+<span id="cb18-2"><a href="#cb18-2"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb18-3"><a href="#cb18-3"></a>Y.describe</span></code></pre></div>
+<h2 id="principal-component-analysis-1">Principal Component Analysis</h2>
+<p>Now we follow <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> in performing PCA on the data. Rather than calling a ‘PCA routine’, here we break the algorithm down into its steps: compute the data covariance, compute the eigenvalues and eigenvectors and sort according to magnitude of eigenvalue. Because we want to visualize the data, we’ve chose to compute the eigenvectors of the <em>inner product matrix</em> rather than the covariance matrix. This allows us to plot the eigenvalues directly. However, this is less efficient (in this case because the number of genes is smaller than the number of data) than computing the eigendecomposition of the covariance matrix.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># obtain a centred version of data.</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>centredY <span class="op">=</span> Y <span class="op">-</span> Y.mean()</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co"># compute inner product matrix</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>C <span class="op">=</span> np.dot(centredY,centredY.T)</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co"># perform eigendecomposition</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>V, U <span class="op">=</span> np.linalg.eig(C)</span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># sort eigenvalues and vectors according to size</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>ind <span class="op">=</span> V.argsort()</span>
+<span id="cb20-9"><a href="#cb20-9"></a>ev <span class="op">=</span> V[ind[::<span class="op">-</span><span class="dv">1</span>]]</span>
+<span id="cb20-10"><a href="#cb20-10"></a>U <span class="op">=</span> U[:, ind[::<span class="op">-</span><span class="dv">1</span>]]</span></code></pre></div>
+<p>To visualize the result, we now construct a simple helper function. This will ensure that the plots have the same legends as the GP-LVM plots we use below.</p>
+<h2 id="pca-result">PCA Result</h2>
+<p>Now, using the helper function we can plot the results with appropriate labels.</p>
+<div class="figure">
+<div id="singlecell-data-pca-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/datasets/singlecell-data-pca.svg" width="60%" style=" ">
+</object>
+</div>
+<div id="singlecell-data-pca-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-data-pca&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="singlecell-data-pca-caption" class="caption-frame">
+<p>Figure: First two principal compoents of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
+</div>
+</div>
+<h2 id="gp-lvm-on-the-data">GP-LVM on the Data</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>Then, we follow <span class="citation" data-cites="Buettner:resolving12">Buettner and Theis (2012)</span> in applying the GP-LVM to the data. There is a slight pathology in the result, one which they fixed by using priors that were dependent on the developmental stage. We then show how the Bayesian GP-LVM doesn’t exhibit those pathologies and gives a nice results that seems to show the lineage of the cells.</p>
+<p>They used modified prior to ensure that small differences between cells at the same differential stage were preserved. Here we apply a standard GP-LVM (no modified prior) to the data.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> GPy</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>kernel <span class="op">=</span> GPy.kern.RBF(<span class="dv">2</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">2</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>model <span class="op">=</span> GPy.models.GPLVM(Y.values, <span class="dv">2</span>, kernel<span class="op">=</span>kernel)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>model.optimize(messages<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<div class="figure">
+<div id="singlecell-gplvm-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/gplvm/singlecell-gplvm.svg" width="60%" style=" ">
+</object>
+</div>
+<div id="singlecell-gplvm-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-gplvm&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="singlecell-gplvm-caption" class="caption-frame">
+<p>Figure: Visualisation of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data with the GP-LVM.</p>
+</div>
+</div>
+<div class="figure">
+<div id="singlecell-gplvm-ard-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/gplvm/singlecell-gplvm-ard.svg" width="80%" style=" ">
+</object>
+</div>
+<div id="singlecell-gplvm-ard-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-gplvm-ard&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="singlecell-gplvm-ard-caption" class="caption-frame">
+<p>Figure: The ARD parameters of the GP-LVM for the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
+</div>
+</div>
+<h2 id="blastocyst-data-isomap">Blastocyst Data: Isomap</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/singlecell-isomap.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/singlecell-isomap.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>Isomap first builds a neighbourhood graph, and then uses distances along this graph to approximate the geodesic distance between points. These distances are then visualized by performing classical multidimensional scaling (which involves computing the eigendecomposition of the centred distance matrix). As the neighborhood size is increased to match the data, principal component analysis is recovered (or strictly speaking, principal coordinate analysis). The fewer the neighbors, the more ‘non-linear’ the isomap embeddings are.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> sklearn.manifold</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>n_neighbors <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>model <span class="op">=</span> sklearn.manifold.Isomap(n_neighbors<span class="op">=</span>n_neighbors, n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>X <span class="op">=</span> model.fit_transform(Y)</span></code></pre></div>
+<div class="figure">
+<div id="singlecell-isomap-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/dimred/singlecell-isomap.svg" width="60%" style=" ">
+</object>
+</div>
+<div id="singlecell-isomap-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-isomap&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="singlecell-isomap-caption" class="caption-frame">
+<p>Figure: Visualisation of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data with Isomap.</p>
+</div>
+</div>
+<h2 id="blastocyst-data-locally-linear-embedding">Blastocyst Data: Locally Linear Embedding</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/singlecell-lle.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_dimred/includes/singlecell-lle.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>Next we try locally linear embedding. In locally linear embedding a neighborhood is also computed. Each point is then reconstructed by it’s neighbors using a linear weighting. This implies a locally linear patch is being fitted to the data in that region. These patches are assimilated into a large <span class="math inline">$\numData \times \numData$</span> matrix and a lower dimensional data set which reflects the same relationships is then sought. Quite a large number of neighbours needs to be selected for the data to not collapse in on itself. When a large number of neighbours is selected the embedding is more linear and begins to look like PCA. However, the algorithm does <em>not</em> converge to PCA in the limit as the number of neighbors approaches <span class="math inline">$\numData$</span>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> sklearn.manifold</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>n_neighbors <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>model <span class="op">=</span> sklearn.manifold.LocallyLinearEmbedding(n_neighbors<span class="op">=</span>n_neighbors, n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>X <span class="op">=</span> model.fit_transform(Y)</span></code></pre></div>
+<div class="figure">
+<div id="singlecell-lle-figure" class="figure-frame">
+<object class="svgplot " data="../slides/diagrams/dimred/singlecell-lle.svg" width="60%" style=" ">
+</object>
+</div>
+<div id="singlecell-lle-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-lle&#39;)">
+<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
+</div>
+<div id="singlecell-lle-caption" class="caption-frame">
+<p>Figure: Visualisation of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data with a locally linear embedding.</p>
+</div>
+</div>
 <h2 id="thanks">Thanks!</h2>
 <p>For more information on these subjects and more you might want to check the following resources.</p>
 <ul>
@@ -283,8 +428,14 @@ $$</span><br /> where <span class="math inline"><strong>D</strong></span> is a d
 <div id="ref-Bishop:book06">
 <p>Bishop, Christopher M. 2006. <em>Pattern Recognition and Machine Learning</em>. springer.</p>
 </div>
+<div id="ref-Buettner:resolving12">
+<p>Buettner, Florian, and Fabian J. Theis. 2012. “A Novel Approach for Resolving Differences in Single-Cell Gene Expression Patterns from Zygote to Blastocyst.” <em>Bioinformatics</em> 28 (18): i626–i632. <a href="https://doi.org/10.1093/bioinformatics/bts385">https://doi.org/10.1093/bioinformatics/bts385</a>.</p>
+</div>
 <div id="ref-deCampos-character09">
 <p>de Campos, Teófilo E., Bodla Rakesh Babu, and Manik Varma. 2009. “Character Recognition in Natural Images.” In <em>Proceedings of the Fourth International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP, (Visigrapp 2009)</em>, 273–80. INSTICC; SciTePress. <a href="https://doi.org/10.5220/0001770102730280">https://doi.org/10.5220/0001770102730280</a>.</p>
+</div>
+<div id="ref-Guo:fate10">
+<p>Guo, Guoji, Mikael Huss, Guo Qing Tong, Chaoyang Wang, Li Li Sun, Neil D. Clarke, and Paul Robsonemail. 2010. “Resolution of Cell Fate Decisions Revealed by Single-Cell Gene Expression Analysis from Zygote to Blastocyst.” <em>Developmental Cell</em> 18 (4): 675–85. <a href="https://doi.org/10.1016/j.devcel.2010.02.012">https://doi.org/10.1016/j.devcel.2010.02.012</a>.</p>
 </div>
 <div id="ref-Lawrence:pnpca05">
 <p>Lawrence, Neil D. 2005. “Probabilistic Non-Linear Principal Component Analysis with Gaussian Process Latent Variable Models.” <em>Journal of Machine Learning Research</em> 6 (November): 1783–1816.</p>

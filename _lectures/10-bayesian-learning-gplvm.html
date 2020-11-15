@@ -376,7 +376,7 @@ $$</span><br /> which can be computed analytically for some covariance functions
 <p>Now, using the helper function we can plot the results with appropriate labels.</p>
 <div class="figure">
 <div id="singlecell-data-pca-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/datasets/singlecell-data-pca.svg.svg" width="60%" style=" ">
+<object class="svgplot " data="../slides/diagrams/datasets/singlecell-data-pca.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="singlecell-data-pca-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-data-pca&#39;)">
@@ -386,47 +386,16 @@ $$</span><br /> which can be computed analytically for some covariance functions
 <p>Figure: First two principal compoents of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
 </div>
 </div>
-<h2 id="gp-lvm-on-the-data">GP-LVM on the Data</h2>
-<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
-<p>Then, we follow <span class="citation" data-cites="Buettner:resolving12">Buettner and Theis (2012)</span> in applying the GP-LVM to the data. There is a slight pathology in the result, one which they fixed by using priors that were dependent on the developmental stage. We then show how the Bayesian GP-LVM doesn’t exhibit those pathologies and gives a nice results that seems to show the lineage of the cells.</p>
-<p>They used modified prior to ensure that small differences between cells at the same differential stage were preserved. Here we apply a standard GP-LVM (no modified prior) to the data.</p>
+<h2 id="bayesian-gp-lvm">Bayesian GP-LVM</h2>
+<p><span style="text-align:right"><span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span></span></p>
+<p>Here we show the new code that uses the Bayesian GP-LVM to fit the data. This means we can automatically determine the dimensionality of the model whilst fitting a non-linear dimensionality reduction. The approximations we use also mean that it is faster than the original GP-LVM.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> GPy</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>kernel<span class="op">=</span>GPy.kern.RBF(<span class="dv">2</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">2</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a>model <span class="op">=</span> GPy.models.GPLVM(s[<span class="st">&#39;Y&#39;</span>], <span class="dv">2</span>, kernel<span class="op">=</span>kernel)</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>kernel<span class="op">=</span>GPy.kern.RBF(<span class="dv">5</span>,ARD<span class="op">=</span><span class="dv">1</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">5</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>model <span class="op">=</span> GPy.models.BayesianGPLVM(Y.values, <span class="dv">5</span>, num_inducing<span class="op">=</span><span class="dv">15</span>, kernel<span class="op">=</span>kernel)</span>
 <span id="cb24-3"><a href="#cb24-3"></a>model.optimize(messages<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <div class="figure">
-<div id="singlecell-gplvm-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/datasets/singlecell-gplvm.svg" width="60%" style=" ">
-</object>
-</div>
-<div id="singlecell-gplvm-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-gplvm&#39;)">
-<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
-</div>
-<div id="singlecell-gplvm-caption" class="caption-frame">
-<p>Figure: Visualisation of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data with the GP-LVM.</p>
-</div>
-</div>
-<div class="figure">
-<div id="singlecell-gplvm-ard-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/datasets/singlecell-gplvm-ard.svg" width="80%" style=" ">
-</object>
-</div>
-<div id="singlecell-gplvm-ard-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-gplvm-ard&#39;)">
-<img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
-</div>
-<div id="singlecell-gplvm-ard-caption" class="caption-frame">
-<p>Figure: The ARD parameters of the GP-LVM for the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
-</div>
-</div>
-<h2 id="bayesian-gp-lvm">Bayesian GP-LVM</h2>
-<p>Finally we show the new code that uses the Bayesian GP-LVM to fit the data. This means we can automatically determine the dimensionality of the model whilst fitting a non-linear dimensionality reduction. The approximations we use also mean that it is faster than the original GP-LVM.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> GPy</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>kernel<span class="op">=</span>GPy.kern.RBF(<span class="dv">5</span>,ARD<span class="op">=</span><span class="dv">1</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">5</span>)</span>
-<span id="cb26-2"><a href="#cb26-2"></a>model <span class="op">=</span> GPy.models.BayesianGPLVM(s[<span class="st">&#39;Y&#39;</span>], <span class="dv">5</span>, num_inducing<span class="op">=</span><span class="dv">15</span>, kernel<span class="op">=</span>kernel)</span>
-<span id="cb26-3"><a href="#cb26-3"></a>model.optimize(messages<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
-<div class="figure">
 <div id="singlecell-bayes-gplvm-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/datasets/singlecell-bayes-gplvm.svg" width="60%" style=" ">
+<object class="svgplot " data="../slides/diagrams/gplvm/singlecell-bayes-gplvm.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="singlecell-bayes-gplvm-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-bayes-gplvm&#39;)">
@@ -438,7 +407,7 @@ $$</span><br /> which can be computed analytically for some covariance functions
 </div>
 <div class="figure">
 <div id="singlecell-bayes-gplvm-ard-figure" class="figure-frame">
-<object class="svgplot " data="../slides/diagrams/datasets/singlecell-bayes-gplvm-ard.svg" width="80%" style=" ">
+<object class="svgplot " data="../slides/diagrams/gplvm/singlecell-bayes-gplvm-ard.svg" width="80%" style=" ">
 </object>
 </div>
 <div id="singlecell-bayes-gplvm-ard-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-bayes-gplvm-ard&#39;)">
@@ -459,9 +428,6 @@ $$</span><br /> which can be computed analytically for some covariance functions
 </ul>
 <h1 class="unnumbered" id="references">References</h1>
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-Buettner:resolving12">
-<p>Buettner, Florian, and Fabian J. Theis. 2012. “A Novel Approach for Resolving Differences in Single-Cell Gene Expression Patterns from Zygote to Blastocyst.” <em>Bioinformatics</em> 28 (18): i626–i632. <a href="https://doi.org/10.1093/bioinformatics/bts385">https://doi.org/10.1093/bioinformatics/bts385</a>.</p>
-</div>
 <div id="ref-Damianou:thesis2015">
 <p>Damianou, Andreas. 2015. “Deep Gaussian Processes and Variational Propagation of Uncertainty.” PhD thesis, University of Sheffield.</p>
 </div>
