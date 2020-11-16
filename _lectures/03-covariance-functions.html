@@ -799,7 +799,7 @@ $$</span><br /> Note that if <span class="math inline"><em>g</em>( ⋅ )</sp
 <p>Here we reconstruct that analysis in GPy. Our first objective will be to perform a Gaussian process fit to the data, we’ll do this using the <a href="https://github.com/SheffieldML/GPy">GPy software</a>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> GPy</span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>kernel1 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">40</span>, variance<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>kernel2 <span class="op">=</span> GPy.kern.PeriodicMatern52(<span class="dv">1</span>, variance<span class="op">=</span><span class="dv">4</span>, period<span class="op">=</span><span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>kernel2 <span class="op">=</span> GPy.kern.PeriodicMatern52(<span class="dv">1</span>, variance<span class="op">=</span><span class="dv">4</span>, period<span class="op">=</span><span class="dv">1</span>, lengthscale<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb21-3"><a href="#cb21-3"></a>kernel3 <span class="op">=</span> GPy.kern.RatQuad(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">5</span>, variance<span class="op">=</span><span class="dv">10</span>, power<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb21-4"><a href="#cb21-4"></a>kernel4 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="fl">0.2</span>, variance<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb21-5"><a href="#cb21-5"></a>kernel5 <span class="op">=</span> GPy.kern.Bias(<span class="dv">1</span>, variance<span class="op">=</span><span class="dv">100</span>)</span>
@@ -807,7 +807,7 @@ $$</span><br /> Note that if <span class="math inline"><em>g</em>( ⋅ )</sp
 <span id="cb21-7"><a href="#cb21-7"></a>model <span class="op">=</span> GPy.models.GPRegression(x,yhat, kernel<span class="op">=</span>kernel)</span>
 <span id="cb21-8"><a href="#cb21-8"></a>model.optimize(messages<span class="op">=</span><span class="va">True</span>) <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
 <p>The first command sets up the model, then <code>model.optimize()</code> optimizes the parameters of the covariance function and the noise level of the model. Once the fit is complete, we’ll try creating some test points, and computing the output of the GP model in terms of the mean and standard deviation of the posterior functions between 1870 and 2030. We plot the mean function and the standard deviation at 200 locations. We can obtain the predictions using <code>y_mean, y_var = model.predict(xt)</code></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>xt <span class="op">=</span> np.linspace(<span class="dv">1950</span>,<span class="dv">2020</span>,<span class="dv">300</span>)[:,np.newaxis]</span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>xt <span class="op">=</span> np.linspace(xlim[<span class="dv">0</span>],xlim[<span class="dv">1</span>],<span class="dv">300</span>)[:,np.newaxis]</span>
 <span id="cb22-2"><a href="#cb22-2"></a>yt_mean, yt_var <span class="op">=</span> model.predict(xt)</span>
 <span id="cb22-3"><a href="#cb22-3"></a>yt_sd<span class="op">=</span>np.sqrt(yt_var)</span></code></pre></div>
 <p>Now we plot the results using the helper function in <code>teaching_plots</code>.</p>
@@ -837,7 +837,7 @@ $$</span><br /> Note that if <span class="math inline"><em>g</em>( ⋅ )</sp
 <p>Bochner, Salomon. 1959. <em>Lectures on Fourier Integrals</em>. Princeton University Press. <a href="http://books.google.co.uk/books?id=-vU02QewWK8C">http://books.google.co.uk/books?id=-vU02QewWK8C</a>.</p>
 </div>
 <div id="ref-Keeling-atmospheric76">
-<p>Keeling, Charles D., Robert B. Bacastow, Arnold E. Bainbridge, Carl A. Ekdahl Jr., Peter R. Guenther, Lee S. Waterman, and John F. S. Chin. 1976. “Atmospheric Carbon Dioxide Variations at Mauna Loa Observatory, Hawaii.” <em>Tellus</em> 28 (6): 538–51. <a href="https://doi.org/https://doi.org/10.1111/j.2153-3490.1976.tb00701.x">https://doi.org/https://doi.org/10.1111/j.2153-3490.1976.tb00701.x</a>.</p>
+<p>Keeling, Charles D., Robert B. Bacastow, Arnold E. Bainbridge, Carl A. Ekdahl Jr., Peter R. Guenther, Lee S. Waterman, and John F. S. Chin. 1976. “Atmospheric Carbon Dioxide Variations at Mauna Loa Observatory, Hawaii.” <em>Tellus</em> 28 (6): 538–51. <a href="https://doi.org/10.1111/j.2153-3490.1976.tb00701.x">https://doi.org/10.1111/j.2153-3490.1976.tb00701.x</a>.</p>
 </div>
 <div id="ref-Rasmussen:book06">
 <p>Rasmussen, Carl Edward, and Christopher K. I. Williams. 2006. <em>Gaussian Processes for Machine Learning</em>. Cambridge, MA: mit.</p>
@@ -846,7 +846,7 @@ $$</span><br /> Note that if <span class="math inline"><em>g</em>( ⋅ )</sp
 <p>Stein, Michael L. 1999. <em>Interpolation of Spatial Data: Some Theory for Kriging</em>. springer.</p>
 </div>
 <div id="ref-Thoning-atmospheric89">
-<p>Thoning, Kirk W., Pieter P. Tans, and Walter D. Komhyr. 1989. “Atmospheric Carbon Dioxide at Mauna Loa Observatory: 2. Analysis of the NOAA GMCC Data, 1974–1985.” <em>Journal of Geophysical Research: Atmospheres</em> 94 (D6): 8549–65. <a href="https://doi.org/https://doi.org/10.1029/JD094iD06p08549">https://doi.org/https://doi.org/10.1029/JD094iD06p08549</a>.</p>
+<p>Thoning, Kirk W., Pieter P. Tans, and Walter D. Komhyr. 1989. “Atmospheric Carbon Dioxide at Mauna Loa Observatory: 2. Analysis of the NOAA GMCC Data, 1974–1985.” <em>Journal of Geophysical Research: Atmospheres</em> 94 (D6): 8549–65. <a href="https://doi.org/10.1029/JD094iD06p08549">https://doi.org/10.1029/JD094iD06p08549</a>.</p>
 </div>
 </div>
 
