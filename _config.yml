@@ -59,6 +59,10 @@ collections:
 ghub:
   edit: true
   repository: gpss
+  
+analytics:
+  google: 
+    tracking_id: UA-184894912-1
 
 analytics:
   google: 
