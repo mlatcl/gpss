@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Gaussian Process Summer Schoool Lectures
+title: Gaussian Process Summer School Lectures
 ---
 
 This is a repository for various lectures for the [Gaussian Process Summer School](http://gpss.cc). 
