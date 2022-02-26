@@ -1,11 +1,10 @@
 ---
 title: "Multi-output Gaussian Processes"
-abstract: "<p>In this talk we review multi-output Gaussian processes. Introducing them initially through a Kalman filter representation of a GP.</p>"
+abstract: "<p>In this lecture we review multi-output Gaussian processes. Introducing them initially through a Kalman filter representation of a GP.</p>"
 edit_url: https://github.com/lawrennd/talks/edit/gh-pages/_gpss/multi-output-gps.md
 week: 0
 session: 5
 reveal: 05-multi-output-gps.slides.html
-ipynb: 05-multi-output-gps.ipynb
 youtube: "MkkeBmEZ8LE"
 edit_url: https://github.com/lawrennd/talks/edit/gh-pages/_gpss/multi-output-gps.md
 layout: lecture
@@ -23,41 +22,7 @@ categories:
 <!--
 
 -->
-<h2 id="notutils">notutils</h2>
-<div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/notutils-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/notutils-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
-</div>
-<p>This small package is a helper package for various notebook utilities used</p>
-<p>The software can be installed using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install notutils</span></code></pre></div>
-<p>from the command prompt where you can access your python installation.</p>
-<p>The code is also available on GitHub: <a href="https://github.com/lawrennd/notutils" class="uri">https://github.com/lawrennd/notutils</a></p>
-<p>Once <code>notutils</code> is installed, it can be imported in the usual manner.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> notutils</span></code></pre></div>
-<h2 id="pods">pods</h2>
-<div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/pods-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/pods-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
-</div>
-<p>In Sheffield we created a suite of software tools for ‘Open Data Science.’ Open data science is an approach to sharing code, models and data that should make it easier for companies, health professionals and scientists to gain access to data science techniques.</p>
-<p>You can also check this blog post on <a href="http://inverseprobability.com/2014/07/01/open-data-science">Open Data Science</a>.</p>
-<p>The software can be installed using</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install pods</span></code></pre></div>
-<p>from the command prompt where you can access your python installation.</p>
-<p>The code is also available on GitHub: <a href="https://github.com/lawrennd/ods" class="uri">https://github.com/lawrennd/ods</a></p>
-<p>Once <code>pods</code> is installed, it can be imported in the usual manner.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span></code></pre></div>
-<h2 id="mlai">mlai</h2>
-<div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/mlai-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/mlai-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
-</div>
-<p>The <code>mlai</code> software is a suite of helper functions for teaching and demonstrating machine learning algorithms. It was first used in the Machine Learning and Adaptive Intelligence course in Sheffield in 2013.</p>
-<p>The software can be installed using</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install mlai</span></code></pre></div>
-<p>from the command prompt where you can access your python installation.</p>
-<p>The code is also available on GitHub: <a href="https://github.com/lawrennd/mlai" class="uri">https://github.com/lawrennd/mlai</a></p>
-<p>Once <code>mlai</code> is installed, it can be imported in the usual manner.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install gpy</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install gpy</span></code></pre></div>
 <h2 id="gpy-a-gaussian-process-framework-in-python">GPy: A Gaussian Process Framework in Python</h2>
 <div style="text-align:right">
 <span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
@@ -66,7 +31,7 @@ categories:
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
 <div class="centered" style="">
-<img class="" src="https://inverseprobability.com/talks/./slides/diagrams//gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 <div id="gpy-software-magnify" class="magnify" onclick="magnifyFigure(&#39;gpy-software&#39;)">
@@ -111,7 +76,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <h2 id="kronecker-product">Kronecker Product</h2>
 <div class="figure">
 <div id="kronecker-illustrate-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_illustrate.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_illustrate.svg" width="80%" style=" ">
 </object>
 </div>
 <div id="kronecker-illustrate-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-illustrate&#39;)">
@@ -123,7 +88,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 </div>
 <div class="figure">
 <div id="kronecker-ik-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_IK.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_IK.svg" width="80%" style=" ">
 </object>
 </div>
 <div id="kronecker-ik-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ik&#39;)">
@@ -150,7 +115,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <p>For this stacking the marginal distribution over <em>time</em> is given by the block diagonals.</p>
 <div class="figure">
 <div id="kronecker-ik-highlighted-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_IK_highlighted005.svg" width="60%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_IK_highlighted005.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="kronecker-ik-highlighted-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ik-highlighted&#39;)">
@@ -171,7 +136,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <p>For this stacking the marginal distribution over the latent <em>dimensions</em> is given by the block diagonals.</p>
 <div class="figure">
 <div id="kronecker-ki-highlighted-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_KI_highlighted002.svg" width="60%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_KI_highlighted002.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="kronecker-ki-highlighted-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ki-highlighted&#39;)">
@@ -184,7 +149,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <h2 id="mapping-from-latent-process-to-observed">Mapping from Latent Process to Observed</h2>
 <div class="figure">
 <div id="kronecker-ki-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_KI.svg" width="60%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_KI.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="kronecker-ki-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-ki&#39;)">
@@ -202,7 +167,7 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 \]</span></p>
 <div class="figure">
 <div id="kronecker-wx-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//kern/kronecker_WX.svg" width="60%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/kronecker_WX.svg" width="60%" style=" ">
 </object>
 </div>
 <div id="kronecker-wx-magnify" class="magnify" onclick="magnifyFigure(&#39;kronecker-wx&#39;)">
@@ -296,9 +261,9 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <div style="text-align:right">
 <span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/icm-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/icm-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> icm_cov</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> icm_cov</span></code></pre></div>
 <center>
 <span class="math display">\[k(i, j, \mathbf{ x}, \mathbf{ x}^\prime) = b_{i,j} k(\mathbf{ x}, \mathbf{ x}^\prime)\]</span>
 </center>
@@ -354,19 +319,19 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 <div style="text-align:right">
 <span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/slfm-covariance.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_kern/includes/slfm-covariance.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> icm_cov</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> slfm_cov</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai.plot <span class="im">as</span> plot</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>K, anim<span class="op">=</span>plot.animate_covariance_function(mlai.compute_kernel, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                         kernel<span class="op">=</span>slfm_cov, subkernel<span class="op">=</span>eq_cov,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                         W <span class="op">=</span> np.asarray([[<span class="dv">1</span>],[<span class="dv">5</span>]])</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> icm_cov</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> slfm_cov</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai.plot <span class="im">as</span> plot</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlai</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>K, anim<span class="op">=</span>plot.animate_covariance_function(mlai.compute_kernel, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                         kernel<span class="op">=</span>slfm_cov, subkernel<span class="op">=</span>eq_cov,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                         W <span class="op">=</span> np.asarray([[<span class="dv">1</span>],[<span class="dv">5</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span></code></pre></div>
 <h2 id="semiparametric-latent-factor-model-samples">Semiparametric Latent Factor Model Samples</h2>
 <p><span class="math display">\[
 \mathbf{K}(\mathbf{X}, \mathbf{X}) = \mathbf{ w}_{:, 1}\mathbf{ w}_{:, 1}^\top \otimes k_1(\mathbf{X}, \mathbf{X}) + \mathbf{ w}_{:, 2} \mathbf{ w}_{:, 2}^\top \otimes k_2(\mathbf{X}, \mathbf{X})
@@ -413,32 +378,33 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 </td>
 <td width="30%">
 <div class="centered centered" style="">
-<img class="" src="https://inverseprobability.com/talks/./slides/diagrams//ml/100m_final_start.jpg" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//ml/100m_final_start.jpg" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 <small>Image from Wikimedia Commons <a href="http://bit.ly/16kMKHQ" class="uri">http://bit.ly/16kMKHQ</a> by <a href="https://www.staff.ncl.ac.uk/d.j.wilkinson/">Darren Wilkinson</a></small>
 </td>
 </tr>
 </table>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install pods</span></code></pre></div>
 <p>The first think we will look at is a multiple output model. Our aim is to jointly model all <em>sprinting</em> events from olympics since 1896. Data is provided by Rogers &amp; Girolami’s “First Course in Machine Learning.” Firstly, let’s load in the data.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.olympic_sprints()</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[<span class="st">&#39;X&#39;</span>]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;info&#39;</span>], data[<span class="st">&#39;details&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.olympic_sprints()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[<span class="st">&#39;X&#39;</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;info&#39;</span>], data[<span class="st">&#39;details&#39;</span>])</span></code></pre></div>
 <p>When using data sets it’s good practice to cite the originators of the data, you can get information about the source of the data from <code>data['citation']</code></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;citation&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;citation&#39;</span>])</span></code></pre></div>
 <p>The data consists of all the male and female sprinting data for 100m, 200m and 400m since 1896 (six outputs in total). The ouput information can be found from: <code>data['output_info']</code></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;output_info&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;output_info&#39;</span>])</span></code></pre></div>
 <p>In <code>GPy</code> we deal with multiple output data in a particular way. We specify the output we are interested in for modelling as an additional <em>input</em>. So whilst for this data, normally, the only input would be the year of the event. We additionally have an input giving the index of the output we are modelling. This can be seen from examining <code>data['X']</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;First column of X contains the olympic years.&#39;</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;X&#39;</span>][:, <span class="dv">0</span>])</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Second column of X contains the event index.&#39;</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;X&#39;</span>][:, <span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;First column of X contains the olympic years.&#39;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;X&#39;</span>][:, <span class="dv">0</span>])</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Second column of X contains the event index.&#39;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&#39;X&#39;</span>][:, <span class="dv">1</span>])</span></code></pre></div>
 <p>Now let’s plot the data</p>
 <div class="figure">
 <div id="olympic-sprint-data-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//datasets/olympic-sprint-data.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//datasets/olympic-sprint-data.svg" width="80%" style=" ">
 </object>
 </div>
 <div id="olympic-sprint-data-magnify" class="magnify" onclick="magnifyFigure(&#39;olympic-sprint-data&#39;)">
@@ -455,17 +421,17 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 </div>
 <p>We will perform a multi-output Gaussian process fit to the data, we’ll do this using the <a href="https://github.com/SheffieldML/GPy">GPy software</a>.</p>
 <p>We will look at modelling the data using coregionalization approaches described in this morning’s lecture. We introduced these approaches through the Kronecker product. To indicate we want to construct a covariance function of this type in GPy we’ve overloaded the <code>**</code> operator. Stricly speaking this operator means to the power of (like <code>^</code> in MATLAB). But for covariance functions we’ve used it to indicate a tensor product. The linear models of coregionalization we introduced in the lecture were all based on combining a matrix with a standard covariance function. We can think of the matrix as a particular type of covariance function, whose elements are referenced using the event indices. I.e. <span class="math inline">\(k(0, 0)\)</span> references the first row and column of the coregionalization matrix. <span class="math inline">\(k(1, 0)\)</span> references the second row and first column of the coregionalization matrix. Under this set up, we want to build a covariance where the first column from the features (the years) is passed to a covariance function, and the second column from the features (the event number) is passed to the coregionalisation matrix. Let’s start by trying a intrinsic coregionalisation model (sometimes known as multitask Gaussian processes). Let’s start by checking the help for the <code>Coregionalize</code> covariance.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>GPy.kern.Coregionalize?</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>GPy.kern.Coregionalize?</span></code></pre></div>
 <p>The coregionalize matrix, <span class="math inline">\(\mathbf{B}\)</span>, is itself is constructed from two other matrices, <span class="math inline">\(\mathbf{B} = \mathbf{W}\mathbf{W}^\top + \text{diag}(\boldsymbol{\kappa})\)</span>. This allows us to specify a low rank form for the coregionalization matrix. However, for our first example we want to specify that the matrix <span class="math inline">\(\mathbf{B}\)</span> is not constrained to have a low rank form.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>,output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>,output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
 <p>Note here that the rank we specify is that of the <span class="math inline">\(\mathbf{W}\mathbf{W}^\top\)</span> part. When this part is combined with the diagonal matrix from <span class="math inline">\(\mathbf{\kappa}\)</span> the matrix <span class="math inline">\(\mathbf{B}\)</span> is totally general. This covariance function can now be used in a standard Gaussian process regression model. Let’s build the model and optimize it.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
 <p>We can plot the results using the ability to ‘fix inputs’ in the <code>model.plot()</code> function. We can specify that column 1 should be fixed to event number 2 by passing <code>fixed_inputs = [(1, 2)]</code> to the model. To plot the results for all events on the same figure we also specify <code>fignum=1</code> in the loop as below.</p>
 <div class="figure">
 <div id="olympic-sprint-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//gp/olympic-sprint-gp.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/olympic-sprint-gp.svg" width style=" ">
 </object>
 </div>
 <div id="olympic-sprint-gp-magnify" class="magnify" onclick="magnifyFigure(&#39;olympic-sprint-gp&#39;)">
@@ -476,14 +442,14 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 </div>
 </div>
 <p>There is a lot we can do with this model. First of all, each of the races is a different length, so the series have a different mean. We can include another coregionalization term to deal with the mean. Below we do this and reduce the rank of the coregionalization matrix to 1.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>kern1 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>, output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>kern2 <span class="op">=</span> GPy.kern.Bias(<span class="dv">1</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>,output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> kern1 <span class="op">+</span> kern2</span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>kern1 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>, output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>kern2 <span class="op">=</span> GPy.kern.Bias(<span class="dv">1</span>)<span class="op">**</span>GPy.kern.Coregionalize(<span class="dv">1</span>,output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> kern1 <span class="op">+</span> kern2</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
 <div class="figure">
 <div id="olympic-sprint-lmc-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//gp/olympic-sprint-lmc-gp.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/olympic-sprint-lmc-gp.svg" width style=" ">
 </object>
 </div>
 <div id="olympic-sprint-lmc-gp-magnify" class="magnify" onclick="magnifyFigure(&#39;olympic-sprint-lmc-gp&#39;)">
@@ -494,14 +460,14 @@ p(\mathbf{ x}) = \mathcal{N}\left(\mathbf{ x}|\mathbf{0},\mathbf{I}\otimes \math
 </div>
 </div>
 <p>This is a simple form of the linear model of coregionalization. Note how confident the model is about what the women’s 400 m performance would have been. You might feel that the model is being over confident in this region. Perhaps we are forcing too much sharing of information between the sprints. We could return to the intrinsic coregionalization model and force the two base covariance functions to share the same coregionalization matrix.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>kern1 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>) <span class="op">+</span> GPy.kern.Bias(<span class="dv">1</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>kern2 <span class="op">=</span> GPy.kern.Coregionalize(<span class="dv">1</span>, output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> kern1<span class="op">**</span>kern2</span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>kern1 <span class="op">=</span> GPy.kern.RBF(<span class="dv">1</span>, lengthscale<span class="op">=</span><span class="dv">80</span>) <span class="op">+</span> GPy.kern.Bias(<span class="dv">1</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>kern2 <span class="op">=</span> GPy.kern.Coregionalize(<span class="dv">1</span>, output_dim<span class="op">=</span><span class="dv">6</span>, rank<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> kern1<span class="op">**</span>kern2</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.GPRegression(X, y, kern)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>model.optimize()</span></code></pre></div>
 <div class="figure">
 <div id="olympic-sprint-icm-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://inverseprobability.com/talks/./slides/diagrams//gp/olympic-sprint-icm-gp.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/olympic-sprint-icm-gp.svg" width style=" ">
 </object>
 </div>
 <div id="olympic-sprint-icm-gp-magnify" class="magnify" onclick="magnifyFigure(&#39;olympic-sprint-icm-gp&#39;)">
