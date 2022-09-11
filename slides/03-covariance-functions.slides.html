@@ -42,7 +42,8 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Covariance Functions and Hyperparameter Optimization</h1>
+  <h1 class="title">Covariance Functions and Hyperparameter
+Optimization</h1>
   <p class="author" style="text-align:center">Neil D. Lawrence</p>
 </section>
 
@@ -54,7 +55,8 @@
 <!-- The last names to be defined. Should be defined entirely in terms of macros from above-->
 <!-- To compile -->
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
@@ -64,33 +66,44 @@
 </div>
 </div>
 <aside class="notes">
-GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+GPy is a BSD licensed software code base for implementing Gaussian
+process models in Python. It is designed for teaching and modelling. We
+welcome contributions which can be made through the GitHub repository <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </aside>
 <center>
-<a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+<a href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </center>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python-1" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python-1"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <ul>
 <li>BSD Licensed software base.</li>
 <li>Wide availability of libraries, ‘modern’ scripting language.</li>
-<li>Allows us to set projects to undergraduates in Comp Sci that use GPs.</li>
-<li>Available through GitHub <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></li>
+<li>Allows us to set projects to undergraduates in Comp Sci that use
+GPs.</li>
+<li>Available through GitHub <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a></li>
 <li>Reproducible Research with Jupyter Notebook.</li>
 </ul>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
 <ul>
-<li>Probabilistic-style programming (specify the model, not the algorithm).</li>
+<li>Probabilistic-style programming (specify the model, not the
+algorithm).</li>
 <li>Non-Gaussian likelihoods.</li>
 <li>Multivariate outputs.</li>
 <li>Dimensionality reduction.</li>
 <li>Approximations for large data sets.</li>
 </ul>
 </section>
-<section id="the-importance-of-the-covariance-function" class="slide level2">
+<section id="the-importance-of-the-covariance-function"
+class="slide level2">
 <h2>The Importance of the Covariance Function</h2>
 <p><span class="math display">\[
 \boldsymbol{ \mu}_f= \mathbf{A}^\top \mathbf{ y},
@@ -102,12 +115,16 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 </div>
 </div>
 <aside class="notes">
-Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian process Winter School at the University of Sheffield.
+Introduction to Gaussian processes given by Neil Lawrence at the 2014
+Gaussian process Winter School at the University of Sheffield.
 </aside>
 </section>
 <section id="improving-the-numerics" class="slide level2">
 <h2>Improving the Numerics</h2>
-<p>In practice we shouldn’t be using matrix inverse directly to solve the GP system. One more stable way is to compute the <em>Cholesky decomposition</em> of the kernel matrix. The log determinant of the covariance can also be derived from the Cholesky decomposition.</p>
+<p>In practice we shouldn’t be using matrix inverse directly to solve
+the GP system. One more stable way is to compute the <em>Cholesky
+decomposition</em> of the kernel matrix. The log determinant of the
+covariance can also be derived from the Cholesky decomposition.</p>
 </section>
 <section id="capacity-control" class="slide level2">
 <h2>Capacity Control</h2>
@@ -128,14 +145,18 @@ Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian p
 <section id="section" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
-\mathcal{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+\mathcal{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \]</span></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \mathcal{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+    \mathcal{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \end{aligned}
 \]</span></p>
 </section>
@@ -143,20 +164,28 @@ Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian p
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \log \mathcal{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
+    \log \mathcal{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
-E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} + \color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
+E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} +
+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
 \]</span></p>
 </section>
-<section id="capacity-control-through-the-determinant" class="slide level2">
+<section id="capacity-control-through-the-determinant"
+class="slide level2">
 <h2>Capacity Control through the Determinant</h2>
-<p>The parameters are <em>inside</em> the covariance function (matrix).  <span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j; \boldsymbol{ \theta})\]</span></p>
+<p>The parameters are <em>inside</em> the covariance function (matrix).
+<span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j;
+\boldsymbol{ \theta})\]</span></p>
 </section>
 <section id="eigendecomposition-of-covariance" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
-<p><span> <span class="math display">\[\mathbf{K}= \mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
+<p><span> <span class="math display">\[\mathbf{K}=
+\mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
 <table>
 <tr>
 <td width="50%">
@@ -165,7 +194,9 @@ E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} + \col
 </div>
 </td>
 <td width="50%">
-<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives rotation.
+<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents
+distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives
+rotation.
 </td>
 </tr>
 </table>
@@ -173,16 +204,26 @@ E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} + \col
 <section id="eigendecomposition-of-covariance-1" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
 <ul>
-<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is <em>diagonal</em>, <span class="math inline">\(\mathbf{R}^\top\mathbf{R}= \mathbf{I}\)</span>.</li>
-<li>Useful representation since <span class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} = \det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
+<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is
+<em>diagonal</em>, <span
+class="math inline">\(\mathbf{R}^\top\mathbf{R}=
+\mathbf{I}\)</span>.</li>
+<li>Useful representation since <span
+class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} =
+\det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
 </ul>
 </section>
-<section id="capacity-control-coloryellowlog-detmathbfk" class="slide level2">
-<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log \det{\mathbf{K}}}\)</span></h2>
+<section id="capacity-control-coloryellowlog-detmathbfk"
+class="slide level2">
+<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log
+\det{\mathbf{K}}}\)</span></h2>
 <script>
 showDivs(0, 'gp-optimise-determinant');
 </script>
-<p><small></small> <input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" onchange="setDivs('gp-optimise-determinant')" oninput="setDivs('gp-optimise-determinant')"> <button onclick="plusDivs(-1, 'gp-optimise-determinant')">❮</button> <button onclick="plusDivs(1, 'gp-optimise-determinant')">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" onchange="setDivs('gp-optimise-determinant')" oninput="setDivs('gp-optimise-determinant')">
+<button onclick="plusDivs(-1, 'gp-optimise-determinant')">❮</button>
+<button onclick="plusDivs(1, 'gp-optimise-determinant')">❯</button></p>
 <div class="gp-optimise-determinant" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/gp-optimise-determinant000.svg" width="80%" style=" ">
 </object>
@@ -224,12 +265,20 @@ showDivs(0, 'gp-optimise-determinant');
 </object>
 </div>
 </section>
-<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{ y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
+<section id="quadratic-data-fit" class="slide level2">
+<h2>Quadratic Data Fit</h2>
+</section>
+<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{
+y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
 <script>
 showDivs(0, 'gp-optimise-quadratic');
 </script>
-<p><small></small> <input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" onchange="setDivs('gp-optimise-quadratic')" oninput="setDivs('gp-optimise-quadratic')"> <button onclick="plusDivs(-1, 'gp-optimise-quadratic')">❮</button> <button onclick="plusDivs(1, 'gp-optimise-quadratic')">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" onchange="setDivs('gp-optimise-quadratic')" oninput="setDivs('gp-optimise-quadratic')">
+<button onclick="plusDivs(-1, 'gp-optimise-quadratic')">❮</button>
+<button onclick="plusDivs(1, 'gp-optimise-quadratic')">❯</button></p>
 <div class="gp-optimise-quadratic" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/gp-optimise-quadratic000.svg" width="80%" style=" ">
 </object>
@@ -249,21 +298,27 @@ showDivs(0, 'gp-optimise-quadratic');
 </div>
 </div>
 <aside class="notes">
-The data fit term of the Gaussian process is a quadratic loss centered around zero. This has eliptical contours, the principal axes of which are given by the covariance matrix.
+The data fit term of the Gaussian process is a quadratic loss centered
+around zero. This has eliptical contours, the principal axes of which
+are given by the covariance matrix.
 </aside>
 </section>
-<section id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2><span class="math display">\[E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
-</section>
-<section id="quadratic-data-fit" class="slide level2">
-<h2>Quadratic Data Fit</h2>
+<section
+id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2><span class="math display">\[E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
 </section>
 <section id="data-fit-term" class="slide level2">
 <h2>Data Fit Term</h2>
 <script>
 showDivs(0, 'gp-optimise');
 </script>
-<p><small></small> <input id="range-gp-optimise" type="range" min="0" max="10" value="0" onchange="setDivs('gp-optimise')" oninput="setDivs('gp-optimise')"> <button onclick="plusDivs(-1, 'gp-optimise')">❮</button> <button onclick="plusDivs(1, 'gp-optimise')">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise" type="range" min="0" max="10" value="0" onchange="setDivs('gp-optimise')" oninput="setDivs('gp-optimise')">
+<button onclick="plusDivs(-1, 'gp-optimise')">❮</button>
+<button onclick="plusDivs(1, 'gp-optimise')">❯</button></p>
 <div class="gp-optimise" style="text-align:center;">
 <table>
 <tr>
@@ -422,7 +477,9 @@ showDivs(0, 'gp-optimise');
 <section id="exponentiated-quadratic-covariance" class="slide level2">
 <h2>Exponentiated Quadratic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{2\ell^2}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{2\ell^2}\right)\]</span>
 </center>
 <div class="figure">
 <div id="eq-covariance-plot-figure" class="figure-frame">
@@ -445,16 +502,21 @@ showDivs(0, 'gp-optimise');
 The exponentiated quadratic covariance function.
 </aside>
 </section>
-<section id="where-did-this-covariance-matrix-come-from" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from"
+class="slide level2">
 <h2>Where Did This Covariance Matrix Come From?</h2>
 <p><span class="math display">\[
-k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}- \mathbf{ x}^\prime\right\Vert^2_2}{2\ell^2}\right)\]</span></p>
+k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert
+\mathbf{ x}- \mathbf{
+x}^\prime\right\Vert^2_2}{2\ell^2}\right)\]</span></p>
 <table>
 <tr>
 <td width="50%">
 <ul>
-<li><p>Covariance matrix is built using the <em>inputs</em> to the function, <span class="math inline">\(\mathbf{ x}\)</span>.</p></li>
-<li><p>For the example above it was based on Euclidean distance.</p></li>
+<li><p>Covariance matrix is built using the <em>inputs</em> to the
+function, <span class="math inline">\(\mathbf{ x}\)</span>.</p></li>
+<li><p>For the example above it was based on Euclidean
+distance.</p></li>
 <li><p>The covariance function is also know as a kernel.</p></li>
 </ul>
 </td>
@@ -470,7 +532,10 @@ k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{
 <script>
 showDivs(0, 'computing_eq_three_covariance');
 </script>
-<p><small></small> <input id="range-computing_eq_three_covariance" type="range" min="0" max="16" value="0" onchange="setDivs('computing_eq_three_covariance')" oninput="setDivs('computing_eq_three_covariance')"> <button onclick="plusDivs(-1, 'computing_eq_three_covariance')">❮</button> <button onclick="plusDivs(1, 'computing_eq_three_covariance')">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_three_covariance" type="range" min="0" max="16" value="0" onchange="setDivs('computing_eq_three_covariance')" oninput="setDivs('computing_eq_three_covariance')">
+<button onclick="plusDivs(-1, 'computing_eq_three_covariance')">❮</button>
+<button onclick="plusDivs(1, 'computing_eq_three_covariance')">❯</button></p>
 <div class="computing_eq_three_covariance" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/computing_eq_three_covariance000.svg" width="80%" style=" ">
 </object>
@@ -545,7 +610,10 @@ showDivs(0, 'computing_eq_three_covariance');
 <script>
 showDivs(0, 'computing_eq_four_covariance');
 </script>
-<p><small></small> <input id="range-computing_eq_four_covariance" type="range" min="0" max="27" value="0" onchange="setDivs('computing_eq_four_covariance')" oninput="setDivs('computing_eq_four_covariance')"> <button onclick="plusDivs(-1, 'computing_eq_four_covariance')">❮</button> <button onclick="plusDivs(1, 'computing_eq_four_covariance')">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_four_covariance" type="range" min="0" max="27" value="0" onchange="setDivs('computing_eq_four_covariance')" oninput="setDivs('computing_eq_four_covariance')">
+<button onclick="plusDivs(-1, 'computing_eq_four_covariance')">❮</button>
+<button onclick="plusDivs(1, 'computing_eq_four_covariance')">❯</button></p>
 <div class="computing_eq_four_covariance" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/computing_eq_four_covariance000.svg" width="80%" style=" ">
 </object>
@@ -673,7 +741,10 @@ Entrywise fill in of the covariance matrix from the covariance function.
 <script>
 showDivs(0, 'computing_eq_three_2_covariance');
 </script>
-<p><small></small> <input id="range-computing_eq_three_2_covariance" type="range" min="0" max="16" value="0" onchange="setDivs('computing_eq_three_2_covariance')" oninput="setDivs('computing_eq_three_2_covariance')"> <button onclick="plusDivs(-1, 'computing_eq_three_2_covariance')">❮</button> <button onclick="plusDivs(1, 'computing_eq_three_2_covariance')">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_three_2_covariance" type="range" min="0" max="16" value="0" onchange="setDivs('computing_eq_three_2_covariance')" oninput="setDivs('computing_eq_three_2_covariance')">
+<button onclick="plusDivs(-1, 'computing_eq_three_2_covariance')">❮</button>
+<button onclick="plusDivs(1, 'computing_eq_three_2_covariance')">❯</button></p>
 <div class="computing_eq_three_2_covariance" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//kern/computing_eq_three_2_covariance000.svg" width="80%" style=" ">
 </object>
@@ -755,7 +826,8 @@ Entrywise fill in of the covariance matrix from the covariance function.
 <section id="brownian-covariance" class="slide level2">
 <h2>Brownian Covariance</h2>
 <center>
-<span class="math display">\[k(t, t^\prime)=\alpha \min(t, t^\prime)\]</span>
+<span class="math display">\[k(t, t^\prime)=\alpha \min(t,
+t^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="brownian-covariance-plot-figure" class="figure-frame">
@@ -778,17 +850,21 @@ Entrywise fill in of the covariance matrix from the covariance function.
 Brownian motion covariance function.
 </aside>
 </section>
-<section id="where-did-this-covariance-matrix-come-from-1" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from-1"
+class="slide level2">
 <h2>Where did this covariance matrix come from?</h2>
 <p><strong>Markov Process</strong></p>
 <p><strong>Visualization of inverse covariance (precision).</strong></p>
 <ul>
-<li><p>Precision matrix is sparse: only neighbours in matrix are non-zero.</p></li>
-<li><p>This reflects <em>conditional</em> independencies in data.</p></li>
+<li><p>Precision matrix is sparse: only neighbours in matrix are
+non-zero.</p></li>
+<li><p>This reflects <em>conditional</em> independencies in
+data.</p></li>
 <li><p>In this case <em>Markov</em> structure.</p></li>
 </ul>
 </section>
-<section id="where-did-this-covariance-matrix-come-from-2" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from-2"
+class="slide level2">
 <h2>Where did this covariance matrix come from?</h2>
 <p><strong>Exponentiated Quadratic</strong></p>
 <p><strong>Visualization of inverse covariance (precision).</strong></p>
@@ -815,7 +891,8 @@ rbfprecisionSample
 <tr>
 <td width="50%">
 <ul>
-<li>Precision matrix is sparse: only neighbours in matrix are non-zero.</li>
+<li>Precision matrix is sparse: only neighbours in matrix are
+non-zero.</li>
 <li>This reflects <em>conditional</em> independencies in data.</li>
 <li>In this case <em>Markov</em> structure.</li>
 </ul>
@@ -829,7 +906,9 @@ markovprecisionPlot
 <section id="exponential-covariance" class="slide level2">
 <h2>Exponential Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="ou-covariance-plot-figure" class="figure-frame">
@@ -855,7 +934,9 @@ The exponential covariance function.
 <section id="basis-function-covariance" class="slide level2">
 <h2>Basis Function Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="basis-covariance-plot-figure" class="figure-frame">
@@ -875,42 +956,65 @@ The exponential covariance function.
 </div>
 </div>
 <aside class="notes">
-A covariance function based on a non-linear basis given by <span class="math inline">\(\boldsymbol{ \phi}(\mathbf{ x})\)</span>.
+A covariance function based on a non-linear basis given by <span
+class="math inline">\(\boldsymbol{ \phi}(\mathbf{ x})\)</span>.
 </aside>
 </section>
 <section id="degenerate-covariance-functions" class="slide level2">
 <h2>Degenerate Covariance Functions</h2>
 <p><strong>RBF Basis Functions</strong></p>
 <p><span class="math display">\[
-\phi_k(x) = \exp\left(-\frac{\left\Vert x-\mu_k \right\Vert_2^{2}}{\ell^{2}}\right).
+\phi_k(x) = \exp\left(-\frac{\left\Vert x-\mu_k
+\right\Vert_2^{2}}{\ell^{2}}\right).
 \]</span></p>
 <p><span class="math display">\[
 \boldsymbol{ \mu}= \begin{bmatrix} -1 \\ 0 \\ 1\end{bmatrix},
 \]</span></p>
 <p><span class="math display">\[
-k\left(\mathbf{ x},\mathbf{ x}^{\prime}\right)=\alpha\boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime).
+k\left(\mathbf{ x},\mathbf{ x}^{\prime}\right)=\alpha\boldsymbol{
+\phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime).
 \]</span></p>
 </section>
 <section id="bochners-theoerem" class="slide level2">
 <h2>Bochners Theoerem</h2>
-<p>Given a positive finite Borel measure <span class="math inline">\(\mu\)</span> on the real line <span class="math inline">\(\mathbb{R}\)</span>, the Fourier transform <span class="math inline">\(Q\)</span> of <span class="math inline">\(\mu\)</span> is the continuous function <span class="math display">\[
+<p>Given a positive finite Borel measure <span
+class="math inline">\(\mu\)</span> on the real line <span
+class="math inline">\(\mathbb{R}\)</span>, the Fourier transform <span
+class="math inline">\(Q\)</span> of <span
+class="math inline">\(\mu\)</span> is the continuous function <span
+class="math display">\[
   Q(t) = \int_{\mathbb{R}} e^{-itx} \text{d} \mu(x).
-  \]</span> <span class="math inline">\(Q\)</span> is continuous since for a fixed <span class="math inline">\(x\)</span>, the function <span class="math inline">\(e^{-itx}\)</span> is continuous and periodic. The function <span class="math inline">\(Q\)</span> is a positive definite function, i.e. the kernel <span class="math inline">\(k(x, x^\prime)= Q(x^\prime - x)\)</span> is positive definite.</p>
-<p>Bochner’s theorem <span class="citation" data-cites="Bochner:book59">(Bochner, 1959)</span> says the converse is true, i.e. every positive definite function <span class="math inline">\(Q\)</span> is the Fourier transform of a positive finite Borel measure. A proof can be sketched as follows <span class="citation" data-cites="Stein:interpolation99">(Stein, 1999)</span></p>
+  \]</span> <span class="math inline">\(Q\)</span> is continuous since
+for a fixed <span class="math inline">\(x\)</span>, the function <span
+class="math inline">\(e^{-itx}\)</span> is continuous and periodic. The
+function <span class="math inline">\(Q\)</span> is a positive definite
+function, i.e. the kernel <span class="math inline">\(k(x, x^\prime)=
+Q(x^\prime - x)\)</span> is positive definite.</p>
+<p>Bochner’s theorem <span class="citation"
+data-cites="Bochner:book59">(Bochner, 1959)</span> says the converse is
+true, i.e. every positive definite function <span
+class="math inline">\(Q\)</span> is the Fourier transform of a positive
+finite Borel measure. A proof can be sketched as follows <span
+class="citation" data-cites="Stein:interpolation99">(Stein,
+1999)</span></p>
 <p><span class="math display">\[
 f(\mathbf{ x}) = \sum_{i=1}^ny_i \delta(\mathbf{ x}-\mathbf{ x}_i),
 \]</span></p>
 <p><span class="math display">\[
-F(\boldsymbol{\omega}) = \int_{-\infty}^\infty f(\mathbf{ x}) \exp\left(-i2\pi \boldsymbol{\omega}^\top \mathbf{ x}\right) \text{d} \mathbf{ x}
+F(\boldsymbol{\omega}) = \int_{-\infty}^\infty f(\mathbf{ x})
+\exp\left(-i2\pi \boldsymbol{\omega}^\top \mathbf{ x}\right) \text{d}
+\mathbf{ x}
 \]</span></p>
 <p><span class="math display">\[
-F(\boldsymbol{\omega}) = \sum_{i=1}^ny_i\exp\left(-i 2\pi \boldsymbol{\omega}^\top \mathbf{ x}_i\right)
+F(\boldsymbol{\omega}) = \sum_{i=1}^ny_i\exp\left(-i 2\pi
+\boldsymbol{\omega}^\top \mathbf{ x}_i\right)
 \]</span></p>
 <p><span class="math display">\[
-F(\omega) = \int_{-\infty}^\infty f(t) \left[\cos(2\pi \omega t) - i \sin(2\pi \omega t) \right]\text{d} t
+F(\omega) = \int_{-\infty}^\infty f(t) \left[\cos(2\pi \omega t) - i
+\sin(2\pi \omega t) \right]\text{d} t
 \]</span></p>
 <p><span class="math display">\[
-\exp(ix) = \cos x + i\sin x 
+\exp(ix) = \cos x + i\sin x
 \]</span> we can re-express this form as <span class="math display">\[
 F(\omega) = \int_{-\infty}^\infty f(t) \exp(-i 2\pi\omega)\text{d} t
 \]</span></p>
@@ -918,13 +1022,16 @@ F(\omega) = \int_{-\infty}^\infty f(t) \exp(-i 2\pi\omega)\text{d} t
 f(t) = \int_{-\infty}^\infty F(\omega) \exp(2\pi\omega)\text{d} \omega.
 \]</span></p>
 <div class="centered" style="">
-<a href="https://play.google.com/books/reader?id=TDQJAAAAIAAJ&amp;pg=PA525"><img data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/TDQJAAAAIAAJ-PA525.png" /></a>
+<a
+href="https://play.google.com/books/reader?id=TDQJAAAAIAAJ&amp;pg=PA525"><img
+data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/TDQJAAAAIAAJ-PA525.png" /></a>
 </div>
 </section>
 <section id="sinc-covariance" class="slide level2">
 <h2>Sinc Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \text{sinc}\left(\pi w r\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\text{sinc}\left(\pi w r\right)\]</span>
 </center>
 <div class="figure">
 <div id="sinc-covariance-plot-figure" class="figure-frame">
@@ -950,7 +1057,10 @@ Sinc covariance function.
 <section id="matérn-32-covariance" class="slide level2">
 <h2>Matérn 3/2 Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left\Vert \mathbf{
+x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="matern32-covariance-plot-figure" class="figure-frame">
@@ -976,7 +1086,11 @@ The Matérn 3/2 covariance function.
 <section id="matérn-52-covariance" class="slide level2">
 <h2>Matérn 5/2 Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell} + \frac{5\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{3\ell^2}\right)\exp\left(-\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell} + \frac{5\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{3\ell^2}\right)\exp\left(-\frac{\sqrt{5}\left\Vert
+\mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="matern52-covariance-plot-figure" class="figure-frame">
@@ -1002,7 +1116,9 @@ The Matérn 5/2 covariance function.
 <section id="rational-quadratic-covariance" class="slide level2">
 <h2>Rational Quadratic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{2 a \ell^2}\right)^{-a}\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{2 a \ell^2}\right)^{-a}\]</span>
 </center>
 <div class="figure">
 <div id="ratquad-covariance-plot-figure" class="figure-frame">
@@ -1028,7 +1144,8 @@ The rational quadratic covariance function.
 <section id="polynomial-covariance" class="slide level2">
 <h2>Polynomial Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha(w \mathbf{ x}^\top\mathbf{ x}^\prime + b)^d\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\alpha(w \mathbf{ x}^\top\mathbf{ x}^\prime + b)^d\]</span>
 </center>
 <div class="figure">
 <div id="polynomial-covariance-plot-figure" class="figure-frame">
@@ -1054,7 +1171,8 @@ Polynomial covariance function.
 <section id="periodic-covariance" class="slide level2">
 <h2>Periodic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha\exp\left(\frac{-2\sin(\pi rw)^2}{\ell^2}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\alpha\exp\left(\frac{-2\sin(\pi rw)^2}{\ell^2}\right)\]</span>
 </center>
 <div class="figure">
 <div id="periodic-covariance-plot-figure" class="figure-frame">
@@ -1080,7 +1198,11 @@ Periodic covariance function.
 <section id="mlp-covariance" class="slide level2">
 <h2>MLP Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \arcsin\left(\frac{w \mathbf{ x}^\top \mathbf{ x}^\prime + b}{\sqrt{\left(w \mathbf{ x}^\top \mathbf{ x}+ b + 1\right)\left(w \left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b + 1\right)}}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\arcsin\left(\frac{w \mathbf{ x}^\top \mathbf{ x}^\prime +
+b}{\sqrt{\left(w \mathbf{ x}^\top \mathbf{ x}+ b + 1\right)\left(w
+\left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b +
+1\right)}}\right)\]</span>
 </center>
 <div class="figure">
 <div id="mlp-covariance-plot-figure" class="figure-frame">
@@ -1100,16 +1222,19 @@ Periodic covariance function.
 </div>
 </div>
 <aside class="notes">
-The multi-layer perceptron covariance function. This is derived by considering the infinite limit of a neural network with probit activation functions.
+The multi-layer perceptron covariance function. This is derived by
+considering the infinite limit of a neural network with probit
+activation functions.
 </aside>
 </section>
 <section id="relu-covariance" class="slide level2">
 <h2>RELU Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = 
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
 \alpha \arcsin\left(\frac{w \mathbf{ x}^\top \mathbf{ x}^\prime + b}
 {\sqrt{\left(w \mathbf{ x}^\top \mathbf{ x}+ b + 1\right)
-\left(w \left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b + 1\right)}}\right)\]</span>
+\left(w \left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b +
+1\right)}}\right)\]</span>
 </center>
 <div class="figure">
 <div id="relu-covariance-plot-figure" class="figure-frame">
@@ -1135,7 +1260,9 @@ Rectified linear unit covariance function.
 <section id="additive-covariance" class="slide level2">
 <h2>Additive Covariance</h2>
 <center>
-<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) = k_g(\mathbf{ x}, \mathbf{ x}^\prime) + k_h(\mathbf{ x}, \mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) =
+k_g(\mathbf{ x}, \mathbf{ x}^\prime) + k_h(\mathbf{ x}, \mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="add-covariance-plot-figure" class="figure-frame">
@@ -1155,13 +1282,16 @@ Rectified linear unit covariance function.
 </div>
 </div>
 <aside class="notes">
-An additive covariance function formed by combining a linear and an exponentiated quadratic covariance functions.
+An additive covariance function formed by combining a linear and an
+exponentiated quadratic covariance functions.
 </aside>
 </section>
 <section id="product-covariance" class="slide level2">
 <h2>Product Covariance</h2>
 <center>
-<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) = k_g(\mathbf{ x}, \mathbf{ x}^\prime) k_h(\mathbf{ x}, \mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) =
+k_g(\mathbf{ x}, \mathbf{ x}^\prime) k_h(\mathbf{ x}, \mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="prod-covariance-plot-figure" class="figure-frame">
@@ -1181,7 +1311,8 @@ An additive covariance function formed by combining a linear and an exponentiate
 </div>
 </div>
 <aside class="notes">
-An product covariance function formed by combining a linear and an exponentiated quadratic covariance functions.
+An product covariance function formed by combining a linear and an
+exponentiated quadratic covariance functions.
 </aside>
 </section>
 <section id="mauna-loa-data" class="slide level2">
@@ -1196,7 +1327,8 @@ An product covariance function formed by combining a linear and an exponentiated
 </div>
 </div>
 <aside class="notes">
-Mauna Loa data shows carbon dioxide monthly average measurements from the Mauna Loa Observatory in Hawaii.
+Mauna Loa data shows carbon dioxide monthly average measurements from
+the Mauna Loa Observatory in Hawaii.
 </aside>
 </section>
 <section id="mauna-loa-test-data" class="slide level2">
@@ -1208,7 +1340,8 @@ Mauna Loa data shows carbon dioxide monthly average measurements from the Mauna 
 </div>
 </div>
 <aside class="notes">
-Mauna Loa test data shows carbon dioxide monthly average measurements from the Mauna Loa Observatory in Hawaii.
+Mauna Loa test data shows carbon dioxide monthly average measurements
+from the Mauna Loa Observatory in Hawaii.
 </aside>
 </section>
 <section id="gaussian-process-fit" class="slide level2">
@@ -1223,7 +1356,8 @@ Mauna Loa test data shows carbon dioxide monthly average measurements from the M
 </div>
 </div>
 <aside class="notes">
-Gaussian process fit to the Mauna Loa Observatory data on CO2 concentrations.
+Gaussian process fit to the Mauna Loa Observatory data on CO2
+concentrations.
 </aside>
 </section>
 <section id="box-jenkins-airline-passenger-data" class="slide level2">
@@ -1258,6 +1392,9 @@ Gaussian process fit to the Box-Jenkins airline passenger data.
 </section>
 <section id="spectral-mixture-kernel" class="slide level2">
 <h2>Spectral Mixture Kernel</h2>
+</section>
+<section id="box-jenkins-airline-spectral-mixture" class="slide level2">
+<h2>Box-Jenkins Airline Spectral Mixture</h2>
 <div class="figure">
 <div id="box-jenkins-spectral-mixture-gp-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/box-jenkins-spectral-mixture-gp.svg" width="80%" style=" ">
@@ -1267,6 +1404,9 @@ Gaussian process fit to the Box-Jenkins airline passenger data.
 <aside class="notes">
 Spectral mixture GP as applied to the Box-Jenkins airline data.
 </aside>
+</section>
+<section id="mauna-loa-spectral-mixture" class="slide level2">
+<h2>Mauna Loa Spectral Mixture</h2>
 <div class="figure">
 <div id="mauna-loa-spectral-mixture-gp-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gp/mauna-loa-spectral-mixture-gp.svg" width="80%" style=" ">
@@ -1274,26 +1414,36 @@ Spectral mixture GP as applied to the Box-Jenkins airline data.
 </div>
 </div>
 <aside class="notes">
-Spectral mixture GP as applied to the Mauna Loa Observatory carbon dioxide concentration data.
+Spectral mixture GP as applied to the Mauna Loa Observatory carbon
+dioxide concentration data.
 </aside>
 </section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>
 <li>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></li>
-<li>podcast: <a href="http://thetalkingmachines.com">The Talking Machines</a></li>
-<li>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></li>
-<li>blog: <a href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
+<li>podcast: <a href="http://thetalkingmachines.com">The Talking
+Machines</a></li>
+<li>newspaper: <a
+href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
+Page</a></li>
+<li>blog: <a
+href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
 </ul>
 </section>
 <section id="references" class="slide level2 unnumbered scrollable">
 <h2 class="unnumbered scrollable">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
 <div id="ref-Bochner:book59" class="csl-entry" role="doc-biblioentry">
-Bochner, S., 1959. Lectures on <span>F</span>ourier integrals. Princeton University Press.
+Bochner, S., 1959. <a
+href="http://books.google.co.uk/books?id=-vU02QewWK8C">Lectures on
+<span>F</span>ourier integrals</a>. Princeton University Press.
 </div>
-<div id="ref-Stein:interpolation99" class="csl-entry" role="doc-biblioentry">
-Stein, M.L., 1999. Interpolation of spatial data: Some theory for <span>K</span>riging. springer.
+<div id="ref-Stein:interpolation99" class="csl-entry"
+role="doc-biblioentry">
+Stein, M.L., 1999. Interpolation of spatial data: Some theory for
+<span>K</span>riging. springer.
 </div>
 </div>
 </section>
@@ -1308,10 +1458,39 @@ Stein, M.L., 1999. Interpolation of spatial data: Some theory for <span>K</span>
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
         // Transition style
         transition: 'None', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
           config: 'TeX-AMS_HTML-full',
