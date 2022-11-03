@@ -60,7 +60,10 @@
 <div class="centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//gp/mackay-baby.png" width="" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
-<p>MacKay: NeurIPS Tutorial 1997 “Have we thrown out the baby with the bathwater?” <span class="citation" data-cites="MacKay:gpintroduction98">(Published as MacKay, n.d.)</span></p>
+<p>MacKay: NeurIPS Tutorial 1997 “Have we thrown out the baby with the
+bathwater?” <span class="citation"
+data-cites="MacKay:gpintroduction98">(Published as MacKay,
+n.d.)</span></p>
 </section>
 <section id="deep-neural-network" class="slide level2">
 <h2>Deep Neural Network</h2>
@@ -77,8 +80,10 @@
 <p><span class="math display">\[
 \begin{align*}
     \mathbf{ h}_{1} &amp;= \phi\left(\mathbf{W}_1 \mathbf{ x}\right)\\
-    \mathbf{ h}_{2} &amp;=  \phi\left(\mathbf{W}_2\mathbf{ h}_{1}\right)\\
-    \mathbf{ h}_{3} &amp;= \phi\left(\mathbf{W}_3 \mathbf{ h}_{2}\right)\\
+    \mathbf{ h}_{2} &amp;=  \phi\left(\mathbf{W}_2\mathbf{
+h}_{1}\right)\\
+    \mathbf{ h}_{3} &amp;= \phi\left(\mathbf{W}_3 \mathbf{
+h}_{2}\right)\\
     f&amp;= \mathbf{ w}_4 ^\top\mathbf{ h}_{3}
 \end{align*}
 \]</span></p>
@@ -86,13 +91,21 @@
 <section id="overfitting" class="slide level2">
 <h2>Overfitting</h2>
 <ul>
-<li><p>Potential problem: if number of nodes in two adjacent layers is big, corresponding <span class="math inline">\(\mathbf{W}\)</span> is also very big and there is the potential to overfit.</p></li>
-<li><p>Proposed solution: “dropout.”</p></li>
-<li><p>Alternative solution: parameterize <span class="math inline">\(\mathbf{W}\)</span> with its SVD. <span class="math display">\[
+<li><p>Potential problem: if number of nodes in two adjacent layers is
+big, corresponding <span class="math inline">\(\mathbf{W}\)</span> is
+also very big and there is the potential to overfit.</p></li>
+<li><p>Proposed solution: “dropout”.</p></li>
+<li><p>Alternative solution: parameterize <span
+class="math inline">\(\mathbf{W}\)</span> with its SVD. <span
+class="math display">\[
 \mathbf{W}= \mathbf{U}\boldsymbol{ \Lambda}\mathbf{V}^\top
 \]</span> or <span class="math display">\[
 \mathbf{W}= \mathbf{U}\mathbf{V}^\top
-\]</span> where if <span class="math inline">\(\mathbf{W}\in \Re^{k_1\times k_2}\)</span> then <span class="math inline">\(\mathbf{U}\in \Re^{k_1\times q}\)</span> and <span class="math inline">\(\mathbf{V}\in \Re^{k_2\times q}\)</span>, i.e. we have a low rank matrix factorization for the weights.</p></li>
+\]</span> where if <span class="math inline">\(\mathbf{W}\in
+\Re^{k_1\times k_2}\)</span> then <span
+class="math inline">\(\mathbf{U}\in \Re^{k_1\times q}\)</span> and <span
+class="math inline">\(\mathbf{V}\in \Re^{k_2\times q}\)</span>, i.e. we
+have a low rank matrix factorization for the weights.</p></li>
 </ul>
 </section>
 <section id="low-rank-approximation" class="slide level2">
@@ -104,10 +117,12 @@
 </div>
 </div>
 <aside class="notes">
-Pictorial representation of the low rank form of the matrix <span class="math inline">\(\mathbf{W}\)</span>.
+Pictorial representation of the low rank form of the matrix <span
+class="math inline">\(\mathbf{W}\)</span>.
 </aside>
 </section>
-<section id="bottleneck-layers-in-deep-neural-networks" class="slide level2">
+<section id="bottleneck-layers-in-deep-neural-networks"
+class="slide level2">
 <h2>Bottleneck Layers in Deep Neural Networks</h2>
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//deepgp/deep-nn-bottleneck1.svg" width="60%" style=" ">
 </object>
@@ -119,7 +134,8 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 </section>
 <section id="mathematically-1" class="slide level2">
 <h2>Mathematically</h2>
-<p>The network can now be written mathematically as <span class="math display">\[
+<p>The network can now be written mathematically as <span
+class="math display">\[
 \begin{align}
   \mathbf{ z}_{1} &amp;= \mathbf{V}^\top_1 \mathbf{ x}\\
   \mathbf{ h}_{1} &amp;= \phi\left(\mathbf{U}_1 \mathbf{ z}_{1}\right)\\
@@ -136,8 +152,10 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 <p><span class="math display">\[
 \begin{align}
   \mathbf{ z}_{1} &amp;= \mathbf{V}^\top_1 \mathbf{ x}\\
-  \mathbf{ z}_{2} &amp;= \mathbf{V}^\top_2 \phi\left(\mathbf{U}_1 \mathbf{ z}_{1}\right)\\
-  \mathbf{ z}_{3} &amp;= \mathbf{V}^\top_3 \phi\left(\mathbf{U}_2 \mathbf{ z}_{2}\right)\\
+  \mathbf{ z}_{2} &amp;= \mathbf{V}^\top_2 \phi\left(\mathbf{U}_1
+\mathbf{ z}_{1}\right)\\
+  \mathbf{ z}_{3} &amp;= \mathbf{V}^\top_3 \phi\left(\mathbf{U}_2
+\mathbf{ z}_{2}\right)\\
   \mathbf{ y}&amp;= \mathbf{ w}_4 ^\top \mathbf{ z}_{3}
 \end{align}
 \]</span></p>
@@ -145,7 +163,8 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 <section id="cascade-of-gaussian-processes" class="slide level2">
 <h2>Cascade of Gaussian Processes</h2>
 <ul>
-<li><p>Replace each neural network with a Gaussian process <span class="math display">\[
+<li><p>Replace each neural network with a Gaussian process <span
+class="math display">\[
 \begin{align}
 \mathbf{ z}_{1} &amp;= \mathbf{ f}_1\left(\mathbf{ x}\right)\\
 \mathbf{ z}_{2} &amp;= \mathbf{ f}_2\left(\mathbf{ z}_{1}\right)\\
@@ -153,7 +172,8 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 \mathbf{ y}&amp;= \mathbf{ f}_4\left(\mathbf{ z}_{3}\right)
 \end{align}
 \]</span></p></li>
-<li><p>Equivalent to prior over parameters, take width of each layer to infinity.</p></li>
+<li><p>Equivalent to prior over parameters, take width of each layer to
+infinity.</p></li>
 </ul>
 <!-- SECTION Deep Learning -->
 </section>
@@ -163,7 +183,13 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<p><span class="fragment fade-in"><small>Outline of the DeepFace architecture. A front-end of a single convolution-pooling-convolution filtering on the rectified input, followed by three locally-connected layers and two fully-connected layers. Color illustrates feature maps produced at each layer. The net includes more than 120 million parameters, where more than 95% come from the local and fully connected.</small></span></p>
+<p><span class="fragment fade-in"><small>Outline of the DeepFace
+architecture. A front-end of a single convolution-pooling-convolution
+filtering on the rectified input, followed by three locally-connected
+layers and two fully-connected layers. Color illustrates feature maps
+produced at each layer. The net includes more than 120 million
+parameters, where more than 95% come from the local and fully
+connected.</small></span></p>
 <div class="figure">
 <div id="deep-face-figure" class="figure-frame">
 <div class="centered" style="">
@@ -172,10 +198,14 @@ Pictorial representation of the low rank form of the matrix <span class="math in
 </div>
 </div>
 <aside class="notes">
-The DeepFace architecture <span class="citation" data-cites="Taigman:deepface14">(Taigman et al., 2014)</span>, visualized through colors to represent the functional mappings at each layer. There are 120 million parameters in the model.
+The DeepFace architecture <span class="citation"
+data-cites="Taigman:deepface14">(Taigman et al., 2014)</span>,
+visualized through colors to represent the functional mappings at each
+layer. There are 120 million parameters in the model.
 </aside>
 <div style="text-align:right">
-<small>Source: DeepFace <span class="citation" data-cites="Taigman:deepface14">(Taigman et al., 2014)</span></small>
+<small>Source: DeepFace <span class="citation"
+data-cites="Taigman:deepface14">(Taigman et al., 2014)</span></small>
 </div>
 </section>
 <section id="section-2" class="slide level2">
@@ -188,7 +218,12 @@ The DeepFace architecture <span class="citation" data-cites="Taigman:deepface14"
 </div>
 </div>
 <aside class="notes">
-Deep learning models are composition of simple functions. We can think of a pinball machine as an analogy. Each layer of pins corresponds to one of the layers of functions in the model. Input data is represented by the location of the ball from left to right when it is dropped in from the top. Output class comes from the position of the ball as it leaves the pins at the bottom.
+Deep learning models are composition of simple functions. We can think
+of a pinball machine as an analogy. Each layer of pins corresponds to
+one of the layers of functions in the model. Input data is represented
+by the location of the ball from left to right when it is dropped in
+from the top. Output class comes from the position of the ball as it
+leaves the pins at the bottom.
 </aside>
 </section>
 <section id="section-3" class="slide level2">
@@ -200,7 +235,9 @@ Deep learning models are composition of simple functions. We can think of a pinb
 </div>
 </div>
 <aside class="notes">
-At initialization, the pins, which represent the parameters of the function, aren’t in the right place to bring the balls to the correct decisions.
+At initialization, the pins, which represent the parameters of the
+function, aren’t in the right place to bring the balls to the correct
+decisions.
 </aside>
 </section>
 <section id="section-4" class="slide level2">
@@ -212,7 +249,8 @@ At initialization, the pins, which represent the parameters of the function, are
 </div>
 </div>
 <aside class="notes">
-After learning the pins are now in the right place to bring the balls to the correct decisions.
+After learning the pins are now in the right place to bring the balls to
+the correct decisions.
 </aside>
 </section>
 <section id="mathematically-2" class="slide level2">
@@ -220,15 +258,20 @@ After learning the pins are now in the right place to bring the balls to the cor
 <ul>
 <li><p>Composite <em>multivariate</em> function</p>
 <p><span class="math display">\[
-\mathbf{g}(\mathbf{ x})=\mathbf{ f}_5(\mathbf{ f}_4(\mathbf{ f}_3(\mathbf{ f}_2(\mathbf{ f}_1(\mathbf{ x}))))).
+\mathbf{g}(\mathbf{ x})=\mathbf{ f}_5(\mathbf{ f}_4(\mathbf{
+f}_3(\mathbf{ f}_2(\mathbf{ f}_1(\mathbf{ x}))))).
 \]</span></p></li>
 </ul>
 </section>
 <section id="equivalent-to-markov-chain" class="slide level2">
 <h2>Equivalent to Markov Chain</h2>
 <ul>
-<li>Composite <em>multivariate</em> function <span class="math display">\[
-p(\mathbf{ y}|\mathbf{ x})= p(\mathbf{ y}|\mathbf{ f}_5)p(\mathbf{ f}_5|\mathbf{ f}_4)p(\mathbf{ f}_4|\mathbf{ f}_3)p(\mathbf{ f}_3|\mathbf{ f}_2)p(\mathbf{ f}_2|\mathbf{ f}_1)p(\mathbf{ f}_1|\mathbf{ x})
+<li>Composite <em>multivariate</em> function <span
+class="math display">\[
+p(\mathbf{ y}|\mathbf{ x})= p(\mathbf{ y}|\mathbf{ f}_5)p(\mathbf{
+f}_5|\mathbf{ f}_4)p(\mathbf{ f}_4|\mathbf{ f}_3)p(\mathbf{
+f}_3|\mathbf{ f}_2)p(\mathbf{ f}_2|\mathbf{ f}_1)p(\mathbf{
+f}_1|\mathbf{ x})
 \]</span></li>
 </ul>
 <div class="figure">
@@ -238,7 +281,10 @@ p(\mathbf{ y}|\mathbf{ x})= p(\mathbf{ y}|\mathbf{ f}_5)p(\mathbf{ f}_5|\mathbf{
 </div>
 </div>
 <aside class="notes">
-Probabilistically the deep Gaussian process can be represented as a Markov chain. Indeed they can even be analyzed in this way <span class="citation" data-cites="Dunlop:deep2017">(Dunlop et al., n.d.)</span>.
+Probabilistically the deep Gaussian process can be represented as a
+Markov chain. Indeed they can even be analyzed in this way <span
+class="citation" data-cites="Dunlop:deep2017">(Dunlop et al.,
+n.d.)</span>.
 </aside>
 </section>
 <section id="section-5" class="slide level2">
@@ -250,7 +296,8 @@ Probabilistically the deep Gaussian process can be represented as a Markov chain
 </div>
 </div>
 <aside class="notes">
-More usually deep probabilistic models are written vertically rather than horizontally as in the Markov chain.
+More usually deep probabilistic models are written vertically rather
+than horizontally as in the Markov chain.
 </aside>
 </section>
 <section id="why-composition" class="slide level2">
@@ -259,18 +306,23 @@ More usually deep probabilistic models are written vertically rather than horizo
 <li><p>Gaussian processes give priors over functions.</p></li>
 <li><p>Elegant properties:</p>
 <ul>
-<li>e.g. <em>Derivatives</em> of process are also Gaussian distributed (if they exist).</li>
+<li>e.g. <em>Derivatives</em> of process are also Gaussian distributed
+(if they exist).</li>
 </ul></li>
-<li><p>For particular covariance functions they are ‘universal approximators,’ i.e. all functions can have support under the prior.</p></li>
+<li><p>For particular covariance functions they are ‘universal
+approximators’, i.e. all functions can have support under the
+prior.</p></li>
 <li><p>Gaussian derivatives might ring alarm bells.</p></li>
-<li><p>E.g. a priori they don’t believe in function ‘jumps.’</p></li>
+<li><p>E.g. a priori they don’t believe in function ‘jumps’.</p></li>
 </ul>
 </section>
 <section id="stochastic-process-composition" class="slide level2">
 <h2>Stochastic Process Composition</h2>
 <ul>
-<li><p>From a process perspective: <em>process composition</em>.</p></li>
-<li><p>A (new?) way of constructing more complex <em>processes</em> based on simpler components.</p></li>
+<li><p>From a process perspective: <em>process
+composition</em>.</p></li>
+<li><p>A (new?) way of constructing more complex <em>processes</em>
+based on simpler components.</p></li>
 </ul>
 </section>
 <section id="section-6" class="slide level2">
@@ -287,13 +339,17 @@ More usually deep probabilistic models are written vertically rather than horizo
 </div>
 </div>
 <aside class="notes">
-More generally we aren’t constrained by the Markov chain. We can design structures that respect our belief about the underlying conditional dependencies. Here we are adding a side note from the chain.
+More generally we aren’t constrained by the Markov chain. We can design
+structures that respect our belief about the underlying conditional
+dependencies. Here we are adding a side note from the chain.
 </aside>
 </section>
-<section id="difficulty-for-probabilistic-approaches" class="slide level2">
+<section id="difficulty-for-probabilistic-approaches"
+class="slide level2">
 <h2>Difficulty for Probabilistic Approaches</h2>
 <ul>
-<li><p>Propagate a probability distribution through a non-linear mapping.</p></li>
+<li><p>Propagate a probability distribution through a non-linear
+mapping.</p></li>
 <li><p>Normalisation of distribution becomes intractable.</p></li>
 </ul>
 <div class="figure">
@@ -303,13 +359,16 @@ More generally we aren’t constrained by the Markov chain. We can design struct
 </div>
 </div>
 <aside class="notes">
-A two dimensional grid mapped into three dimensions to form a two dimensional manifold.
+A two dimensional grid mapped into three dimensions to form a two
+dimensional manifold.
 </aside>
 </section>
-<section id="difficulty-for-probabilistic-approaches-1" class="slide level2">
+<section id="difficulty-for-probabilistic-approaches-1"
+class="slide level2">
 <h2>Difficulty for Probabilistic Approaches</h2>
 <ul>
-<li><p>Propagate a probability distribution through a non-linear mapping.</p></li>
+<li><p>Propagate a probability distribution through a non-linear
+mapping.</p></li>
 <li><p>Normalisation of distribution becomes intractable.</p></li>
 </ul>
 <div class="figure">
@@ -319,13 +378,17 @@ A two dimensional grid mapped into three dimensions to form a two dimensional ma
 </div>
 </div>
 <aside class="notes">
-A one dimensional line mapped into two dimensions by two separate independent functions. Each point can be mapped exactly through the mappings.
+A one dimensional line mapped into two dimensions by two separate
+independent functions. Each point can be mapped exactly through the
+mappings.
 </aside>
 </section>
-<section id="difficulty-for-probabilistic-approaches-2" class="slide level2">
+<section id="difficulty-for-probabilistic-approaches-2"
+class="slide level2">
 <h2>Difficulty for Probabilistic Approaches</h2>
 <ul>
-<li><p>Propagate a probability distribution through a non-linear mapping.</p></li>
+<li><p>Propagate a probability distribution through a non-linear
+mapping.</p></li>
 <li><p>Normalisation of distribution becomes intractable.</p></li>
 </ul>
 <div class="figure">
@@ -335,57 +398,105 @@ A one dimensional line mapped into two dimensions by two separate independent fu
 </div>
 </div>
 <aside class="notes">
-A Gaussian density over the input of a non linear function leads to a very non Gaussian output. Here the output is multimodal.
+A Gaussian density over the input of a non linear function leads to a
+very non Gaussian output. Here the output is multimodal.
 </aside>
 </section>
 <section id="standard-variational-approach-fails" class="slide level2">
 <h2>Standard Variational Approach Fails</h2>
 <ul>
-<li>Standard variational bound has the form: <span class="math display">\[
-\mathcal{L}= \left\langle\log p(\mathbf{ y}|\mathbf{Z})\right\rangle_{q(\mathbf{Z})} + \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)
+<li>Standard variational bound has the form: <span
+class="math display">\[
+\mathcal{L}= \left\langle\log p(\mathbf{
+y}|\mathbf{Z})\right\rangle_{q(\mathbf{Z})} + \text{KL}\left(
+q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)
 \]</span></li>
 </ul>
 </section>
-<section id="standard-variational-approach-fails-1" class="slide level2">
+<section id="standard-variational-approach-fails-1"
+class="slide level2">
 <h2>Standard Variational Approach Fails</h2>
 <ul>
-<li>Requires expectation of <span class="math inline">\(\log p(\mathbf{ y}|\mathbf{Z})\)</span> under <span class="math inline">\(q(\mathbf{Z})\)</span>. <span class="math display">\[
+<li>Requires expectation of <span class="math inline">\(\log p(\mathbf{
+y}|\mathbf{Z})\)</span> under <span
+class="math inline">\(q(\mathbf{Z})\)</span>. <span
+class="math display">\[
 \begin{align}
-\log p(\mathbf{ y}|\mathbf{Z}) = &amp; -\frac{1}{2}\mathbf{ y}^\top\left(\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2\mathbf{I}\right)^{-1}\mathbf{ y}\\ &amp; -\frac{1}{2}\log \det{\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2 \mathbf{I}} -\frac{n}{2}\log 2\pi
+\log p(\mathbf{ y}|\mathbf{Z}) = &amp; -\frac{1}{2}\mathbf{
+y}^\top\left(\mathbf{K}_{\mathbf{ f}, \mathbf{
+f}}+\sigma^2\mathbf{I}\right)^{-1}\mathbf{ y}\\ &amp; -\frac{1}{2}\log
+\det{\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2 \mathbf{I}}
+-\frac{n}{2}\log 2\pi
 \end{align}
-\]</span> <span class="math inline">\(\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}\)</span> is dependent on <span class="math inline">\(\mathbf{Z}\)</span> and it appears in the inverse.</li>
+\]</span> <span class="math inline">\(\mathbf{K}_{\mathbf{ f}, \mathbf{
+f}}\)</span> is dependent on <span
+class="math inline">\(\mathbf{Z}\)</span> and it appears in the
+inverse.</li>
 </ul>
 </section>
 <section id="variational-bayesian-gp-lvm" class="slide level2">
 <h2>Variational Bayesian GP-LVM</h2>
 <ul>
-<li>Consider collapsed variational bound, <span class="fragment" data-fragment-index="1"><small><span class="math display">\[
-  p(\mathbf{ y})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle,\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
-\]</span></small></span> <span class="fragment" data-fragment-index="2"><small><span class="math display">\[
-  p(\mathbf{ y}|\mathbf{Z})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
-\]</span></small></span> <span class="fragment" data-fragment-index="3"><small><span class="math display">\[
-    \int p(\mathbf{ y}|\mathbf{Z})p(\mathbf{Z}) \text{d}\mathbf{Z}\geq \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right) p(\mathbf{Z})\text{d}\mathbf{Z}p(\mathbf{ u}) \text{d}\mathbf{ u}
+<li>Consider collapsed variational bound, <span class="fragment"
+data-fragment-index="1"><small><span class="math display">\[
+  p(\mathbf{ y})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{
+y}|\left\langle\mathbf{
+f}\right\rangle,\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{
+u}
+\]</span></small></span> <span class="fragment"
+data-fragment-index="2"><small><span class="math display">\[
+  p(\mathbf{ y}|\mathbf{Z})\geq \prod_{i=1}^nc_i \int
+\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
+f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
+\mathbf{Z})},\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
+\]</span></small></span> <span class="fragment"
+data-fragment-index="3"><small><span class="math display">\[
+    \int p(\mathbf{ y}|\mathbf{Z})p(\mathbf{Z}) \text{d}\mathbf{Z}\geq
+\int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
+f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
+\mathbf{Z})},\sigma^2\mathbf{I}\right)
+p(\mathbf{Z})\text{d}\mathbf{Z}p(\mathbf{ u}) \text{d}\mathbf{ u}
 \]</span></small></span></li>
 </ul>
 </section>
 <section id="variational-bayesian-gp-lvm-1" class="slide level2">
 <h2>Variational Bayesian GP-LVM</h2>
 <ul>
-<li>Apply variational lower bound to the inner integral. <small><span class="math display">\[
+<li>Apply variational lower bound to the inner integral. <small><span
+class="math display">\[
   \begin{align}
-  \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right) p(\mathbf{Z})\text{d}\mathbf{Z}\geq &amp; \left\langle\sum_{i=1}^n\log  c_i\right\rangle_{q(\mathbf{Z})}\\ &amp; +\left\langle\log\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right)\right\rangle_{q(\mathbf{Z})}\\&amp; + \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)    
+  \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{
+y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
+\mathbf{Z})},\sigma^2\mathbf{I}\right)
+p(\mathbf{Z})\text{d}\mathbf{Z}\geq &amp;
+\left\langle\sum_{i=1}^n\log  c_i\right\rangle_{q(\mathbf{Z})}\\ &amp;
++\left\langle\log\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
+f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
+\mathbf{Z})},\sigma^2\mathbf{I}\right)\right\rangle_{q(\mathbf{Z})}\\&amp;
++ \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)    
   \end{align}
 \]</span></small></li>
-<li>Which is analytically tractable for Gaussian <span class="math inline">\(q(\mathbf{Z})\)</span> and some covariance functions.</li>
+<li>Which is analytically tractable for Gaussian <span
+class="math inline">\(q(\mathbf{Z})\)</span> and some covariance
+functions.</li>
 </ul>
 </section>
 <section id="required-expectations" class="slide level2">
 <h2>Required Expectations</h2>
 <ul>
-<li>Need expectations under <span class="math inline">\(q(\mathbf{Z})\)</span> of: <small><span class="math display">\[
-\log c_i = \frac{1}{2\sigma^2} \left[k_{i, i} - \mathbf{ k}_{i, \mathbf{ u}}^\top \mathbf{K}_{\mathbf{ u}, \mathbf{ u}}^{-1} \mathbf{ k}_{i, \mathbf{ u}}\right]
+<li>Need expectations under <span
+class="math inline">\(q(\mathbf{Z})\)</span> of: <small><span
+class="math display">\[
+\log c_i = \frac{1}{2\sigma^2} \left[k_{i, i} - \mathbf{ k}_{i, \mathbf{
+u}}^\top \mathbf{K}_{\mathbf{ u}, \mathbf{ u}}^{-1} \mathbf{ k}_{i,
+\mathbf{ u}}\right]
 \]</span></small> and <small><span class="math display">\[
-\log \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},\mathbf{Y})},\sigma^2\mathbf{I}\right) = -\frac{1}{2}\log 2\pi\sigma^2 - \frac{1}{2\sigma^2}\left(y_i - \mathbf{K}_{\mathbf{ f}, \mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{ u}\right)^2
+\log \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
+f}\right\rangle_{p(\mathbf{ f}|\mathbf{
+u},\mathbf{Y})},\sigma^2\mathbf{I}\right) = -\frac{1}{2}\log
+2\pi\sigma^2 - \frac{1}{2\sigma^2}\left(y_i - \mathbf{K}_{\mathbf{ f},
+\mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{
+u}\right)^2
 \]</span></small></li>
 </ul>
 </section>
@@ -393,18 +504,29 @@ A Gaussian density over the input of a non linear function leads to a very non G
 <h2>Required Expectations</h2>
 <ul>
 <li>This requires the expectations <span class="math display">\[
-\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\right\rangle_{q(\mathbf{Z})}
+\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{
+u}}\right\rangle_{q(\mathbf{Z})}
 \]</span> and <span class="math display">\[
-\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u},\mathbf{ f}}\right\rangle_{q(\mathbf{Z})}
-\]</span> which can be computed analytically for some covariance functions <span class="citation" data-cites="Damianou:variational15">(Damianou et al., 2016)</span> or through sampling <span class="citation" data-cites="Damianou:thesis2015 Salimbeni:doubly2017">(Damianou, 2015; Salimbeni and Deisenroth, 2017)</span>.</li>
+\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\mathbf{K}_{\mathbf{
+u},\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u},\mathbf{
+f}}\right\rangle_{q(\mathbf{Z})}
+\]</span> which can be computed analytically for some covariance
+functions <span class="citation"
+data-cites="Damianou:variational15">(Damianou et al., 2016)</span> or
+through sampling <span class="citation"
+data-cites="Damianou:thesis2015 Salimbeni:doubly2017">(Damianou, 2015;
+Salimbeni and Deisenroth, 2017)</span>.</li>
 </ul>
 </section>
 <section id="see-also" class="slide level2">
 <h2>See also …</h2>
 <ul>
-<li>MAP approach <span class="citation" data-cites="Lawrence:hgplvm07">(Lawrence and Moore, 2007)</span>.</li>
-<li>Hamiltonian Monte Carlo approach <span class="citation" data-cites="Havasi:deepgp18">(Havasi et al., 2018)</span>.</li>
-<li>Expectation Propagation approach <span class="citation" data-cites="Bui:deep16">(Bui et al., 2016)</span>.</li>
+<li>MAP approach <span class="citation"
+data-cites="Lawrence:hgplvm07">(Lawrence and Moore, 2007)</span>.</li>
+<li>Hamiltonian Monte Carlo approach <span class="citation"
+data-cites="Havasi:deepgp18">(Havasi et al., 2018)</span>.</li>
+<li>Expectation Propagation approach <span class="citation"
+data-cites="Bui:deep16">(Bui et al., 2016)</span>.</li>
 </ul>
 </section>
 <section id="neural-networks" class="slide level2">
@@ -417,16 +539,25 @@ A Gaussian density over the input of a non linear function leads to a very non G
 </div>
 </div>
 <aside class="notes">
-Even the latest work on Bayesian neural networks has severe problems handling uncertainty. In this example, <span class="citation" data-cites="Izmailov:subspace19">(Izmailov et al., 2019)</span>, methods even fail to interpolate through the data correctly or provide well calibrated error bars in regions where data is observed.
+Even the latest work on Bayesian neural networks has severe problems
+handling uncertainty. In this example, <span class="citation"
+data-cites="Izmailov:subspace19">(Izmailov et al., 2019)</span>, methods
+even fail to interpolate through the data correctly or provide well
+calibrated error bars in regions where data is observed.
 </aside>
 <div style="text-align:right">
-<span class="citation" data-cites="Izmailov:subspace19">Izmailov et al. (2019)</span>
+<span class="citation" data-cites="Izmailov:subspace19">Izmailov et al.
+(2019)</span>
 </div>
 </section>
 <section id="deep-gaussian-processes" class="slide level2">
 <h2>Deep Gaussian Processes</h2>
 <ul>
-<li>Deep architectures allow abstraction of features <span class="citation" data-cites="Bengio:deep09 Hinton:fast06 Salakhutdinov:quantitative08">(Bengio, 2009; Hinton and Osindero, 2006; Salakhutdinov and Murray, n.d.)</span></li>
+<li>Deep architectures allow abstraction of features <span
+class="citation"
+data-cites="Bengio:deep09 Hinton:fast06 Salakhutdinov:quantitative08">(Bengio,
+2009; Hinton and Osindero, 2006; Salakhutdinov and Murray,
+n.d.)</span></li>
 <li>We use variational approach to stack GP models.</li>
 </ul>
 </section>
@@ -435,7 +566,10 @@ Even the latest work on Bayesian neural networks has severe problems handling un
 <script>
 showDivs(0, 'stack-pca-sample');
 </script>
-<p><small></small> <input id="range-stack-pca-sample" type="range" min="0" max="4" value="0" onchange="setDivs('stack-pca-sample')" oninput="setDivs('stack-pca-sample')"> <button onclick="plusDivs(-1, 'stack-pca-sample')">❮</button> <button onclick="plusDivs(1, 'stack-pca-sample')">❯</button></p>
+<p><small></small>
+<input id="range-stack-pca-sample" type="range" min="0" max="4" value="0" onchange="setDivs('stack-pca-sample')" oninput="setDivs('stack-pca-sample')">
+<button onclick="plusDivs(-1, 'stack-pca-sample')">❮</button>
+<button onclick="plusDivs(1, 'stack-pca-sample')">❯</button></p>
 <div class="stack-pca-sample" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//stack-pca-sample-0.svg" width="10%" style=" ">
 </object>
@@ -462,7 +596,10 @@ showDivs(0, 'stack-pca-sample');
 <script>
 showDivs(0, 'stack-gp-sample');
 </script>
-<p><small></small> <input id="range-stack-gp-sample" type="range" min="0" max="4" value="0" onchange="setDivs('stack-gp-sample')" oninput="setDivs('stack-gp-sample')"> <button onclick="plusDivs(-1, 'stack-gp-sample')">❮</button> <button onclick="plusDivs(1, 'stack-gp-sample')">❯</button></p>
+<p><small></small>
+<input id="range-stack-gp-sample" type="range" min="0" max="4" value="0" onchange="setDivs('stack-gp-sample')" oninput="setDivs('stack-gp-sample')">
+<button onclick="plusDivs(-1, 'stack-gp-sample')">❮</button>
+<button onclick="plusDivs(1, 'stack-gp-sample')">❯</button></p>
 <div class="stack-gp-sample" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//stack-gp-sample-0.svg" width="10%" style=" ">
 </object>
@@ -487,8 +624,15 @@ showDivs(0, 'stack-gp-sample');
 <section id="analysis-of-deep-gps" class="slide level2">
 <h2>Analysis of Deep GPs</h2>
 <ul>
-<li><p><em>Avoiding pathologies in very deep networks</em> <span class="citation" data-cites="Duvenaud:pathologies14">Duvenaud et al. (2014)</span> show that the derivative distribution of the process becomes more <em>heavy tailed</em> as number of layers increase.</p></li>
-<li><p><em>How Deep Are Deep Gaussian Processes?</em> <span class="citation" data-cites="Dunlop:deep2017">Dunlop et al. (n.d.)</span> perform a theoretical analysis possible through conditional Gaussian Markov property.</p></li>
+<li><p><em>Avoiding pathologies in very deep networks</em> <span
+class="citation" data-cites="Duvenaud:pathologies14">Duvenaud et al.
+(2014)</span> show that the derivative distribution of the process
+becomes more <em>heavy tailed</em> as number of layers
+increase.</p></li>
+<li><p><em>How Deep Are Deep Gaussian Processes?</em> <span
+class="citation" data-cites="Dunlop:deep2017">Dunlop et al.
+(n.d.)</span> perform a theoretical analysis possible through
+conditional Gaussian Markov property.</p></li>
 </ul>
 </section>
 <section id="stacked-gps-video-by-david-duvenaud" class="slide level2">
@@ -500,10 +644,12 @@ showDivs(0, 'stack-gp-sample');
 </div>
 </div>
 <aside class="notes">
-Visualization of mapping of a two dimensional space through a deep Gaussian process.
+Visualization of mapping of a two dimensional space through a deep
+Gaussian process.
 </aside>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
@@ -513,26 +659,36 @@ Visualization of mapping of a two dimensional space through a deep Gaussian proc
 </div>
 </div>
 <aside class="notes">
-GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+GPy is a BSD licensed software code base for implementing Gaussian
+process models in Python. It is designed for teaching and modelling. We
+welcome contributions which can be made through the GitHub repository <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </aside>
 <center>
-<a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+<a href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </center>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python-1" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python-1"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <ul>
 <li>BSD Licensed software base.</li>
 <li>Wide availability of libraries, ‘modern’ scripting language.</li>
-<li>Allows us to set projects to undergraduates in Comp Sci that use GPs.</li>
-<li>Available through GitHub <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></li>
+<li>Allows us to set projects to undergraduates in Comp Sci that use
+GPs.</li>
+<li>Available through GitHub <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a></li>
 <li>Reproducible Research with Jupyter Notebook.</li>
 </ul>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
 <ul>
-<li>Probabilistic-style programming (specify the model, not the algorithm).</li>
+<li>Probabilistic-style programming (specify the model, not the
+algorithm).</li>
 <li>Non-Gaussian likelihoods.</li>
 <li>Multivariate outputs.</li>
 <li>Dimensionality reduction.</li>
@@ -548,14 +704,16 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 <li>Gold medal times for Olympic Marathon since 1896.</li>
 <li>Marathons before 1924 didn’t have a standardized distance.</li>
 <li>Present results using pace per km.</li>
-<li>In 1904 Marathon was badly organized leading to very slow times.</li>
+<li>In 1904 Marathon was badly organized leading to very slow
+times.</li>
 </ul>
 </td>
 <td width="30%">
 <div class="centered centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//Stephen_Kiprotich.jpg" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
-<small>Image from Wikimedia Commons <a href="http://bit.ly/16kMKHQ" class="uri">http://bit.ly/16kMKHQ</a></small>
+<small>Image from Wikimedia Commons <a href="http://bit.ly/16kMKHQ"
+class="uri">http://bit.ly/16kMKHQ</a></small>
 </td>
 </tr>
 </table>
@@ -593,7 +751,11 @@ Olympic marathon pace times since 1896.
 </div>
 </div>
 <aside class="notes">
-Alan Turing, in 1946 he was only 11 minutes slower than the winner of the 1948 games. Would he have won a hypothetical games held in 1946? Source: <a href="http://www.turing.org.uk/scrapbook/run.html" target="_blank">Alan Turing Internet Scrapbook</a>.
+Alan Turing, in 1946 he was only 11 minutes slower than the winner of
+the 1948 games. Would he have won a hypothetical games held in 1946?
+Source:
+<a href="http://www.turing.org.uk/scrapbook/run.html" target="_blank">Alan
+Turing Internet Scrapbook</a>.
 </aside>
 </section>
 <section id="probability-winning-olympics" class="slide level2">
@@ -604,7 +766,8 @@ Alan Turing, in 1946 he was only 11 minutes slower than the winner of the 1948 g
 <ul>
 <li>That’s a pace of 3.95 min/km.</li>
 </ul></li>
-<li>What is the probability he would have won an Olympics if one had been held in 1946?</li>
+<li>What is the probability he would have won an Olympics if one had
+been held in 1946?</li>
 </ul>
 </section>
 <section id="gaussian-process-fit" class="slide level2">
@@ -619,7 +782,8 @@ Alan Turing, in 1946 he was only 11 minutes slower than the winner of the 1948 g
 </div>
 </div>
 <aside class="notes">
-Gaussian process fit to the Olympic Marathon data. The error bars are too large, perhaps due to the outlier from 1904.
+Gaussian process fit to the Olympic Marathon data. The error bars are
+too large, perhaps due to the outlier from 1904.
 </aside>
 </section>
 <section id="deep-gp-fit" class="slide level2">
@@ -638,7 +802,8 @@ Gaussian process fit to the Olympic Marathon data. The error bars are too large,
 </div>
 </div>
 <aside class="notes">
-Deep GP fit to the Olympic marathon data. Error bars now change as the prediction evolves.
+Deep GP fit to the Olympic marathon data. Error bars now change as the
+prediction evolves.
 </aside>
 </section>
 <section id="olympic-marathon-data-deep-gp-1" class="slide level2">
@@ -650,7 +815,8 @@ Deep GP fit to the Olympic marathon data. Error bars now change as the predictio
 </div>
 </div>
 <aside class="notes">
-Point samples run through the deep Gaussian process show the distribution of output locations.
+Point samples run through the deep Gaussian process show the
+distribution of output locations.
 </aside>
 </section>
 <section id="olympic-marathon-data-latent-1" class="slide level2">
@@ -662,7 +828,8 @@ Point samples run through the deep Gaussian process show the distribution of out
 </div>
 </div>
 <aside class="notes">
-The mapping from input to the latent layer is broadly, with some flattening as time goes on. Variance is high across the input range.
+The mapping from input to the latent layer is broadly, with some
+flattening as time goes on. Variance is high across the input range.
 </aside>
 </section>
 <section id="olympic-marathon-data-latent-2" class="slide level2">
@@ -686,13 +853,23 @@ The mapping from the latent layer to the output layer.
 </div>
 </div>
 <aside class="notes">
-A pinball plot shows the movement of the ‘ball’ as it passes through each layer of the Gaussian processes. Mean directions of movement are shown by lines. Shading gives one standard deviation of movement position. At each layer, the uncertainty is reset. The overal uncertainty is the cumulative uncertainty from all the layers. There is some grouping of later points towards the right in the first layer, which also injects a large amount of uncertainty. Due to flattening of the curve in the second layer towards the right the uncertainty is reduced in final output.
+A pinball plot shows the movement of the ‘ball’ as it passes through
+each layer of the Gaussian processes. Mean directions of movement are
+shown by lines. Shading gives one standard deviation of movement
+position. At each layer, the uncertainty is reset. The overal
+uncertainty is the cumulative uncertainty from all the layers. There is
+some grouping of later points towards the right in the first layer,
+which also injects a large amount of uncertainty. Due to flattening of
+the curve in the second layer towards the right the uncertainty is
+reduced in final output.
 </aside>
 </section>
 <section id="della-gatta-gene-data" class="slide level2">
 <h2>Della Gatta Gene Data</h2>
 <ul>
-<li>Given given expression levels in the form of a time series from <span class="citation" data-cites="DellaGatta:direct08">Della Gatta et al. (2008)</span>.</li>
+<li>Given given expression levels in the form of a time series from
+<span class="citation" data-cites="DellaGatta:direct08">Della Gatta et
+al. (2008)</span>.</li>
 </ul>
 </section>
 <section id="della-gatta-gene-data-1" class="slide level2">
@@ -704,13 +881,18 @@ A pinball plot shows the movement of the ‘ball’ as it passes through each la
 </div>
 </div>
 <aside class="notes">
-Gene expression levels over time for a gene from data provided by <span class="citation" data-cites="DellaGatta:direct08">Della Gatta et al. (2008)</span>. We would like to understand whether there is signal in the data, or we are only observing noise.
+Gene expression levels over time for a gene from data provided by <span
+class="citation" data-cites="DellaGatta:direct08">Della Gatta et al.
+(2008)</span>. We would like to understand whether there is signal in
+the data, or we are only observing noise.
 </aside>
 </section>
 <section id="gene-expression-example" class="slide level2">
 <h2>Gene Expression Example</h2>
 <ul>
-<li>Want to detect if a gene is expressed or not, fit a GP to each gene <span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.</li>
+<li>Want to detect if a gene is expressed or not, fit a GP to each gene
+<span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and
+Lawrence (2011)</span>.</li>
 </ul>
 </section>
 <section id="section-8" class="slide level2">
@@ -738,10 +920,14 @@ Freddie Kalaitzis
 </div>
 </div>
 <aside class="notes">
-The example is taken from the paper “A Simple Approach to Ranking Differentially Expressed Gene Expression Time Courses through Gaussian Process Regression.” <span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.
+The example is taken from the paper “A Simple Approach to Ranking
+Differentially Expressed Gene Expression Time Courses through Gaussian
+Process Regression.” <span class="citation"
+data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.
 </aside>
 <center>
-<a href="http://www.biomedcentral.com/1471-2105/12/180" class="uri">http://www.biomedcentral.com/1471-2105/12/180</a>
+<a href="http://www.biomedcentral.com/1471-2105/12/180"
+class="uri">http://www.biomedcentral.com/1471-2105/12/180</a>
 </center>
 </section>
 <section id="section-9" class="slide level2">
@@ -756,7 +942,8 @@ The example is taken from the paper “A Simple Approach to Ranking Differential
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the time scale parameter initialized to 50 minutes.
+Result of the fit of the Gaussian process model with the time scale
+parameter initialized to 50 minutes.
 </aside>
 </section>
 <section id="tp53-gene-data-gp-1" class="slide level2">
@@ -768,7 +955,8 @@ Result of the fit of the Gaussian process model with the time scale parameter in
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the time scale parameter initialized to 2000 minutes.
+Result of the fit of the Gaussian process model with the time scale
+parameter initialized to 2000 minutes.
 </aside>
 </section>
 <section id="tp53-gene-data-gp-2" class="slide level2">
@@ -780,7 +968,9 @@ Result of the fit of the Gaussian process model with the time scale parameter in
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the noise initialized low (standard deviation 0.1) and the time scale parameter initialized to 20 minutes.
+Result of the fit of the Gaussian process model with the noise
+initialized low (standard deviation 0.1) and the time scale parameter
+initialized to 20 minutes.
 </aside>
 </section>
 <section id="multiple-optima" class="slide level2">
@@ -821,7 +1011,8 @@ Deep Gaussian process fit to the Della Gatta gene expression data.
 </div>
 </div>
 <aside class="notes">
-Deep Gaussian process samples fitted to the Della Gatta gene expression data.
+Deep Gaussian process samples fitted to the Della Gatta gene expression
+data.
 </aside>
 </section>
 <section id="della-gatta-gene-data-latent-1" class="slide level2">
@@ -833,7 +1024,8 @@ Deep Gaussian process samples fitted to the Della Gatta gene expression data.
 </div>
 </div>
 <aside class="notes">
-Gaussian process mapping from input to latent layer for the della Gatta gene expression data.
+Gaussian process mapping from input to latent layer for the della Gatta
+gene expression data.
 </aside>
 </section>
 <section id="della-gatta-gene-data-latent-2" class="slide level2">
@@ -845,7 +1037,8 @@ Gaussian process mapping from input to latent layer for the della Gatta gene exp
 </div>
 </div>
 <aside class="notes">
-Gaussian process mapping from latent to output layer for the della Gatta gene expression data.
+Gaussian process mapping from latent to output layer for the della Gatta
+gene expression data.
 </aside>
 </section>
 <section id="tp53-gene-pinball-plot" class="slide level2">
@@ -857,7 +1050,12 @@ Gaussian process mapping from latent to output layer for the della Gatta gene ex
 </div>
 </div>
 <aside class="notes">
-A pinball plot shows the movement of the ‘ball’ as it passes through each layer of the Gaussian processes. Mean directions of movement are shown by lines. Shading gives one standard deviation of movement position. At each layer, the uncertainty is reset. The overal uncertainty is the cumulative uncertainty from all the layers. Pinball plot of the della Gatta gene expression data.
+A pinball plot shows the movement of the ‘ball’ as it passes through
+each layer of the Gaussian processes. Mean directions of movement are
+shown by lines. Shading gives one standard deviation of movement
+position. At each layer, the uncertainty is reset. The overal
+uncertainty is the cumulative uncertainty from all the layers. Pinball
+plot of the della Gatta gene expression data.
 </aside>
 </section>
 <section id="step-function-data" class="slide level2">
@@ -869,7 +1067,8 @@ A pinball plot shows the movement of the ‘ball’ as it passes through each la
 </div>
 </div>
 <aside class="notes">
-Simulation study of step function data artificially generated. Here there is a small overlap between the two lines.
+Simulation study of step function data artificially generated. Here
+there is a small overlap between the two lines.
 </aside>
 </section>
 <section id="step-function-data-gp" class="slide level2">
@@ -881,7 +1080,9 @@ Simulation study of step function data artificially generated. Here there is a s
 </div>
 </div>
 <aside class="notes">
-Gaussian process fit to the step function data. Note the large error bars and the over-smoothing of the discontinuity. Error bars are shown at two standard deviations.
+Gaussian process fit to the step function data. Note the large error
+bars and the over-smoothing of the discontinuity. Error bars are shown
+at two standard deviations.
 </aside>
 </section>
 <section id="step-function-data-deep-gp" class="slide level2">
@@ -937,7 +1138,11 @@ Samples from the deep Gaussian process model for the step function fit.
 </div>
 </div>
 <aside class="notes">
-Pinball plot of the deep GP fitted to the step function data. Each layer of the model pushes the ‘ball’ towards the left or right, saturating at 1 and 0. This causes the final density to be be peaked at 0 and 1. Transitions occur driven by the uncertainty of the mapping in each layer.
+Pinball plot of the deep GP fitted to the step function data. Each layer
+of the model pushes the ‘ball’ towards the left or right, saturating at
+1 and 0. This causes the final density to be be peaked at 0 and 1.
+Transitions occur driven by the uncertainty of the mapping in each
+layer.
 </aside>
 </section>
 <section id="motorcycle-helmet-data" class="slide level2">
@@ -949,7 +1154,9 @@ Pinball plot of the deep GP fitted to the step function data. Each layer of the 
 </div>
 </div>
 <aside class="notes">
-Motorcycle helmet data. The data consists of acceleration readings on a motorcycle helmet undergoing a collision. The data exhibits heteroschedastic (time varying) noise levles and non-stationarity.
+Motorcycle helmet data. The data consists of acceleration readings on a
+motorcycle helmet undergoing a collision. The data exhibits
+heteroschedastic (time varying) noise levles and non-stationarity.
 </aside>
 </section>
 <section id="motorcycle-helmet-data-gp" class="slide level2">
@@ -985,7 +1192,8 @@ Deep Gaussian process fit to the motorcycle helmet accelerometer data.
 </div>
 </div>
 <aside class="notes">
-Samples from the deep Gaussian process as fitted to the motorcycle helmet accelerometer data.
+Samples from the deep Gaussian process as fitted to the motorcycle
+helmet accelerometer data.
 </aside>
 </section>
 <section id="motorcycle-helmet-data-latent-1" class="slide level2">
@@ -997,7 +1205,8 @@ Samples from the deep Gaussian process as fitted to the motorcycle helmet accele
 </div>
 </div>
 <aside class="notes">
-Mappings from the input to the latent layer for the motorcycle helmet accelerometer data.
+Mappings from the input to the latent layer for the motorcycle helmet
+accelerometer data.
 </aside>
 </section>
 <section id="motorcycle-helmet-data-latent-2" class="slide level2">
@@ -1009,7 +1218,8 @@ Mappings from the input to the latent layer for the motorcycle helmet accelerome
 </div>
 </div>
 <aside class="notes">
-Mappings from the latent layer to the output layer for the motorcycle helmet accelerometer data.
+Mappings from the latent layer to the output layer for the motorcycle
+helmet accelerometer data.
 </aside>
 </section>
 <section id="motorcycle-helmet-pinball-plot" class="slide level2">
@@ -1021,68 +1231,129 @@ Mappings from the latent layer to the output layer for the motorcycle helmet acc
 </div>
 </div>
 <aside class="notes">
-Pinball plot for the mapping from input to output layer for the motorcycle helmet accelerometer data.
+Pinball plot for the mapping from input to output layer for the
+motorcycle helmet accelerometer data.
 </aside>
 </section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>
 <li>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></li>
-<li>podcast: <a href="http://thetalkingmachines.com">The Talking Machines</a></li>
-<li>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></li>
-<li>blog: <a href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
+<li>podcast: <a href="http://thetalkingmachines.com">The Talking
+Machines</a></li>
+<li>newspaper: <a
+href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
+Page</a></li>
+<li>blog: <a
+href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
 </ul>
 </section>
 <section id="references" class="slide level2 unnumbered scrollable">
 <h2 class="unnumbered scrollable">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
 <div id="ref-Bengio:deep09" class="csl-entry" role="doc-biblioentry">
-Bengio, Y., 2009. <span class="nocase">Learning Deep Architectures for AI</span>. Found. Trends Mach. Learn. 2, 1–127. <a href="https://doi.org/10.1561/2200000006">https://doi.org/10.1561/2200000006</a>
+Bengio, Y., 2009. <span class="nocase">Learning Deep Architectures for
+AI</span>. Found. Trends Mach. Learn. 2, 1–127. <a
+href="https://doi.org/10.1561/2200000006">https://doi.org/10.1561/2200000006</a>
 </div>
 <div id="ref-Bui:deep16" class="csl-entry" role="doc-biblioentry">
-Bui, T., Hernandez-Lobato, D., Hernandez-Lobato, J., Li, Y., Turner, R., 2016. Deep <span>G</span>aussian processes for regression using approximate expectation propagation, in: Balcan, M.F., Weinberger, K.Q. (Eds.), Proceedings of the 33rd International Conference on Machine Learning, Proceedings of Machine Learning Research. PMLR, New York, New York, USA, pp. 1472–1481.
+Bui, T., Hernandez-Lobato, D., Hernandez-Lobato, J., Li, Y., Turner, R.,
+2016. <a href="http://proceedings.mlr.press/v48/bui16.html">Deep
+<span>G</span>aussian processes for regression using approximate
+expectation propagation</a>, in: Balcan, M.F., Weinberger, K.Q. (Eds.),
+Proceedings of the 33rd International Conference on Machine Learning,
+Proceedings of Machine Learning Research. PMLR, New York, New York, USA,
+pp. 1472–1481.
 </div>
-<div id="ref-Damianou:thesis2015" class="csl-entry" role="doc-biblioentry">
-Damianou, A., 2015. Deep <span>G</span>aussian processes and variational propagation of uncertainty (PhD thesis). University of Sheffield.
+<div id="ref-Damianou:thesis2015" class="csl-entry"
+role="doc-biblioentry">
+Damianou, A., 2015. Deep <span>G</span>aussian processes and variational
+propagation of uncertainty (PhD thesis). University of Sheffield.
 </div>
-<div id="ref-Damianou:variational15" class="csl-entry" role="doc-biblioentry">
-Damianou, A., Titsias, M.K., Lawrence, N.D., 2016. Variational inference for latent variables and uncertain inputs in <span>G</span>aussian processes. Journal of Machine Learning Research 17.
+<div id="ref-Damianou:variational15" class="csl-entry"
+role="doc-biblioentry">
+Damianou, A., Titsias, M.K., Lawrence, N.D., 2016. Variational inference
+for latent variables and uncertain inputs in <span>G</span>aussian
+processes. Journal of Machine Learning Research 17.
 </div>
-<div id="ref-DellaGatta:direct08" class="csl-entry" role="doc-biblioentry">
-Della Gatta, G., Bansal, M., Ambesi-Impiombato, A., Antonini, D., Missero, C., Bernardo, D. di, 2008. Direct targets of the TRP63 transcription factor revealed by a combination of gene expression profiling and reverse engineering. Genome Research 18, 939–948. <a href="https://doi.org/10.1101/gr.073601.107">https://doi.org/10.1101/gr.073601.107</a>
+<div id="ref-DellaGatta:direct08" class="csl-entry"
+role="doc-biblioentry">
+Della Gatta, G., Bansal, M., Ambesi-Impiombato, A., Antonini, D.,
+Missero, C., Bernardo, D. di, 2008. Direct targets of the TRP63
+transcription factor revealed by a combination of gene expression
+profiling and reverse engineering. Genome Research 18, 939–948. <a
+href="https://doi.org/10.1101/gr.073601.107">https://doi.org/10.1101/gr.073601.107</a>
 </div>
 <div id="ref-Dunlop:deep2017" class="csl-entry" role="doc-biblioentry">
-Dunlop, M.M., Girolami, M.A., Stuart, A.M., Teckentrup, A.L., n.d. How deep are deep <span>G</span>aussian processes? Journal of Machine Learning Research 19, 1–46.
+Dunlop, M.M., Girolami, M.A., Stuart, A.M., Teckentrup, A.L., n.d. <a
+href="http://jmlr.org/papers/v19/18-015.html">How deep are deep
+<span>G</span>aussian processes?</a> Journal of Machine Learning
+Research 19, 1–46.
 </div>
-<div id="ref-Duvenaud:pathologies14" class="csl-entry" role="doc-biblioentry">
-Duvenaud, D., Rippel, O., Adams, R., Ghahramani, Z., 2014. Avoiding pathologies in very deep networks.
+<div id="ref-Duvenaud:pathologies14" class="csl-entry"
+role="doc-biblioentry">
+Duvenaud, D., Rippel, O., Adams, R., Ghahramani, Z., 2014. Avoiding
+pathologies in very deep networks.
 </div>
 <div id="ref-Havasi:deepgp18" class="csl-entry" role="doc-biblioentry">
-Havasi, M., Hernández-Lobato, J.M., Murillo-Fuentes, J.J., 2018. Inference in deep <span>G</span>aussian processes using stochastic gradient <span>H</span>amiltonian <span>M</span>onte <span>C</span>arlo, in: Bengio, S., Wallach, H., Larochelle, H., Grauman, K., Cesa-Bianchi, N., Garnett, R. (Eds.), Advances in Neural Information Processing Systems 31. Curran Associates, Inc., pp. 7506–7516.
+Havasi, M., Hernández-Lobato, J.M., Murillo-Fuentes, J.J., 2018. <a
+href="http://papers.nips.cc/paper/7979-inference-in-deep-gaussian-processes-using-stochastic-gradient-hamiltonian-monte-carlo.pdf">Inference
+in deep <span>G</span>aussian processes using stochastic gradient
+<span>H</span>amiltonian <span>M</span>onte <span>C</span>arlo</a>, in:
+Bengio, S., Wallach, H., Larochelle, H., Grauman, K., Cesa-Bianchi, N.,
+Garnett, R. (Eds.), Advances in Neural Information Processing Systems
+31. Curran Associates, Inc., pp. 7506–7516.
 </div>
 <div id="ref-Hinton:fast06" class="csl-entry" role="doc-biblioentry">
-Hinton, G.E., Osindero, S., 2006. A fast learning algorithm for deep belief nets. Neural Computation 18, 2006.
+Hinton, G.E., Osindero, S., 2006. A fast learning algorithm for deep
+belief nets. Neural Computation 18, 2006.
 </div>
-<div id="ref-Izmailov:subspace19" class="csl-entry" role="doc-biblioentry">
-Izmailov, P., Maddox, W.J., Kirichenko, P., Garipov, T., Vetrov, D.P., Wilson, A.G., 2019. Subspace inference for bayesian deep learning. CoRR abs/1907.07504.
+<div id="ref-Izmailov:subspace19" class="csl-entry"
+role="doc-biblioentry">
+Izmailov, P., Maddox, W.J., Kirichenko, P., Garipov, T., Vetrov, D.P.,
+Wilson, A.G., 2019. <a href="http://arxiv.org/abs/1907.07504">Subspace
+inference for bayesian deep learning</a>. CoRR abs/1907.07504.
 </div>
-<div id="ref-Kalaitzis:simple11" class="csl-entry" role="doc-biblioentry">
-Kalaitzis, A.A., Lawrence, N.D., 2011. A simple approach to ranking differentially expressed gene expression time courses through <span>Gaussian</span> process regression. BMC Bioinformatics 12. <a href="https://doi.org/10.1186/1471-2105-12-180">https://doi.org/10.1186/1471-2105-12-180</a>
+<div id="ref-Kalaitzis:simple11" class="csl-entry"
+role="doc-biblioentry">
+Kalaitzis, A.A., Lawrence, N.D., 2011. A simple approach to ranking
+differentially expressed gene expression time courses through
+<span>Gaussian</span> process regression. BMC Bioinformatics 12. <a
+href="https://doi.org/10.1186/1471-2105-12-180">https://doi.org/10.1186/1471-2105-12-180</a>
 </div>
-<div id="ref-Lawrence:hgplvm07" class="csl-entry" role="doc-biblioentry">
-Lawrence, N.D., Moore, A.J., 2007. Hierarchical <span>G</span>aussian process latent variable models. pp. 481–488.
+<div id="ref-Lawrence:hgplvm07" class="csl-entry"
+role="doc-biblioentry">
+Lawrence, N.D., Moore, A.J., 2007. Hierarchical <span>G</span>aussian
+process latent variable models. pp. 481–488.
 </div>
-<div id="ref-MacKay:gpintroduction98" class="csl-entry" role="doc-biblioentry">
-MacKay, D.J.C., n.d. Introduction to <span>G</span>aussian processes. pp. 133–166.
+<div id="ref-MacKay:gpintroduction98" class="csl-entry"
+role="doc-biblioentry">
+MacKay, D.J.C., n.d. Introduction to <span>G</span>aussian processes.
+pp. 133–166.
 </div>
-<div id="ref-Salakhutdinov:quantitative08" class="csl-entry" role="doc-biblioentry">
-Salakhutdinov, R., Murray, I., n.d. On the quantitative analysis of deep belief networks. pp. 872–879.
+<div id="ref-Salakhutdinov:quantitative08" class="csl-entry"
+role="doc-biblioentry">
+Salakhutdinov, R., Murray, I., n.d. On the quantitative analysis of deep
+belief networks. pp. 872–879.
 </div>
-<div id="ref-Salimbeni:doubly2017" class="csl-entry" role="doc-biblioentry">
-Salimbeni, H., Deisenroth, M., 2017. Doubly stochastic variational inference for deep <span>G</span>aussian processes, in: Guyon, I., Luxburg, U.V., Bengio, S., Wallach, H., Fergus, R., Vishwanathan, S., Garnett, R. (Eds.), Advances in Neural Information Processing Systems 30. Curran Associates, Inc., pp. 4591–4602.
+<div id="ref-Salimbeni:doubly2017" class="csl-entry"
+role="doc-biblioentry">
+Salimbeni, H., Deisenroth, M., 2017. <a
+href="http://papers.nips.cc/paper/7045-doubly-stochastic-variational-inference-for-deep-gaussian-processes.pdf">Doubly
+stochastic variational inference for deep <span>G</span>aussian
+processes</a>, in: Guyon, I., Luxburg, U.V., Bengio, S., Wallach, H.,
+Fergus, R., Vishwanathan, S., Garnett, R. (Eds.), Advances in Neural
+Information Processing Systems 30. Curran Associates, Inc., pp.
+4591–4602.
 </div>
-<div id="ref-Taigman:deepface14" class="csl-entry" role="doc-biblioentry">
-Taigman, Y., Yang, M., Ranzato, M., Wolf, L., 2014. <span>DeepFace</span>: Closing the gap to human-level performance in face verification, in: Proceedings of the <span>IEEE</span> Computer Society Conference on Computer Vision and Pattern Recognition. <a href="https://doi.org/10.1109/CVPR.2014.220">https://doi.org/10.1109/CVPR.2014.220</a>
+<div id="ref-Taigman:deepface14" class="csl-entry"
+role="doc-biblioentry">
+Taigman, Y., Yang, M., Ranzato, M., Wolf, L., 2014.
+<span>DeepFace</span>: Closing the gap to human-level performance in
+face verification, in: Proceedings of the <span>IEEE</span> Computer
+Society Conference on Computer Vision and Pattern Recognition. <a
+href="https://doi.org/10.1109/CVPR.2014.220">https://doi.org/10.1109/CVPR.2014.220</a>
 </div>
 </div>
 </section>
@@ -1097,8 +1368,39 @@ Taigman, Y., Yang, M., Ranzato, M., Wolf, L., 2014. <span>DeepFace</span>: Closi
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
           config: 'TeX-AMS_HTML-full',
