@@ -1,10 +1,10 @@
 ---
 title: "Bayesian Learning of GP-LVM"
+abstract: "null"
 edit_url: https://github.com/lawrennd/talks/edit/gh-pages/_gpss/bayesian-learning-gplvm.md
-week: 0
-session: 10
+week: 10
+featured_image: slides/diagrams/gplvm/singlecell-bayes-gplvm.svg
 reveal: 10-bayesian-learning-gplvm.slides.html
-edit_url: https://github.com/lawrennd/talks/edit/gh-pages/_gpss/bayesian-learning-gplvm.md
 layout: lecture
 categories:
 - notes
@@ -20,57 +20,34 @@ categories:
 <!--
 
 -->
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install gpy</span></code></pre></div>
-<h2 id="gpy-a-gaussian-process-framework-in-python">GPy: A Gaussian
-Process Framework in Python</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install gpy</span></code></pre></div>
+<h2 id="gpy-a-gaussian-process-framework-in-python">GPy: A Gaussian Process Framework in Python</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_software/includes/gpy-software.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<p>Gaussian processes are a flexible tool for non-parametric analysis
-with uncertainty. The GPy software was started in Sheffield to provide a
-easy to use interface to GPs. One which allowed the user to focus on the
-modelling rather than the mathematics.</p>
+<p>Gaussian processes are a flexible tool for non-parametric analysis with uncertainty. The GPy software was started in Sheffield to provide a easy to use interface to GPs. One which allowed the user to focus on the modelling rather than the mathematics.</p>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
 <div class="centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
-<div id="gpy-software-magnify" class="magnify"
-onclick="magnifyFigure(&#39;gpy-software&#39;)">
+<div id="gpy-software-magnify" class="magnify" onclick="magnifyFigure(&#39;gpy-software&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="gpy-software-caption" class="caption-frame">
-<p>Figure: GPy is a BSD licensed software code base for implementing
-Gaussian process models in Python. It is designed for teaching and
-modelling. We welcome contributions which can be made through the GitHub
-repository <a href="https://github.com/SheffieldML/GPy"
-class="uri">https://github.com/SheffieldML/GPy</a></p>
+<p>Figure: GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></p>
 </div>
 </div>
-<p>GPy is a BSD licensed software code base for implementing Gaussian
-process models in python. This allows GPs to be combined with a wide
-variety of software libraries.</p>
-<p>The software itself is available on <a
-href="https://github.com/SheffieldML/GPy">GitHub</a> and the team
-welcomes contributions.</p>
-<p>The aim for GPy is to be a probabilistic-style programming language,
-i.e., you specify the model rather than the algorithm. As well as a
-large range of covariance functions the software allows for non-Gaussian
-likelihoods, multivariate outputs, dimensionality reduction and
-approximations for larger data sets.</p>
-<p>The documentation for GPy can be found <a
-href="https://gpy.readthedocs.io/en/latest/">here</a>.</p>
+<p>GPy is a BSD licensed software code base for implementing Gaussian process models in python. This allows GPs to be combined with a wide variety of software libraries.</p>
+<p>The software itself is available on <a href="https://github.com/SheffieldML/GPy">GitHub</a> and the team welcomes contributions.</p>
+<p>The aim for GPy is to be a probabilistic-style programming language, i.e., you specify the model rather than the algorithm. As well as a large range of covariance functions the software allows for non-Gaussian likelihoods, multivariate outputs, dimensionality reduction and approximations for larger data sets.</p>
+<p>The documentation for GPy can be found <a href="https://gpy.readthedocs.io/en/latest/">here</a>.</p>
 <ul>
-<li>GP-LVM Provides probabilistic non-linear dimensionality
-reduction.</li>
+<li>GP-LVM Provides probabilistic non-linear dimensionality reduction.</li>
 <li>How to select the dimensionality?</li>
 <li>Need to estimate marginal likelihood.</li>
-<li>In standard GP-LVM it increases with increasing <span
-class="math inline">\(q\)</span>.</li>
+<li>In standard GP-LVM it increases with increasing <span class="math inline">\(q\)</span>.</li>
 </ul>
 <table>
 <tr>
@@ -80,8 +57,7 @@ class="math inline">\(q\)</span>.</li>
 <li>Start with a standard GP-LVM.</li>
 <li>Apply standard latent variable approach:
 <ul>
-<li>Define Gaussian prior over , <span
-class="math inline">\(\mathbf{Z}\)</span>.</li>
+<li>Define Gaussian prior over , <span class="math inline">\(\mathbf{Z}\)</span>.</li>
 <li>Integrate out .</li>
 <li>Unfortunately integration is intractable.</li>
 </ul></li>
@@ -94,167 +70,80 @@ class="math inline">\(\mathbf{Z}\)</span>.</li>
 </td>
 </tr>
 </table>
-<h2 id="standard-variational-approach-fails">Standard Variational
-Approach Fails</h2>
+<h2 id="standard-variational-approach-fails">Standard Variational Approach Fails</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/variational-bayes-gplvm-long.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/variational-bayes-gplvm-long.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/variational-bayes-gplvm-long.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/variational-bayes-gplvm-long.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
 <ul>
-<li>Standard variational bound has the form: <span
-class="math display">\[
-\mathcal{L}= \left\langle\log p(\mathbf{
-y}|\mathbf{Z})\right\rangle_{q(\mathbf{Z})} + \text{KL}\left(
-q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)
+<li>Standard variational bound has the form: <span class="math display">\[
+\mathcal{L}= \left\langle\log p(\mathbf{ y}|\mathbf{Z})\right\rangle_{q(\mathbf{Z})} + \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)
 \]</span></li>
 </ul>
-<p>The standard variational approach would require the expectation of
-<span class="math inline">\(\log p(\mathbf{ y}|\mathbf{Z})\)</span>
-under <span class="math inline">\(q(\mathbf{Z})\)</span>. <span
-class="math display">\[
+<p>The standard variational approach would require the expectation of <span class="math inline">\(\log p(\mathbf{ y}|\mathbf{Z})\)</span> under <span class="math inline">\(q(\mathbf{Z})\)</span>. <span class="math display">\[
   \begin{align}
-  \log p(\mathbf{ y}|\mathbf{Z}) = &amp; -\frac{1}{2}\mathbf{
-y}^\top\left(\mathbf{K}_{\mathbf{ f}, \mathbf{
-f}}+\sigma^2\mathbf{I}\right)^{-1}\mathbf{ y}\\ &amp; -\frac{1}{2}\log
-\det{\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2 \mathbf{I}}
--\frac{n}{2}\log 2\pi
+  \log p(\mathbf{ y}|\mathbf{Z}) = &amp; -\frac{1}{2}\mathbf{ y}^\top\left(\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2\mathbf{I}\right)^{-1}\mathbf{ y}\\ &amp; -\frac{1}{2}\log \det{\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}+\sigma^2 \mathbf{I}} -\frac{n}{2}\log 2\pi
   \end{align}
-  \]</span> But this is extremely difficult to compute because <span
-class="math inline">\(\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}\)</span> is
-dependent on <span class="math inline">\(\mathbf{Z}\)</span> and it
-appears in the inverse.</p>
+  \]</span> But this is extremely difficult to compute because <span class="math inline">\(\mathbf{K}_{\mathbf{ f}, \mathbf{ f}}\)</span> is dependent on <span class="math inline">\(\mathbf{Z}\)</span> and it appears in the inverse.</p>
 <h2 id="variational-bayesian-gp-lvm">Variational Bayesian GP-LVM</h2>
-<p>The alternative approach is to consider the collapsed variational
-bound (used for low rank (sparse is a misnomer) Gaussian process
-approximations. <span class="math display">\[
-    p(\mathbf{ y})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{
-y}|\left\langle\mathbf{
-f}\right\rangle,\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{
-u}
+<p>The alternative approach is to consider the collapsed variational bound (used for low rank (sparse is a misnomer) Gaussian process approximations. <span class="math display">\[
+    p(\mathbf{ y})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle,\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
   \]</span> <span class="math display">\[
-    p(\mathbf{ y}|\mathbf{Z})\geq \prod_{i=1}^nc_i \int
-\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
-f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
-\mathbf{Z})},\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
+    p(\mathbf{ y}|\mathbf{Z})\geq \prod_{i=1}^nc_i \int \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right)p(\mathbf{ u}) \text{d}\mathbf{ u}
   \]</span> <span class="math display">\[
-      \int p(\mathbf{ y}|\mathbf{Z})p(\mathbf{Z}) \text{d}\mathbf{Z}\geq
-\int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
-f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
-\mathbf{Z})},\sigma^2\mathbf{I}\right)
-p(\mathbf{Z})\text{d}\mathbf{Z}p(\mathbf{ u}) \text{d}\mathbf{ u}
+      \int p(\mathbf{ y}|\mathbf{Z})p(\mathbf{Z}) \text{d}\mathbf{Z}\geq \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right) p(\mathbf{Z})\text{d}\mathbf{Z}p(\mathbf{ u}) \text{d}\mathbf{ u}
   \]</span></p>
-<p>To integrate across <span class="math inline">\(\mathbf{Z}\)</span>
-we apply the lower bound to the inner integral. <span
-class="math display">\[
+<p>To integrate across <span class="math inline">\(\mathbf{Z}\)</span> we apply the lower bound to the inner integral. <span class="math display">\[
     \begin{align}
-    \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{
-y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
-\mathbf{Z})},\sigma^2\mathbf{I}\right)
-p(\mathbf{Z})\text{d}\mathbf{Z}\geq &amp;
-\left\langle\sum_{i=1}^n\log  c_i\right\rangle_{q(\mathbf{Z})}\\ &amp;
-+\left\langle\log\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
-f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},
-\mathbf{Z})},\sigma^2\mathbf{I}\right)\right\rangle_{q(\mathbf{Z})}\\&amp;
-+ \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)    
+    \int \prod_{i=1}^nc_i \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right) p(\mathbf{Z})\text{d}\mathbf{Z}\geq &amp; \left\langle\sum_{i=1}^n\log  c_i\right\rangle_{q(\mathbf{Z})}\\ &amp; +\left\langle\log\mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u}, \mathbf{Z})},\sigma^2\mathbf{I}\right)\right\rangle_{q(\mathbf{Z})}\\&amp; + \text{KL}\left( q(\mathbf{Z})\,\|\,p(\mathbf{Z}) \right)    
     \end{align}
-  \]</span> * Which is analytically tractable for Gaussian <span
-class="math inline">\(q(\mathbf{Z})\)</span> and some covariance
-functions.</p>
+  \]</span> * Which is analytically tractable for Gaussian <span class="math inline">\(q(\mathbf{Z})\)</span> and some covariance functions.</p>
 <ul>
-<li><p>Need expectations under <span
-class="math inline">\(q(\mathbf{Z})\)</span> of: <span
-class="math display">\[
-\log c_i = \frac{1}{2\sigma^2} \left[k_{i, i} - \mathbf{ k}_{i, \mathbf{
-u}}^\top \mathbf{K}_{\mathbf{ u}, \mathbf{ u}}^{-1} \mathbf{ k}_{i,
-\mathbf{ u}}\right]
+<li><p>Need expectations under <span class="math inline">\(q(\mathbf{Z})\)</span> of: <span class="math display">\[
+\log c_i = \frac{1}{2\sigma^2} \left[k_{i, i} - \mathbf{ k}_{i, \mathbf{ u}}^\top \mathbf{K}_{\mathbf{ u}, \mathbf{ u}}^{-1} \mathbf{ k}_{i, \mathbf{ u}}\right]
 \]</span> and <span class="math display">\[
-\log \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{
-f}\right\rangle_{p(\mathbf{ f}|\mathbf{
-u},\mathbf{Y})},\sigma^2\mathbf{I}\right) = -\frac{1}{2}\log
-2\pi\sigma^2 - \frac{1}{2\sigma^2}\left(y_i - \mathbf{K}_{\mathbf{ f},
-\mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{
-u}\right)^2
+\log \mathcal{N}\left(\mathbf{ y}|\left\langle\mathbf{ f}\right\rangle_{p(\mathbf{ f}|\mathbf{ u},\mathbf{Y})},\sigma^2\mathbf{I}\right) = -\frac{1}{2}\log 2\pi\sigma^2 - \frac{1}{2\sigma^2}\left(y_i - \mathbf{K}_{\mathbf{ f}, \mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{ u}\right)^2
 \]</span></p></li>
 <li><p>This requires the expectations <span class="math display">\[
-\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{
-u}}\right\rangle_{q(\mathbf{Z})}
+\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\right\rangle_{q(\mathbf{Z})}
 \]</span> and <span class="math display">\[
-\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\mathbf{K}_{\mathbf{
-u},\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u},\mathbf{
-f}}\right\rangle_{q(\mathbf{Z})}
-\]</span> which can be computed analytically for some covariance
-functions <span class="citation"
-data-cites="Damianou:variational15">(Damianou et al., 2016)</span> or
-through sampling <span class="citation"
-data-cites="Damianou:thesis2015 Salimbeni:doubly2017">(Damianou, 2015;
-Salimbeni and Deisenroth, 2017)</span>.</p></li>
+\left\langle\mathbf{K}_{\mathbf{ f},\mathbf{ u}}\mathbf{K}_{\mathbf{ u},\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u},\mathbf{ f}}\right\rangle_{q(\mathbf{Z})}
+\]</span> which can be computed analytically for some covariance functions <span class="citation" data-cites="Damianou:variational15">(Damianou et al., 2016)</span> or through sampling <span class="citation" data-cites="Damianou:thesis2015 Salimbeni:doubly2017">(Damianou, 2015; Salimbeni and Deisenroth, 2017)</span>.</p></li>
 </ul>
-<h2 id="manifold-relevance-determination">Manifold Relevance
-Determination</h2>
+<h2 id="manifold-relevance-determination">Manifold Relevance Determination</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
 <h1 id="modeling-multiple-views">Modeling Multiple ‘Views’</h1>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/shared-intro.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
 <ul>
-<li>Single space to model correlations between two different data
-sources, e.g., images &amp; text, image &amp; pose.</li>
-<li>Shared latent spaces: <span class="citation"
-data-cites="Shon:learning05">Shon et al. (n.d.)</span>;<span
-class="citation" data-cites="Navaratnam:joint07">Navaratnam et al.
-(2007)</span>;<span class="citation" data-cites="Ek:pose07">Ek et al.
-(2008b)</span></li>
+<li>Single space to model correlations between two different data sources, e.g., images &amp; text, image &amp; pose.</li>
+<li>Shared latent spaces: <span class="citation" data-cites="Shon:learning05">Shon et al. (n.d.)</span>;<span class="citation" data-cites="Navaratnam:joint07">Navaratnam et al. (2007)</span>;<span class="citation" data-cites="Ek:pose07">Ek et al. (2008b)</span></li>
 <li>Effective when the `views’ are correlated.</li>
 <li>But not all information is shared between both `views’.</li>
 <li>PCA applied to concatenated data vs CCA applied to data.</li>
 </ul>
 <h1 id="shared-private-factorization">Shared-Private Factorization</h1>
 <ul>
-<li><p>In real scenarios, the `views’ are neither fully independent, nor
-fully correlated.</p></li>
+<li><p>In real scenarios, the `views’ are neither fully independent, nor fully correlated.</p></li>
 <li><p>Shared models</p>
 <ul>
-<li>either allow information relevant to a single view to be mixed in
-the shared signal,</li>
+<li>either allow information relevant to a single view to be mixed in the shared signal,</li>
 <li>or are unable to model such private information.</li>
 </ul></li>
-<li><p>Solution: Model shared and private information <span
-class="citation" data-cites="Klami:group11">Virtanen et al.
-(n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek et
-al. (2008a)</span>,<span class="citation"
-data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span
-class="citation" data-cites="Klami:local07">Klami and Kaski
-(n.d.)</span>,<span class="citation"
-data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span
-class="citation" data-cites="Tucker:battery58">Tucker
-(1958)</span></p></li>
-<li><p>Probabilistic CCA is case when dimensionality of <span
-class="math inline">\(\mathbf{Z}\)</span> matches <span
-class="math inline">\(\mathbf{Y}^{(i)}\)</span> (cf Inter Battery Factor
-Analysis <span class="citation" data-cites="Tucker:battery58">Tucker
-(1958)</span>).</p></li>
+<li><p>Solution: Model shared and private information <span class="citation" data-cites="Klami:group11">Virtanen et al. (n.d.)</span>,<span class="citation" data-cites="Ek:ambiguity08">Ek et al. (2008a)</span>,<span class="citation" data-cites="Leen:gplvmcca06">Leen and Fyfe (2006)</span>,<span class="citation" data-cites="Klami:local07">Klami and Kaski (n.d.)</span>,<span class="citation" data-cites="Klami:probabilistic08">Klami and Kaski (2008)</span>,<span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span></p></li>
+<li><p>Probabilistic CCA is case when dimensionality of <span class="math inline">\(\mathbf{Z}\)</span> matches <span class="math inline">\(\mathbf{Y}^{(i)}\)</span> (cf Inter Battery Factor Analysis <span class="citation" data-cites="Tucker:battery58">Tucker (1958)</span>).</p></li>
 </ul>
 <!--frame failure start-->
-<h1 id="manifold-relevance-determination-1">Manifold Relevance
-Determination</h1>
+<h1 id="manifold-relevance-determination-1">Manifold Relevance Determination</h1>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-intro.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-intro.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-intro.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-intro.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
 <pre><code>\def\layersep{2cm}
 \begin{center}
   \begin{tikzpicture}[node distance=\layersep]</code></pre>
-<p> = [text width=4em, text centered] % Draw the input layer nodes / in
-{1,…,8} % This is the same as writing / in {1/1,2/2,3/3,4/4} (Y-) at (,
-0) {<span class="math inline">\(y_\x\)</span>};</p>
+<p> = [text width=4em, text centered] % Draw the input layer nodes / in {1,…,8} % This is the same as writing / in {1/1,2/2,3/3,4/4} (Y-) at (, 0) {<span class="math inline">\(y_\x\)</span>};</p>
 <pre><code>% Draw the hidden layer nodes
 \foreach \name / \x in {1,...,6}
     \path[xshift=1cm]
@@ -278,9 +167,7 @@ style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/include
 <pre><code>\def\layersep{2cm}
 \begin{center}
   \begin{tikzpicture}[node distance=\layersep]</code></pre>
-<p> = [text width=4em, text centered] % Draw the input layer nodes / in
-{1,…,4} % This is the same as writing / in {1/1,2/2,3/3,4/4} (Y-) at (,
-0) {<span class="math inline">\(y^{(1)}_\x\)</span>};</p>
+<p> = [text width=4em, text centered] % Draw the input layer nodes / in {1,…,4} % This is the same as writing / in {1/1,2/2,3/3,4/4} (Y-) at (, 0) {<span class="math inline">\(y^{(1)}_\x\)</span>};</p>
 <pre><code>\foreach \name / \x in {1,...,4}
 % This is the same as writing \foreach \name / \x in {1/1,2/2,3/3,4/4}
     \node[obs] (Z-\name) at (\x+5, 0) {$\dataScalar^{(2)}_\x$};
@@ -304,28 +191,21 @@ style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/include
 %  Annotate the layers
 \node[annot,left of=X-1, node distance=1cm] (ls) {Latent space};
 \node[annot,left of=Y-1, node distance=1cm] (ds) {Data space};</code></pre>
-<p>\end{tikzpicture} Separate ARD parameters for mappings to <span
-class="math inline">\(\mathbf{Y}^{(1)}\)</span> and <span
-class="math inline">\(\mathbf{Y}^{(2)}\)</span>. \end{center}</p>
-<h1 id="manifold-relevance-determination-results">Manifold Relevance
-Determination Results</h1>
+<p>\end{tikzpicture} Separate ARD parameters for mappings to <span class="math inline">\(\mathbf{Y}^{(1)}\)</span> and <span class="math inline">\(\mathbf{Y}^{(2)}\)</span>. \end{center}</p>
+<h1 id="manifold-relevance-determination-results">Manifold Relevance Determination Results</h1>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-results.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-results.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-results.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/mrd-results.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
 <div class="figure">
 <div id="yale-faces-0-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gplvm/andreas-deep-talk-0.svg" width="90%" style=" ">
 </object>
 </div>
-<div id="yale-faces-0-magnify" class="magnify"
-onclick="magnifyFigure(&#39;yale-faces-0&#39;)">
+<div id="yale-faces-0-magnify" class="magnify" onclick="magnifyFigure(&#39;yale-faces-0&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="yale-faces-0-caption" class="caption-frame">
-<p>Figure: The Yale Faces data set shows different people under
-different lighting conditions</p>
+<p>Figure: The Yale Faces data set shows different people under different lighting conditions</p>
 </div>
 </div>
 <div class="figure">
@@ -333,8 +213,7 @@ different lighting conditions</p>
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gplvm/andreas-deep-talk-1.svg" width="90%" style=" ">
 </object>
 </div>
-<div id="yale-faces-1-magnify" class="magnify"
-onclick="magnifyFigure(&#39;yale-faces-1&#39;)">
+<div id="yale-faces-1-magnify" class="magnify" onclick="magnifyFigure(&#39;yale-faces-1&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="yale-faces-1-caption" class="caption-frame">
@@ -346,8 +225,7 @@ onclick="magnifyFigure(&#39;yale-faces-1&#39;)">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gplvm/andreas-deep-talk-2.svg" width="90%" style=" ">
 </object>
 </div>
-<div id="yale-faces-2-magnify" class="magnify"
-onclick="magnifyFigure(&#39;yale-faces-2&#39;)">
+<div id="yale-faces-2-magnify" class="magnify" onclick="magnifyFigure(&#39;yale-faces-2&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="yale-faces-2-caption" class="caption-frame">
@@ -359,74 +237,36 @@ onclick="magnifyFigure(&#39;yale-faces-2&#39;)">
 <iframe width="600" height="450" src="https://www.youtube.com/embed/UvLI8o8z4IU?start=" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 </div>
-<div id="manifold-relevance-determination-magnify" class="magnify"
-onclick="magnifyFigure(&#39;manifold-relevance-determination&#39;)">
+<div id="manifold-relevance-determination-magnify" class="magnify" onclick="magnifyFigure(&#39;manifold-relevance-determination&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
-<div id="manifold-relevance-determination-caption"
-class="caption-frame">
-<p>Figure: A short video description of the Manifold Relevance
-Determination method as published at ICML 2012</p>
+<div id="manifold-relevance-determination-caption" class="caption-frame">
+<p>Figure: A short video description of the Manifold Relevance Determination method as published at ICML 2012</p>
 </div>
 </div>
 <!--frame end-->
-<h2 id="getting-started-and-downloading-data">Getting Started and
-Downloading Data</h2>
+<h2 id="getting-started-and-downloading-data">Getting Started and Downloading Data</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/gplvm-tutorial-data.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span></code></pre></div>
-<p>The following code is for plotting and to prepare the bigger models
-for later useage. If you are interested, you can have a look, but this
-is not essential.</p>
-<p>For this lab, we’ll use a data set containing all handwritten digits
-from <span class="math inline">\(0 \cdots 9\)</span> handwritten,
-provided by <span class="citation" data-cites="deCampos-character09">de
-Campos et al. (2009)</span>. We will only use some of the digits for the
-demonstrations in this lab class, but you can edit the code below to
-select different subsets of the digit data as you wish.</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>which <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>] <span class="co"># which digits to work on</span></span>
+<p>The following code is for plotting and to prepare the bigger models for later useage. If you are interested, you can have a look, but this is not essential.</p>
+<p>For this lab, we’ll use a data set containing all handwritten digits from <span class="math inline">\(0 \cdots 9\)</span> handwritten, provided by <span class="citation" data-cites="deCampos-character09">de Campos et al. (2009)</span>. We will only use some of the digits for the demonstrations in this lab class, but you can edit the code below to select different subsets of the digit data as you wish.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>which <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>] <span class="co"># which digits to work on</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.decampos_digits(which_digits<span class="op">=</span>which)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> data[<span class="st">&#39;str_lbls&#39;</span>]</span></code></pre></div>
-<p>You can try to plot some of the digits using <code>plt.matshow</code>
-(the digit images have size <code>16x16</code>).</p>
+<p>You can try to plot some of the digits using <code>plt.matshow</code> (the digit images have size <code>16x16</code>).</p>
 <h2 id="bayesian-gplvm">Bayesian GPLVM</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/bayes-gplvm-tutorial.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<p>In GP-LVM we use a point estimate of the distribution of the input
-<span class="math inline">\(\mathbf{Z}\)</span>. This estimate is
-derived through maximum likelihood or through a maximum a posteriori
-(MAP) approach. Ideally, we would like to also estimate a distribution
-over the input <span class="math inline">\(\mathbf{Z}\)</span>. In the
-Bayesian GPLVM we approximate the true distribution <span
-class="math inline">\(p(\mathbf{Z}|\mathbf{Y})\)</span> by a variational
-approximation <span class="math inline">\(q(\mathbf{Z})\)</span> and
-integrate <span class="math inline">\(\mathbf{Z}\)</span> out <span
-class="citation" data-cites="Titsias:bayesGPLVM10">(Titsias and
-Lawrence, 2010)</span>.</p>
-<p>Approximating the posterior in this way allows us to optimize a lower
-bound on the marginal likelihood. Handling the uncertainty in a
-principled way allows the model to make an assessment of whether a
-particular latent dimension is required, or the variation is better
-explained by noise. This allows the algorithm to switch off latent
-dimensions. The switching off can take some time though, so below in
-Section 6 we provide a pre-learnt module, but to complete section 6
-you’ll need to be working in the IPython console instead of the
-notebook.</p>
-<p>For the moment we’ll run a short experiment applying the Bayesian
-GP-LVM with an exponentiated quadratic covariance function.</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<p>In GP-LVM we use a point estimate of the distribution of the input <span class="math inline">\(\mathbf{Z}\)</span>. This estimate is derived through maximum likelihood or through a maximum a posteriori (MAP) approach. Ideally, we would like to also estimate a distribution over the input <span class="math inline">\(\mathbf{Z}\)</span>. In the Bayesian GPLVM we approximate the true distribution <span class="math inline">\(p(\mathbf{Z}|\mathbf{Y})\)</span> by a variational approximation <span class="math inline">\(q(\mathbf{Z})\)</span> and integrate <span class="math inline">\(\mathbf{Z}\)</span> out <span class="citation" data-cites="Titsias:bayesGPLVM10">(Titsias and Lawrence, 2010)</span>.</p>
+<p>Approximating the posterior in this way allows us to optimize a lower bound on the marginal likelihood. Handling the uncertainty in a principled way allows the model to make an assessment of whether a particular latent dimension is required, or the variation is better explained by noise. This allows the algorithm to switch off latent dimensions. The switching off can take some time though, so below in Section 6 we provide a pre-learnt module, but to complete section 6 you’ll need to be working in the IPython console instead of the notebook.</p>
+<p>For the moment we’ll run a short experiment applying the Bayesian GP-LVM with an exponentiated quadratic covariance function.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Model optimization</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> <span class="dv">5</span> <span class="co"># How many latent dimensions to use</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>kern <span class="op">=</span> GPy.kern.RBF(input_dim,ARD<span class="op">=</span><span class="va">True</span>) <span class="co"># ARD kernel</span></span>
@@ -435,51 +275,18 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a hr
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize noise as 1% of variance in data</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#m.likelihood.variance = m.Y.var()/100.</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>m.optimize(messages<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
-<p>Because we are now also considering the uncertainty in the model,
-this optimization can take some time. However, you are free to interrupt
-the optimization at any point selecting <code>Kernel-&gt;Interupt</code>
-from the notepad menu. This will leave you with the model,
-<code>m</code> in the current state and you can plot and look into the
-model parameters.</p>
+<p>Because we are now also considering the uncertainty in the model, this optimization can take some time. However, you are free to interrupt the optimization at any point selecting <code>Kernel-&gt;Interupt</code> from the notepad menu. This will leave you with the model, <code>m</code> in the current state and you can plot and look into the model parameters.</p>
 <h2 id="preoptimized-model">Preoptimized Model</h2>
-<p>A good way of working with latent variable models is to interact with
-the latent dimensions, generating data. This is a little bit tricky in
-the notebook, so below in section 6 we provide code for setting up an
-interactive demo in the standard IPython shell. If you are working on
-your own machine you can try this now. Otherwise continue with section
-5.</p>
-<h2 id="multiview-learning-manifold-relevance-determination">Multiview
-Learning: Manifold Relevance Determination</h2>
-<p>In Manifold Relevance Determination we try to find one latent space,
-common for <span class="math inline">\(K\)</span> observed output sets
-(modalities) <span
-class="math inline">\(\{\mathbf{Y}_{k}\}_{k=1}^{K}\)</span>. Each
-modality is associated with a separate set of ARD parameters so that it
-switches off different parts of the whole latent space and, therefore,
-<span class="math inline">\(\mathbf{Z}\)</span> is softly segmented into
-parts that are private to some, or shared for all modalities. Can you
-explain what happens in the following example?</p>
-<p>Again, you can stop the optimizer at any point and explore the result
-obtained with the so far training:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> GPy.examples.dimensionality_reduction.mrd_simulation(optimize <span class="op">=</span> <span class="va">False</span>, plot<span class="op">=</span><span class="va">False</span>)</span>
+<p>A good way of working with latent variable models is to interact with the latent dimensions, generating data. This is a little bit tricky in the notebook, so below in section 6 we provide code for setting up an interactive demo in the standard IPython shell. If you are working on your own machine you can try this now. Otherwise continue with section 5.</p>
+<h2 id="multiview-learning-manifold-relevance-determination">Multiview Learning: Manifold Relevance Determination</h2>
+<p>In Manifold Relevance Determination we try to find one latent space, common for <span class="math inline">\(K\)</span> observed output sets (modalities) <span class="math inline">\(\{\mathbf{Y}_{k}\}_{k=1}^{K}\)</span>. Each modality is associated with a separate set of ARD parameters so that it switches off different parts of the whole latent space and, therefore, <span class="math inline">\(\mathbf{Z}\)</span> is softly segmented into parts that are private to some, or shared for all modalities. Can you explain what happens in the following example?</p>
+<p>Again, you can stop the optimizer at any point and explore the result obtained with the so far training:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> GPy.examples.dimensionality_reduction.mrd_simulation(optimize <span class="op">=</span> <span class="va">False</span>, plot<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>m.optimize(messages <span class="op">=</span> <span class="va">True</span>, max_iters<span class="op">=</span><span class="fl">3e3</span>, optimizer <span class="op">=</span> <span class="st">&#39;bfgs&#39;</span>)</span></code></pre></div>
-<h2 id="interactive-demo-for-use-outside-the-notepad">Interactive Demo:
-For Use Outside the Notepad</h2>
-<p>The module below loads a pre-optimized Bayesian GPLVM model (like the
-one you just trained) and allows you to interact with the latent space.
-Three interactive figures pop up: the latent space, the ARD scales and a
-sample in the output space (corresponding to the current selected latent
-point of the other figure). You can sample with the mouse from the
-latent space and obtain samples in the output space. You can select
-different latent dimensions to vary by clicking on the corresponding
-scales with the left and right mouse buttons. This will also cause the
-latent space to be projected on the selected latent dimensions in the
-other figure.</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib2, os, sys</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model_path <span class="op">=</span>  <span class="st">&#39;digit_bgplvm_demo.pickle&#39;</span> <span class="co"># local name for model file</span></span>
+<h2 id="interactive-demo-for-use-outside-the-notepad">Interactive Demo: For Use Outside the Notepad</h2>
+<p>The module below loads a pre-optimized Bayesian GPLVM model (like the one you just trained) and allows you to interact with the latent space. Three interactive figures pop up: the latent space, the ARD scales and a sample in the output space (corresponding to the current selected latent point of the other figure). You can sample with the mouse from the latent space and obtain samples in the output space. You can select different latent dimensions to vary by clicking on the corresponding scales with the left and right mouse buttons. This will also cause the latent space to be projected on the selected latent dimensions in the other figure.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib2, os, sys</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model_path <span class="op">=</span>  <span class="st">&#39;digit_bgplvm_demo.pickle&#39;</span> <span class="co"># local name for model file</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>status <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>re <span class="op">=</span> <span class="dv">0</span></span>
@@ -510,91 +317,40 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a h
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> status</span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Already cached, to reload run with &#39;reload&#39; as the only argument&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cPickle <span class="im">as</span> pickle</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cPickle <span class="im">as</span> pickle</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;./digit_bgplvm_demo.pickle&#39;</span>, <span class="st">&#39;rb&#39;</span>) <span class="im">as</span> f:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> pickle.load(f)</span></code></pre></div>
-<p>Prepare for plotting of this model. If you run on a webserver the
-interactive plotting will not work. Thus, you can skip to the next
-codeblock and run it on your own machine, later.</p>
+<p>Prepare for plotting of this model. If you run on a webserver the interactive plotting will not work. Thus, you can skip to the next codeblock and run it on your own machine, later.</p>
 <h3 id="observations">Observations</h3>
 <p>Confirm the following observations by interacting with the demo:</p>
 <ul>
-<li>We tend to obtain more “strange” outputs when sampling from latent
-space areas away from the training inputs.</li>
-<li>When sampling from the two dominant latent dimensions (the ones
-corresponding to large scales) we differentiate between all digits. Also
-note that projecting the latent space into the two dominant dimensions
-better separates the classes.</li>
-<li>When sampling from less dominant latent dimensions the outputs vary
-in a more subtle way.</li>
+<li>We tend to obtain more “strange” outputs when sampling from latent space areas away from the training inputs.</li>
+<li>When sampling from the two dominant latent dimensions (the ones corresponding to large scales) we differentiate between all digits. Also note that projecting the latent space into the two dominant dimensions better separates the classes.</li>
+<li>When sampling from less dominant latent dimensions the outputs vary in a more subtle way.</li>
 </ul>
 <p>You can also run the dimensionality reduction example</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>GPy.examples.dimensionality_reduction.bgplvm_simulation()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>GPy.examples.dimensionality_reduction.bgplvm_simulation()</span></code></pre></div>
 <h3 id="questions">Questions</h3>
 <ul>
-<li>Can you see a difference in the ARD parameters to the non Bayesian
-GPLVM?</li>
-<li>How does the Bayesian GPLVM allow the ARD parameters of the RBF
-kernel magnify the two first dimensions?</li>
-<li>Is Bayesian GPLVM better in differentiating between different kinds
-of digits?</li>
-<li>Why does the starting noise variance have to be lower then the
-variance of the observed values?</li>
-<li>How come we use the lowest variance when using a linear kernel, but
-the highest lengtscale when using an RBF kernel?</li>
+<li>Can you see a difference in the ARD parameters to the non Bayesian GPLVM?</li>
+<li>How does the Bayesian GPLVM allow the ARD parameters of the RBF kernel magnify the two first dimensions?</li>
+<li>Is Bayesian GPLVM better in differentiating between different kinds of digits?</li>
+<li>Why does the starting noise variance have to be lower then the variance of the observed values?</li>
+<li>How come we use the lowest variance when using a linear kernel, but the highest lengtscale when using an RBF kernel?</li>
 </ul>
-<h2
-id="data-for-blastocyst-development-in-mice-single-cell-taqman-arrays">Data
-for Blastocyst Development in Mice: Single Cell TaqMan Arrays</h2>
-<p>Now we analyze some single cell data from <span class="citation"
-data-cites="Guo:fate10">Guo et al. (2010)</span>. Tey performed qPCR
-TaqMan array on single cells from the developing blastocyst in mouse.
-The data is taken from the early stages of development when the
-Blastocyst is forming. At the 32 cell stage the data is already
-separated into the trophectoderm (TE) which goes onto form the placenta
-and the inner cellular mass (ICM). The ICM further differentiates into
-the epiblast (EPI)—which gives rise to the endoderm, mesoderm and
-ectoderm—and the primitive endoderm (PE) which develops into the
-amniotic sack. <span class="citation" data-cites="Guo:fate10">Guo et al.
-(2010)</span> selected 48 genes for expression measurement. They
-labelled the resulting cells and their labels are included as an aide to
-visualization.</p>
-<p>They first visualized their data using principal component analysis.
-In the first two principal components this fails to separate the
-domains. This is perhaps because the principal components are dominated
-by the variation in the 64 cell systems. This in turn may be because
-there are more cells from the data set in that regime, and may be
-because the natural variation is greater. We first recreate their
-visualization using principal component analysis.</p>
-<p>In this notebook we will perform PCA on the original data, showing
-that the different regimes do not separate.</p>
-<p>Next we load in the data. We’ve provided a convenience function for
-loading in the data with <code>pods</code>. It is loaded in as a
-<code>pandas</code> DataFrame. This allows us to summarize it with the
-<code>describe</code> attribute.</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.singlecell()</span>
+<h2 id="data-for-blastocyst-development-in-mice-single-cell-taqman-arrays">Data for Blastocyst Development in Mice: Single Cell TaqMan Arrays</h2>
+<p>Now we analyze some single cell data from <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span>. Tey performed qPCR TaqMan array on single cells from the developing blastocyst in mouse. The data is taken from the early stages of development when the Blastocyst is forming. At the 32 cell stage the data is already separated into the trophectoderm (TE) which goes onto form the placenta and the inner cellular mass (ICM). The ICM further differentiates into the epiblast (EPI)—which gives rise to the endoderm, mesoderm and ectoderm—and the primitive endoderm (PE) which develops into the amniotic sack. <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> selected 48 genes for expression measurement. They labelled the resulting cells and their labels are included as an aide to visualization.</p>
+<p>They first visualized their data using principal component analysis. In the first two principal components this fails to separate the domains. This is perhaps because the principal components are dominated by the variation in the 64 cell systems. This in turn may be because there are more cells from the data set in that regime, and may be because the natural variation is greater. We first recreate their visualization using principal component analysis.</p>
+<p>In this notebook we will perform PCA on the original data, showing that the different regimes do not separate.</p>
+<p>Next we load in the data. We’ve provided a convenience function for loading in the data with <code>pods</code>. It is loaded in as a <code>pandas</code> DataFrame. This allows us to summarize it with the <code>describe</code> attribute.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.singlecell()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Y.describe</span></code></pre></div>
 <h2 id="principal-component-analysis">Principal Component Analysis</h2>
-<p>Now we follow <span class="citation" data-cites="Guo:fate10">Guo et
-al. (2010)</span> in performing PCA on the data. Rather than calling a
-‘PCA routine’, here we break the algorithm down into its steps: compute
-the data covariance, compute the eigenvalues and eigenvectors and sort
-according to magnitude of eigenvalue. Because we want to visualize the
-data, we’ve chose to compute the eigenvectors of the <em>inner product
-matrix</em> rather than the covariance matrix. This allows us to plot
-the eigenvalues directly. However, this is less efficient (in this case
-because the number of genes is smaller than the number of data) than
-computing the eigendecomposition of the covariance matrix.</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain a centred version of data.</span></span>
+<p>Now we follow <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> in performing PCA on the data. Rather than calling a ‘PCA routine,’ here we break the algorithm down into its steps: compute the data covariance, compute the eigenvalues and eigenvectors and sort according to magnitude of eigenvalue. Because we want to visualize the data, we’ve chose to compute the eigenvectors of the <em>inner product matrix</em> rather than the covariance matrix. This allows us to plot the eigenvalues directly. However, this is less efficient (in this case because the number of genes is smaller than the number of data) than computing the eigendecomposition of the covariance matrix.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain a centred version of data.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>centredY <span class="op">=</span> Y <span class="op">-</span> Y.mean()</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compute inner product matrix</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.dot(centredY,centredY.T)</span>
@@ -604,42 +360,28 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a h
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ind <span class="op">=</span> V.argsort()</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ev <span class="op">=</span> V[ind[::<span class="op">-</span><span class="dv">1</span>]]</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> U[:, ind[::<span class="op">-</span><span class="dv">1</span>]]</span></code></pre></div>
-<p>To visualize the result, we now construct a simple helper function.
-This will ensure that the plots have the same legends as the GP-LVM
-plots we use below.</p>
+<p>To visualize the result, we now construct a simple helper function. This will ensure that the plots have the same legends as the GP-LVM plots we use below.</p>
 <h2 id="pca-result">PCA Result</h2>
-<p>Now, using the helper function we can plot the results with
-appropriate labels.</p>
+<p>Now, using the helper function we can plot the results with appropriate labels.</p>
 <div class="figure">
 <div id="singlecell-data-pca-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//datasets/singlecell-data-pca.svg" width="60%" style=" ">
 </object>
 </div>
-<div id="singlecell-data-pca-magnify" class="magnify"
-onclick="magnifyFigure(&#39;singlecell-data-pca&#39;)">
+<div id="singlecell-data-pca-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-data-pca&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="singlecell-data-pca-caption" class="caption-frame">
-<p>Figure: First two principal compoents of the <span class="citation"
-data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development
-data.</p>
+<p>Figure: First two principal compoents of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
 </div>
 </div>
 <h2 id="bayesian-gp-lvm">Bayesian GP-LVM</h2>
 <div style="text-align:right">
-<span class="editsection-bracket" style="">[</span><span
-class="editsection"
-style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
+<span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/talks/edit/gh-pages/_gplvm/includes/singlecell-bayes-gplvm.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<p>Here we show the new code that uses the Bayesian GP-LVM to fit the
-data. This means we can automatically determine the dimensionality of
-the model whilst fitting a non-linear dimensionality reduction. The
-approximations we use also mean that it is faster than the original
-GP-LVM.</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>kernel<span class="op">=</span>GPy.kern.RBF(<span class="dv">5</span>,ARD<span class="op">=</span><span class="dv">1</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">5</span>)</span>
+<p>Here we show the new code that uses the Bayesian GP-LVM to fit the data. This means we can automatically determine the dimensionality of the model whilst fitting a non-linear dimensionality reduction. The approximations we use also mean that it is faster than the original GP-LVM.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>kernel<span class="op">=</span>GPy.kern.RBF(<span class="dv">5</span>,ARD<span class="op">=</span><span class="dv">1</span>)<span class="op">+</span>GPy.kern.Bias(<span class="dv">5</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPy.models.BayesianGPLVM(Y.values, <span class="dv">5</span>, num_inducing<span class="op">=</span><span class="dv">15</span>, kernel<span class="op">=</span>kernel)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>model.optimize(messages<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <div class="figure">
@@ -647,14 +389,11 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a h
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gplvm/singlecell-bayes-gplvm.svg" width="60%" style=" ">
 </object>
 </div>
-<div id="singlecell-bayes-gplvm-magnify" class="magnify"
-onclick="magnifyFigure(&#39;singlecell-bayes-gplvm&#39;)">
+<div id="singlecell-bayes-gplvm-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-bayes-gplvm&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="singlecell-bayes-gplvm-caption" class="caption-frame">
-<p>Figure: Visualisation of the <span class="citation"
-data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development
-data with the Bayesian GP-LVM.</p>
+<p>Figure: Visualisation of the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data with the Bayesian GP-LVM.</p>
 </div>
 </div>
 <div class="figure">
@@ -662,122 +401,68 @@ data with the Bayesian GP-LVM.</p>
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//gplvm/singlecell-bayes-gplvm-ard.svg" width="80%" style=" ">
 </object>
 </div>
-<div id="singlecell-bayes-gplvm-ard-magnify" class="magnify"
-onclick="magnifyFigure(&#39;singlecell-bayes-gplvm-ard&#39;)">
+<div id="singlecell-bayes-gplvm-ard-magnify" class="magnify" onclick="magnifyFigure(&#39;singlecell-bayes-gplvm-ard&#39;)">
 <img class="img-button" src="{{ '/assets/images/Magnify_Large.svg' | relative_url }}" style="width:1.5ex">
 </div>
 <div id="singlecell-bayes-gplvm-ard-caption" class="caption-frame">
-<p>Figure: The ARD parameters of the Bayesian GP-LVM for the <span
-class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span>
-blastocyst development data.</p>
+<p>Figure: The ARD parameters of the Bayesian GP-LVM for the <span class="citation" data-cites="Guo:fate10">Guo et al. (2010)</span> blastocyst development data.</p>
 </div>
 </div>
-<p>This gives a really nice result. Broadly speaking two latent
-dimensions dominate the representation. When we visualize using these
-two dimensions we can see the entire cell phylogeny laid out nicely in
-the two dimensions.</p>
+<p>This gives a really nice result. Broadly speaking two latent dimensions dominate the representation. When we visualize using these two dimensions we can see the entire cell phylogeny laid out nicely in the two dimensions.</p>
 <h2 id="thanks">Thanks!</h2>
-<p>For more information on these subjects and more you might want to
-check the following resources.</p>
+<p>For more information on these subjects and more you might want to check the following resources.</p>
 <ul>
 <li>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></li>
-<li>podcast: <a href="http://thetalkingmachines.com">The Talking
-Machines</a></li>
-<li>newspaper: <a
-href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
-Page</a></li>
-<li>blog: <a
-href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
+<li>podcast: <a href="http://thetalkingmachines.com">The Talking Machines</a></li>
+<li>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></li>
+<li>blog: <a href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
 </ul>
 <h1 class="unnumbered" id="references">References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent"
-role="doc-bibliography">
-<div id="ref-Damianou:thesis2015" class="csl-entry"
-role="doc-biblioentry">
-Damianou, A., 2015. Deep <span>G</span>aussian processes and variational
-propagation of uncertainty (PhD thesis). University of Sheffield.
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-Damianou:thesis2015" class="csl-entry" role="doc-biblioentry">
+Damianou, A., 2015. Deep <span>G</span>aussian processes and variational propagation of uncertainty (PhD thesis). University of Sheffield.
 </div>
-<div id="ref-Damianou:variational15" class="csl-entry"
-role="doc-biblioentry">
-Damianou, A., Titsias, M.K., Lawrence, N.D., 2016. Variational inference
-for latent variables and uncertain inputs in <span>G</span>aussian
-processes. Journal of Machine Learning Research 17.
+<div id="ref-Damianou:variational15" class="csl-entry" role="doc-biblioentry">
+Damianou, A., Titsias, M.K., Lawrence, N.D., 2016. Variational inference for latent variables and uncertain inputs in <span>G</span>aussian processes. Journal of Machine Learning Research 17.
 </div>
-<div id="ref-deCampos-character09" class="csl-entry"
-role="doc-biblioentry">
-de Campos, T.E., Babu, B.R., Varma, M., 2009. Character recognition in
-natural images, in: Proceedings of the Fourth International Conference
-on Computer Vision Theory and Applications - Volume 2: VISAPP,
-(VISIGRAPP 2009). INSTICC; SciTePress, pp. 273–280. <a
-href="https://doi.org/10.5220/0001770102730280">https://doi.org/10.5220/0001770102730280</a>
+<div id="ref-deCampos-character09" class="csl-entry" role="doc-biblioentry">
+de Campos, T.E., Babu, B.R., Varma, M., 2009. Character recognition in natural images, in: Proceedings of the Fourth International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP, (VISIGRAPP 2009). INSTICC; SciTePress, pp. 273–280. <a href="https://doi.org/10.5220/0001770102730280">https://doi.org/10.5220/0001770102730280</a>
 </div>
 <div id="ref-Ek:ambiguity08" class="csl-entry" role="doc-biblioentry">
-Ek, C.H., Rihan, J., Torr, P.H.S., Rogez, G., Lawrence, N.D., 2008a.
-Ambiguity modeling in latent spaces, in: Popescu-Belis, A.,
-Stiefelhagen, R. (Eds.), Machine Learning for Multimodal Interaction
-(MLMI 2008), LNCS. Springer-Verlag, pp. 62–73.
+Ek, C.H., Rihan, J., Torr, P.H.S., Rogez, G., Lawrence, N.D., 2008a. Ambiguity modeling in latent spaces, in: Popescu-Belis, A., Stiefelhagen, R. (Eds.), Machine Learning for Multimodal Interaction (MLMI 2008), LNCS. Springer-Verlag, pp. 62–73.
 </div>
 <div id="ref-Ek:pose07" class="csl-entry" role="doc-biblioentry">
-Ek, C.H., Torr, P.H.S., Lawrence, N.D., 2008b. <span>G</span>aussian
-process latent variable models for human pose estimation, in:
-Popescu-Belis, A., Renals, S., Bourlard, H. (Eds.), Machine Learning for
-Multimodal Interaction (MLMI 2007), LNCS. Springer-Verlag, Brno, Czech
-Republic, pp. 132–143. <a
-href="https://doi.org/10.1007/978-3-540-78155-4_12">https://doi.org/10.1007/978-3-540-78155-4_12</a>
+Ek, C.H., Torr, P.H.S., Lawrence, N.D., 2008b. <span>G</span>aussian process latent variable models for human pose estimation, in: Popescu-Belis, A., Renals, S., Bourlard, H. (Eds.), Machine Learning for Multimodal Interaction (MLMI 2007), LNCS. Springer-Verlag, Brno, Czech Republic, pp. 132–143. <a href="https://doi.org/10.1007/978-3-540-78155-4_12">https://doi.org/10.1007/978-3-540-78155-4_12</a>
 </div>
 <div id="ref-Guo:fate10" class="csl-entry" role="doc-biblioentry">
-Guo, G., Huss, M., Tong, G.Q., Wang, C., Sun, L.L., Clarke, N.D.,
-Robsonemail, P., 2010. Resolution of cell fate decisions revealed by
-single-cell gene expression analysis from zygote to blastocyst.
-Developmental Cell 18, 675–685. <a
-href="https://doi.org/10.1016/j.devcel.2010.02.012">https://doi.org/10.1016/j.devcel.2010.02.012</a>
+Guo, G., Huss, M., Tong, G.Q., Wang, C., Sun, L.L., Clarke, N.D., Robsonemail, P., 2010. Resolution of cell fate decisions revealed by single-cell gene expression analysis from zygote to blastocyst. Developmental Cell 18, 675–685. <a href="https://doi.org/10.1016/j.devcel.2010.02.012">https://doi.org/10.1016/j.devcel.2010.02.012</a>
 </div>
 <div id="ref-Klami:local07" class="csl-entry" role="doc-biblioentry">
 Klami, A., Kaski, S., n.d. Local dependent components analysis.
 </div>
-<div id="ref-Klami:probabilistic08" class="csl-entry"
-role="doc-biblioentry">
-Klami, A., Kaski, S., 2008. Probabilistic approach to detecting
-dependencies between data sets. Neurocomputing 72, 39–46.
+<div id="ref-Klami:probabilistic08" class="csl-entry" role="doc-biblioentry">
+Klami, A., Kaski, S., 2008. Probabilistic approach to detecting dependencies between data sets. Neurocomputing 72, 39–46.
 </div>
 <div id="ref-Leen:gplvmcca06" class="csl-entry" role="doc-biblioentry">
-Leen, G., Fyfe, C., 2006. A <span>G</span>aussian process latent
-variable model formulation of canonical correlation analysis, in:
-European Symposium on Artificial Neural Networks. Bruges (Belgium).
+Leen, G., Fyfe, C., 2006. A <span>G</span>aussian process latent variable model formulation of canonical correlation analysis, in: European Symposium on Artificial Neural Networks. Bruges (Belgium).
 </div>
-<div id="ref-Navaratnam:joint07" class="csl-entry"
-role="doc-biblioentry">
-Navaratnam, R., Fitzgibbon, A., Cipolla, R., 2007. The joint manifold
-model for semi-supervised multi-valued regression, in: IEEE
-International Conference on Computer Vision (ICCV). IEEE Computer
-Society Press.
+<div id="ref-Navaratnam:joint07" class="csl-entry" role="doc-biblioentry">
+Navaratnam, R., Fitzgibbon, A., Cipolla, R., 2007. The joint manifold model for semi-supervised multi-valued regression, in: IEEE International Conference on Computer Vision (ICCV). IEEE Computer Society Press.
 </div>
-<div id="ref-Salimbeni:doubly2017" class="csl-entry"
-role="doc-biblioentry">
-Salimbeni, H., Deisenroth, M., 2017. <a
-href="http://papers.nips.cc/paper/7045-doubly-stochastic-variational-inference-for-deep-gaussian-processes.pdf">Doubly
-stochastic variational inference for deep <span>G</span>aussian
-processes</a>, in: Guyon, I., Luxburg, U.V., Bengio, S., Wallach, H.,
-Fergus, R., Vishwanathan, S., Garnett, R. (Eds.), Advances in Neural
-Information Processing Systems 30. Curran Associates, Inc., pp.
-4591–4602.
+<div id="ref-Salimbeni:doubly2017" class="csl-entry" role="doc-biblioentry">
+Salimbeni, H., Deisenroth, M., 2017. Doubly stochastic variational inference for deep <span>G</span>aussian processes, in: Guyon, I., Luxburg, U.V., Bengio, S., Wallach, H., Fergus, R., Vishwanathan, S., Garnett, R. (Eds.), Advances in Neural Information Processing Systems 30. Curran Associates, Inc., pp. 4591–4602.
 </div>
 <div id="ref-Shon:learning05" class="csl-entry" role="doc-biblioentry">
-Shon, A.P., Grochow, K., Hertzmann, A., Rao, R.P.N., n.d. Learning
-shared latent structure for image synthesis and robotic imitation.
+Shon, A.P., Grochow, K., Hertzmann, A., Rao, R.P.N., n.d. Learning shared latent structure for image synthesis and robotic imitation.
 </div>
-<div id="ref-Titsias:bayesGPLVM10" class="csl-entry"
-role="doc-biblioentry">
-Titsias, M.K., Lawrence, N.D., 2010. Bayesian <span>G</span>aussian
-process latent variable model. pp. 844–851.
+<div id="ref-Titsias:bayesGPLVM10" class="csl-entry" role="doc-biblioentry">
+Titsias, M.K., Lawrence, N.D., 2010. Bayesian <span>G</span>aussian process latent variable model. pp. 844–851.
 </div>
 <div id="ref-Tucker:battery58" class="csl-entry" role="doc-biblioentry">
-Tucker, L.R., 1958. An inter-battery method of factor analysis.
-Psychometrika 23, 111–136.
+Tucker, L.R., 1958. An inter-battery method of factor analysis. Psychometrika 23, 111–136.
 </div>
 <div id="ref-Klami:group11" class="csl-entry" role="doc-biblioentry">
-Virtanen, S., Klami, A., Kaski, S., n.d. Bayesian <span>CCA</span> via
-group sparsity.
+Virtanen, S., Klami, A., Kaski, S., n.d. Bayesian <span>CCA</span> via group sparsity.
 </div>
 </div>
 
