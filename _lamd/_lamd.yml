@@ -9,20 +9,33 @@ author:
 layout: lecture
 venue: Gaussian Process Summer School
 talkcss: https://inverseprobability.com/assets/css/talks.css
-postsdir: ../../../mlatcl/gpss/_lectures/
-slidesdir: ../../../mlatcl/gpss/slides/
-notesdir: ../../../mlatcl/gpss/_notes/
-notebooksdir: ../../../mlatcl/gpss/_notebooks/
+bibdir: $HOME/lawrennd/bibliography
+postsdir: ../_lectures/
+slidesdir: ../slides/
+notesdir: ../_notes/
+notebooksdir: ../_notebooks/
+practicalsdir: ../_practicals/
+snippetsdir: $HOME/lawrennd/snippets
 writediagramsdir: .
-scriptsdir: ../scripts/
+scriptsdir: ./scripts/
 diagramsdir: ./slides/diagrams/
-potx: ../_includes/custom-reference.potx 
-dotx: ../_includes/custom-reference.dotx
+posts: True
+docx: False
+notespdf: False
+slidesipynb: False
+pptx: True
+pdf: False
+assignment: False
+ipynb: True
+reveal: True
 transition: None
+potx: custom-reference.potx 
+dotx: custom-reference.dotx
 baseurl: "gpss/" # the subpath of your site, e.g. /blog/
 url: "https://mlatcl.github.io/" # the base hostname & protocol for your site
+transition: None
 ghub:
-- organization: lawrennd
-  repository: talks
+- organization: mlatcl
+  repository: gpss
   branch: gh-pages
-  directory: _gpss
+  directory: _lamd

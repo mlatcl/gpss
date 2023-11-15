@@ -56,17 +56,24 @@
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="figure">
-<div id="gaussian-processes-for-machine-learning-figure" class="figure-frame">
-<div class="centered centered" style="">
+<div id="gaussian-processes-for-machine-learning-figure"
+class="figure-frame">
+<div class="centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//gp/rasmussen-williams-book.jpg" width="50%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 <aside class="notes">
-A key reference for Gaussian process models remains the excellent book “Gaussian Processes for Machine Learning” (<span class="citation" data-cites="Rasmussen:book06">Rasmussen and Williams (2006)</span>). The book is also <a href="http://www.gaussianprocess.org/gpml/" target="_blank">freely available online</a>.
+A key reference for Gaussian process models remains the excellent book
+“Gaussian Processes for Machine Learning” (<span class="citation"
+data-cites="Rasmussen:book06">Rasmussen and Williams (2006)</span>). The
+book is also
+<a href="http://www.gaussianprocess.org/gpml/" target="_blank">freely
+available online</a>.
 </aside>
 <div style="text-align:right">
-<span class="citation" data-cites="Rasmussen:book06">Rasmussen and Williams (2006)</span>
+<span class="citation" data-cites="Rasmussen:book06">Rasmussen and
+Williams (2006)</span>
 </div>
 <!-- SECTION What is Machine Learning? -->
 </section>
@@ -76,39 +83,52 @@ A key reference for Gaussian process models remains the excellent book “Gaussi
 <section id="what-is-machine-learning-1" class="slide level2">
 <h2>What is Machine Learning?</h2>
 <div class="fragment">
-<p><span class="math display">\[ \text{data} + \text{model} \stackrel{\text{compute}}{\rightarrow} \text{prediction}\]</span></p>
+<p><span class="math display">\[ \text{data} + \text{model}
+\stackrel{\text{compute}}{\rightarrow} \text{prediction}\]</span></p>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>data</strong> : observations, could be actively or passively acquired (meta-data).</li>
+<li><strong>data</strong> : observations, could be actively or passively
+acquired (meta-data).</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>model</strong> : assumptions, based on previous experience (other data! transfer learning etc), or beliefs about the regularities of the universe. Inductive bias.</li>
+<li><strong>model</strong> : assumptions, based on previous experience
+(other data! transfer learning etc), or beliefs about the regularities
+of the universe. Inductive bias.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>prediction</strong> : an action to be taken or a categorization or a quality score.</li>
+<li><strong>prediction</strong> : an action to be taken or a
+categorization or a quality score.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Royal Society Report: <a href="https://royalsociety.org/~/media/policy/projects/machine-learning/publications/machine-learning-report.pdf">Machine Learning: Power and Promise of Computers that Learn by Example</a></li>
+<li>Royal Society Report: <a
+href="https://royalsociety.org/~/media/policy/projects/machine-learning/publications/machine-learning-report.pdf">Machine
+Learning: Power and Promise of Computers that Learn by Example</a></li>
 </ul>
 </div>
 </section>
 <section id="what-is-machine-learning-2" class="slide level2">
 <h2>What is Machine Learning?</h2>
-<p><span class="math display">\[\text{data} + \text{model} \stackrel{\text{compute}}{\rightarrow} \text{prediction}\]</span></p>
+<p><span class="math display">\[\text{data} + \text{model}
+\stackrel{\text{compute}}{\rightarrow} \text{prediction}\]</span></p>
 <ul>
 <li class="fragment">To combine data with a model need:</li>
-<li class="fragment"><strong>a prediction function</strong> <span class="math inline">\(f(\cdot)\)</span> includes our beliefs about the regularities of the universe</li>
-<li class="fragment"><strong>an objective function</strong> <span class="math inline">\(E(\cdot)\)</span> defines the cost of misprediction.</li>
+<li class="fragment"><strong>a prediction function</strong> <span
+class="math inline">\(f(\cdot)\)</span> includes our beliefs about the
+regularities of the universe</li>
+<li class="fragment"><strong>an objective function</strong> <span
+class="math inline">\(E(\cdot)\)</span> defines the cost of
+misprediction.</li>
 </ul>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
@@ -118,26 +138,36 @@ A key reference for Gaussian process models remains the excellent book “Gaussi
 </div>
 </div>
 <aside class="notes">
-GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+GPy is a BSD licensed software code base for implementing Gaussian
+process models in Python. It is designed for teaching and modelling. We
+welcome contributions which can be made through the GitHub repository <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </aside>
 <center>
-<a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+<a href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </center>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python-1" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python-1"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <ul>
 <li>BSD Licensed software base.</li>
 <li>Wide availability of libraries, ‘modern’ scripting language.</li>
-<li>Allows us to set projects to undergraduates in Comp Sci that use GPs.</li>
-<li>Available through GitHub <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></li>
+<li>Allows us to set projects to undergraduates in Comp Sci that use
+GPs.</li>
+<li>Available through GitHub <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a></li>
 <li>Reproducible Research with Jupyter Notebook.</li>
 </ul>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
 <ul>
-<li>Probabilistic-style programming (specify the model, not the algorithm).</li>
+<li>Probabilistic-style programming (specify the model, not the
+algorithm).</li>
 <li>Non-Gaussian likelihoods.</li>
 <li>Multivariate outputs.</li>
 <li>Dimensionality reduction.</li>
@@ -153,14 +183,16 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 <li>Gold medal times for Olympic Marathon since 1896.</li>
 <li>Marathons before 1924 didn’t have a standardized distance.</li>
 <li>Present results using pace per km.</li>
-<li>In 1904 Marathon was badly organized leading to very slow times.</li>
+<li>In 1904 Marathon was badly organized leading to very slow
+times.</li>
 </ul>
 </td>
 <td width="30%">
-<div class="centered centered" style="">
+<div class="centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//Stephen_Kiprotich.jpg" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
-<small>Image from Wikimedia Commons <a href="http://bit.ly/16kMKHQ" class="uri">http://bit.ly/16kMKHQ</a></small>
+<small>Image from Wikimedia Commons <a href="http://bit.ly/16kMKHQ"
+class="uri">http://bit.ly/16kMKHQ</a></small>
 </td>
 </tr>
 </table>
@@ -185,7 +217,10 @@ Olympic marathon pace times since 1896.
 <script>
 showDivs(1, 'over_determined_system');
 </script>
-<p><small></small> <input id="range-over_determined_system" type="range" min="1" max="8" value="1" onchange="setDivs('over_determined_system')" oninput="setDivs('over_determined_system')"> <button onclick="plusDivs(-1, 'over_determined_system')">❮</button> <button onclick="plusDivs(1, 'over_determined_system')">❯</button></p>
+<p><small></small>
+<input id="range-over_determined_system" type="range" min="1" max="8" value="1" onchange="setDivs('over_determined_system')" oninput="setDivs('over_determined_system')">
+<button onclick="plusDivs(-1, 'over_determined_system')">❮</button>
+<button onclick="plusDivs(1, 'over_determined_system')">❯</button></p>
 <div class="over_determined_system" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//ml/over_determined_system001.svg" width="40%" style=" ">
 </object>
@@ -218,17 +253,20 @@ showDivs(1, 'over_determined_system');
 <section id="y-mx-c" class="slide level2">
 <h2><span class="math inline">\(y= mx+ c\)</span></h2>
 <div class="fragment">
-<p>point 1: <span class="math inline">\(x= 1\)</span>, <span class="math inline">\(y=3\)</span> <span class="math display">\[
+<p>point 1: <span class="math inline">\(x= 1\)</span>, <span
+class="math inline">\(y=3\)</span> <span class="math display">\[
 3 = m + c
 \]</span></p>
 </div>
 <div class="fragment">
-<p>point 2: <span class="math inline">\(x= 3\)</span>, <span class="math inline">\(y=1\)</span> <span class="math display">\[
+<p>point 2: <span class="math inline">\(x= 3\)</span>, <span
+class="math inline">\(y=1\)</span> <span class="math display">\[
 1 = 3m + c
 \]</span></p>
 </div>
 <div class="fragment">
-<p>point 3: <span class="math inline">\(x= 2\)</span>, <span class="math inline">\(y=2.5\)</span> <span class="math display">\[
+<p>point 3: <span class="math inline">\(x= 2\)</span>, <span
+class="math inline">\(y=2.5\)</span> <span class="math display">\[
 2.5 = 2m + c
 \]</span></p>
 </div>
@@ -252,7 +290,9 @@ Pierre-Simon Laplace 1749-1827.
 <section id="section-3" class="slide level2">
 <h2></h2>
 <div class="centered" style="">
-<a href="https://play.google.com/books/reader?id=1YQPAAAAQAAJ&amp;pg=PR17-IA2"><img data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/1YQPAAAAQAAJ-PR17-IA2.png" /></a>
+<a
+href="https://play.google.com/books/reader?id=1YQPAAAAQAAJ&amp;pg=PR17-IA2"><img
+data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/1YQPAAAAQAAJ-PR17-IA2.png" /></a>
 </div>
 </section>
 <section id="section-4" class="slide level2">
@@ -291,7 +331,9 @@ Laplace’s determinsim in English translation.
 <section id="section-6" class="slide level2">
 <h2></h2>
 <div class="centered" style="">
-<a href="https://play.google.com/books/reader?id=1YQPAAAAQAAJ&amp;pg=PR17-IA4"><img data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/1YQPAAAAQAAJ-PR17-IA4.png" /></a>
+<a
+href="https://play.google.com/books/reader?id=1YQPAAAAQAAJ&amp;pg=PR17-IA4"><img
+data-src="https://mlatcl.github.io/gpss/./slides/diagrams//books/1YQPAAAAQAAJ-PR17-IA4.png" /></a>
 </div>
 </section>
 <section id="section-7" class="slide level2">
@@ -304,13 +346,15 @@ Laplace’s determinsim in English translation.
 </div>
 </div>
 <aside class="notes">
-To Laplace, determinism is a strawman. Ignorance of mechanism and data leads to uncertainty which should be dealt with through probability.
+To Laplace, determinism is a strawman. Ignorance of mechanism and data
+leads to uncertainty which should be dealt with through probability.
 </aside>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
 <div class="figure">
-<div id="probability-relative-in-part-cropped-figure" class="figure-frame">
+<div id="probability-relative-in-part-cropped-figure"
+class="figure-frame">
 <div class="centered" style="">
 <img class="" src="https://mlatcl.github.io/gpss/./slides/diagrams//physics/philosophicaless00lapliala_18_cropped.png" width="60%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
@@ -331,24 +375,29 @@ To Laplace, determinism is a strawman. Ignorance of mechanism and data leads to 
 <section id="y-mx-c-epsilon" class="slide level2">
 <h2><span class="math inline">\(y= mx+ c + \epsilon\)</span></h2>
 <div class="fragment">
-<p>point 1: <span class="math inline">\(x= 1\)</span>, <span class="math inline">\(y=3\)</span> [ 3 = m + c + _1 ]</p>
+<p>point 1: <span class="math inline">\(x= 1\)</span>, <span
+class="math inline">\(y=3\)</span> [ 3 = m + c + _1 ]</p>
 </div>
 <div class="fragment">
-<p>point 2: <span class="math inline">\(x= 3\)</span>, <span class="math inline">\(y=1\)</span> [ 1 = 3m + c + _2 ]</p>
+<p>point 2: <span class="math inline">\(x= 3\)</span>, <span
+class="math inline">\(y=1\)</span> [ 1 = 3m + c + _2 ]</p>
 </div>
 <div class="fragment">
-<p>point 3: <span class="math inline">\(x= 2\)</span>, <span class="math inline">\(y=2.5\)</span> [ 2.5 = 2m + c + _3 ]</p>
+<p>point 3: <span class="math inline">\(x= 2\)</span>, <span
+class="math inline">\(y=2.5\)</span> [ 2.5 = 2m + c + _3 ]</p>
 </div>
 </section>
 <section id="a-probabilistic-process" class="slide level2">
 <h2>A Probabilistic Process</h2>
 <div class="fragment">
-<p>Set the mean of Gaussian to be a function. <span class="math display">\[
-p\left(y_i|x_i\right)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp \left(-\frac{\left(y_i-f\left(x_i\right)\right)^{2}}{2\sigma^2}\right).
+<p>Set the mean of Gaussian to be a function. <span
+class="math display">\[
+p\left(y_i|x_i\right)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp
+\left(-\frac{\left(y_i-f\left(x_i\right)\right)^{2}}{2\sigma^2}\right).
 \]</span></p>
 </div>
 <div class="fragment">
-<p>This gives us a ‘noisy function.’</p>
+<p>This gives us a ‘noisy function’.</p>
 </div>
 <div class="fragment">
 <p>This is known as a stochastic process.</p>
@@ -361,7 +410,10 @@ p\left(y_i|x_i\right)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp \left(-\frac{\left(y_i-f
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\begin{align}
-  p(y| \mu, \sigma^2) &amp; = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(y- \mu)^2}{2\sigma^2}\right)\\&amp; \buildrel\triangle\over = \mathcal{N}\left(y|\mu,\sigma^2\right)
+  p(y| \mu, \sigma^2) &amp; =
+\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(y-
+\mu)^2}{2\sigma^2}\right)\\&amp; \buildrel\triangle\over =
+\mathcal{N}\left(y|\mu,\sigma^2\right)
   \end{align}\]</span></p>
 </div>
 </section>
@@ -374,17 +426,22 @@ p\left(y_i|x_i\right)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp \left(-\frac{\left(y_i-f
 </div>
 </div>
 <aside class="notes">
-The Gaussian PDF with <span class="math inline">\({\mu}=1.7\)</span> and variance <span class="math inline">\({\sigma}^2=0.0225\)</span>. Mean shown as cyan line. It could represent the heights of a population of students.
+The Gaussian PDF with <span class="math inline">\({\mu}=1.7\)</span> and
+variance <span class="math inline">\({\sigma}^2=0.0225\)</span>. Mean
+shown as cyan line. It could represent the heights of a population of
+students.
 </aside>
 </section>
 <section id="gaussian-density-1" class="slide level2">
 <h2>Gaussian Density</h2>
 <p><large><span class="math display">\[
-\mathcal{N}\left(y|\mu,\sigma^2\right) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y-\mu)^2}{2\sigma^2}\right)
+\mathcal{N}\left(y|\mu,\sigma^2\right) = \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left(-\frac{(y-\mu)^2}{2\sigma^2}\right)
 \]</span></large></p>
 <div class="fragment">
 <center>
-<span class="math inline">\(\sigma^2\)</span> is the variance of the density and <span class="math inline">\(\mu\)</span> is the mean.
+<span class="math inline">\(\sigma^2\)</span> is the variance of the
+density and <span class="math inline">\(\mu\)</span> is the mean.
 </center>
 </div>
 </section>
@@ -397,18 +454,23 @@ The Gaussian PDF with <span class="math inline">\({\mu}=1.7\)</span> and varianc
 <div style="text-align:left">
 Sum of Gaussian variables is also Gaussian.
 </div>
-<p><span class="math display">\[y_i \sim \mathcal{N}\left(\mu_i,\sigma_i^2\right)\]</span></p>
+<p><span class="math display">\[y_i \sim
+\mathcal{N}\left(\mu_i,\sigma_i^2\right)\]</span></p>
 </div>
 <div class="fragment">
 <div style="text-align:left">
 And the sum is distributed as
 </div>
 <p><span class="math display">\[
-\sum_{i=1}^{n} y_i \sim \mathcal{N}\left(\sum_{i=1}^n\mu_i,\sum_{i=1}^n\sigma_i^2\right)
+\sum_{i=1}^{n} y_i \sim
+\mathcal{N}\left(\sum_{i=1}^n\mu_i,\sum_{i=1}^n\sigma_i^2\right)
 \]</span></p>
 </div>
 <div class="fragment">
-<p><small>(<em>Aside</em>: As sum increases, sum of non-Gaussian, finite variance variables is also Gaussian because of <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a>.)</small></p>
+<p><small>(<em>Aside</em>: As sum increases, sum of non-Gaussian, finite
+variance variables is also Gaussian because of <a
+href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit
+theorem</a>.)</small></p>
 </div>
 </section>
 <section id="scaling-a-gaussian" class="slide level2">
@@ -419,22 +481,28 @@ Scaling a Gaussian leads to a Gaussian.
 </div>
 </div>
 <div class="fragment">
-<p><span class="math display">\[y\sim \mathcal{N}\left(\mu,\sigma^2\right)\]</span></p>
+<p><span class="math display">\[y\sim
+\mathcal{N}\left(\mu,\sigma^2\right)\]</span></p>
 </div>
 <div class="fragment">
 <div style="text-align:left">
 And the scaled variable is distributed as
 </div>
-<p><span class="math display">\[wy\sim \mathcal{N}\left(w\mu,w^2 \sigma^2\right).\]</span></p>
+<p><span class="math display">\[wy\sim \mathcal{N}\left(w\mu,w^2
+\sigma^2\right).\]</span></p>
 </div>
 </section>
 <section id="regression-examples" class="slide level2">
 <h2>Regression Examples</h2>
 <ul>
-<li>Predict a real value, <span class="math inline">\(y_i\)</span> given some inputs <span class="math inline">\(\mathbf{ x}_i\)</span>.</li>
-<li>Predict quality of meat given spectral measurements (Tecator data).</li>
-<li>Radiocarbon dating, the C14 calibration curve: predict age given quantity of C14 isotope.</li>
-<li>Predict quality of different Go or Backgammon moves given expert rated training data.</li>
+<li>Predict a real value, <span class="math inline">\(y_i\)</span> given
+some inputs <span class="math inline">\(\mathbf{ x}_i\)</span>.</li>
+<li>Predict quality of meat given spectral measurements (Tecator
+data).</li>
+<li>Radiocarbon dating, the C14 calibration curve: predict age given
+quantity of C14 isotope.</li>
+<li>Predict quality of different Go or Backgammon moves given expert
+rated training data.</li>
 </ul>
 <!-- SECTION Underdetermined System -->
 </section>
@@ -444,10 +512,13 @@ And the scaled variable is distributed as
 <section id="underdetermined-system-1" class="slide level2">
 <h2>Underdetermined System</h2>
 <ul>
-<li>What about two unknowns and <em>one</em> observation? <span class="math display">\[y_1 =  mx_1 + c\]</span></li>
+<li>What about two unknowns and <em>one</em> observation? <span
+class="math display">\[y_1 =  mx_1 + c\]</span></li>
 </ul>
 <div class="fragment">
-<p>Can compute <span class="math inline">\(m\)</span> given <span class="math inline">\(c\)</span>. <span class="math display">\[m = \frac{y_1 - c}{x}\]</span></p>
+<p>Can compute <span class="math inline">\(m\)</span> given <span
+class="math inline">\(c\)</span>. <span class="math display">\[m =
+\frac{y_1 - c}{x}\]</span></p>
 </div>
 </section>
 <section id="underdetermined-system-2" class="slide level2">
@@ -455,7 +526,10 @@ And the scaled variable is distributed as
 <script>
 showDivs(0, 'under_determined_system');
 </script>
-<p><small></small> <input id="range-under_determined_system" type="range" min="0" max="9" value="0" onchange="setDivs('under_determined_system')" oninput="setDivs('under_determined_system')"> <button onclick="plusDivs(-1, 'under_determined_system')">❮</button> <button onclick="plusDivs(1, 'under_determined_system')">❯</button></p>
+<p><small></small>
+<input id="range-under_determined_system" type="range" min="0" max="9" value="0" onchange="setDivs('under_determined_system')" oninput="setDivs('under_determined_system')">
+<button onclick="plusDivs(-1, 'under_determined_system')">❮</button>
+<button onclick="plusDivs(1, 'under_determined_system')">❯</button></p>
 <div class="under_determined_system" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//ml/under_determined_system000.svg" width="40%" style=" ">
 </object>
@@ -500,19 +574,24 @@ showDivs(0, 'under_determined_system');
 <section id="overdetermined-system-1" class="slide level2">
 <h2>Overdetermined System</h2>
 <ul>
-<li><p>With two unknowns and two observations: <span class="math display">\[
+<li><p>With two unknowns and two observations: <span
+class="math display">\[
   \begin{aligned}
         y_1 = &amp; mx_1 + c\\
         y_2 = &amp; mx_2 + c
   \end{aligned}
   \]</span></p></li>
-<li><p>Additional observation leads to <em>overdetermined</em> system. <span class="math display">\[y_3 =  mx_3 + c\]</span></p></li>
+<li><p>Additional observation leads to <em>overdetermined</em> system.
+<span class="math display">\[y_3 =  mx_3 + c\]</span></p></li>
 </ul>
 </section>
 <section id="overdetermined-system-2" class="slide level2">
 <h2>Overdetermined System</h2>
 <ul>
-<li>This problem is solved through a noise model <span class="math inline">\(\epsilon\sim \mathcal{N}\left(0,\sigma^2\right)\)</span> <span class="math display">\[\begin{aligned}
+<li>This problem is solved through a noise model <span
+class="math inline">\(\epsilon\sim
+\mathcal{N}\left(0,\sigma^2\right)\)</span> <span
+class="math display">\[\begin{aligned}
         y_1 = mx_1 + c + \epsilon_1\\
         y_2 = mx_2 + c + \epsilon_2\\
         y_3 = mx_3 + c + \epsilon_3
@@ -525,18 +604,23 @@ showDivs(0, 'under_determined_system');
 <li>We aren’t modeling entire system.</li>
 <li>Noise model gives mismatch between model and data.</li>
 <li>Gaussian model justified by appeal to central limit theorem.</li>
-<li>Other models also possible (Student-<span class="math inline">\(t\)</span> for heavy tails).</li>
-<li>Maximum likelihood with Gaussian noise leads to <em>least squares</em>.</li>
+<li>Other models also possible (Student-<span
+class="math inline">\(t\)</span> for heavy tails).</li>
+<li>Maximum likelihood with Gaussian noise leads to <em>least
+squares</em>.</li>
 </ul>
 </section>
-<section id="probability-for-under--and-overdetermined" class="slide level2">
+<section id="probability-for-under--and-overdetermined"
+class="slide level2">
 <h2>Probability for Under- and Overdetermined</h2>
 <ul>
-<li>To deal with overdetermined introduced probability distribution for ‘variable,’ <span class="math inline">\({\epsilon}_i\)</span>.</li>
+<li>To deal with overdetermined introduced probability distribution for
+‘variable’, <span class="math inline">\({\epsilon}_i\)</span>.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li>For underdetermined system introduced probability distribution for ‘parameter,’ <span class="math inline">\(c\)</span>.</li>
+<li>For underdetermined system introduced probability distribution for
+‘parameter’, <span class="math inline">\(c\)</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -548,21 +632,26 @@ showDivs(0, 'under_determined_system');
 <section id="different-types-of-uncertainty" class="slide level2">
 <h2>Different Types of Uncertainty</h2>
 <ul>
-<li>The first type of uncertainty we are assuming is <em>aleatoric</em> uncertainty.</li>
-<li>The second type of uncertainty we are assuming is <em>epistemic</em> uncertainty.</li>
+<li>The first type of uncertainty we are assuming is <em>aleatoric</em>
+uncertainty.</li>
+<li>The second type of uncertainty we are assuming is <em>epistemic</em>
+uncertainty.</li>
 </ul>
 </section>
 <section id="aleatoric-uncertainty" class="slide level2">
 <h2>Aleatoric Uncertainty</h2>
 <ul>
-<li>This is uncertainty we couldn’t know even if we wanted to. e.g. the result of a football match before it’s played.</li>
+<li>This is uncertainty we couldn’t know even if we wanted to. e.g. the
+result of a football match before it’s played.</li>
 <li>Where a sheet of paper might land on the floor.</li>
 </ul>
 </section>
 <section id="epistemic-uncertainty" class="slide level2">
 <h2>Epistemic Uncertainty</h2>
 <ul>
-<li>This is uncertainty we could in principle know the answer too. We just haven’t observed enough yet, e.g. the result of a football match <em>after</em> it’s played.</li>
+<li>This is uncertainty we could in principle know the answer too. We
+just haven’t observed enough yet, e.g. the result of a football match
+<em>after</em> it’s played.</li>
 <li>What colour socks your lecturer is wearing.</li>
 </ul>
 </section>
@@ -573,21 +662,28 @@ showDivs(0, 'under_determined_system');
 <h2>Prior Distribution</h2>
 <ul>
 <li><p>Bayesian inference requires a prior on the parameters.</p></li>
-<li><p>The prior represents your belief <em>before</em> you see the data of the likely value of the parameters.</p></li>
-<li><p>For linear regression, consider a Gaussian prior on the intercept:</p>
-<p><span class="math display">\[c \sim \mathcal{N}\left(0,\alpha_1\right)\]</span></p></li>
+<li><p>The prior represents your belief <em>before</em> you see the data
+of the likely value of the parameters.</p></li>
+<li><p>For linear regression, consider a Gaussian prior on the
+intercept:</p>
+<p><span class="math display">\[c \sim
+\mathcal{N}\left(0,\alpha_1\right)\]</span></p></li>
 </ul>
 </section>
 <section id="posterior-distribution" class="slide level2">
 <h2>Posterior Distribution</h2>
 <ul>
-<li><p>Posterior distribution is found by combining the prior with the likelihood.</p></li>
-<li><p>Posterior distribution is your belief <em>after</em> you see the data of the likely value of the parameters.</p></li>
-<li><p>The posterior is found through <strong>Bayes’ Rule</strong> <span class="math display">\[
+<li><p>Posterior distribution is found by combining the prior with the
+likelihood.</p></li>
+<li><p>Posterior distribution is your belief <em>after</em> you see the
+data of the likely value of the parameters.</p></li>
+<li><p>The posterior is found through <strong>Bayes’ Rule</strong> <span
+class="math display">\[
 p(c|y) = \frac{p(y|c)p(c)}{p(y)}
 \]</span></p>
 <p><span class="math display">\[
-\text{posterior} = \frac{\text{likelihood}\times \text{prior}}{\text{marginal likelihood}}.
+\text{posterior} = \frac{\text{likelihood}\times
+\text{prior}}{\text{marginal likelihood}}.
 \]</span></p></li>
 </ul>
 </section>
@@ -596,7 +692,10 @@ p(c|y) = \frac{p(y|c)p(c)}{p(y)}
 <script>
 showDivs(1, 'dem_gaussian');
 </script>
-<p><small></small> <input id="range-dem_gaussian" type="range" min="1" max="3" value="1" onchange="setDivs('dem_gaussian')" oninput="setDivs('dem_gaussian')"> <button onclick="plusDivs(-1, 'dem_gaussian')">❮</button> <button onclick="plusDivs(1, 'dem_gaussian')">❯</button></p>
+<p><small></small>
+<input id="range-dem_gaussian" type="range" min="1" max="3" value="1" onchange="setDivs('dem_gaussian')" oninput="setDivs('dem_gaussian')">
+<button onclick="plusDivs(-1, 'dem_gaussian')">❮</button>
+<button onclick="plusDivs(1, 'dem_gaussian')">❯</button></p>
 <div class="dem_gaussian" style="text-align:center;">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/./slides/diagrams//ml/dem_gaussian001.svg" width="70%" style=" ">
 </object>
@@ -610,15 +709,21 @@ showDivs(1, 'dem_gaussian');
 </object>
 </div>
 </section>
-<section id="stages-to-derivation-of-the-posterior" class="slide level2">
+<section id="stages-to-derivation-of-the-posterior"
+class="slide level2">
 <h2>Stages to Derivation of the Posterior</h2>
 <ul>
 <li>Multiply likelihood by prior
 <ul>
-<li>they are “exponentiated quadratics,” the answer is always also an exponentiated quadratic because <span class="math inline">\(\exp(a^2)\exp(b^2) = \exp(a^2 + b^2)\)</span>.</li>
+<li>they are “exponentiated quadratics”, the answer is always also an
+exponentiated quadratic because <span
+class="math inline">\(\exp(a^2)\exp(b^2) = \exp(a^2 +
+b^2)\)</span>.</li>
 </ul></li>
-<li>Complete the square to get the resulting density in the form of a Gaussian.</li>
-<li>Recognise the mean and (co)variance of the Gaussian. This is the estimate of the posterior.</li>
+<li>Complete the square to get the resulting density in the form of a
+Gaussian.</li>
+<li>Recognise the mean and (co)variance of the Gaussian. This is the
+estimate of the posterior.</li>
 </ul>
 </section>
 <section id="multivariate-system" class="slide level2">
@@ -630,9 +735,13 @@ showDivs(1, 'dem_gaussian');
 <ul>
 <li>E.g. for multivariate linear regression:</li>
 </ul>
-<p><span class="math display">\[y_i = \sum_j w_j x_{i, j} + \epsilon_i,\]</span></p>
-<p><span class="math display">\[y_i = \mathbf{ w}^\top \mathbf{ x}_{i, :} + \epsilon_i.\]</span></p>
-<p>(where we’ve dropped <span class="math inline">\(c\)</span> for convenience), we need a prior over <span class="math inline">\(\mathbf{ w}\)</span>.</p>
+<p><span class="math display">\[y_i = \sum_j w_j x_{i, j} +
+\epsilon_i,\]</span></p>
+<p><span class="math display">\[y_i = \mathbf{ w}^\top \mathbf{ x}_{i,
+:} + \epsilon_i.\]</span></p>
+<p>(where we’ve dropped <span class="math inline">\(c\)</span> for
+convenience), we need a prior over <span class="math inline">\(\mathbf{
+w}\)</span>.</p>
 </div>
 </section>
 <section id="multivariate-system-1" class="slide level2">
@@ -642,7 +751,8 @@ showDivs(1, 'dem_gaussian');
 </ul>
 <div class="fragment">
 <ul>
-<li>We will use the multivariate Gaussian to put a prior <em>directly</em> on the function (a Gaussian process).</li>
+<li>We will use the multivariate Gaussian to put a prior
+<em>directly</em> on the function (a Gaussian process).</li>
 </ul>
 </div>
 </section>
@@ -652,34 +762,50 @@ showDivs(1, 'dem_gaussian');
 <section id="multivariate-regression-likelihood" class="slide level2">
 <h2>Multivariate Regression Likelihood</h2>
 <ul>
-<li>Noise corrupted data point <span class="math display">\[y_i = \mathbf{ w}^\top \mathbf{ x}_{i, :} + {\epsilon}_i\]</span></li>
+<li>Noise corrupted data point <span class="math display">\[y_i =
+\mathbf{ w}^\top \mathbf{ x}_{i, :} + {\epsilon}_i\]</span></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Multivariate regression likelihood: <span class="math display">\[p(\mathbf{ y}| \mathbf{X}, \mathbf{ w}) = \frac{1}{\left(2\pi {\sigma}^2\right)^{n/2}} \exp\left(-\frac{1}{2{\sigma}^2}\sum_{i=1}^{n}\left(y_i - \mathbf{ w}^\top \mathbf{ x}_{i, :}\right)^2\right)\]</span></li>
+<li>Multivariate regression likelihood: <span
+class="math display">\[p(\mathbf{ y}| \mathbf{X}, \mathbf{ w}) =
+\frac{1}{\left(2\pi {\sigma}^2\right)^{n/2}}
+\exp\left(-\frac{1}{2{\sigma}^2}\sum_{i=1}^{n}\left(y_i - \mathbf{
+w}^\top \mathbf{ x}_{i, :}\right)^2\right)\]</span></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Now use a <em>multivariate</em> Gaussian prior: <span class="math display">\[p(\mathbf{ w}) = \frac{1}{\left(2\pi \alpha\right)^\frac{p}{2}} \exp \left(-\frac{1}{2\alpha} \mathbf{ w}^\top \mathbf{ w}\right)\]</span></li>
+<li>Now use a <em>multivariate</em> Gaussian prior: <span
+class="math display">\[p(\mathbf{ w}) = \frac{1}{\left(2\pi
+\alpha\right)^\frac{p}{2}} \exp \left(-\frac{1}{2\alpha} \mathbf{
+w}^\top \mathbf{ w}\right)\]</span></li>
 </ul>
 </div>
 </section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>
-<li><p>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></p></li>
-<li><p>podcast: <a href="http://thetalkingmachines.com">The Talking Machines</a></p></li>
-<li><p>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></p></li>
+<li><p>twitter: <a
+href="https://twitter.com/lawrennd">@lawrennd</a></p></li>
+<li><p>podcast: <a href="http://thetalkingmachines.com">The Talking
+Machines</a></p></li>
+<li><p>newspaper: <a
+href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
+Page</a></p></li>
 <li><p>blog posts:</p>
-<p><a href="http://inverseprobability.com/2017/07/17/what-is-machine-learning">What is Machine Learning?</a></p></li>
+<p><a
+href="http://inverseprobability.com/2017/07/17/what-is-machine-learning">What
+is Machine Learning?</a></p></li>
 </ul>
 </section>
 <section id="references" class="slide level2 unnumbered scrollable">
 <h2 class="unnumbered scrollable">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-Rasmussen:book06" class="csl-entry" role="doc-biblioentry">
-Rasmussen, C.E., Williams, C.K.I., 2006. Gaussian processes for machine learning. mit, Cambridge, MA.
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-Rasmussen:book06" class="csl-entry" role="listitem">
+Rasmussen, C.E., Williams, C.K.I., 2006. Gaussian processes for machine
+learning. mit, Cambridge, MA.
 </div>
 </div>
 </section>
@@ -694,10 +820,39 @@ Rasmussen, C.E., Williams, C.K.I., 2006. Gaussian processes for machine learning
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
         // Transition style
         transition: 'None', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
           config: 'TeX-AMS_HTML-full',
