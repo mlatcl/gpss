@@ -8,17 +8,22 @@ author:
   url: http://inverseprobability.com
 layout: lecture
 venue: Gaussian Process Summer School
-talkcss: https://inverseprobability.com/assets/css/talks.css
-bibdir: $HOME/lawrennd/bibliography
+talktheme: white
+talkcss: mlatcl.css
+talkfontsize: small
+bibdir: $HOME/lawrennd/bibliography/
+people: ../_people/people.yml
 postsdir: ../_lectures/
 slidesdir: ../slides/
 notesdir: ../_notes/
 notebooksdir: ../_notebooks/
 practicalsdir: ../_practicals/
-snippetsdir: $HOME/lawrennd/snippets
+snippetsdir: $HOME/lawrennd/snippets/
 writediagramsdir: .
 scriptsdir: ./scripts/
-diagramsdir: ./slides/diagrams/
+diagramsdir: ../slides/diagrams/
+macrosdir: $HOME/lawrennd/lamd/lamd/macros
+slidesheader: slides-header.html
 posts: True
 docx: False
 notespdf: False
@@ -33,7 +38,6 @@ potx: custom-reference.potx
 dotx: custom-reference.dotx
 baseurl: "gpss/" # the subpath of your site, e.g. /blog/
 url: "https://mlatcl.github.io/" # the base hostname & protocol for your site
-transition: None
 ghub:
 - organization: mlatcl
   repository: gpss

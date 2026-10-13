@@ -1,0 +1,14 @@
+# People Configuration
+
+- given: Neil D.
+  family: Lawrence
+  image: people/neil-lawrence.png
+  institution: University of Cambridge
+  url: http://inverseprobability.com
+  gscholar: r3SJcvoAAAAJ
+  twitter: lawrennd
+  orcid: 0000-0001-9258-1030
+  title: Neil Lawrence
+  role: Lecturer
+  bio: >
+    Professor of Machine Learning at the University of Cambridge.
