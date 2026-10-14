@@ -15,6 +15,7 @@ author:
   url: http://inverseprobability.com
 ---
 
+\include{_gpss/includes/gpss-notebook-setup.md}
 
 \newslide{}
 
