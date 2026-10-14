@@ -28,7 +28,7 @@ posts: True
 docx: False
 notespdf: False
 slidesipynb: False
-pptx: True
+pptx: False
 pdf: False
 assignment: False
 ipynb: True

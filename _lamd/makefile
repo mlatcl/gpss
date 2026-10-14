@@ -1,4 +1,4 @@
-BASE=deep-gps-II
+BASE=unsupervised-learning-with-gps
 LAMDDIR=/Users/neil/lawrennd/lamd/lamd
 MAKEFILESDIR=/Users/neil/lawrennd/lamd/lamd/makefiles
 INCLUDESDIR=/Users/neil/lawrennd/lamd/lamd/includes

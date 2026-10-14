@@ -7,7 +7,6 @@ week: 4
 featured_image: slides/diagrams/gp/gp-optimise-determinant009.svg
 reveal: 04-optimizing-parameters.slides.html
 ipynb: 04-optimizing-parameters.ipynb
-pptx: 04-optimizing-parameters.pptx
 youtube: "MkkeBmEZ8LE"
 layout: lecture
 categories:
@@ -75,9 +74,10 @@ sns.set_palette('colorblind')}-->
 </div>
 <p>In practice we shouldn’t be using matrix inverse directly to solve the GP system. One more stable way is to compute the <em>Cholesky decomposition</em> of the kernel matrix. The log determinant of the covariance can also be derived from the Cholesky decomposition.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> update_inverse</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind the updated inverse to our GP model</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>GP.update_inverse <span class="op">=</span> update_inverse</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> GP</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlai <span class="im">import</span> update_inverse</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind the updated inverse to our GP model</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>GP.update_inverse <span class="op">=</span> update_inverse</span></code></pre></div>
 <h2 id="capacity-control">Capacity Control</h2>
 <p>Gaussian processes are sometimes seen as part of a wider family of methods known as kernel methods. Kernel methods are also based around covariance functions, but in the field they are known as Mercer kernels. Mercer kernels have interpretations as inner products in potentially infinite dimensional Hilbert spaces. This interpretation arises because, if we take <span class="math inline">\(\alpha=1\)</span>, then the kernel can be expressed as <span class="math display">\[
 \mathbf{K}= \boldsymbol{ \Phi}\boldsymbol{ \Phi}^\top
@@ -167,17 +167,17 @@ E(\boldsymbol{ \theta}) = \color{blue}{\frac{1}{2}\log\det{\mathbf{K}}} + \color
 <div style="text-align:right">
 <span class="editsection-bracket" style="">[</span><span class="editsection" style=""><a href="https://github.com/lawrennd/snippets/edit/main/_gp/includes/gp-optimize-data-fit-capacity.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/lawrennd/snippets/edit/main/_gp/includes/gp-optimize-data-fit-capacity.md', 13);">edit</a></span><span class="editsection-bracket" style="">]</span>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">6</span>)[:, np.newaxis]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>xtest <span class="op">=</span> np.linspace(x_lim[<span class="dv">0</span>], x_lim[<span class="dv">1</span>], <span class="dv">200</span>)[:, np.newaxis]</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># True data</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>true_kernel <span class="op">=</span> Kernel(eq_cov, name<span class="op">=</span><span class="st">&#39;Exponentiated Quadratic&#39;</span>, shortname<span class="op">=</span><span class="st">&#39;eq&#39;</span>, lengthscale<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> true_kernel.K(x) <span class="op">+</span> np.eye(<span class="dv">6</span>)<span class="op">*</span><span class="fl">0.01</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.multivariate_normal(np.zeros((<span class="dv">6</span>,)), K, <span class="dv">1</span>).T</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitted model</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> Kernel(eq_cov, name<span class="op">=</span><span class="st">&#39;Exponentiated Quadratic&#39;</span>, shortname<span class="op">=</span><span class="st">&#39;eq&#39;</span>, lengthscale<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> GP(x, y, sigma2<span class="op">=</span><span class="fl">0.01</span>, kernel<span class="op">=</span>kernel)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">6</span>)[:, np.newaxis]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>xtest <span class="op">=</span> np.linspace(x_lim[<span class="dv">0</span>], x_lim[<span class="dv">1</span>], <span class="dv">200</span>)[:, np.newaxis]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># True data</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>true_kernel <span class="op">=</span> Kernel(eq_cov, name<span class="op">=</span><span class="st">&#39;Exponentiated Quadratic&#39;</span>, shortname<span class="op">=</span><span class="st">&#39;eq&#39;</span>, lengthscale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> true_kernel.K(x) <span class="op">+</span> np.eye(<span class="dv">6</span>)<span class="op">*</span><span class="fl">0.01</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.multivariate_normal(np.zeros((<span class="dv">6</span>,)), K, <span class="dv">1</span>).T</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitted model</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> Kernel(eq_cov, name<span class="op">=</span><span class="st">&#39;Exponentiated Quadratic&#39;</span>, shortname<span class="op">=</span><span class="st">&#39;eq&#39;</span>, lengthscale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> GP(x, y, sigma2<span class="op">=</span><span class="fl">0.01</span>, kernel<span class="op">=</span>kernel)</span></code></pre></div>
 <div class="figure">
 <div id="gp-optimise-figure" class="figure-frame">
 <div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
@@ -222,15 +222,15 @@ E(\boldsymbol{ \theta}) = \color{blue}{\frac{1}{2}\log\det{\mathbf{K}}} + \color
 <ul>
 <li>Given given expression levels in the form of a time series from <span class="citation" data-cites="DellaGatta:direct08">Della Gatta et al. (2008)</span>.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.della_gatta_TRP63_gene_expression(data_set<span class="op">=</span><span class="st">&#39;della_gatta&#39;</span>,gene_number<span class="op">=</span><span class="dv">937</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> data[<span class="st">&#39;X&#39;</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> y.mean()</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>scale <span class="op">=</span> np.sqrt(y.var())</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pods</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pods.datasets.della_gatta_TRP63_gene_expression(data_set<span class="op">=</span><span class="st">&#39;della_gatta&#39;</span>,gene_number<span class="op">=</span><span class="dv">937</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> data[<span class="st">&#39;X&#39;</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;Y&#39;</span>]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> y.mean()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>scale <span class="op">=</span> np.sqrt(y.var())</span></code></pre></div>
 <div class="figure">
 <div id="della-gatta-gene-data-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/datasets/della-gatta-gene.svg" width="80%" style=" ">
@@ -270,14 +270,14 @@ E(\boldsymbol{ \theta}) = \color{blue}{\frac{1}{2}\log\det{\mathbf{K}}} + \color
 <a href="http://www.biomedcentral.com/1471-2105/12/180" class="uri">http://www.biomedcentral.com/1471-2105/12/180</a>
 </center>
 <p>Our first objective will be to perform a Gaussian process fit to the data, we’ll do this using the <a href="https://github.com/SheffieldML/GPy">GPy software</a>.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>m_full <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>m_full.kern.lengthscale<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>m_full <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>m_full.kern.lengthscale<span class="op">=</span><span class="dv">50</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
 <p>Initialize the length scale parameter (which here actually represents a <em>time scale</em> of the covariance function) to a reasonable value. Default would be 1, but here we set it to 50 minutes, given points are arriving across zero to 250 minutes.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>xt <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">20</span>,<span class="dv">260</span>,<span class="dv">200</span>)[:,np.newaxis]</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>yt_mean, yt_var <span class="op">=</span> m_full.predict(xt)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>yt_sd<span class="op">=</span>np.sqrt(yt_var)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xt <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">20</span>,<span class="dv">260</span>,<span class="dv">200</span>)[:,np.newaxis]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>yt_mean, yt_var <span class="op">=</span> m_full.predict(xt)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>yt_sd<span class="op">=</span>np.sqrt(yt_var)</span></code></pre></div>
 <p>Now we plot the results using the helper function in <code>mlai.plot</code>.</p>
 <div class="figure">
 <div id="della-gatta-gene-gp-figure" class="figure-frame">
@@ -294,9 +294,9 @@ E(\boldsymbol{ \theta}) = \color{blue}{\frac{1}{2}\log\det{\mathbf{K}}} + \color
 </div>
 </div>
 <p>Now we try a model initialized with a longer length scale.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>m_full2 <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>m_full2.kern.lengthscale<span class="op">=</span><span class="dv">2000</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full2.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>m_full2 <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>m_full2.kern.lengthscale<span class="op">=</span><span class="dv">2000</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full2.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
 <div class="figure">
 <div id="della-gatta-gene-gp2-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/della-gatta-gene-gp2.svg" width="80%" style=" ">
@@ -312,10 +312,10 @@ E(\boldsymbol{ \theta}) = \color{blue}{\frac{1}{2}\log\det{\mathbf{K}}} + \color
 </div>
 </div>
 <p>Now we try a model initialized with a lower noise.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>m_full3 <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>m_full3.kern.lengthscale<span class="op">=</span><span class="dv">20</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>m_full3.likelihood.variance<span class="op">=</span><span class="fl">0.001</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full3.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>m_full3 <span class="op">=</span> GPy.models.GPRegression(x,yhat)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>m_full3.kern.lengthscale<span class="op">=</span><span class="dv">20</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>m_full3.likelihood.variance<span class="op">=</span><span class="fl">0.001</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> m_full3.optimize() <span class="co"># Optimize parameters of covariance function</span></span></code></pre></div>
 <div class="figure">
 <div id="della-gatta-gene-gp3-figure" class="figure-frame">
 <object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/della-gatta-gene-gp3.svg" width="80%" style=" ">
