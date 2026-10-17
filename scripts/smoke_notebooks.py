@@ -72,6 +72,23 @@ import matplotlib
 
 matplotlib.use("Agg")
 
+# Lecture notebooks write SVGs under these relative dirs (cwd = notebooks dir).
+from pathlib import Path as _Path
+
+for _d in (
+    "./datasets",
+    "./deepgp",
+    "./deepnn",
+    "./dimred",
+    "./gp",
+    "./gplvm",
+    "./kern",
+    "./ml",
+    "./simulation",
+    "./uq",
+):
+    _Path(_d).mkdir(parents=True, exist_ok=True)
+
 
 # Avoid ipywidgets.interact deadlocks under nbclient (lecture 02).
 def _once_interact(func, **kwargs):
