@@ -34,6 +34,20 @@ Deep GP notebooks install teaching helpers via LaMD `\installcode{}` cells, typi
 
 Pinball and related Deep GP teaching methods live in [`lawrennd/mlai`](https://github.com/lawrennd/mlai), not in PyDeepGP itself; lecture setup monkey-patches them onto `deepgp.DeepGP`.
 
+## Notebook smoke tests
+
+Execute every numbered lecture notebook under `_notebooks/` with CI-safe patches (Agg backend, mocked stdin, capped `optimize`, no widget hangs):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-smoke.txt
+python scripts/smoke_notebooks.py
+# subset: python scripts/smoke_notebooks.py --only 01 13
+```
+
+GitHub Actions runs the same harness on pull requests that touch notebooks or the smoke files, weekly on a schedule, and via **workflow_dispatch** (optional `--only` input). Results land in `_notebooks/test-results/` (gitignored) and as a workflow artifact.
+
 ## Layout
 
 | Path | Role |
