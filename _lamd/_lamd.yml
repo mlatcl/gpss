@@ -21,7 +21,7 @@ practicalsdir: ../_practicals/
 snippetsdir: $HOME/lawrennd/snippets/
 writediagramsdir: .
 scriptsdir: ./scripts/
-diagramsdir: ../slides/diagrams/
+diagramsdir: $HOME/lawrennd/slides/diagrams/
 macrosdir: $HOME/lawrennd/lamd/lamd/macros
 slidesheader: slides-header.html
 posts: True
