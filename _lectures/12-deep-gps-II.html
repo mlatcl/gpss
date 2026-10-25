@@ -1007,7 +1007,7 @@ sns.set_palette('colorblind')}-->
 <p>The data is a modified version of a data set from the US National Institute of Standards and Technology (<a href="https://www.nist.gov/">NIST</a>.</p>
 <p>First load in the MNIST data set from scikit learn. This can take a little while because it’s large to download.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>mnist <span class="op">=</span> fetch_openml(<span class="st">&#39;mnist_784&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>mnist <span class="op">=</span> fetch_openml(<span class="st">&#39;mnist_784&#39;</span>, version<span class="op">=</span><span class="dv">1</span>, as_frame<span class="op">=</span><span class="va">False</span>, parser<span class="op">=</span><span class="st">&#39;liac-arff&#39;</span>)</span></code></pre></div>
 <p>Sub-sample the dataset to make the training faster.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
 <div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
@@ -1015,13 +1015,15 @@ sns.set_palette('colorblind')}-->
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>N_per_digit <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> []</span>
 <span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> []</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> digits:</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>    imgs <span class="op">=</span> mnist[<span class="st">&#39;data&#39;</span>][mnist[<span class="st">&#39;target&#39;</span>]<span class="op">==</span><span class="bu">str</span>(d)]</span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>    Y.append(imgs.loc[np.random.permutation(imgs.index)[:N_per_digit]])</span>
-<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>    labels.append(np.ones(N_per_digit)<span class="op">*</span>d)</span>
-<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.vstack(Y).astype(np.float64)</span>
-<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.hstack(labels)</span>
-<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>Y <span class="op">/=</span> <span class="dv">255</span></span></code></pre></div>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.asarray(mnist.data)</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> np.asarray(mnist.target).astype(<span class="bu">str</span>)</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> digits:</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>    imgs <span class="op">=</span> data[target <span class="op">==</span> <span class="bu">str</span>(d)]</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>    Y.append(imgs[np.random.permutation(<span class="bu">len</span>(imgs))[:N_per_digit]])</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>    labels.append(np.ones(N_per_digit)<span class="op">*</span>d)</span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.vstack(Y).astype(np.float64)</span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.hstack(labels)</span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a>Y <span class="op">/=</span> <span class="dv">255</span></span></code></pre></div>
 <p>Now let’s visualise some examples from our subsampled dataset to get a sense of what the data looks like.</p>
 <h2 id="mnist-digit-examples">MNIST Digit Examples</h2>
 <div style="text-align:right">
