@@ -5,6 +5,7 @@ week: 5
 youtube: MkkeBmEZ8LE
 abstract: >
   In this lecture we review multi-output Gaussian processes. Introducing them initially through a Kalman filter representation of a GP.
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

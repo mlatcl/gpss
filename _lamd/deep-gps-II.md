@@ -3,6 +3,7 @@ title: Deep Gaussian Processes II
 featured_image: slides/diagrams/deepgp/olympic-marathon-deep-gp-pinball.svg
 week: 12
 abstract:
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

@@ -13,6 +13,7 @@ author:
   twitter: lawrennd
   orcid: 0000-0001-9258-1030
   url: http://inverseprobability.com
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

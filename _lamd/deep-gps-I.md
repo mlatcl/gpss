@@ -3,6 +3,7 @@ title: Deep Gaussian Processes I
 featured_image: slides/diagrams//deepgp/deep-nn-bottleneck2.svg
 week: 11
 abstract: 
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

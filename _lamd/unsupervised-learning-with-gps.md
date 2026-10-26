@@ -3,6 +3,7 @@ title: Unsupervised Learning with Gaussian Processes
 featured_image: slides/diagrams//dimred/nonlinear-mapping-3d-plot.svg
 week: 8
 abstract: 
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

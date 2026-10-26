@@ -33,7 +33,7 @@ pdf: False
 assignment: False
 ipynb: True
 reveal: True
-transition: None
+transition: "none"
 potx: gpss-simple-reference.potx 
 dotx: custom-reference.dotx
 baseurl: "gpss/" # the subpath of your site, e.g. /blog/

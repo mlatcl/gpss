@@ -4,6 +4,7 @@ abstract: >
   In this sesson we go from the Gaussian distribution to the Gaussian process and in doing so we move from a finite system to an infinite system.
 featured_image: slides/diagrams/gp/two_point_sample008.svg
 week: 2
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}
