@@ -1,14 +1,468 @@
-# People Configuration
+- given: Challenger
+  family: Mishra
+  image: people/challenger-mishra.jpg
+  url: https://acceleratescience.github.io/team/challenger-mishra.html
+  title: Challenger Mishra
 
-- given: Neil D.
+- given: Soumya
+  family: Banerjee
+  image: people/soumya-banerjee.jpg
+  url: https://acceleratescience.github.io/team/soumya-banerjee.html
+  title: Soumya Banerjee
+
+- given: Sam
+  family: Nallaperuma
+  image: people/sam-nallaperuma.jpg
+  url: https://acceleratescience.github.io/team/sam-nallaperuma.html
+  title: Sam Nallaperuma
+
+- given: Sarah
+  family: Morgan
+  image: people/sarah-morgan.jpg
+  url: https://acceleratescience.github.io/team/sarah-morgan.html
+  title: Sarah Morgan
+
+- given: Vincent
+  family: Dutordoir
+  image: people/vincent-dutordoir.png
+  url: https://vdutor.github.io/
+  title: Vincent Dutordoir
+
+- given: Diane
+  family: Coyle
+  image: people/diane-coyle.png
+  url: https://www.polis.cam.ac.uk/Staff_and_Students/professor-diane-coyle
+  title: Diane Coyle
+
+- given: Bagonza Jimmy
+  family: Kinyonyi
+  image: people/bagonza-jimmy-owa-kinyonyi.jpg
+  url: https://www.linkedin.com/in/bagonza-jimmy-kinyonyi-b73620125/
+  title: Bagonza Jimmy Kinyonyi
+
+- given: Joyce
+  family: Nakatumba-Nabende
+  image: people/joyce-nabende.jpg
+  url: https://www.linkedin.com/in/jnakatumba/
+  title: Joyce Nakatumba-Nabende
+
+- given: Diana
+  family: Robinson
+  image: people/diana-robinson.jpg
+  url: https://www.linkedin.com/in/diana-robinson/
+  title: Diana Robinson
+
+- given: David
+  family: Spiegelhalter
+  image: people/david-spiegelhalter.png
+  url: http://www.statslab.cam.ac.uk/~david/
+  title: David Spiegelhalter
+
+- given: Neil D. 
   family: Lawrence
   image: people/neil-lawrence.png
-  institution: University of Cambridge
-  url: http://inverseprobability.com
-  gscholar: r3SJcvoAAAAJ
-  twitter: lawrennd
-  orcid: 0000-0001-9258-1030
+  url: https://inverseprobability.com/
   title: Neil Lawrence
-  role: Lecturer
-  bio: >
-    Professor of Machine Learning at the University of Cambridge.
+
+- given: James
+  family: Hensman
+  image: people/james-hensman.png
+  url: https://jameshensman.github.io/
+  title: James Hensman
+
+- given: Nicolas
+  family: Durrande
+  image: people/nicolas-durrande2.jpg
+  url: https://sites.google.com/site/nicolasdurrandehomepage/
+  title: Nicolas Durrande
+
+- given: Ricardo
+  family: Andrade Pacheco
+  image: people/ricardo-andrade-pacheco.png
+  url: http://ric70x7.github.io/
+  title: Ricardo Andrade Pacheco
+
+- given: Nicolo
+  family: Fusi
+  image: people/nicolo-fusi.png
+  title: Nicoló Fusi
+
+- given: Freddie
+  family: Kalaitzis
+  image: people/freddie-kalaitzis.jpg
+  url: https://www.linkedin.com/in/alkalait/
+  title: Freddie Kalaitzis
+
+- given: Alan
+  family: Saul
+  image: people/alan-saul.png
+  title: Alan Saul
+
+- given: Andreas
+  family: Damianou
+  image: people/andreas-damianou.png
+  title: Andreas Damianou
+
+- given: Zhenwen
+  family: Dai
+  image: people/zhenwen-dai.jpg
+  title: Zhenwen Dai
+
+- given: Max
+  family: Zwiessele
+  image: people/max-zwiessele.jpg
+  title: Max Zwiessele
+
+- given: Javier
+  family: Gonzalez
+  image: people/javier-gonzalez.png
+  url: https://javiergonzalezh.github.io/
+  title: Javier Gonzalez
+
+- given: Michael T.
+  family: Smith
+  image: people/michael-t-smith.png
+  title: Michael T. Smith
+
+- given: Michalis
+  family: Titsias
+  image: people/michalis-titsias.jpg
+  title: Michalis Titsias
+
+- given: Andrei
+  family: Paleyes
+  image: people/andrei-paleyes.jpg
+  url: https://www.linkedin.com/in/andreipaleyes
+  title: Andrei Paleyes
+
+- given: Mark
+  family: Pullin
+  image: people/mark-pullin.jpg
+  url: https://www.linkedin.com/in/mark-pullin-47510b50/
+  title: Mark Pullin
+
+- given: Maren
+  family: Mahsereci
+  image: people/maren-mahsereci.png
+  url: https://pn.is.tuebingen.mpg.de/person/mmahsereci
+  title: Maren Mahsereci
+
+- given: Leah
+  family: Hirst
+  image: people/person-placeholder.jpg
+  url: https://www.linkedin.com/in/leahhirst/
+  title: Leah Hirst
+
+- given: Cliff
+  family: McCollum
+  image: people/cliff-mccollum.jpg
+  url: https://www.linkedin.com/in/cliffmccollum/
+  title: Cliff McCollum
+
+- given: Tom
+  family: Borchert
+  image: people/tom-borchert.jpg
+  url: https://www.linkedin.com/in/tomborchert/
+  title: Tom Borchert
+
+- given: Radford
+  family: Neal
+  image: people/radford-neal.jpg
+  url: https://www.cs.toronto.edu/~radford/homepage.html
+  title: Radford Neal
+
+- given: Aki
+  family: Vehtari
+  image: people/aki-vehtari.jpg
+  url: https://users.aalto.fi/~ave/
+  title: Aki Vehtari
+
+- given: Dilip
+  family: Kumar
+  image: people/dilip-kumar.jpg
+  url: https://www.linkedin.com/in/dilipskumar
+  title: Dilip Kumar
+
+- given: Gerard
+  family: Medioni
+  image: people/gerard-medioni.jpg
+  url: https://www.linkedin.com/in/gerard-medioni-b0a33
+  title: Gerard Medioni
+
+- given: Tom
+  family: Taylor
+  image: people/tom-taylor.png
+  url: https://www.linkedin.com/in/tom-taylor-835b03/
+  title: Tom Taylor
+
+- given: Joe
+  family: Walowski
+  image: people/joe-walowski.png
+  url: https://www.linkedin.com/in/joe-walowski-b2b7242/
+  title: Joe Walowski
+
+- given: Rohit
+  family: Prasad
+  image: people/rohit-prasad.png
+  url: https://www.linkedin.com/in/rohit-prasad-4a46251/
+  title: Rohit Prasad
+
+- given: Catherine
+  family: Breslin
+  image: people/catherine-breslin.png
+  url: https://www.linkedin.com/in/catherine-breslin-0592423a
+  title: Catherine Breslin
+
+- given: David
+  family: Hardcastle
+  image: people/david-hardcastle.png
+  url: https://www.linkedin.com/in/dwhardcastle/
+  title: David Hardcastle
+
+- given: Arpit
+  family: Mittal
+  image: people/arpit-mittal.png
+  url: https://www.linkedin.com/in/arpit-mittal-71a789b/
+  title: Arpit Mittal
+
+- given: Christos
+  family: Christodoulopoulos
+  image: people/christos-christodoulopoulos.png
+  url: https://www.linkedin.com/in/christos-christodoulopoulos-376b9831/
+  title: Christos Christodoulopoulos
+
+- given: Andrew
+  family: Breen
+  image: people/andrew-breen.png
+  url: https://www.linkedin.com/in/andrew-breen-b79111/
+  title: Andrew Breen
+
+- given: Roberto
+  family: Barra Chicote
+  image: people/roberto-barra-chicote.png
+  url: https://www.linkedin.com/in/roberto-barra-chicote-496699b/
+  title: Roberto Barra Chicote
+
+- given: Gur
+  family: Kimchi
+  image: people/gur-kimchi.png
+  url: https://www.linkedin.com/in/gurkimchi/
+  title: Gur Kimchi
+
+- given: Paul
+  family: Viola
+  image: people/paul-viola.png
+  url: https://www.linkedin.com/in/violapaul/
+  title: Paul Viola
+
+- given: David
+  family: Moro
+  image: people/david-moro.png
+  url: https://www.linkedin.com/in/dmorol/
+  title: David Moro
+
+- given: Llew
+  family: Mason
+  image: people/llew-mason.png
+  url: https://www.linkedin.com/in/llewmason/
+  title: Llew Mason
+
+- given: Devesh
+  family: Mishra
+  image: people/devesh-mishra.png
+  url: https://www.linkedin.com/in/demishra/
+  title: Devesh Mishra
+
+- given: Jenny
+  family: Freshwater
+  image: people/jenny-freshwater.png
+  url: https://www.linkedin.com/in/jenny-freshwater-4710a21/
+  title: Jenny Freshwater
+
+- given: Ping
+  family: Xu
+  image: people/ping-xu.png
+  url: https://www.linkedin.com/in/pingjosephine/
+  title: Ping Xu
+
+- given: Dean
+  family: Foster
+  image: people/dean-foster.png
+  url: https://www.linkedin.com/in/deanfoster/
+  title: Dean Foster
+
+- given: Deepak
+  family: Bhatia
+  image: people/deepak-bhatia.png
+  url: https://www.linkedin.com/in/dbhatia/
+  title: Deepak Bhatia
+
+- given: Piyush
+  family: Saraogi
+  image: people/piyush-saraogi.png
+  url: https://www.linkedin.com/in/piyushsaraogi/
+  title: Piyush Saraogi
+
+- given: Salal
+  family: Humair
+  image: people/salal-humair.png
+  url: https://www.linkedin.com/in/salal-humair-b45415/
+  title: Salal Humair
+
+- given: Raman
+  family: Iyer
+  image: people/raman-iyer.jpg
+  url: https://www.linkedin.com/in/ramaniyer/
+  title: Raman Iyer
+
+- given: Narayan
+  family: Venkatasubramanyan
+  image: people/narayan-venkatasubramanyan.png
+  url: https://www.linkedin.com/in/narayan3rdeye/
+  title: Narayan Venkatasubramanyan
+
+- given: Charlie
+  family: Bell
+  image: people/charlie-bell.png
+  url: https://www.linkedin.com/in/charlie-bell-05446835/
+  title: Charlie Bell
+
+- given: Peter
+  family: Vosshall
+  image: people/peter-vosshall.png
+  url: https://www.linkedin.com/in/petervosshall/
+  title: Peter Vosshall
+
+- given: Dave
+  family: Clark
+  image: people/dave-clark.png
+  url: https://www.linkedin.com/in/dave-clark-3a82684/
+  title: Dave Clark
+
+- given: Nevena
+  family: Lalic
+  image: people/nevena-lalic.png
+  url: https://www.linkedin.com/in/nevena-lalic-65561b53/
+  title: Nevena Lalic
+
+- given: Oliver
+  family: Stegle
+  image: people/oliver-stegle.jpg
+  url: https://www.embl.de/research/units/genome_biology/stegle/
+  title: Oliver Stegle
+
+- given: John
+  family: Quinn
+  image: people/john-quinn.jpg
+  url: http://cit.mak.ac.ug/staff/jquinn/
+  title: John Quinn
+
+- given: Ernest
+  family: Mwebaze
+  image: people/ernest-mwebaze.png
+  url: https://www.linkedin.com/in/emwebaze/
+  title: Ernest Mwebaze
+
+- given: Martin
+  family: Mubangizi
+  image: people/martin-mubangizi.png
+  url: https://www.linkedin.com/in/martin-mubangizi-24177111/
+  title: Martin Mubangizi
+
+- given: Morine
+  family: Amutorine
+  image: people/morine-amutorine.png
+  url: https://www.linkedin.com/in/morine-amutorine/
+  title: Morine Amutorine
+
+- given: Carl Henrik
+  family: Ek
+  image: people/carl-henrik-ek.png
+  url: https://carlhenrik.com
+  title: Carl Henrik Ek
+
+- given: Nic
+  family: Lane
+  image: people/nic-lane.jpg
+  url: https://niclane.org
+  title: Nic Lane
+
+- given: Ferenc
+  family: Huszar
+  image: people/ferenc-huszar.jpg
+  url: https://www.inference.vc/about/
+  title: Ferenc Huszár
+
+- given: Robbie
+  family: Savage
+  image: people/robbie-savage.png
+  url: https://www.usefultalent.com/robbie-savage/
+  title: Robbie Savage
+
+- given: Jessica
+  family: Montgomery
+  image: people/jessica-montgomery.jpg
+  url: https://www.linkedin.com/in/jessica-montgomery-206256144/
+  title: Jessica Montgomery
+
+- given: Sylvie
+  family: Delacroix
+  image: people/sylvie-delacroix.jpg
+  url: https://delacroix.uk/
+  title: Sylvie Delacroix
+
+- given: Paula
+  family: Bibby
+  image: governance/data-trusts-initiative-logo.jpg
+  url: https://www.linkedin.com/in/paula-bibby-7403285a/
+  title: Paula Bibby
+
+- given: Victor
+  family: Ohuruogu
+  image: people/victor-ohuruogu.jpg
+  url: https://www.linkedin.com/in/victor-ohuruogu-b3b4071b/
+  title: Victor Ohuruogu
+
+- given: Sir Lancelot
+  family: The Brave
+  image: people/sir-lancelot-the-brave.jpg
+  url: https://en.wikipedia.org/wiki/Monty_Python_and_the_Holy_Grail
+  title: Sir Lancelot the Brave
+
+- given: Sir Robin
+  family: The Not Quite So Brave
+  image: people/sir-robin-the-not-quite-so-brave.jpg
+  url: https://en.wikipedia.org/wiki/Monty_Python_and_the_Holy_Grail
+  title: Sir Robin the Not-Quite-So-Brave
+
+# Special thinking/TEO pictures from your original file
+- given: Nicolas
+  family: Thinking
+  image: people/2013_03_28_180606.JPG
+  crop:
+    llx: 300
+    lly: 700
+    urx: 1900
+    ury: 200
+  title: Nicolas Thinking
+
+- given: Teo
+  family: Campos
+  suffix: de
+  image: people/2013_03_28_180606.JPG
+  crop:
+    llx: 300
+    lly: 700
+    urx: 1900
+    ury: 200
+  title: Teo de Campos
+
+- given: Alan
+  family: Unsure
+  image: people/2013_03_28_180606.JPG
+  crop:
+    llx: 1700
+    lly: 350
+    urx: 700
+    ury: 350
+  title: Alan Unsure
