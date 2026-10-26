@@ -2,6 +2,7 @@
 title: Non Gaussian Likelihoods
 week: 7
 abstract:
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

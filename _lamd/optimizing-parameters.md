@@ -5,6 +5,7 @@ youtube: MkkeBmEZ8LE
 abstract: >
   In this session we introduce the process of optimization of the hyper parameters of the Gaussian process covariance function.
 week: 4
+transition: "none"
 ---
 
 \include{_gpss/includes/gpss-notebook-setup.md}

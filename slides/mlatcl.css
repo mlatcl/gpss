@@ -25,9 +25,7 @@
 /* -- Base slides ---------------------------------------------------------- */
 .reveal {
     font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
-    /* CIP-0014: theme medium size; talkfontsize scales via --lamd-fs-scale */
-    --lamd-fs-base: 32px;
-    font-size: 32px;
+    /* CIP-0014: deck size comes from talkfontsize via slide-fonts.css */
     color: #2A2A2A;
     background-color: #ffffff;
 }
