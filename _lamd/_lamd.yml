@@ -9,8 +9,8 @@ author:
 layout: lecture
 venue: Gaussian Process Summer School
 talktheme: white
-talkcss: mlatcl.css
-talkfontsize: smaller
+talkcss: gpss.css
+talkfontsize: xs
 bibdir: $HOME/lawrennd/bibliography/
 people: ../_people/people.yml
 postsdir: ../_lectures/
@@ -34,7 +34,7 @@ assignment: False
 ipynb: True
 reveal: True
 transition: None
-potx: custom-reference.potx 
+potx: gpss-simple-reference.potx 
 dotx: custom-reference.dotx
 baseurl: "gpss/" # the subpath of your site, e.g. /blog/
 url: "https://mlatcl.github.io/" # the base hostname & protocol for your site
