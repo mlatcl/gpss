@@ -123,7 +123,8 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Covariance Functions and Hyperparameter Optimization</h1>
+  <h1 class="title">Covariance Functions and Hyperparameter
+Optimization</h1>
   <p class="author" style="text-align:center">Neil D. Lawrence</p>
 </section>
 
@@ -144,43 +145,55 @@ sns.set_style('darkgrid')
 sns.set_context('paper')
 sns.set_palette('colorblind')}-->
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
 <div class="centered" style="">
-<img class="" src="https://mlatcl.github.io/gpss/diagrams/gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="" src="https://mlatcl.github.io/gpss/slides/diagrams/gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 <aside class="notes">
-GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+GPy is a BSD licensed software code base for implementing Gaussian
+process models in Python. It is designed for teaching and modelling. We
+welcome contributions which can be made through the GitHub repository <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </aside>
 <center>
-<a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+<a href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </center>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python-1" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python-1"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <ul>
 <li>BSD Licensed software base.</li>
 <li>Wide availability of libraries, ‘modern’ scripting language.</li>
-<li>Allows us to set projects to undergraduates in Comp Sci that use GPs.</li>
-<li>Available through GitHub <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></li>
+<li>Allows us to set projects to undergraduates in Comp Sci that use
+GPs.</li>
+<li>Available through GitHub <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a></li>
 <li>Reproducible Research with Jupyter Notebook.</li>
 </ul>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
 <ul>
-<li>Probabilistic-style programming (specify the model, not the algorithm).</li>
+<li>Probabilistic-style programming (specify the model, not the
+algorithm).</li>
 <li>Non-Gaussian likelihoods.</li>
 <li>Multivariate outputs.</li>
 <li>Dimensionality reduction.</li>
 <li>Approximations for large data sets.</li>
 </ul>
 </section>
-<section id="the-importance-of-the-covariance-function" class="slide level2">
+<section id="the-importance-of-the-covariance-function"
+class="slide level2">
 <h2>The Importance of the Covariance Function</h2>
 <p><span class="math display">\[
 \boldsymbol{ \mu}_f= \mathbf{A}^\top \mathbf{ y},
@@ -192,12 +205,16 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 </div>
 </div>
 <aside class="notes">
-Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian process Winter School at the University of Sheffield.
+Introduction to Gaussian processes given by Neil Lawrence at the 2014
+Gaussian process Winter School at the University of Sheffield.
 </aside>
 </section>
 <section id="improving-the-numerics" class="slide level2">
 <h2>Improving the Numerics</h2>
-<p>In practice we shouldn’t be using matrix inverse directly to solve the GP system. One more stable way is to compute the <em>Cholesky decomposition</em> of the kernel matrix. The log determinant of the covariance can also be derived from the Cholesky decomposition.</p>
+<p>In practice we shouldn’t be using matrix inverse directly to solve
+the GP system. One more stable way is to compute the <em>Cholesky
+decomposition</em> of the kernel matrix. The log determinant of the
+covariance can also be derived from the Cholesky decomposition.</p>
 </section>
 <section id="capacity-control" class="slide level2">
 <h2>Capacity Control</h2>
@@ -218,14 +235,18 @@ Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian p
 <section id="section" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
-\mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+\mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \]</span></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+    \mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \end{aligned}
 \]</span></p>
 </section>
@@ -233,46 +254,69 @@ Introduction to Gaussian processes given by Neil Lawrence at the 2014 Gaussian p
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \log \mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
+    \log \mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
-E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} + \color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
+E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} +
+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
 \]</span></p>
 </section>
-<section id="capacity-control-through-the-determinant" class="slide level2">
+<section id="capacity-control-through-the-determinant"
+class="slide level2">
 <h2>Capacity Control through the Determinant</h2>
-<p>The parameters are <em>inside</em> the covariance function (matrix).  <span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j; \boldsymbol{ \theta})\]</span></p>
+<p>The parameters are <em>inside</em> the covariance function (matrix).
+<span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j;
+\boldsymbol{ \theta})\]</span></p>
 </section>
 <section id="eigendecomposition-of-covariance" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
-<p><span> <span class="math display">\[\mathbf{K}= \mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<p><span> <span class="math display">\[\mathbf{K}=
+\mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimize-eigen.png" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimize-eigen.png" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives rotation.
+<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents
+distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives
+rotation.
 </div>
 </div>
 </section>
 <section id="eigendecomposition-of-covariance-1" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
 <ul>
-<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is <em>diagonal</em>, <span class="math inline">\(\mathbf{R}^\top\mathbf{R}= \mathbf{I}\)</span>.</li>
-<li>Useful representation since <span class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} = \det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
+<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is
+<em>diagonal</em>, <span
+class="math inline">\(\mathbf{R}^\top\mathbf{R}=
+\mathbf{I}\)</span>.</li>
+<li>Useful representation since <span
+class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} =
+\det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
 </ul>
 </section>
-<section id="capacity-control-coloryellowlog-detmathbfk" class="slide level2">
-<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log \det{\mathbf{K}}}\)</span></h2>
-<div id="animation-gp-optimise-determinant" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise-determinant">
+<section id="capacity-control-coloryellowlog-detmathbfk"
+class="slide level2">
+<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log
+\det{\mathbf{K}}}\)</span></h2>
+<div id="animation-gp-optimise-determinant" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="gp-optimise-determinant">
 <noscript>
 <style>#animation-gp-optimise-determinant .animation-controls{display:none}#animation-gp-optimise-determinant .gp-optimise-determinant~.gp-optimise-determinant{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-determinant');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-determinant');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-determinant');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-determinant');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -289,44 +333,64 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise-determinant'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant000.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant001.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant002.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant002.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant003.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant003.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant004.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant004.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant005.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant005.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant006.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant006.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant007.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant007.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant008.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant008.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant009.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant009.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -334,14 +398,21 @@ if(f.length>0){f[0].style.display='block';}
 <section id="quadratic-data-fit" class="slide level2">
 <h2>Quadratic Data Fit</h2>
 </section>
-<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{ y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
-<div id="animation-gp-optimise-quadratic" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise-quadratic">
+<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{
+y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
+<div id="animation-gp-optimise-quadratic" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="gp-optimise-quadratic">
 <noscript>
 <style>#animation-gp-optimise-quadratic .animation-controls{display:none}#animation-gp-optimise-quadratic .gp-optimise-quadratic~.gp-optimise-quadratic{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-quadratic');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-quadratic');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-quadratic');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-quadratic');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -358,40 +429,56 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise-quadratic'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic000.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic001.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <div class="figure">
 <div id="gp-optimise-quadratic-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-The data fit term of the Gaussian process is a quadratic loss centered around zero. This has eliptical contours, the principal axes of which are given by the covariance matrix.
+The data fit term of the Gaussian process is a quadratic loss centered
+around zero. This has eliptical contours, the principal axes of which
+are given by the covariance matrix.
 </aside>
 </section>
-<section id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2><span class="math display">\[E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
+<section
+id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2><span class="math display">\[E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
 </section>
 <section id="data-fit-term" class="slide level2">
 <h2>Data Fit Term</h2>
-<div id="animation-gp-optimise" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise">
+<div id="animation-gp-optimise" class="lamd-animation" role="region"
+aria-label="" data-animation-group="gp-optimise">
 <noscript>
 <style>#animation-gp-optimise .animation-controls{display:none}#animation-gp-optimise .gp-optimise~.gp-optimise{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -408,134 +495,156 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise000.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise000.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise001.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise002.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise003.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise001.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise004.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise002.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise005.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise006.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise007.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise003.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise008.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise004.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise009.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise010.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise011.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise005.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise012.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise006.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise013.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise014.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise015.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise007.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise016.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise008.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise017.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise018.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise019.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise009.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise020.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise010.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise021.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise011.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise012.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise013.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise014.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise015.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise016.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise017.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise018.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise019.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise020.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise021.svg" width style=" ">
 </object>
 </div>
 </div>
@@ -545,18 +654,21 @@ if(f.length>0){f[0].style.display='block';}
 <section id="exponentiated-quadratic-covariance" class="slide level2">
 <h2>Exponentiated Quadratic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{2\ell^2}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{2\ell^2}\right)\]</span>
 </center>
 <div class="figure">
 <div id="eq-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/eq_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/eq_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/eq_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/eq_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -566,32 +678,43 @@ if(f.length>0){f[0].style.display='block';}
 The exponentiated quadratic covariance function.
 </aside>
 </section>
-<section id="where-did-this-covariance-matrix-come-from" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from"
+class="slide level2">
 <h2>Where Did This Covariance Matrix Come From?</h2>
 <p><span class="math display">\[
-k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}- \mathbf{ x}^\prime\right\Vert^2_2}{2\ell^2}\right)\]</span></p>
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert
+\mathbf{ x}- \mathbf{
+x}^\prime\right\Vert^2_2}{2\ell^2}\right)\]</span></p>
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
 <ul>
-<li><p>Covariance matrix is built using the <em>inputs</em> to the function, <span class="math inline">\(\mathbf{ x}\)</span>.</p></li>
-<li><p>For the example above it was based on Euclidean distance.</p></li>
+<li><p>Covariance matrix is built using the <em>inputs</em> to the
+function, <span class="math inline">\(\mathbf{ x}\)</span>.</p></li>
+<li><p>For the example above it was based on Euclidean
+distance.</p></li>
 <li><p>The covariance function is also know as a kernel.</p></li>
 </ul>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/eq_covariance.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/eq_covariance.svg" width style=" ">
 </object>
 </div>
 </div>
 </section>
 <section id="computing-covariance" class="slide level2">
 <h2>Computing Covariance</h2>
-<div id="animation-computing_eq_three_covariance" class="lamd-animation" role="region" aria-label="" data-animation-group="computing_eq_three_covariance">
+<div id="animation-computing_eq_three_covariance" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="computing_eq_three_covariance">
 <noscript>
 <style>#animation-computing_eq_three_covariance .animation-controls{display:none}#animation-computing_eq_three_covariance .computing_eq_three_covariance~.computing_eq_three_covariance{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-computing_eq_three_covariance" type="range" min="0" max="16" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_covariance')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_three_covariance');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_three_covariance');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_three_covariance" type="range" min="0" max="16" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_covariance')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_three_covariance');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_three_covariance');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -608,84 +731,123 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'computing_eq_three_covariance'+'" failed to initialize:',e);}
 });
 </script>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance000.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance001.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance002.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance002.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance003.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance003.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance004.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance004.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance005.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance005.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance006.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance006.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance007.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance007.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance008.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance008.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance009.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance009.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance010.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance010.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance011.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance011.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance012.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance012.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance013.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance013.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance014.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance014.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance015.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance015.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_covariance" data-animation-frame="computing_eq_three_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_covariance016.svg" width="80%" style=" ">
+<div class="computing_eq_three_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_covariance"
+data-animation-frame="computing_eq_three_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_covariance016.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 </section>
 <section id="computing-covariance-1" class="slide level2">
 <h2>Computing Covariance</h2>
-<div id="animation-computing_eq_four_covariance" class="lamd-animation" role="region" aria-label="" data-animation-group="computing_eq_four_covariance">
+<div id="animation-computing_eq_four_covariance" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="computing_eq_four_covariance">
 <noscript>
 <style>#animation-computing_eq_four_covariance .animation-controls{display:none}#animation-computing_eq_four_covariance .computing_eq_four_covariance~.computing_eq_four_covariance{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-computing_eq_four_covariance" type="range" min="0" max="27" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="27" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_four_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_four_covariance')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_four_covariance');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_four_covariance');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_four_covariance" type="range" min="0" max="27" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="27" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_four_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_four_covariance')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_four_covariance');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_four_covariance');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -702,122 +864,178 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'computing_eq_four_covariance'+'" failed to initialize:',e);}
 });
 </script>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance000.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance001.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance002.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance002.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance003.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance003.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance004.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance004.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance005.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance005.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance006.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance006.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance007.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance007.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance008.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance008.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance009.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance009.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance010.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance010.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance011.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance011.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance012.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance012.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance013.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance013.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance014.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance014.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance015.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance015.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance016.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance016.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance017.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance017.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance018.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance018.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance019.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance019.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance020.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance020.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance021.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance021.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance022.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance022.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance023.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance023.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance024.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance024.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance025.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance025.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance026.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance026.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_four_covariance" style="text-align:center;" role="img" aria-label="computing_eq_four_covariance" data-animation-frame="computing_eq_four_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance027.svg" width="80%" style=" ">
+<div class="computing_eq_four_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_four_covariance"
+data-animation-frame="computing_eq_four_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance027.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <div class="figure">
 <div id="computing-eq-four-covariance2-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_four_covariance027.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_four_covariance027.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -827,12 +1045,17 @@ Entrywise fill in of the covariance matrix from the covariance function.
 </section>
 <section id="computing-covariance-2" class="slide level2">
 <h2>Computing Covariance</h2>
-<div id="animation-computing_eq_three_2_covariance" class="lamd-animation" role="region" aria-label="" data-animation-group="computing_eq_three_2_covariance">
+<div id="animation-computing_eq_three_2_covariance"
+class="lamd-animation" role="region" aria-label=""
+data-animation-group="computing_eq_three_2_covariance">
 <noscript>
 <style>#animation-computing_eq_three_2_covariance .animation-controls{display:none}#animation-computing_eq_three_2_covariance .computing_eq_three_2_covariance~.computing_eq_three_2_covariance{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-computing_eq_three_2_covariance" type="range" min="0" max="16" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_2_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_2_covariance')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_three_2_covariance');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_three_2_covariance');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-computing_eq_three_2_covariance" type="range" min="0" max="16" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_2_covariance')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('computing_eq_three_2_covariance')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'computing_eq_three_2_covariance');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'computing_eq_three_2_covariance');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -849,78 +1072,112 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'computing_eq_three_2_covariance'+'" failed to initialize:',e);}
 });
 </script>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance000.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance001.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance002.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance002.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance003.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance003.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance004.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance004.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance005.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance005.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance006.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance006.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance007.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance007.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance008.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance008.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance009.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance009.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance010.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance010.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance011.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance011.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance012.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance012.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance013.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance013.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance014.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance014.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance015.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance015.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="computing_eq_three_2_covariance" style="text-align:center;" role="img" aria-label="computing_eq_three_2_covariance" data-animation-frame="computing_eq_three_2_covariance">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance016.svg" width="80%" style=" ">
+<div class="computing_eq_three_2_covariance" style="text-align:center;"
+role="img" aria-label="computing_eq_three_2_covariance"
+data-animation-frame="computing_eq_three_2_covariance">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance016.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <div class="figure">
 <div id="computing-eq-three-2-covariance2-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/kern/computing_eq_three_2_covariance016.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/kern/computing_eq_three_2_covariance016.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -931,18 +1188,20 @@ Entrywise fill in of the covariance matrix from the covariance function.
 <section id="brownian-covariance" class="slide level2">
 <h2>Brownian Covariance</h2>
 <center>
-<span class="math display">\[k(t, t^\prime)=\alpha \min(t, t^\prime)\]</span>
+<span class="math display">\[k(t, t^\prime)=\alpha \min(t,
+t^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="brownian-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/brownian_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/brownian_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/brownian_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/brownian_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -952,21 +1211,26 @@ Entrywise fill in of the covariance matrix from the covariance function.
 Brownian motion covariance function.
 </aside>
 </section>
-<section id="where-did-this-covariance-matrix-come-from-1" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from-1"
+class="slide level2">
 <h2>Where did this covariance matrix come from?</h2>
 <p><strong>Markov Process</strong></p>
 <p><strong>Visualization of inverse covariance (precision).</strong></p>
 <ul>
-<li><p>Precision matrix is sparse: only neighbours in matrix are non-zero.</p></li>
-<li><p>This reflects <em>conditional</em> independencies in data.</p></li>
+<li><p>Precision matrix is sparse: only neighbours in matrix are
+non-zero.</p></li>
+<li><p>This reflects <em>conditional</em> independencies in
+data.</p></li>
 <li><p>In this case <em>Markov</em> structure.</p></li>
 </ul>
 </section>
-<section id="where-did-this-covariance-matrix-come-from-2" class="slide level2">
+<section id="where-did-this-covariance-matrix-come-from-2"
+class="slide level2">
 <h2>Where did this covariance matrix come from?</h2>
 <p><strong>Exponentiated Quadratic</strong></p>
 <p><strong>Visualization of inverse covariance (precision).</strong></p>
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
 <ul>
 <li>Precision matrix is not sparse.</li>
@@ -983,10 +1247,12 @@ Brownian motion covariance function.
 <h2>Covariance Functions</h2>
 <p><strong>Markov Process</strong></p>
 <p><strong>Visualization of inverse covariance (precision).</strong></p>
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
 <ul>
-<li>Precision matrix is sparse: only neighbours in matrix are non-zero.</li>
+<li>Precision matrix is sparse: only neighbours in matrix are
+non-zero.</li>
 <li>This reflects <em>conditional</em> independencies in data.</li>
 <li>In this case <em>Markov</em> structure.</li>
 </ul>
@@ -999,18 +1265,21 @@ Brownian motion covariance function.
 <section id="exponential-covariance" class="slide level2">
 <h2>Exponential Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\exp\left(-\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="ou-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/ou_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/ou_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/ou_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/ou_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1023,60 +1292,86 @@ The exponential covariance function.
 <section id="basis-function-covariance" class="slide level2">
 <h2>Basis Function Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="basis-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/basis_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/basis_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/basis_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/basis_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 </div>
 </div>
 <aside class="notes">
-A covariance function based on a non-linear basis given by <span class="math inline">\(\boldsymbol{ \phi}(\mathbf{ x})\)</span>.
+A covariance function based on a non-linear basis given by <span
+class="math inline">\(\boldsymbol{ \phi}(\mathbf{ x})\)</span>.
 </aside>
 </section>
 <section id="degenerate-covariance-functions" class="slide level2">
 <h2>Degenerate Covariance Functions</h2>
 <p><strong>RBF Basis Functions</strong></p>
 <p><span class="math display">\[
-\phi_k(x) = \exp\left(-\frac{\left\Vert x-\mu_k \right\Vert_2^{2}}{\ell^{2}}\right).
+\phi_k(x) = \exp\left(-\frac{\left\Vert x-\mu_k
+\right\Vert_2^{2}}{\ell^{2}}\right).
 \]</span></p>
 <p><span class="math display">\[
 \boldsymbol{ \mu}= \begin{bmatrix} -1 \\ 0 \\ 1\end{bmatrix},
 \]</span></p>
 <p><span class="math display">\[
-k\left(\mathbf{ x},\mathbf{ x}^{\prime}\right)=\alpha\boldsymbol{ \phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime).
+k\left(\mathbf{ x},\mathbf{ x}^{\prime}\right)=\alpha\boldsymbol{
+\phi}(\mathbf{ x})^\top \boldsymbol{ \phi}(\mathbf{ x}^\prime).
 \]</span></p>
 </section>
 <section id="bochners-theoerem" class="slide level2">
 <h2>Bochners Theoerem</h2>
-<p>Given a positive finite Borel measure <span class="math inline">\(\mu\)</span> on the real line <span class="math inline">\(\mathbb{R}\)</span>, the Fourier transform <span class="math inline">\(Q\)</span> of <span class="math inline">\(\mu\)</span> is the continuous function <span class="math display">\[
+<p>Given a positive finite Borel measure <span
+class="math inline">\(\mu\)</span> on the real line <span
+class="math inline">\(\mathbb{R}\)</span>, the Fourier transform <span
+class="math inline">\(Q\)</span> of <span
+class="math inline">\(\mu\)</span> is the continuous function <span
+class="math display">\[
   Q(t) = \int_{\mathbb{R}} e^{-itx} \text{d} \mu(x).
-  \]</span> <span class="math inline">\(Q\)</span> is continuous since for a fixed <span class="math inline">\(x\)</span>, the function <span class="math inline">\(e^{-itx}\)</span> is continuous and periodic. The function <span class="math inline">\(Q\)</span> is a positive definite function, i.e. the kernel <span class="math inline">\(k(x, x^\prime)= Q(x^\prime - x)\)</span> is positive definite.</p>
-<p>Bochner’s theorem <span class="citation" data-cites="Bochner-book59">(Bochner, 1959)</span> says the converse is true, i.e. every positive definite function <span class="math inline">\(Q\)</span> is the Fourier transform of a positive finite Borel measure. A proof can be sketched as follows <span class="citation" data-cites="Stein:interpolation99">(Stein, 1999)</span></p>
+  \]</span> <span class="math inline">\(Q\)</span> is continuous since
+for a fixed <span class="math inline">\(x\)</span>, the function <span
+class="math inline">\(e^{-itx}\)</span> is continuous and periodic. The
+function <span class="math inline">\(Q\)</span> is a positive definite
+function, i.e. the kernel <span class="math inline">\(k(x, x^\prime)=
+Q(x^\prime - x)\)</span> is positive definite.</p>
+<p>Bochner’s theorem <span class="citation"
+data-cites="Bochner-book59">(Bochner, 1959)</span> says the converse is
+true, i.e. every positive definite function <span
+class="math inline">\(Q\)</span> is the Fourier transform of a positive
+finite Borel measure. A proof can be sketched as follows <span
+class="citation" data-cites="Stein:interpolation99">(Stein,
+1999)</span></p>
 <p><span class="math display">\[
 f(\mathbf{ x}) = \sum_{i=1}^ny_i \delta(\mathbf{ x}-\mathbf{ x}_i),
 \]</span></p>
 <p><span class="math display">\[
-F(\boldsymbol{\omega}) = \int_{-\infty}^\infty f(\mathbf{ x}) \exp\left(-i2\pi \boldsymbol{\omega}^\top \mathbf{ x}\right) \text{d} \mathbf{ x}
+F(\boldsymbol{\omega}) = \int_{-\infty}^\infty f(\mathbf{ x})
+\exp\left(-i2\pi \boldsymbol{\omega}^\top \mathbf{ x}\right) \text{d}
+\mathbf{ x}
 \]</span></p>
 <p><span class="math display">\[
-F(\boldsymbol{\omega}) = \sum_{i=1}^ny_i\exp\left(-i 2\pi \boldsymbol{\omega}^\top \mathbf{ x}_i\right)
+F(\boldsymbol{\omega}) = \sum_{i=1}^ny_i\exp\left(-i 2\pi
+\boldsymbol{\omega}^\top \mathbf{ x}_i\right)
 \]</span></p>
 <p><span class="math display">\[
-F(\omega) = \int_{-\infty}^\infty f(t) \left[\cos(2\pi \omega t) - i \sin(2\pi \omega t) \right]\text{d} t
+F(\omega) = \int_{-\infty}^\infty f(t) \left[\cos(2\pi \omega t) - i
+\sin(2\pi \omega t) \right]\text{d} t
 \]</span></p>
 <p><span class="math display">\[
-\exp(ix) = \cos x + i\sin x 
+\exp(ix) = \cos x + i\sin x
 \]</span> we can re-express this form as <span class="math display">\[
 F(\omega) = \int_{-\infty}^\infty f(t) \exp(-i 2\pi\omega)\text{d} t
 \]</span></p>
@@ -1084,24 +1379,28 @@ F(\omega) = \int_{-\infty}^\infty f(t) \exp(-i 2\pi\omega)\text{d} t
 f(t) = \int_{-\infty}^\infty F(\omega) \exp(2\pi\omega)\text{d} \omega.
 \]</span></p>
 <div class="centered" style="">
-<a href="https://play.google.com/books/reader?id=TDQJAAAAIAAJ&amp;pg=PA525"><img data-src="https://mlatcl.github.io/gpss/diagrams/books/TDQJAAAAIAAJ-PA525.png" /></a>
+<a
+href="https://play.google.com/books/reader?id=TDQJAAAAIAAJ&amp;pg=PA525"><img
+data-src="https://mlatcl.github.io/gpss/slides/diagrams/books/TDQJAAAAIAAJ-PA525.png" /></a>
 </div>
 </section>
 <section id="sinc-covariance" class="slide level2">
 <h2>Sinc Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \text{sinc}\left(\pi w r\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\text{sinc}\left(\pi w r\right)\]</span>
 </center>
 <div class="figure">
 <div id="sinc-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/sinc_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/sinc_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/sinc_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/sinc_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1114,18 +1413,22 @@ Sinc covariance function.
 <section id="matérn-32-covariance" class="slide level2">
 <h2>Matérn 3/2 Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\sqrt{3}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left\Vert \mathbf{
+x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="matern32-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/matern32_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/matern32_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/matern32_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/matern32_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1138,18 +1441,23 @@ The Matérn 3/2 covariance function.
 <section id="matérn-52-covariance" class="slide level2">
 <h2>Matérn 5/2 Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell} + \frac{5\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{3\ell^2}\right)\exp\left(-\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\sqrt{5}\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2}{\ell} + \frac{5\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{3\ell^2}\right)\exp\left(-\frac{\sqrt{5}\left\Vert
+\mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2}{\ell}\right)\]</span>
 </center>
 <div class="figure">
 <div id="matern52-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/matern52_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/matern52_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/matern52_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/matern52_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1162,18 +1470,21 @@ The Matérn 5/2 covariance function.
 <section id="rational-quadratic-covariance" class="slide level2">
 <h2>Rational Quadratic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \left(1+\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime \right\Vert_2^2}{2 a \ell^2}\right)^{-a}\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\left(1+\frac{\left\Vert \mathbf{ x}-\mathbf{ x}^\prime
+\right\Vert_2^2}{2 a \ell^2}\right)^{-a}\]</span>
 </center>
 <div class="figure">
 <div id="ratquad-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/ratquad_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/ratquad_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/ratquad_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/ratquad_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1186,18 +1497,20 @@ The rational quadratic covariance function.
 <section id="polynomial-covariance" class="slide level2">
 <h2>Polynomial Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha(w \mathbf{ x}^\top\mathbf{ x}^\prime + b)^d\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\alpha(w \mathbf{ x}^\top\mathbf{ x}^\prime + b)^d\]</span>
 </center>
 <div class="figure">
 <div id="polynomial-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/polynomial_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/polynomial_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/polynomial_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/polynomial_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1210,18 +1523,20 @@ Polynomial covariance function.
 <section id="periodic-covariance" class="slide level2">
 <h2>Periodic Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha\exp\left(\frac{-2\sin(\pi rw)^2}{\ell^2}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\alpha\exp\left(\frac{-2\sin(\pi rw)^2}{\ell^2}\right)\]</span>
 </center>
 <div class="figure">
 <div id="periodic-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/periodic_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/periodic_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/periodic_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/periodic_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1234,43 +1549,53 @@ Periodic covariance function.
 <section id="mlp-covariance" class="slide level2">
 <h2>MLP Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha \arcsin\left(\frac{w \mathbf{ x}^\top \mathbf{ x}^\prime + b}{\sqrt{\left(w \mathbf{ x}^\top \mathbf{ x}+ b + 1\right)\left(w \left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b + 1\right)}}\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = \alpha
+\arcsin\left(\frac{w \mathbf{ x}^\top \mathbf{ x}^\prime +
+b}{\sqrt{\left(w \mathbf{ x}^\top \mathbf{ x}+ b + 1\right)\left(w
+\left.\mathbf{ x}^\prime\right.^\top \mathbf{ x}^\prime + b +
+1\right)}}\right)\]</span>
 </center>
 <div class="figure">
 <div id="mlp-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/mlp_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/mlp_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/mlp_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/mlp_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 </div>
 </div>
 <aside class="notes">
-The multi-layer perceptron covariance function. This is derived by considering the infinite limit of a neural network with probit activation functions.
+The multi-layer perceptron covariance function. This is derived by
+considering the infinite limit of a neural network with probit
+activation functions.
 </aside>
 </section>
 <section id="relu-covariance" class="slide level2">
 <h2>RELU Covariance</h2>
 <center>
-<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) = 
-\frac{\|\mathbf{ x}\| \|\mathbf{ x}^\prime\|}{2\pi} \left(\pi - \arccos\left(\frac{\mathbf{ x}^\top \mathbf{ x}^\prime + b}{\|\mathbf{ x}\| \|\mathbf{ x}^\prime\|}\right)\right)\]</span>
+<span class="math display">\[k(\mathbf{ x}, \mathbf{ x}^\prime) =
+\frac{\|\mathbf{ x}\| \|\mathbf{ x}^\prime\|}{2\pi} \left(\pi -
+\arccos\left(\frac{\mathbf{ x}^\top \mathbf{ x}^\prime + b}{\|\mathbf{
+x}\| \|\mathbf{ x}^\prime\|}\right)\right)\]</span>
 </center>
 <div class="figure">
 <div id="relu-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/relu_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/relu_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/relu_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/relu_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
@@ -1283,49 +1608,57 @@ Rectified linear unit covariance function.
 <section id="additive-covariance" class="slide level2">
 <h2>Additive Covariance</h2>
 <center>
-<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) = k_g(\mathbf{ x}, \mathbf{ x}^\prime) + k_h(\mathbf{ x}, \mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) =
+k_g(\mathbf{ x}, \mathbf{ x}^\prime) + k_h(\mathbf{ x}, \mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="add-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/add_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/add_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/add_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/add_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 </div>
 </div>
 <aside class="notes">
-An additive covariance function formed by combining a linear and an exponentiated quadratic covariance functions.
+An additive covariance function formed by combining a linear and an
+exponentiated quadratic covariance functions.
 </aside>
 </section>
 <section id="product-covariance" class="slide level2">
 <h2>Product Covariance</h2>
 <center>
-<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) = k_g(\mathbf{ x}, \mathbf{ x}^\prime) k_h(\mathbf{ x}, \mathbf{ x}^\prime)\]</span>
+<span class="math display">\[k_f(\mathbf{ x}, \mathbf{ x}^\prime) =
+k_g(\mathbf{ x}, \mathbf{ x}^\prime) k_h(\mathbf{ x}, \mathbf{
+x}^\prime)\]</span>
 </center>
 <div class="figure">
 <div id="prod-covariance-plot-figure" class="figure-frame">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 45%; max-width:45%;">
-<object class data="https://mlatcl.github.io/gpss/diagrams/kern/prod_covariance.svg" width="100%" style=" ">
+<object class data="https://mlatcl.github.io/gpss/slides/diagrams/kern/prod_covariance.svg" width="100%" style=" ">
 </object>
 </div>
 <div style="flex:0 0 45%; max-width:45%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/kern/prod_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/kern/prod_covariance.gif" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 </div>
 </div>
 <aside class="notes">
-An product covariance function formed by combining a linear and an exponentiated quadratic covariance functions.
+An product covariance function formed by combining a linear and an
+exponentiated quadratic covariance functions.
 </aside>
 </section>
 <section id="mauna-loa-data" class="slide level2">
@@ -1335,24 +1668,26 @@ An product covariance function formed by combining a linear and an exponentiated
 <h2>Mauna Loa Data</h2>
 <div class="figure">
 <div id="mauna-loa-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/datasets/mauna-loa.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/datasets/mauna-loa.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Mauna Loa data shows carbon dioxide monthly average measurements from the Mauna Loa Observatory in Hawaii.
+Mauna Loa data shows carbon dioxide monthly average measurements from
+the Mauna Loa Observatory in Hawaii.
 </aside>
 </section>
 <section id="mauna-loa-test-data" class="slide level2">
 <h2>Mauna Loa Test Data</h2>
 <div class="figure">
 <div id="mauna-loa-test-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/datasets/mauna-loa-test.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/datasets/mauna-loa-test.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Mauna Loa test data shows carbon dioxide monthly average measurements from the Mauna Loa Observatory in Hawaii.
+Mauna Loa test data shows carbon dioxide monthly average measurements
+from the Mauna Loa Observatory in Hawaii.
 </aside>
 </section>
 <section id="gaussian-process-fit" class="slide level2">
@@ -1362,12 +1697,13 @@ Mauna Loa test data shows carbon dioxide monthly average measurements from the M
 <h2>Mauna Loa Data GP</h2>
 <div class="figure">
 <div id="mauna-loa-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/mauna-loa-gp.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/mauna-loa-gp.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Gaussian process fit to the Mauna Loa Observatory data on CO2 concentrations.
+Gaussian process fit to the Mauna Loa Observatory data on CO2
+concentrations.
 </aside>
 </section>
 <section id="box-jenkins-airline-passenger-data" class="slide level2">
@@ -1377,7 +1713,7 @@ Gaussian process fit to the Mauna Loa Observatory data on CO2 concentrations.
 <h2>Mauna Loa Data</h2>
 <div class="figure">
 <div id="box-jenkins-airline-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/datasets/box-jenkins-airline.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/datasets/box-jenkins-airline.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -1392,7 +1728,7 @@ Box-Jenkins data set on airline passenger numbers.
 <h2>Box-Jenkins Airline PassengerData GP</h2>
 <div class="figure">
 <div id="box-jenkins-airline-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/box-jenkins-airline-gp.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/box-jenkins-airline-gp.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -1407,7 +1743,7 @@ Gaussian process fit to the Box-Jenkins airline passenger data.
 <h2>Box-Jenkins Airline Spectral Mixture</h2>
 <div class="figure">
 <div id="box-jenkins-spectral-mixture-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/box-jenkins-spectral-mixture-gp.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/box-jenkins-spectral-mixture-gp.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -1419,33 +1755,43 @@ Spectral mixture GP as applied to the Box-Jenkins airline data.
 <h2>Mauna Loa Spectral Mixture</h2>
 <div class="figure">
 <div id="mauna-loa-spectral-mixture-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/mauna-loa-spectral-mixture-gp.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/mauna-loa-spectral-mixture-gp.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Spectral mixture GP as applied to the Mauna Loa Observatory carbon dioxide concentration data.
+Spectral mixture GP as applied to the Mauna Loa Observatory carbon
+dioxide concentration data.
 </aside>
 </section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>
 <li>company: <a href="https://trent.ai">Trent AI</a></li>
-<li>book: <a href="https://www.penguin.co.uk/books/455130/the-atomic-human-by-lawrence-neil-d/9780241625248">The Atomic Human</a></li>
+<li>book: <a
+href="https://www.penguin.co.uk/books/455130/the-atomic-human-by-lawrence-neil-d/9780241625248">The
+Atomic Human</a></li>
 <li>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></li>
 <li><a href="https://the-atomic-human.ai">The Atomic Human</a></li>
-<li>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></li>
-<li>blog: <a href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
+<li>newspaper: <a
+href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
+Page</a></li>
+<li>blog: <a
+href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
 </ul>
 </section>
 <section id="references" class="slide level2 unnumbered scrollable">
 <h2 class="unnumbered scrollable">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-Bochner-book59" class="csl-entry" role="doc-biblioentry">
-Bochner, S., 1959. Lectures on <span>F</span>ourier integrals. Princeton University Press.
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-Bochner-book59" class="csl-entry" role="listitem">
+Bochner, S., 1959. <a
+href="http://books.google.co.uk/books?id=-vU02QewWK8C">Lectures on
+<span>F</span>ourier integrals</a>. Princeton University Press.
 </div>
-<div id="ref-Stein:interpolation99" class="csl-entry" role="doc-biblioentry">
-Stein, M.L., 1999. Interpolation of spatial data: Some theory for <span>K</span>riging. springer.
+<div id="ref-Stein:interpolation99" class="csl-entry" role="listitem">
+Stein, M.L., 1999. Interpolation of spatial data: Some theory for
+<span>K</span>riging. springer.
 </div>
 </div>
 </section>
@@ -1460,10 +1806,39 @@ Stein, M.L., 1999. Interpolation of spatial data: Some theory for <span>K</span>
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
         // Transition style
-        transition: 'None', // none/fade/slide/convex/concave/zoom
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
           config: 'TeX-AMS_HTML-full',

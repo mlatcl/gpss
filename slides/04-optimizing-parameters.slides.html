@@ -142,36 +142,47 @@ sns.set_style('darkgrid')
 sns.set_context('paper')
 sns.set_palette('colorblind')}-->
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <div class="figure">
 <div id="gpy-software-figure" class="figure-frame">
 <div class="centered" style="">
-<img class="" src="https://mlatcl.github.io/gpss/diagrams/gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="" src="https://mlatcl.github.io/gpss/slides/diagrams/gp/gpy.png" width="70%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 <aside class="notes">
-GPy is a BSD licensed software code base for implementing Gaussian process models in Python. It is designed for teaching and modelling. We welcome contributions which can be made through the GitHub repository <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+GPy is a BSD licensed software code base for implementing Gaussian
+process models in Python. It is designed for teaching and modelling. We
+welcome contributions which can be made through the GitHub repository <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </aside>
 <center>
-<a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a>
+<a href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a>
 </center>
 </section>
-<section id="gpy-a-gaussian-process-framework-in-python-1" class="slide level2">
+<section id="gpy-a-gaussian-process-framework-in-python-1"
+class="slide level2">
 <h2>GPy: A Gaussian Process Framework in Python</h2>
 <ul>
 <li>BSD Licensed software base.</li>
 <li>Wide availability of libraries, ‘modern’ scripting language.</li>
-<li>Allows us to set projects to undergraduates in Comp Sci that use GPs.</li>
-<li>Available through GitHub <a href="https://github.com/SheffieldML/GPy" class="uri">https://github.com/SheffieldML/GPy</a></li>
+<li>Allows us to set projects to undergraduates in Comp Sci that use
+GPs.</li>
+<li>Available through GitHub <a
+href="https://github.com/SheffieldML/GPy"
+class="uri">https://github.com/SheffieldML/GPy</a></li>
 <li>Reproducible Research with Jupyter Notebook.</li>
 </ul>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
 <ul>
-<li>Probabilistic-style programming (specify the model, not the algorithm).</li>
+<li>Probabilistic-style programming (specify the model, not the
+algorithm).</li>
 <li>Non-Gaussian likelihoods.</li>
 <li>Multivariate outputs.</li>
 <li>Dimensionality reduction.</li>
@@ -180,7 +191,10 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 </section>
 <section id="improving-the-numerics" class="slide level2">
 <h2>Improving the Numerics</h2>
-<p>In practice we shouldn’t be using matrix inverse directly to solve the GP system. One more stable way is to compute the <em>Cholesky decomposition</em> of the kernel matrix. The log determinant of the covariance can also be derived from the Cholesky decomposition.</p>
+<p>In practice we shouldn’t be using matrix inverse directly to solve
+the GP system. One more stable way is to compute the <em>Cholesky
+decomposition</em> of the kernel matrix. The log determinant of the
+covariance can also be derived from the Cholesky decomposition.</p>
 </section>
 <section id="capacity-control" class="slide level2">
 <h2>Capacity Control</h2>
@@ -201,14 +215,18 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 <section id="section" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
-\mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+\mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}{\det{\mathbf{K}}^{\frac{1}{2}}}}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \]</span></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
+    \mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=\frac{1}{(2\pi)^\frac{n}{2}\color{yellow}{\det{\mathbf{K}}^{\frac{1}{2}}}}\color{cyan}{\exp\left(-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}\right)}
 \end{aligned}
 \]</span></p>
 </section>
@@ -216,46 +234,69 @@ GPy is a BSD licensed software code base for implementing Gaussian process model
 <h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
-    \log \mathscr{N}\left(\mathbf{ y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
+    \log \mathscr{N}\left(\mathbf{
+y}|\mathbf{0},\mathbf{K}\right)=&amp;\color{yellow}{-\frac{1}{2}\log\det{\mathbf{K}}}\color{cyan}{-\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}} \\ &amp;-\frac{n}{2}\log2\pi
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
-E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} + \color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
+E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}} +
+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}
 \]</span></p>
 </section>
-<section id="capacity-control-through-the-determinant" class="slide level2">
+<section id="capacity-control-through-the-determinant"
+class="slide level2">
 <h2>Capacity Control through the Determinant</h2>
-<p>The parameters are <em>inside</em> the covariance function (matrix).  <span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j; \boldsymbol{ \theta})\]</span></p>
+<p>The parameters are <em>inside</em> the covariance function (matrix).
+<span class="math display">\[k_{i, j} = k(\mathbf{ x}_i, \mathbf{ x}_j;
+\boldsymbol{ \theta})\]</span></p>
 </section>
 <section id="eigendecomposition-of-covariance" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
-<p><span> <span class="math display">\[\mathbf{K}= \mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<p><span> <span class="math display">\[\mathbf{K}=
+\mathbf{R}\boldsymbol{ \Lambda}^2 \mathbf{R}^\top\]</span></span></p>
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
 <div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimize-eigen.png" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimize-eigen.png" width="100%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives rotation.
+<span class="math inline">\(\boldsymbol{ \Lambda}\)</span> represents
+distance on axes. <span class="math inline">\(\mathbf{R}\)</span> gives
+rotation.
 </div>
 </div>
 </section>
 <section id="eigendecomposition-of-covariance-1" class="slide level2">
 <h2>Eigendecomposition of Covariance</h2>
 <ul>
-<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is <em>diagonal</em>, <span class="math inline">\(\mathbf{R}^\top\mathbf{R}= \mathbf{I}\)</span>.</li>
-<li>Useful representation since <span class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} = \det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
+<li><span class="math inline">\(\boldsymbol{ \Lambda}\)</span> is
+<em>diagonal</em>, <span
+class="math inline">\(\mathbf{R}^\top\mathbf{R}=
+\mathbf{I}\)</span>.</li>
+<li>Useful representation since <span
+class="math inline">\(\det{\mathbf{K}} = \det{\boldsymbol{ \Lambda}^2} =
+\det{\boldsymbol{ \Lambda}}^2\)</span>.</li>
 </ul>
 </section>
-<section id="capacity-control-coloryellowlog-detmathbfk" class="slide level2">
-<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log \det{\mathbf{K}}}\)</span></h2>
-<div id="animation-gp-optimise-determinant" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise-determinant">
+<section id="capacity-control-coloryellowlog-detmathbfk"
+class="slide level2">
+<h2>Capacity control: <span class="math inline">\(\color{yellow}{\log
+\det{\mathbf{K}}}\)</span></h2>
+<div id="animation-gp-optimise-determinant" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="gp-optimise-determinant">
 <noscript>
 <style>#animation-gp-optimise-determinant .animation-controls{display:none}#animation-gp-optimise-determinant .gp-optimise-determinant~.gp-optimise-determinant{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-determinant');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-determinant');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-determinant" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-determinant')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-determinant');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-determinant');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -272,44 +313,64 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise-determinant'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant000.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant001.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant002.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant002.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant003.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant003.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant004.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant004.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant005.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant005.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant006.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant006.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant007.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant007.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant008.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant008.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-determinant" style="text-align:center;" role="img" aria-label="gp-optimise-determinant" data-animation-frame="gp-optimise-determinant">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-determinant009.svg" width="80%" style=" ">
+<div class="gp-optimise-determinant" style="text-align:center;"
+role="img" aria-label="gp-optimise-determinant"
+data-animation-frame="gp-optimise-determinant">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-determinant009.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
@@ -317,14 +378,21 @@ if(f.length>0){f[0].style.display='block';}
 <section id="quadratic-data-fit" class="slide level2">
 <h2>Quadratic Data Fit</h2>
 </section>
-<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{ y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
-<div id="animation-gp-optimise-quadratic" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise-quadratic">
+<section id="data-fit-colorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2>Data Fit: <span class="math inline">\(\color{cyan}{\frac{\mathbf{
+y}^\top\mathbf{K}^{-1}\mathbf{ y}}{2}}\)</span></h2>
+<div id="animation-gp-optimise-quadratic" class="lamd-animation"
+role="region" aria-label=""
+data-animation-group="gp-optimise-quadratic">
 <noscript>
 <style>#animation-gp-optimise-quadratic .animation-controls{display:none}#animation-gp-optimise-quadratic .gp-optimise-quadratic~.gp-optimise-quadratic{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-quadratic');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-quadratic');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise-quadratic" type="range" min="0" max="2" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise-quadratic')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise-quadratic');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise-quadratic');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -341,40 +409,56 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise-quadratic'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic000.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic000.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic001.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic001.svg" width="80%" style=" ">
 </object>
 </div>
-<div class="gp-optimise-quadratic" style="text-align:center;" role="img" aria-label="gp-optimise-quadratic" data-animation-frame="gp-optimise-quadratic">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
+<div class="gp-optimise-quadratic" style="text-align:center;" role="img"
+aria-label="gp-optimise-quadratic"
+data-animation-frame="gp-optimise-quadratic">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <div class="figure">
 <div id="gp-optimise-quadratic-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise-quadratic002.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-The data fit term of the Gaussian process is a quadratic loss centered around zero. This has eliptical contours, the principal axes of which are given by the covariance matrix.
+The data fit term of the Gaussian process is a quadratic loss centered
+around zero. This has eliptical contours, the principal axes of which
+are given by the covariance matrix.
 </aside>
 </section>
-<section id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2" class="slide level2">
-<h2><span class="math display">\[E(\boldsymbol{ \theta}) = \color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{ y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
+<section
+id="eboldsymbol-theta-coloryellowfrac12logdetmathbfkcolorcyanfracmathbf-ytopmathbfk-1mathbf-y2"
+class="slide level2">
+<h2><span class="math display">\[E(\boldsymbol{ \theta}) =
+\color{yellow}{\frac{1}{2}\log\det{\mathbf{K}}}+\color{cyan}{\frac{\mathbf{
+y}^{\top}\mathbf{K}^{-1}\mathbf{ y}}{2}}\]</span></h2>
 </section>
 <section id="data-fit-term" class="slide level2">
 <h2>Data Fit Term</h2>
-<div id="animation-gp-optimise" class="lamd-animation" role="region" aria-label="" data-animation-group="gp-optimise">
+<div id="animation-gp-optimise" class="lamd-animation" role="region"
+aria-label="" data-animation-group="gp-optimise">
 <noscript>
 <style>#animation-gp-optimise .animation-controls{display:none}#animation-gp-optimise .gp-optimise~.gp-optimise{display:none}</style>
 </noscript>
 <div class="animation-controls">
-<p><small></small> <input id="range-gp-optimise" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')"> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise');" aria-label="Previous frame">❮</button> <button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise');" aria-label="Next frame">❯</button></p>
+<p><small></small>
+<input id="range-gp-optimise" type="range" min="0" max="10" value="0" aria-label="Frame slider for " aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" onchange="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')" oninput="typeof lamdSetDivs==='function'&&lamdSetDivs('gp-optimise')">
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(-1,'gp-optimise');" aria-label="Previous frame">❮</button>
+<button type="button" onclick="typeof lamdPlusDivs==='function'&&lamdPlusDivs(1,'gp-optimise');" aria-label="Next frame">❯</button></p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -391,134 +475,156 @@ if(f.length>0){f[0].style.display='block';}
 }catch(e){console.warn('[lamd] Animation "'+'gp-optimise'+'" failed to initialize:',e);}
 });
 </script>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise000.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise000.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise001.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise002.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise003.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise001.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise004.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise002.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise005.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise006.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise007.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise003.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise008.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise004.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise009.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise010.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise011.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise005.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise012.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise006.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise013.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise014.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise015.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise007.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise016.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise008.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise017.svg" width style=" ">
-</object>
-</div>
-</div>
-</div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise018.svg" width style=" ">
-</object>
-</div>
-<div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise019.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise009.svg" width style=" ">
 </object>
 </div>
 </div>
 </div>
-<div class="gp-optimise" style="text-align:center;" role="img" aria-label="gp-optimise" data-animation-frame="gp-optimise">
-<div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise020.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise010.svg" width style=" ">
 </object>
 </div>
 <div style="flex:0 0 50%; max-width:50%;">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/gp-optimise021.svg" width style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise011.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise012.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise013.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise014.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise015.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise016.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise017.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise018.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise019.svg" width style=" ">
+</object>
+</div>
+</div>
+</div>
+<div class="gp-optimise" style="text-align:center;" role="img"
+aria-label="gp-optimise" data-animation-frame="gp-optimise">
+<div class="lamd-columns"
+style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise020.svg" width style=" ">
+</object>
+</div>
+<div style="flex:0 0 50%; max-width:50%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/gp-optimise021.svg" width style=" ">
 </object>
 </div>
 </div>
@@ -528,25 +634,32 @@ if(f.length>0){f[0].style.display='block';}
 <section id="della-gatta-gene-data" class="slide level2">
 <h2>Della Gatta Gene Data</h2>
 <ul>
-<li>Given given expression levels in the form of a time series from <span class="citation" data-cites="DellaGatta:direct08">Della Gatta et al. (2008)</span>.</li>
+<li>Given given expression levels in the form of a time series from
+<span class="citation" data-cites="DellaGatta:direct08">Della Gatta et
+al. (2008)</span>.</li>
 </ul>
 </section>
 <section id="della-gatta-gene-data-1" class="slide level2">
 <h2>Della Gatta Gene Data</h2>
 <div class="figure">
 <div id="della-gatta-gene-data-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/datasets/della-gatta-gene.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/datasets/della-gatta-gene.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Gene expression levels over time for a gene from data provided by <span class="citation" data-cites="DellaGatta:direct08">Della Gatta et al. (2008)</span>. We would like to understand whether there is signal in the data, or we are only observing noise.
+Gene expression levels over time for a gene from data provided by <span
+class="citation" data-cites="DellaGatta:direct08">Della Gatta et al.
+(2008)</span>. We would like to understand whether there is signal in
+the data, or we are only observing noise.
 </aside>
 </section>
 <section id="gene-expression-example" class="slide level2">
 <h2>Gene Expression Example</h2>
 <ul>
-<li>Want to detect if a gene is expressed or not, fit a GP to each gene <span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.</li>
+<li>Want to detect if a gene is expressed or not, fit a GP to each gene
+<span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and
+Lawrence (2011)</span>.</li>
 </ul>
 </section>
 <section id="section-3" class="slide level2">
@@ -557,15 +670,19 @@ Gene expression levels over time for a gene from data provided by <span class="c
 <div class="figure">
 <div id="a-simple-approach-to-ranking-figure" class="figure-frame">
 <div class="centered" style="">
-<img class="" src="https://mlatcl.github.io/gpss/diagrams/health/1471-2105-12-180_1.png" width="80%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
+<img class="" src="https://mlatcl.github.io/gpss/slides/diagrams/health/1471-2105-12-180_1.png" width="80%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
 </div>
 </div>
 </div>
 <aside class="notes">
-The example is taken from the paper “A Simple Approach to Ranking Differentially Expressed Gene Expression Time Courses through Gaussian Process Regression.” <span class="citation" data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.
+The example is taken from the paper “A Simple Approach to Ranking
+Differentially Expressed Gene Expression Time Courses through Gaussian
+Process Regression.” <span class="citation"
+data-cites="Kalaitzis:simple11">Kalaitzis and Lawrence (2011)</span>.
 </aside>
 <center>
-<a href="http://www.biomedcentral.com/1471-2105/12/180" class="uri">http://www.biomedcentral.com/1471-2105/12/180</a>
+<a href="http://www.biomedcentral.com/1471-2105/12/180"
+class="uri">http://www.biomedcentral.com/1471-2105/12/180</a>
 </center>
 </section>
 <section id="section-4" class="slide level2">
@@ -575,43 +692,47 @@ The example is taken from the paper “A Simple Approach to Ranking Differential
 <h2>TP53 Gene Data GP</h2>
 <div class="figure">
 <div id="della-gatta-gene-gp-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/della-gatta-gene-gp.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/della-gatta-gene-gp.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the time scale parameter initialized to 50 minutes.
+Result of the fit of the Gaussian process model with the time scale
+parameter initialized to 50 minutes.
 </aside>
 </section>
 <section id="tp53-gene-data-gp-1" class="slide level2">
 <h2>TP53 Gene Data GP</h2>
 <div class="figure">
 <div id="della-gatta-gene-gp2-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/della-gatta-gene-gp2.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/della-gatta-gene-gp2.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the time scale parameter initialized to 2000 minutes.
+Result of the fit of the Gaussian process model with the time scale
+parameter initialized to 2000 minutes.
 </aside>
 </section>
 <section id="tp53-gene-data-gp-2" class="slide level2">
 <h2>TP53 Gene Data GP</h2>
 <div class="figure">
 <div id="della-gatta-gene-gp3-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/della-gatta-gene-gp3.svg" width="80%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/della-gatta-gene-gp3.svg" width="80%" style=" ">
 </object>
 </div>
 </div>
 <aside class="notes">
-Result of the fit of the Gaussian process model with the noise initialized low (standard deviation 0.1) and the time scale parameter initialized to 20 minutes.
+Result of the fit of the Gaussian process model with the noise
+initialized low (standard deviation 0.1) and the time scale parameter
+initialized to 20 minutes.
 </aside>
 </section>
 <section id="multiple-optima" class="slide level2">
 <h2>Multiple Optima</h2>
 <div class="figure">
 <div id="gp-multiple-optima000-figure" class="figure-frame">
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/multiple-optima000.svg" width="50%" style=" ">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/multiple-optima000.svg" width="50%" style=" ">
 </object>
 </div>
 </div>
@@ -622,27 +743,40 @@ Result of the fit of the Gaussian process model with the noise initialized low (
 
 
 
-<object class="svgplot " data="https://mlatcl.github.io/gpss/diagrams/gp/multiple-optima001.svg" width="" style=" "></object>-->
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/gp/multiple-optima001.svg" width="" style=" "></object>-->
 </section>
 <section id="thanks" class="slide level2 scrollable">
 <h2 class="scrollable">Thanks!</h2>
 <ul>
 <li>company: <a href="https://trent.ai">Trent AI</a></li>
-<li>book: <a href="https://www.penguin.co.uk/books/455130/the-atomic-human-by-lawrence-neil-d/9780241625248">The Atomic Human</a></li>
+<li>book: <a
+href="https://www.penguin.co.uk/books/455130/the-atomic-human-by-lawrence-neil-d/9780241625248">The
+Atomic Human</a></li>
 <li>twitter: <a href="https://twitter.com/lawrennd">@lawrennd</a></li>
 <li><a href="https://the-atomic-human.ai">The Atomic Human</a></li>
-<li>newspaper: <a href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile Page</a></li>
-<li>blog: <a href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
+<li>newspaper: <a
+href="http://www.theguardian.com/profile/neil-lawrence">Guardian Profile
+Page</a></li>
+<li>blog: <a
+href="http://inverseprobability.com/blog.html">http://inverseprobability.com</a></li>
 </ul>
 </section>
 <section id="references" class="slide level2 unnumbered scrollable">
 <h2 class="unnumbered scrollable">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-DellaGatta:direct08" class="csl-entry" role="doc-biblioentry">
-Della Gatta, G., Bansal, M., Ambesi-Impiombato, A., Antonini, D., Missero, C., Bernardo, D. di, 2008. Direct targets of the TRP63 transcription factor revealed by a combination of gene expression profiling and reverse engineering. Genome Research 18, 939–948. <a href="https://doi.org/10.1101/gr.073601.107">https://doi.org/10.1101/gr.073601.107</a>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-DellaGatta:direct08" class="csl-entry" role="listitem">
+Della Gatta, G., Bansal, M., Ambesi-Impiombato, A., Antonini, D.,
+Missero, C., Bernardo, D. di, 2008. Direct targets of the TRP63
+transcription factor revealed by a combination of gene expression
+profiling and reverse engineering. Genome Research 18, 939–948. <a
+href="https://doi.org/10.1101/gr.073601.107">https://doi.org/10.1101/gr.073601.107</a>
 </div>
-<div id="ref-Kalaitzis:simple11" class="csl-entry" role="doc-biblioentry">
-Kalaitzis, A.A., Lawrence, N.D., 2011. A simple approach to ranking differentially expressed gene expression time courses through <span>Gaussian</span> process regression. BMC Bioinformatics 12. <a href="https://doi.org/10.1186/1471-2105-12-180">https://doi.org/10.1186/1471-2105-12-180</a>
+<div id="ref-Kalaitzis:simple11" class="csl-entry" role="listitem">
+Kalaitzis, A.A., Lawrence, N.D., 2011. A simple approach to ranking
+differentially expressed gene expression time courses through
+<span>Gaussian</span> process regression. BMC Bioinformatics 12. <a
+href="https://doi.org/10.1186/1471-2105-12-180">https://doi.org/10.1186/1471-2105-12-180</a>
 </div>
 </div>
 </section>
@@ -657,8 +791,39 @@ Kalaitzis, A.A., Lawrence, N.D., 2011. A simple approach to ranking differential
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
           config: 'TeX-AMS_HTML-full',
