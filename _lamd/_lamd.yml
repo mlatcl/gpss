@@ -10,7 +10,7 @@ layout: lecture
 venue: Gaussian Process Summer School
 talktheme: white
 talkcss: gpss.css
-talkfontsize: smaller
+talkfontsize: xs
 bibdir: $HOME/lawrennd/bibliography/
 people: ../_people/people.yml
 postsdir: ../_lectures/
