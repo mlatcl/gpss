@@ -2,6 +2,8 @@
 # Compile lectures and worksheets listed in the CSVs (skip header row).
 set -euo pipefail
 
+cd "$(dirname "$0")"
+
 compile_list() {
     local csv="$1"
     local skip=true
@@ -19,7 +21,9 @@ compile_list() {
 }
 
 compile_list lectures.csv
-compile_list worksheets.csv
+if [[ -f worksheets.csv ]]; then
+    compile_list worksheets.csv
+fi
 
 # Printable assessment handouts (pandoc), not LaMD.
 handouts_dir="../assessments/handouts"
