@@ -41,7 +41,9 @@ Execute every numbered lecture notebook under `_notebooks/` with CI-safe patches
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements-smoke.txt
+# Prefer uv when available (faster); pip also works.
+uv pip install -r requirements-smoke.txt
+# python -m pip install -r requirements-smoke.txt
 python scripts/smoke_notebooks.py
 # subset: python scripts/smoke_notebooks.py --only 01 13
 ```

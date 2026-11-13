@@ -1,5 +1,6 @@
 # Runtime + execution harness for lecture notebook smoke tests.
-# Install: pip install -r requirements-smoke.txt
+# Install: uv pip install -r requirements-smoke.txt
+# (or: python -m pip install -r requirements-smoke.txt)
 
 # Notebook execution
 nbclient>=0.10,<1
@@ -8,8 +9,8 @@ ipykernel>=6.29
 ipywidgets>=8.1
 ipython>=8.0
 
-# Teaching stack (match README notebook dependencies)
-GPy>=1.13
+# Teaching stack (match README notebook dependencies / lamd installcode)
+GPy>=1.15
 git+https://github.com/SheffieldML/PyDeepGP.git#egg=DGP
 git+https://github.com/lawrennd/mlai.git#egg=mlai
 git+https://github.com/lawrennd/ods.git#egg=pods
