@@ -356,13 +356,30 @@ Figure: Image credit: Kai Arulkumaran
 </section>
 <section id="nystrom-method" class="slide level2">
 <h2>Nystr"om Method</h2>
-<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/cov_approx.png" width="90%" height="auto" align="" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
-<div class="caption" style="">
-Figure: Figure originally from presentation by Ed Snelson at NIPS
+<div class="figure">
+<div id="cov-approx-figure" class="figure-frame">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/cov_approx.svg" width="90%" style=" ">
+</object>
 </div>
+</div>
+<aside class="notes">
+Nyström approximation of a covariance: <span class="math inline">\(\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\)</span>, the low-rank reconstruction <span class="math inline">\(\mathbf{Q}_{\mathbf{ f}\mathbf{ f}}=\mathbf{K}_{\mathbf{ f}\mathbf{ u}}\mathbf{K}_{\mathbf{ u}\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u}\mathbf{ f}}\)</span>, and the factors <span class="math inline">\(\mathbf{K}_{\mathbf{ f}\mathbf{ u}}\)</span>, <span class="math inline">\(\mathbf{K}_{\mathbf{ u}\mathbf{ u}}\)</span>, <span class="math inline">\(\mathbf{K}_{\mathbf{ u}\mathbf{ f}}\)</span>. Layout after Ed Snelson’s NIPS illustration.
+</aside>
 <p><span class="math display">\[
 \mathbf{K}_{\mathbf{ f}\mathbf{ f}}\approx \mathbf{Q}_{\mathbf{ f}\mathbf{ f}}= \mathbf{K}_{\mathbf{ f}\mathbf{ u}}\mathbf{K}_{\mathbf{ u}\mathbf{ u}}^{-1}\mathbf{K}_{\mathbf{ u}\mathbf{ f}}
 \]</span></p>
+</section>
+<section id="nystrom-with-spaced-landmarks" class="slide level2">
+<h2>Nystr"om with spaced landmarks</h2>
+<div class="figure">
+<div id="cov-approx-opt-figure" class="figure-frame">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/cov_approx_opt.svg" width="90%" style=" ">
+</object>
+</div>
+</div>
+<aside class="notes">
+Same decomposition with evenly spaced landmark inputs: <span class="math inline">\(\mathbf{Q}_{\mathbf{ f}\mathbf{ f}}\)</span> tracks <span class="math inline">\(\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\)</span> more closely.
+</aside>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -371,9 +388,8 @@ Figure: Figure originally from presentation by Ed Snelson at NIPS
 <span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span>
 </div>
 <div style="flex:0 0 70%; max-width:70%;">
-<div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature1.png" width="90%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
-</div>
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature1.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
 </section>
@@ -384,9 +400,8 @@ Figure: Figure originally from presentation by Ed Snelson at NIPS
 <span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span> <span class="math display">\[{\color{yellow} f(\mathbf{ x})} \sim {\mathcal GP}\]</span>
 </div>
 <div style="flex:0 0 70%; max-width:70%;">
-<div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature2.png" width="90%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
-</div>
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature2.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
 </section>
@@ -397,9 +412,8 @@ Figure: Figure originally from presentation by Ed Snelson at NIPS
 <span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span> <span class="math display">\[f(\mathbf{ x}) \sim {\mathcal GP}\]</span><span class="math display">\[p({\color{yellow} \mathbf{ f}}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\right)\]</span>
 </div>
 <div style="flex:0 0 70%; max-width:70%;">
-<div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature3.png" width="90%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
-</div>
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature3.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
 </section>
@@ -415,9 +429,8 @@ p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}
 \]</span>
 </div>
 <div style="flex:0 0 70%; max-width:70%;">
-<div class="centered" style="">
-<img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature3a.png" width="90%" height="auto" align="center" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle">
-</div>
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature3a.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
 </section>
@@ -427,11 +440,19 @@ p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}
 </section>
 <section id="introducing-mathbf-u-1" class="slide level2">
 <h2>Introducing <span class="math inline">\(\mathbf{ u}\)</span></h2>
-<p><img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/cov_inducing_withX.png" width="60%" height="auto" align="" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle"></p>
+<div class="figure">
+<div id="cov-inducing-withX-figure" class="figure-frame">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/cov_inducing_withX.svg" width="60%" style=" ">
+</object>
+</div>
+</div>
+<aside class="notes">
+Joint covariance of <span class="math inline">\(\mathbf{ f}\)</span> and <span class="math inline">\(\mathbf{ u}\)</span>: blocks <span class="math inline">\(\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\)</span>, <span class="math inline">\(\mathbf{K}_{\mathbf{ f}\mathbf{ u}}\)</span>, <span class="math inline">\(\mathbf{K}_{\mathbf{ u}\mathbf{ f}}\)</span>, <span class="math inline">\(\mathbf{K}_{\mathbf{ u}\mathbf{ u}}\)</span>.
+</aside>
 </section>
 <section id="introducing-mathbf-u-2" class="slide level2">
 <h2>Introducing <span class="math inline">\(\mathbf{ u}\)</span></h2>
-<p>Take and extra <span class="math inline">\(M\)</span> points on the function, <span class="math inline">\(\mathbf{ u}= f(\mathbf{Z})\)</span>. <span class="math display">\[p(\mathbf{ y},\mathbf{ f},\mathbf{ u}) = p(\mathbf{ y}|\mathbf{ f}) p(\mathbf{ f}|\mathbf{ u}) p(\mathbf{ u})\]</span> <span class="math display">\[\begin{aligned}
+<p>Take an extra <span class="math inline">\(M\)</span> points on the function, <span class="math inline">\(\mathbf{ u}= f(\mathbf{Z})\)</span>. <span class="math display">\[p(\mathbf{ y},\mathbf{ f},\mathbf{ u}) = p(\mathbf{ y}|\mathbf{ f}) p(\mathbf{ f}|\mathbf{ u}) p(\mathbf{ u})\]</span> <span class="math display">\[\begin{aligned}
     p(\mathbf{ y}|\mathbf{ f}) &amp;= \mathscr{N}\left(\mathbf{ y}|\mathbf{ f},\sigma^2 \mathbf{I}\right)\\
     p(\mathbf{ f}|\mathbf{ u}) &amp;= \mathscr{N}\left(\mathbf{ f}| \mathbf{K}_{\mathbf{ f}\mathbf{ u}}\mathbf{K}_{\mathbf{ u}\mathbf{ u}}^{-1}\mathbf{ u}, \tilde{\mathbf{K}}\right)\\
     p(\mathbf{ u}) &amp;= \mathscr{N}\left(\mathbf{ u}| \mathbf{0},\mathbf{K}_{\mathbf{ u}\mathbf{ u}}\right)
@@ -444,7 +465,8 @@ p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}
 <p><span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span> <span class="math display">\[f(\mathbf{ x}) \sim {\mathcal GP}\]</span> <span class="math display">\[p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\right)\]</span> <span class="math display">\[p(\mathbf{ f}|\mathbf{ y},\mathbf{X})\]</span></p>
 </div>
 <div style="flex:0 0 70%; max-width:70%;">
-<p><img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature4" width="90%" height="auto" align="" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle"></p>
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature4.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
 <p><span class="math display">\[
@@ -455,14 +477,14 @@ p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}
 <section id="section-5" class="slide level2">
 <h2></h2>
 <div class="lamd-columns" style="display:flex; width:100%; justify-content:center; align-items:center; column-gap:1em;">
-<div style="flex:0 0 ; max-width:;">
-
+<div style="flex:0 0 30%; max-width:30%;">
+<p><span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span> <span class="math display">\[f(\mathbf{ x}) \sim {\mathcal GP}\]</span> <span class="math display">\[p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\right)\]</span> <span class="math display">\[p(\mathbf{ f}|\mathbf{ y},\mathbf{X})\]</span> <span class="math display">\[p(\mathbf{ u})  = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ u}\mathbf{ u}}\right)\]</span> <span class="math display">\[\widetilde p({\color{red}\mathbf{ u}}|\mathbf{ y},\mathbf{X})\]</span></p>
 </div>
-<div style="flex:0 0 ; max-width:;">
-
+<div style="flex:0 0 70%; max-width:70%;">
+<object class="svgplot " data="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature5.svg" width="90%" style=" ">
+</object>
 </div>
 </div>
-<p>{ <span class="math display">\[\mathbf{X},\,\mathbf{ y}\]</span> <span class="math display">\[f(\mathbf{ x}) \sim {\mathcal GP}\]</span> <span class="math display">\[p(\mathbf{ f}) = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ f}\mathbf{ f}}\right)\]</span> <span class="math display">\[p(\mathbf{ f}|\mathbf{ y},\mathbf{X})\]</span> <span class="math display">\[p(\mathbf{ u})  = \mathscr{N}\left(\mathbf{0},\mathbf{K}_{\mathbf{ u}\mathbf{ u}}\right)\]</span> <span class="math display">\[\widetilde p({\color{red}\mathbf{ u}}|\mathbf{ y},\mathbf{X})\]</span> }{ <img class="negate" src="https://mlatcl.github.io/gpss/slides/diagrams/nomenclature5.png" width="90%" height="auto" align="" style="background:none; border:none; box-shadow:none; display:block; margin-left:auto; margin-right:auto;vertical-align:middle"></p>
 </section>
 <section id="the-alternative-posterior" class="slide level2">
 <h2>The alternative posterior</h2>
